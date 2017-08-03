@@ -10,8 +10,8 @@ import (
 
 	opentracing "github.com/opentracing/opentracing-go"
 	"github.com/pkg/errors"
+	"github.com/rai-project/caffe"
 	rgrpc "github.com/rai-project/grpc"
-	"github.com/rai-project/mxnet"
 	"github.com/rai-project/registry"
 	context "golang.org/x/net/context"
 
@@ -20,8 +20,8 @@ import (
 
 	"github.com/rai-project/uuid"
 
+	predict "github.com/rai-project/caffe/predict"
 	common "github.com/rai-project/dlframework/framework/agent"
-	predict "github.com/rai-project/mxnet/predict"
 )
 
 type registryServer struct {
@@ -98,7 +98,7 @@ func RegisterRegistryServer() (*grpc.Server, error) {
 	svr := &registryServer{
 		Registry: common.Registry{
 			Base: common.Base{
-				Framework: mxnet.FrameworkManifest,
+				Framework: caffe.FrameworkManifest,
 			},
 		},
 	}
@@ -123,7 +123,7 @@ func RegisterPredictorServer(host string) (*grpc.Server, error) {
 		Predictor: common.Predictor{
 			Host: host,
 			Base: common.Base{
-				Framework: mxnet.FrameworkManifest,
+				Framework: caffe.FrameworkManifest,
 			},
 		},
 	}

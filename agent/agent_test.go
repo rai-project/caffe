@@ -8,9 +8,9 @@ import (
 	"time"
 
 	"github.com/facebookgo/freeport"
+	caffe "github.com/rai-project/caffe"
 	"github.com/rai-project/config"
 	dl "github.com/rai-project/dlframework"
-	mxnet "github.com/rai-project/mxnet"
 	"github.com/rai-project/utils"
 	"github.com/stretchr/testify/assert"
 )
@@ -32,7 +32,7 @@ func getAddress(port string) (string, error) {
 }
 
 func XXXTestFrameworkRegistration(t *testing.T) {
-	framework := mxnet.FrameworkManifest
+	framework := caffe.FrameworkManifest
 	models := framework.Models()
 	assert.NotEmpty(t, models)
 }

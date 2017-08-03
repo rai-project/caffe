@@ -1,12 +1,12 @@
-FROM carml/mxnet:base-ppc64le-gpu as builder
+FROM carml/caffe:base-ppc64le-gpu as builder
 MAINTAINER Abdul Dakkak <dakkak@illinois.edu>
 
-RUN go get -u -v github.com/rai-project/mxnet/mxnet-agent && \
-    cd $GOPATH/src/github.com/rai-project/mxnet/mxnet-agent && \
+RUN go get -u -v github.com/rai-project/caffe/caffe-agent && \
+    cd $GOPATH/src/github.com/rai-project/caffe/caffe-agent && \
     glide install && \
     go install
 
 FROM ubuntu:latest
 
-COPY --from=builder /go/bin/mxnet-agent /usr/bin
-ENTRYPOINT ["mxnet-agent", "--debug", "--verbose"]
+COPY --from=builder /go/bin/caffe-agent /usr/bin
+ENTRYPOINT ["caffe-agent", "--debug", "--verbose"]
