@@ -1,7 +1,7 @@
 name: BVLC-AlexNet # name of your model
 framework:
-  name: MXNet # framework for the model
-  version: ~1.0 # framework version contraint
+  name: Caffe # framework for the model
+  version: 1.0 # framework version contraint
 version: 1.0 # version information in semantic version format
 container: # containers used to perform model prediction
            # multiple platforms can be specified
@@ -39,7 +39,7 @@ output:
     # type parameters
     features_url: http://data.dmlc.ml/mxnet/models/imagenet/synset.txt
 model: # specifies model graph and weights resources
-  base_url: http://dl.caffe.berkeleyvision.org
+  base_url: http://dl.caffe.berkeleyvision.org/
   graph_path: bvlc_alexnet.caffemodel
   is_archive: false # if set, then the base_url is a url to an archive
                     # the graph_path and weights_path then denote the

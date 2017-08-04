@@ -53,7 +53,7 @@ func TestGRPCRegistration(t *testing.T) {
 
 	RegisterRegistryServer()
 	RegisterPredictorServer(address)
-	time.Sleep(3 * time.Second)
+	time.Sleep(2 * time.Minute)
 }
 
 func TestMain(m *testing.M) {

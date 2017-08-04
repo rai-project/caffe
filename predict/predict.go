@@ -3,7 +3,6 @@ package predict
 import (
 	"bufio"
 	"image"
-	"io/ioutil"
 	"os"
 	"path/filepath"
 	"strings"
@@ -16,19 +15,21 @@ import (
 
 	"github.com/anthonynsimon/bild/parallel"
 	"github.com/anthonynsimon/bild/transform"
+	"github.com/k0kubun/pp"
 	opentracing "github.com/opentracing/opentracing-go"
 	"github.com/pkg/errors"
+	"github.com/rai-project/caffe"
 	"github.com/rai-project/dlframework"
 	common "github.com/rai-project/dlframework/framework/predict"
 	"github.com/rai-project/downloadmanager"
-	gomxnet "github.com/songtianyi/go-mxnet-predictor/mxnet"
+	gocaffe "github.com/rai-project/go-caffe"
 )
 
 type ImagePredictor struct {
 	common.ImagePredictor
 	workDir   string
 	features  []string
-	predictor *gomxnet.Predictor
+	predictor *gocaffe.Predictor
 }
 
 func New(model dlframework.ModelManifest) (common.Predictor, error) {
@@ -72,7 +73,11 @@ func (p *ImagePredictor) GetWeightsUrl() string {
 	if model.GetModel().GetIsArchive() {
 		return model.GetModel().GetBaseUrl()
 	}
-	return strings.TrimSuffix(model.GetModel().GetBaseUrl(), "/") + "/" + model.GetModel().GetWeightsPath()
+	baseURL := ""
+	if model.GetModel().GetBaseUrl() != "" {
+		baseURL = strings.TrimSuffix(model.GetModel().GetBaseUrl(), "/") + "/"
+	}
+	return baseURL + model.GetModel().GetWeightsPath()
 }
 
 func (p *ImagePredictor) GetGraphUrl() string {
@@ -80,7 +85,11 @@ func (p *ImagePredictor) GetGraphUrl() string {
 	if model.GetModel().GetIsArchive() {
 		return model.GetModel().GetBaseUrl()
 	}
-	return strings.TrimSuffix(model.GetModel().GetBaseUrl(), "/") + "/" + model.GetModel().GetGraphPath()
+	baseURL := ""
+	if model.GetModel().GetBaseUrl() != "" {
+		baseURL = strings.TrimSuffix(model.GetModel().GetBaseUrl(), "/") + "/"
+	}
+	return baseURL + model.GetModel().GetGraphPath()
 }
 
 func (p *ImagePredictor) GetFeaturesUrl() string {
@@ -95,19 +104,24 @@ func (p *ImagePredictor) GetFeaturesUrl() string {
 
 func (p *ImagePredictor) GetGraphPath() string {
 	model := p.Model
-	graphPath := model.GetModel().GetGraphPath()
+	graphPath := filepath.Base(model.GetModel().GetGraphPath())
 	return filepath.Join(p.workDir, graphPath)
 }
 
 func (p *ImagePredictor) GetWeightsPath() string {
 	model := p.Model
-	graphPath := model.GetModel().GetWeightsPath()
+	graphPath := filepath.Base(model.GetModel().GetWeightsPath())
 	return filepath.Join(p.workDir, graphPath)
 }
 
 func (p *ImagePredictor) GetFeaturesPath() string {
 	model := p.Model
 	return filepath.Join(p.workDir, model.GetName()+".features")
+}
+
+func (p *ImagePredictor) GetMeanPath() string {
+	model := p.Model
+	return filepath.Join(p.workDir, model.GetName()+".mean")
 }
 
 func (p *ImagePredictor) Preprocess(ctx context.Context, input interface{}) (interface{}, error) {
@@ -128,29 +142,61 @@ func (p *ImagePredictor) Preprocess(ctx context.Context, input interface{}) (int
 	}
 	img = transform.Resize(img, int(imageDims[2]), int(imageDims[3]), transform.Linear)
 
-	meanImage, err := p.GetMeanImage()
-	if err != nil || meanImage == nil {
-		meanImage = []float32{0, 0, 0}
-	}
-
 	b := img.Bounds()
 	height := b.Max.Y - b.Min.Y // image height
 	width := b.Max.X - b.Min.X  // image width
 
-	res := make([]float32, 3*height*width)
+	imageSize := 3 * height * width
+
+	meanImage, err := p.GetMeanImage(ctx, p.readBlobfromURL)
+	if err != nil && len(meanImage) != imageSize {
+		meanImage = make([]float32, imageSize)
+	}
+
+	if len(meanImage) != imageSize {
+		lenMeanImage := len(meanImage)
+		resizedMeanImage := make([]float32, imageSize)
+		for ii := 0; ii < imageSize; ii++ {
+			resizedMeanImage[ii] = meanImage[ii%lenMeanImage]
+		}
+		meanImage = resizedMeanImage
+	}
+
+	if len(meanImage) != imageSize {
+		return nil, errors.Errorf("mean image size mismatch. %v != %v ", len(meanImage), imageSize)
+	}
+
+	res := make([]float32, imageSize)
 	parallel.Line(height, func(start, end int) {
 		w := width
 		h := height
+
 		for y := start; y < end; y++ {
 			for x := 0; x < width; x++ {
 				r, g, b, _ := img.At(x+b.Min.X, y+b.Min.Y).RGBA()
-				res[y*w+x] = float32(r>>8) - meanImage[0]
-				res[w*h+y*w+x] = float32(g>>8) - meanImage[1]
-				res[2*w*h+y*w+x] = float32(b>>8) - meanImage[2]
+				res[y*w+x] = float32(r>>8) - meanImage[y*w+x]
+				res[w*h+y*w+x] = float32(g>>8) - meanImage[w*h+y*w+x]
+				res[2*w*h+y*w+x] = float32(b>>8) - meanImage[2*w*h+y*w+x]
 			}
 		}
+
 	})
 	return res, nil
+}
+
+func (p *ImagePredictor) readBlobfromURL(ctx context.Context, url string) ([]float32, error) {
+	targetPath := filepath.Join(p.workDir, "mean.binaryproto")
+
+	fileName, err := downloadmanager.DownloadFile(ctx, url, targetPath)
+	if err != nil {
+		return nil, err
+	}
+	blob, err := caffe.ReadBlob(fileName)
+	if err != nil {
+		return nil, err
+	}
+
+	return blob.Data, nil
 }
 
 func (p *ImagePredictor) Download(ctx context.Context) error {
@@ -172,21 +218,9 @@ func (p *ImagePredictor) Download(ctx context.Context) error {
 	return nil
 }
 
-func (p *ImagePredictor) getPredictor(ctx context.Context) error {
-	if span, newCtx := opentracing.StartSpanFromContext(ctx, "GetPredictor"); span != nil {
-		ctx = newCtx
-		defer span.Finish()
-	}
+func (p *ImagePredictor) loadPredictor(ctx context.Context) error {
 	if p.predictor != nil {
 		return nil
-	}
-	symbol, err := ioutil.ReadFile(p.GetGraphPath())
-	if err != nil {
-		return errors.Wrapf(err, "cannot read %s", p.GetGraphPath())
-	}
-	params, err := ioutil.ReadFile(p.GetWeightsPath())
-	if err != nil {
-		return errors.Wrapf(err, "cannot read %s", p.GetWeightsPath())
 	}
 
 	var features []string
@@ -212,11 +246,7 @@ func (p *ImagePredictor) getPredictor(ctx context.Context) error {
 		modelInputShape[ii] = uint32(v)
 	}
 
-	pred, err := gomxnet.CreatePredictor(symbol,
-		params,
-		gomxnet.Device{gomxnet.CPU_DEVICE, 0},
-		[]gomxnet.InputNode{{Key: "data", Shape: modelInputShape}},
-	)
+	pred, err := gocaffe.New(p.GetGraphPath(), p.GetWeightsPath())
 	if err != nil {
 		return err
 	}
@@ -230,52 +260,41 @@ func (p *ImagePredictor) Predict(ctx context.Context, input interface{}) (*dlfra
 		ctx = newCtx
 		defer span.Finish()
 	}
-	if err := p.getPredictor(ctx); err != nil {
+	if err := p.loadPredictor(ctx); err != nil {
 		return nil, err
 	}
 
-	data, ok := input.([]float32)
+	imageData, ok := input.([]float32)
 	if !ok {
 		return nil, errors.New("expecting []float32 input in predict function")
 	}
 
-	span, _ := opentracing.StartSpanFromContext(ctx, "SetInputData")
-	if err := p.predictor.SetInput("data", data); err != nil {
-		return nil, err
-	}
-	if span != nil {
-		span.Finish()
-	}
+	pp.Println(imageData[0:5])
 
-	if span, newCtx := opentracing.StartSpanFromContext(ctx, "ForwardInference"); span != nil {
-		ctx = newCtx
-		defer span.Finish()
-	}
-	if err := p.predictor.Forward(); err != nil {
-		return nil, err
-	}
-
-	probabilities, err := p.predictor.GetOutput(0)
+	predictions, err := p.predictor.Predict(imageData)
 	if err != nil {
 		return nil, err
 	}
 
-	rprobs := make([]*dlframework.PredictionFeature, len(probabilities))
-	for ii, prob := range probabilities {
+	rprobs := make([]*dlframework.PredictionFeature, len(predictions))
+	for ii, pred := range predictions {
 		rprobs[ii] = &dlframework.PredictionFeature{
-			Index:       int64(ii),
-			Name:        p.features[ii],
-			Probability: prob,
+			Index:       int64(pred.Index),
+			Name:        p.features[pred.Index],
+			Probability: pred.Probability,
 		}
 	}
-
 	res := dlframework.PredictionFeatures(rprobs)
+	res.Sort()
+
+	pp.Println(res[:2])
+
 	return &res, nil
 }
 
 func (p *ImagePredictor) Close() error {
 	if p.predictor != nil {
-		p.predictor.Free()
+		p.predictor.Close()
 	}
 	return nil
 }

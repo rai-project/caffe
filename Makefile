@@ -17,7 +17,7 @@ logrus-fix:
 generate: clean generate-models
 
 generate-proto:
-	protoc --gogofaster_out=Mgoogle/protobuf/any.proto=github.com/gogo/protobuf/types,plugins=grpc:. -Iproto -I$(GOPATH)/src proto/caffe.proto
+	protoc --gogofaster_out=. -Iproto -I$(GOPATH)/src proto/caffe.proto
 
 generate-models:
 	go-bindata -nomemcopy -prefix builtin_models/ -pkg caffe -o builtin_models_static.go -ignore=.DS_Store  -ignore=README.md builtin_models/...
