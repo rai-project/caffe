@@ -139,7 +139,8 @@ func (p *ImagePredictor) Preprocess(ctx context.Context, input interface{}) (int
 	if err != nil {
 		return nil, err
 	}
-	img = transform.Resize(img, int(imageDims[2]), int(imageDims[3]), transform.Linear)
+
+	img = transform.Resize(img, int(imageDims[2]), int(imageDims[3]), transform.NearestNeighbor)
 
 	b := img.Bounds()
 	height := b.Max.Y - b.Min.Y // image height
