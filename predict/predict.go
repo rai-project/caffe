@@ -9,12 +9,7 @@ import (
 
 	context "golang.org/x/net/context"
 
-	_ "image/gif"
-	_ "image/jpeg"
-	_ "image/png"
-
 	"github.com/anthonynsimon/bild/parallel"
-	"github.com/anthonynsimon/bild/transform"
 	opentracing "github.com/opentracing/opentracing-go"
 	"github.com/pkg/errors"
 	"github.com/rai-project/caffe"
@@ -22,6 +17,7 @@ import (
 	common "github.com/rai-project/dlframework/framework/predict"
 	"github.com/rai-project/downloadmanager"
 	gocaffe "github.com/rai-project/go-caffe"
+	raiimage "github.com/rai-project/image"
 )
 
 type ImagePredictor struct {
@@ -130,7 +126,7 @@ func (p *ImagePredictor) Preprocess(ctx context.Context, input interface{}) (int
 		defer span.Finish()
 	}
 
-	img, ok := input.(image.Image)
+	inputImage, ok := input.(image.Image)
 	if !ok {
 		return nil, errors.New("expecting an image input")
 	}
@@ -140,7 +136,10 @@ func (p *ImagePredictor) Preprocess(ctx context.Context, input interface{}) (int
 		return nil, err
 	}
 
-	img = transform.Resize(img, int(imageDims[2]), int(imageDims[3]), transform.NearestNeighbor)
+	img, err := raiimage.Resize(ctx, inputImage, int(imageDims[2]), int(imageDims[3]))
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to resize input image")
+	}
 
 	b := img.Bounds()
 	height := b.Max.Y - b.Min.Y // image height
