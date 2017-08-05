@@ -222,6 +222,11 @@ func (p *ImagePredictor) loadPredictor(ctx context.Context) error {
 		return nil
 	}
 
+	if span, newCtx := opentracing.StartSpanFromContext(ctx, "LoadPredictor"); span != nil {
+		ctx = newCtx
+		defer span.Finish()
+	}
+
 	var features []string
 	f, err := os.Open(p.GetFeaturesPath())
 	if err != nil {
