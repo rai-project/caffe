@@ -15,7 +15,6 @@ import (
 
 	"github.com/anthonynsimon/bild/parallel"
 	"github.com/anthonynsimon/bild/transform"
-	"github.com/k0kubun/pp"
 	opentracing "github.com/opentracing/opentracing-go"
 	"github.com/pkg/errors"
 	"github.com/rai-project/caffe"
@@ -269,8 +268,6 @@ func (p *ImagePredictor) Predict(ctx context.Context, input interface{}) (*dlfra
 		return nil, errors.New("expecting []float32 input in predict function")
 	}
 
-	pp.Println(imageData[0:5])
-
 	predictions, err := p.predictor.Predict(imageData)
 	if err != nil {
 		return nil, err
@@ -286,8 +283,6 @@ func (p *ImagePredictor) Predict(ctx context.Context, input interface{}) (*dlfra
 	}
 	res := dlframework.PredictionFeatures(rprobs)
 	res.Sort()
-
-	pp.Println(res[:2])
 
 	return &res, nil
 }
