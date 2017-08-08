@@ -120,7 +120,6 @@ func (p *ImagePredictor) GetMeanPath() string {
 }
 
 func (p *ImagePredictor) Preprocess(ctx context.Context, input interface{}) (interface{}, error) {
-
 	if span, newCtx := opentracing.StartSpanFromContext(ctx, "Preprocess"); span != nil {
 		ctx = newCtx
 		defer span.Finish()
@@ -145,47 +144,41 @@ func (p *ImagePredictor) Preprocess(ctx context.Context, input interface{}) (int
 	height := b.Max.Y - b.Min.Y // image height
 	width := b.Max.X - b.Min.X  // image width
 
-	imageSize := 3 * height * width
-
-	meanImage, err := p.GetMeanImage(ctx, p.readBlobfromURL)
-	if err != nil && len(meanImage) != imageSize {
-		meanImage = make([]float32, imageSize)
+	meanImage, err := p.GetMeanImage(ctx, p.readMeanFromURL)
+	if err != nil || meanImage == nil {
+		return nil, errors.Wrap(err, "failed to get mean image")
 	}
 
-	if len(meanImage) != imageSize {
-		lenMeanImage := len(meanImage)
-		resizedMeanImage := make([]float32, imageSize)
-		for ii := 0; ii < imageSize; ii++ {
-			resizedMeanImage[ii] = meanImage[ii%lenMeanImage]
+	mean := [3]float32{}
+	for cc := 0; cc < 3; cc++ {
+		accum := float32(0)
+		offset := cc * width * height
+		for ii := 0; ii < height; ii++ {
+			for jj := 0; jj < width; jj++ {
+				accum += meanImage[offset+ii*width+jj]
+			}
 		}
-		meanImage = resizedMeanImage
+		mean[cc] = accum / float32(width*height)
 	}
 
-	if len(meanImage) != imageSize {
-		return nil, errors.Errorf("mean image size mismatch. %v != %v ", len(meanImage), imageSize)
-	}
-
-	res := make([]float32, imageSize)
+	res := make([]float32, 3*height*width)
 	parallel.Line(height, func(start, end int) {
 		w := width
 		h := height
-
 		for y := start; y < end; y++ {
 			for x := 0; x < width; x++ {
 				r, g, b, _ := img.At(x+b.Min.X, y+b.Min.Y).RGBA()
-				res[y*w+x] = float32(r>>8) - meanImage[y*w+x]
-				res[w*h+y*w+x] = float32(g>>8) - meanImage[w*h+y*w+x]
-				res[2*w*h+y*w+x] = float32(b>>8) - meanImage[2*w*h+y*w+x]
+				res[y*w+x] = float32(r>>8) - mean[2]
+				res[w*h+y*w+x] = float32(g>>8) - mean[1]
+				res[2*w*h+y*w+x] = float32(b>>8) - mean[0]
 			}
 		}
-
 	})
 	return res, nil
 }
 
-func (p *ImagePredictor) readBlobfromURL(ctx context.Context, url string) ([]float32, error) {
+func (p *ImagePredictor) readMeanFromURL(ctx context.Context, url string) ([]float32, error) {
 	targetPath := filepath.Join(p.workDir, "mean.binaryproto")
-
 	fileName, err := downloadmanager.DownloadFile(ctx, url, targetPath)
 	if err != nil {
 		return nil, err
@@ -199,7 +192,6 @@ func (p *ImagePredictor) readBlobfromURL(ctx context.Context, url string) ([]flo
 }
 
 func (p *ImagePredictor) Download(ctx context.Context) error {
-
 	if span, newCtx := opentracing.StartSpanFromContext(ctx, "DownloadingModel"); span != nil {
 		ctx = newCtx
 		defer span.Finish()
@@ -287,7 +279,6 @@ func (p *ImagePredictor) Predict(ctx context.Context, input interface{}) (*dlfra
 		}
 	}
 	res := dlframework.PredictionFeatures(rprobs)
-	res.Sort()
 
 	return &res, nil
 }

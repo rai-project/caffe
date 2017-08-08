@@ -35,7 +35,7 @@ output:
     # type parameters
     features_url: https://gist.githubusercontent.com/anonymous/a824ba333ba92293ae80dd8d667d3911/raw/b2d1d2cada37ea14818ab7c3e229c49bb22c4535/gistfile1.txt
 model: # specifies model graph and weights resources
-  graph_path: https://raw.githubusercontent.com/BVLC/caffe/80f44100e19fd371ff55beb3ec2ad5919fb6ac43/models/bvlc_googlenet/deploy.prototxt
+  graph_path: https://raw.githubusercontent.com/BVLC/caffe/master/models/bvlc_googlenet/deploy.prototxt
   weights_path: http://dl.caffe.berkeleyvision.org/bvlc_googlenet.caffemodel
   is_archive: false # if set, then the base_url is a url to an archive
                     # the graph_path and weights_path then denote the
