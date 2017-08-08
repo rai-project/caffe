@@ -17,6 +17,7 @@ description: >
   This model was trained by Ross Girshick @rbgirshick
 references: # references to papers / websites / etc.. describing the model
   - https://arxiv.org/pdf/1311.2524.pdf
+  - https://github.com/BVLC/caffe/tree/master/models/bvlc_reference_rcnn_ilsvrc13
   - http://nbviewer.jupyter.org/github/BVLC/caffe/blob/master/examples/detection.ipynb
 # license of the model
 license: unrestricted
