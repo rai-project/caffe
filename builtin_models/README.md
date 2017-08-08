@@ -1,3 +1,3 @@
 # builtin_models
 
-Run `make generate-caffe` in the root `dlframework` (`../..`) after updating model descriptions.
+Run `make generate` in `caffe` or `make generate-caffe` in the root `dlframework` (`../..`) after updating model descriptions.

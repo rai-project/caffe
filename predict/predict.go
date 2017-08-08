@@ -145,20 +145,21 @@ func (p *ImagePredictor) Preprocess(ctx context.Context, input interface{}) (int
 	width := b.Max.X - b.Min.X  // image width
 
 	meanImage, err := p.GetMeanImage(ctx, p.readMeanFromURL)
-	if err != nil || meanImage == nil {
+	if err != nil {
 		return nil, errors.Wrap(err, "failed to get mean image")
 	}
-
-	mean := [3]float32{}
-	for cc := 0; cc < 3; cc++ {
-		accum := float32(0)
-		offset := cc * width * height
-		for ii := 0; ii < height; ii++ {
-			for jj := 0; jj < width; jj++ {
-				accum += meanImage[offset+ii*width+jj]
+	mean := [3]float32{0, 0, 0}
+	if len(meanImage) != 3 {
+		for cc := 0; cc < 3; cc++ {
+			accum := float32(0)
+			offset := cc * width * height
+			for ii := 0; ii < height; ii++ {
+				for jj := 0; jj < width; jj++ {
+					accum += meanImage[offset+ii*width+jj]
+				}
 			}
+			mean[cc] = accum / float32(width*height)
 		}
-		mean[cc] = accum / float32(width*height)
 	}
 
 	res := make([]float32, 3*height*width)
