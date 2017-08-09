@@ -160,6 +160,8 @@ func (p *ImagePredictor) Preprocess(ctx context.Context, input interface{}) (int
 			}
 			mean[cc] = accum / float32(width*height)
 		}
+	} else {
+		copy(mean[:], meanImage[0:2])
 	}
 
 	res := make([]float32, 3*height*width)
