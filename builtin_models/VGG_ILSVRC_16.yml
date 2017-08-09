@@ -1,4 +1,4 @@
-name: BVLC-AlexNet # name of your model
+name: VGG Team 16-layer # name of your model
 framework:
   name: Caffe # framework for the model
   version: 1.0 # framework version contraint

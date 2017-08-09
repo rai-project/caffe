@@ -1,4 +1,4 @@
-name: FCN-32s PASCAL # name of your model
+name: FCN-16s PASCAL # name of your model
 framework:
   name: Caffe # framework for the model
   version: 1.0 # framework version contraint
