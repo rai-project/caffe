@@ -1,5 +1,5 @@
 package caffe
 
 var (
-	Version = "0.2.13"
+	Version = "0.2.14"
 )
