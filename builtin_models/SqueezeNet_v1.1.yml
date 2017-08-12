@@ -18,6 +18,7 @@ references: # references to papers / websites / etc.. describing the model
   - https://arxiv.org/pdf/1602.07360.pdf
   - https://github.com/DeepScale/SqueezeNet
   - https://github.com/dividiti/ck-caffe/tree/master/package/caffemodel-deepscale-squeezenet-1.1
+  - http://cknowledge.org/repo/web.php?template=cknowledge&&wcid=package:59414348b1bdedb5
 # license of the model
 license: BAIR
 # inputs to the model
@@ -38,7 +39,7 @@ output:
     # type parameters
     features_url: http://data.dmlc.ml/mxnet/models/imagenet/synset.txt
 model: # specifies model graph and weights resources
-  graph_path: TODO
+  graph_path: https://gist.githubusercontent.com/cli99/957cac1f843e30cbe9e2c602309b2ea2/raw/bb16c57ce58287c0964c5283469fc3d428f2a8dd/squeezenet_v1.1
   weights_path: https://github.com/DeepScale/SqueezeNet/raw/master/SqueezeNet_v1.1/squeezenet_v1.1.caffemodel
   is_archive: false # if set, then the base_url is a url to an archive
                     # the graph_path and weights_path then denote the
@@ -47,4 +48,3 @@ attributes: # extra network attributes
   kind: CNN # the kind of neural network (CNN, RNN, ...)
   training_dataset: ImageNet # dataset used to for training
   manifest_author: abduld
-hidden: true
