@@ -1,4 +1,4 @@
-name: VGG Team 16-layer # name of your model
+name: VGG-ILSVRC-16 # name of your model
 framework:
   name: Caffe # framework for the model
   version: 1.0 # framework version contraint
@@ -12,10 +12,11 @@ container: # containers used to perform model prediction
     cpu: raiproject/carml-caffe:ppc64le-gpu
     gpu: raiproject/carml-caffe:ppc64le-gpu
 description: >
-  TODO
+  The model is an improved version of the 16-layer model used by the VGG team in the ILSVRC-2014 competition.
 references: # references to papers / websites / etc.. describing the model
-  - https://arxiv.org/pdf/1409.1556.pdf
   - https://gist.github.com/ksimonyan/211839e770f7b538e2d8
+  - https://github.com/BVLC/caffe/wiki/Model-Zoo#models-used-by-the-vgg-team-in-ilsvrc-2014
+  - https://arxiv.org/abs/1409.1556
 # license of the model
 license: CC BY 4.0 (commercial use is allowed)
 # inputs to the model
@@ -26,6 +27,7 @@ inputs:
     description: the input image
     parameters: # type parameters
       dimensions: [1, 3, 224, 224]
+      # in RGB
       mean: [123.68, 116.779, 103.939]
 output:
   # the type of the output

@@ -12,12 +12,14 @@ container: # containers used to perform model prediction
     cpu: raiproject/carml-caffe:ppc64le-gpu
     gpu: raiproject/carml-caffe:ppc64le-gpu
 description: >
-  The pure Caffe instantiation of the R-CNN model for ILSVRC13 detection. This model was made by transplanting the R-CNN SVM classifiers into a fc-rcnn classification layer, provided here as an off-the-shelf Caffe detector. Try the detection example to see it in action.
+  The pure Caffe instantiation of the R-CNN model for ILSVRC13 detection.
+  This model was made by transplanting the R-CNN SVM classifiers into a fc-rcnn classification layer, provided here as an off-the-shelf Caffe detector.
+  Try the detection example to see it in action.
   N.B. For research purposes, make use of the official R-CNN package and not this example.
   This model was trained by Ross Girshick @rbgirshick
 references: # references to papers / websites / etc.. describing the model
-  - https://arxiv.org/pdf/1311.2524.pdf
   - https://github.com/BVLC/caffe/tree/master/models/bvlc_reference_rcnn_ilsvrc13
+  - https://arxiv.org/abs/1311.2524
   - http://nbviewer.jupyter.org/github/BVLC/caffe/blob/master/examples/detection.ipynb
 # license of the model
 license: unrestricted
@@ -36,7 +38,7 @@ output:
   description: the output label
   parameters:
     # type parameters
-    features_url: https://gist.githubusercontent.com/anonymous/d534d324504ae025fc748bbaba7e0152/raw/3e3ad97afdc5cb3d70b90160334cf1388d191051/det_synset_words.txt
+    features_url: https://raw.githubusercontent.com/rai-project/carml-models/master/data/ilsvrc12/det_synset_words.txt
 model: # specifies model graph and weights resources
   graph_path: https://raw.githubusercontent.com/BVLC/caffe/master/models/bvlc_reference_rcnn_ilsvrc13/deploy.prototxt
   weights_path: http://dl.caffe.berkeleyvision.org/bvlc_reference_rcnn_ilsvrc13.caffemodel

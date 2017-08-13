@@ -19,10 +19,16 @@ description: >
   uses "xavier" to initialize the weights instead of "gaussian";
   quick_solver.prototxt uses a different learning rate decay policy than the original solver.prototxt, that allows a much faster training (60 epochs vs 250 epochs);
   The bundled model is the iteration 2,400,000 snapshot (60 epochs) using quick_solver.prototxt
-  This bundled model obtains a top-1 accuracy 68.7% (31.3% error) and a top-5 accuracy 88.9% (11.1% error) on the validation set, using just the center crop. (Using the average of 10 crops, (4 + 1 center) * 2 mirror, should obtain a bit higher accuracy.)
+  This bundled model obtains a top-1 accuracy 68.7% (31.3% error) and a top-5 accuracy 88.9% (11.1% error) on the validation set, using just the center crop.
+  (Using the average of 10 crops, (4 + 1 center) * 2 mirror, should obtain a bit higher accuracy.)
+  Timings for bvlc_googlenet with cuDNN using batch_size:128 on a K40c:
+  Average Forward pass: 562.841 ms.
+  Average Backward pass: 1123.84 ms.
+  Average Forward-Backward: 1688.8 ms.
+  This model was trained by Sergio Guadarrama @sguada
 references: # references to papers / websites / etc.. describing the model
-  - https://arxiv.org/pdf/1409.4842.pdf
   - https://github.com/BVLC/caffe/tree/master/models/bvlc_googlenet
+  - https://arxiv.org/abs/1409.4842
 # license of the model
 license: unrestricted
 # inputs to the model
@@ -41,7 +47,7 @@ output:
   description: the output label
   parameters:
     # type parameters
-    features_url: https://gist.githubusercontent.com/anonymous/a824ba333ba92293ae80dd8d667d3911/raw/b2d1d2cada37ea14818ab7c3e229c49bb22c4535/gistfile1.txt
+    features_url: http://data.dmlc.ml/mxnet/models/imagenet/synset.txt
 model: # specifies model graph and weights resources
   graph_path: https://raw.githubusercontent.com/BVLC/caffe/master/models/bvlc_googlenet/deploy.prototxt
   weights_path: http://dl.caffe.berkeleyvision.org/bvlc_googlenet.caffemodel

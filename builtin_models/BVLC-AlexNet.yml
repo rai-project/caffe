@@ -1,4 +1,4 @@
-name: BVLC-Reference-CaffeNet # name of your model
+name: BVLC-AlexNet # name of your model
 framework:
   name: Caffe # framework for the model
   version: 1.0 # framework version contraint
@@ -12,15 +12,19 @@ container: # containers used to perform model prediction
     cpu: raiproject/carml-caffe:ppc64le-gpu
     gpu: raiproject/carml-caffe:ppc64le-gpu
 description: >
-  This model is the result of following the Caffe ImageNet model training instructions. It is a replication of the model described in the AlexNet publication with some differences.
-  Differences:
-  not training with the relighting data-augmentation;
-  the order of pooling and normalization layers is switched (in CaffeNet, pooling is done before normalization).
-  This model is snapshot of iteration 310,000. The best validation performance during training was iteration 313,000 with validation accuracy 57.412% and loss 1.82328. This model obtains a top-1 accuracy 57.4% and a top-5 accuracy 80.4% on the validation set, using just the center crop. (Using the average of 10 crops, (4 + 1 center) * 2 mirror, should obtain a bit higher accuracy still.)
-  This model was trained by Jeff Donahue @jeffdonahue
+  This model is a replication of the model described in the AlexNet publication.
+  Differences: not training with the relighting data-augmentation;
+  initializing non-zero biases to 0.1 instead of 1 (found necessary for training, as initialization to 1 gave flat loss).
+  The bundled model is the iteration 360,000 snapshot. The best validation
+  performance during training was iteration 358,000 with validation accuracy
+  57.258% and loss 1.83948. This model obtains a top-1 accuracy 57.1% and a
+  top-5 accuracy 80.2% on the validation set, using just the center crop.
+  (Using the average of 10 crops, (4 + 1 center) * 2 mirror, should obtain
+  a bit higher accuracy.)
+  This model was trained by Evan Shelhamer @shelhamer
 references: # references to papers / websites / etc.. describing the model
+  - https://github.com/BVLC/caffe/tree/master/models/bvlc_alexnet
   - http://papers.nips.cc/paper/4824-imagenet-classification-with-deep-convolutional-neural-networks.pdf
-  - https://github.com/BVLC/caffe/tree/master/models/bvlc_reference_caffenet
 # license of the model
 license: unrestricted
 # inputs to the model
@@ -39,11 +43,10 @@ output:
   description: the output label
   parameters:
     # type parameters
-    features_url: https://gist.githubusercontent.com/anonymous/a824ba333ba92293ae80dd8d667d3911/raw/b2d1d2cada37ea14818ab7c3e229c49bb22c4535/gistfile1.txt
+    features_url: http://data.dmlc.ml/mxnet/models/imagenet/synset.txt
 model: # specifies model graph and weights resources
-  graph_path: https://raw.githubusercontent.com/BVLC/caffe/master/models/bvlc_reference_caffenet/deploy.prototxt
-  weights_path: http://dl.caffe.berkeleyvision.org/bvlc_reference_caffenet.caffemodel
-
+  graph_path: https://raw.githubusercontent.com/BVLC/caffe/master/models/bvlc_alexnet/deploy.prototxt
+  weights_path: http://dl.caffe.berkeleyvision.org/bvlc_alexnet.caffemodel
   is_archive: false # if set, then the base_url is a url to an archive
                     # the graph_path and weights_path then denote the
                     # file names of the graph and weights within the archive
