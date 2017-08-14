@@ -164,7 +164,7 @@ func (p *ImagePredictor) Preprocess(ctx context.Context, input interface{}) (int
 			mean[cc] = accum / float32(width*height)
 		}
 	} else {
-		copy(mean[:], meanImage[0:2])
+		copy(mean[:], meanImage[:])
 	}
 
 	res := make([]float32, 3*height*width)
@@ -174,9 +174,9 @@ func (p *ImagePredictor) Preprocess(ctx context.Context, input interface{}) (int
 		for y := start; y < end; y++ {
 			for x := 0; x < width; x++ {
 				r, g, b, _ := img.At(x+b.Min.X, y+b.Min.Y).RGBA()
-				res[y*w+x] = float32(b>>8) - mean[0]
+				res[y*w+x] = float32(b>>8) - mean[2]
 				res[w*h+y*w+x] = float32(g>>8) - mean[1]
-				res[2*w*h+y*w+x] = float32(r>>8) - mean[2]
+				res[2*w*h+y*w+x] = float32(r>>8) - mean[0]
 			}
 		}
 	})
