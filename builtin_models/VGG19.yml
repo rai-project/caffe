@@ -1,4 +1,4 @@
-name: SqueezeNet # name of your model
+name: VGG19 # name of your model
 framework:
   name: Caffe # framework for the model
   version: 1.0 # framework version contraint
@@ -12,15 +12,13 @@ container: # containers used to perform model prediction
     cpu: raiproject/carml-caffe:ppc64le-gpu
     gpu: raiproject/carml-caffe:ppc64le-gpu
 description: >
-  Squeezenet achieves similar results to AlexNet, at 50x fewer parameters and 1/500th the size.
-  Small models are more feasible to deploy on hardware with limited memory, require less
-  communication during distributed training, and are easier to distribute to clients.
-  SqueezeNet achieves 57.5% and 80.3% top-1 and top-5 acuracty on ImageNet.
+  The model is an improved version of the 19-layer model used by the VGG team in the ILSVRC-2014 competition.
 references: # references to papers / websites / etc.. describing the model
-  - https://github.com/DeepScale/SqueezeNet
-  - https://arxiv.org/abs/1602.07360
+  - https://gist.github.com/ksimonyan/3785162f95cd2d5fee77
+  - https://github.com/BVLC/caffe/wiki/Model-Zoo#models-used-by-the-vgg-team-in-ilsvrc-2014
+  - https://arxiv.org/abs/1409.1556
 # license of the model
-license: BAIR
+license: CC BY 4.0 (commercial use is allowed)
 # inputs to the model
 inputs:
   # first input type for the model
@@ -28,8 +26,8 @@ inputs:
     # description of the first input
     description: the input image
     parameters: # type parameters
-      dimensions: [1, 3, 227, 227]
-      mean: [128, 128, 128]
+      dimensions: [1, 3, 224, 224]
+      mean: [123.68, 116.779, 103.939]
 output:
   # the type of the output
   type: feature
@@ -39,9 +37,8 @@ output:
     # type parameters
     features_url: http://data.dmlc.ml/mxnet/models/imagenet/synset.txt
 model: # specifies model graph and weights resources
-  base_url: https://github.com/DeepScale/SqueezeNet/raw/master/SqueezeNet_v1.0/
-  graph_path: deploy.prototxt
-  weights_path: squeezenet_v1.0.caffemodel
+  graph_path: https://gist.githubusercontent.com/ksimonyan/3785162f95cd2d5fee77/raw/f43eeefc869d646b449aa6ce66f87bf987a1c9b5/VGG_ILSVRC_19_layers_deploy.prototxt
+  weights_path: http://www.robots.ox.ac.uk/~vgg/software/very_deep/caffe/VGG_ILSVRC_19_layers.caffemodel
   is_archive: false # if set, then the base_url is a url to an archive
                     # the graph_path and weights_path then denote the
                     # file names of the graph and weights within the archive
