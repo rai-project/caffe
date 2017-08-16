@@ -92,7 +92,7 @@ func bvlcAlexnetYml() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "BVLC-AlexNet.yml", size: 2715, mode: os.FileMode(420), modTime: time.Unix(1502685785, 0)}
+	info := bindataFileInfo{name: "BVLC-AlexNet.yml", size: 2715, mode: os.FileMode(420), modTime: time.Unix(1502903237, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
