@@ -29,5 +29,3 @@ RUN git clone --depth=1 --branch=master https://${PKG}.git . && \
     go build -a -installsuffix cgo -ldflags "-s -w -X ${PKG}/Version=${VERSION} -X ${PKG}/GitCommit=${VCS_REF} -X ${PKG}/BuildDate=${BUILD_DATE}"&& \
     go install && \
     rm -fr vendor
-
-ENTRYPOINT ["caffe-agent", "--debug", "--verbose"]
