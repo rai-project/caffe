@@ -8,7 +8,7 @@ build: docker_build output
 release: docker_build docker_push
 
 # Image and binary can be overidden with env vars.
-DOCKER_IMAGE ?= carml/caffe-agent
+DOCKER_IMAGE ?= carml/caffe
 
 
 # Get System architecture
@@ -19,7 +19,7 @@ ARCH ?= $(shell go env GOARCH)
 GIT_COMMIT = $(strip $(shell git rev-parse --short HEAD))
 
 # Get the version number from the code
-CODE_VERSION = v$(strip $(shell cat ../../VERSION))
+CODE_VERSION = v$(strip $(shell cat ../VERSION))
 
 
 # Find out if the working directory is clean
