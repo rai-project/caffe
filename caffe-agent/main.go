@@ -10,7 +10,6 @@ import (
 )
 
 func main() {
-	cmd.Init()
 
 	rootCmd, err := cmd.NewRootCommand(caffe.FrameworkManifest)
 	if err != nil {
