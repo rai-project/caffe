@@ -2,13 +2,11 @@ package predict
 
 import (
 	"bufio"
-	"image"
 	"os"
 	"strings"
 
 	context "golang.org/x/net/context"
 
-	"github.com/anthonynsimon/bild/parallel"
 	opentracing "github.com/opentracing/opentracing-go"
 	"github.com/pkg/errors"
 	"github.com/rai-project/caffe"
@@ -18,7 +16,7 @@ import (
 	common "github.com/rai-project/dlframework/framework/predict"
 	"github.com/rai-project/downloadmanager"
 	gocaffe "github.com/rai-project/go-caffe"
-	raiimage "github.com/rai-project/image"
+	"github.com/rai-project/image/types"
 )
 
 type ImagePredictor struct {
@@ -73,58 +71,6 @@ func (p *ImagePredictor) Load(ctx context.Context, model dlframework.ModelManife
 	ip.loadPredictor(ctx)
 
 	return ip, nil
-}
-
-func (p *ImagePredictor) Preprocess(ctx context.Context, input interface{}) (interface{}, error) {
-	if span, newCtx := opentracing.StartSpanFromContext(ctx, "Preprocess"); span != nil {
-		ctx = newCtx
-		defer span.Finish()
-	}
-
-	inputImage, ok := input.(image.Image)
-	if !ok {
-		return nil, errors.New("expecting an image input")
-	}
-
-	imageDims, err := p.GetImageDimensions()
-	if err != nil {
-		return nil, err
-	}
-
-	img, err := raiimage.Resize(ctx, inputImage, int(imageDims[2]), int(imageDims[3]))
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to resize input image")
-	}
-
-	b := img.Bounds()
-	height := b.Max.Y - b.Min.Y // image height
-	width := b.Max.X - b.Min.X  // image width
-
-	mean, err := p.GetMeanImage(ctx)
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to get mean image")
-	}
-
-	scale, err := p.GetScale()
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to get scale")
-	}
-
-	res := make([]float32, 3*height*width)
-	parallel.Line(height, func(start, end int) {
-		w := width
-		h := height
-		for y := start; y < end; y++ {
-			for x := 0; x < width; x++ {
-				r, g, b, _ := img.At(x+b.Min.X, y+b.Min.Y).RGBA()
-				res[y*w+x] = (float32(b>>8) - mean[2]) / scale
-				res[w*h+y*w+x] = (float32(g>>8) - mean[1]) / scale
-				res[2*w*h+y*w+x] = (float32(r>>8) - mean[0]) / scale
-			}
-		}
-	})
-
-	return res, nil
 }
 
 func (p *ImagePredictor) download(ctx context.Context) error {
@@ -190,6 +136,30 @@ func (p *ImagePredictor) loadPredictor(ctx context.Context) error {
 	p.predictor = pred
 
 	return nil
+}
+
+func (p *ImagePredictor) PreprocessOptions(ctx context.Context) (predict.PreprocessOptions, error) {
+	mean, err := p.GetMeanImage()
+	if err != nil {
+		return predict.PreprocessorOptions{}, err
+	}
+
+	scale, err := p.GetScale()
+	if err != nil {
+		return predict.PreprocessorOptions{}, err
+	}
+
+	imageDims, err := p.GetImageDimensions()
+	if err != nil {
+		return predict.PreprocessorOptions{}, err
+	}
+
+	return PreprocessorOptions{
+		MeanImage:  mean,
+		Scale:      scale,
+		Size:       []int{int(imageDims[2]), int(imageDims[3])},
+		ColorSpace: types.BGRMode,
+	}
 }
 
 func (p *ImagePredictor) Predict(ctx context.Context, data []float32) (dlframework.Features, error) {
