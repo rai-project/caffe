@@ -138,23 +138,23 @@ func (p *ImagePredictor) loadPredictor(ctx context.Context) error {
 	return nil
 }
 
-func (p *ImagePredictor) PreprocessOptions(ctx context.Context) (predict.PreprocessOptions, error) {
+func (p *ImagePredictor) PreprocessOptions(ctx context.Context) (common.PreprocessOptions, error) {
 	mean, err := p.GetMeanImage()
 	if err != nil {
-		return predict.PreprocessorOptions{}, err
+		return common.PreprocessOptions{}, err
 	}
 
 	scale, err := p.GetScale()
 	if err != nil {
-		return predict.PreprocessorOptions{}, err
+		return common.PreprocessOptions{}, err
 	}
 
 	imageDims, err := p.GetImageDimensions()
 	if err != nil {
-		return predict.PreprocessorOptions{}, err
+		return common.PreprocessOptions{}, err
 	}
 
-	return PreprocessorOptions{
+	return common.PreprocessOptions{
 		MeanImage:  mean,
 		Scale:      scale,
 		Size:       []int{int(imageDims[2]), int(imageDims[3])},
