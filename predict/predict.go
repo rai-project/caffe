@@ -155,11 +155,11 @@ func (p *ImagePredictor) PreprocessOptions(ctx context.Context) (common.Preproce
 	}
 
 	return common.PreprocessOptions{
-		MeanImage:  mean,
-		Scale:      scale,
-		Size:       []int{int(imageDims[2]), int(imageDims[3])},
-		ColorSpace: types.BGRMode,
-	}
+		MeanImage: mean,
+		Scale:     scale,
+		Size:      []int{int(imageDims[2]), int(imageDims[3])},
+		ColorMode: types.BGRMode,
+	}, nil
 }
 
 func (p *ImagePredictor) Predict(ctx context.Context, data []float32) (dlframework.Features, error) {
