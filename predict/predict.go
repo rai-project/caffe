@@ -138,48 +138,23 @@ func (p *ImagePredictor) loadPredictor(ctx context.Context) error {
 	return nil
 }
 
-<<<<<<< HEAD
-func (p *ImagePredictor) PreprocessOptions(ctx context.Context) (predict.PreprocessOptions, error) {
-	mean, err := p.GetMeanImage()
-	if err != nil {
-		return predict.PreprocessorOptions{}, err
-=======
 func (p *ImagePredictor) PreprocessOptions(ctx context.Context) (common.PreprocessOptions, error) {
 	mean, err := p.GetMeanImage()
 	if err != nil {
 		return common.PreprocessOptions{}, err
->>>>>>> 9a2c07a0b8174dfba86d64ff9542869c578d9e83
 	}
 
 	scale, err := p.GetScale()
 	if err != nil {
-<<<<<<< HEAD
-		return predict.PreprocessorOptions{}, err
-	}
-
-	imageDims, err := p.GetImageDimensions()
-	if err != nil {
-		return predict.PreprocessorOptions{}, err
-	}
-
-	return PreprocessorOptions{
-		MeanImage:  mean,
-		Scale:      scale,
-		Size:       []int{int(imageDims[2]), int(imageDims[3])},
-		ColorSpace: types.BGRMode,
-=======
 		return common.PreprocessOptions{}, err
 	}
 
 	imageDims, err := p.GetImageDimensions()
 	if err != nil {
 		return common.PreprocessOptions{}, err
->>>>>>> 9a2c07a0b8174dfba86d64ff9542869c578d9e83
 	}
 }
 
-<<<<<<< HEAD
-=======
 	return common.PreprocessOptions{
 		MeanImage: mean,
 		Scale:     scale,
@@ -188,7 +163,6 @@ func (p *ImagePredictor) PreprocessOptions(ctx context.Context) (common.Preproce
 	}, nil
 }
 
->>>>>>> 9a2c07a0b8174dfba86d64ff9542869c578d9e83
 func (p *ImagePredictor) Predict(ctx context.Context, data []float32) (dlframework.Features, error) {
 	if span, newCtx := opentracing.StartSpanFromContext(ctx, "Predict"); span != nil {
 		ctx = newCtx
