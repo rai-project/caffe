@@ -88,22 +88,22 @@ func (p *ImagePredictor) download(ctx context.Context) error {
 	model := p.Model
 	if model.Model.IsArchive {
 		baseURL := model.Model.BaseUrl
-		_, err := downloadmanager.DownloadInto(baseURL, p.WorkDir)
+		_, err := downloadmanager.DownloadInto(ctx, baseURL, p.WorkDir)
 		if err != nil {
 			return errors.Wrapf(err, "failed to download model archive from %v", model.Model.BaseUrl)
 		}
 		return nil
 	}
 
-	if _, err := downloadmanager.DownloadFile(p.GetGraphUrl(), p.GetGraphPath()); err != nil {
+	if _, err := downloadmanager.DownloadFile(ctx, p.GetGraphUrl(), p.GetGraphPath()); err != nil {
 		return err
 	}
 
-	if _, err := downloadmanager.DownloadFile(p.GetWeightsUrl(), p.GetWeightsPath()); err != nil {
+	if _, err := downloadmanager.DownloadFile(ctx, p.GetWeightsUrl(), p.GetWeightsPath()); err != nil {
 		return err
 	}
 
-	if _, err := downloadmanager.DownloadFile(p.GetFeaturesUrl(), p.GetFeaturesPath()); err != nil {
+	if _, err := downloadmanager.DownloadFile(ctx, p.GetFeaturesUrl(), p.GetFeaturesPath()); err != nil {
 		return err
 	}
 
@@ -153,7 +153,6 @@ func (p *ImagePredictor) PreprocessOptions(ctx context.Context) (common.Preproce
 	if err != nil {
 		return common.PreprocessOptions{}, err
 	}
-}
 
 	return common.PreprocessOptions{
 		MeanImage: mean,
