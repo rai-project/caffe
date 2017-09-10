@@ -6,12 +6,12 @@ import (
 
 	"github.com/rai-project/caffe"
 	_ "github.com/rai-project/caffe/predict"
-	"github.com/rai-project/dlframework/framework/cmd/server"
+	cmd "github.com/rai-project/dlframework/framework/cmd/server"
 )
 
 func main() {
 
-	rootCmd, err := server.NewRootCommand(caffe.FrameworkManifest)
+	rootCmd, err := cmd.NewRootCommand(caffe.FrameworkManifest)
 	if err != nil {
 		fmt.Println(err)
 		os.Exit(-1)
