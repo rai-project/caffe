@@ -38,12 +38,15 @@ output:
   parameters:
     # type parameters
     features_url: http://data.dmlc.ml/mxnet/models/imagenet/synset.txt
+    features_checksum: 4d234b5833aca44928065a180db3016a
 model: # specifies model graph and weights resources
   graph_path: https://raw.githubusercontent.com/rai-project/carml-models/master/caffe/squeezenet_v1.1/deploy.prototxt
   weights_path: https://github.com/DeepScale/SqueezeNet/raw/master/SqueezeNet_v1.1/squeezenet_v1.1.caffemodel
   is_archive: false # if set, then the base_url is a url to an archive
                     # the graph_path and weights_path then denote the
                     # file names of the graph and weights within the archive
+  graph_checksum: 1e67cb171e16a4d66fd331409d2f7b0d
+  weights_checksum: 0357e4e11d173c72a01615888826bc8e
 attributes: # extra network attributes
   kind: CNN # the kind of neural network (CNN, RNN, ...)
   training_dataset: ImageNet # dataset used to for training

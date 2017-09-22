@@ -48,12 +48,15 @@ output:
   parameters:
     # type parameters
     features_url: http://data.dmlc.ml/mxnet/models/imagenet/synset.txt
+    features_checksum: 4d234b5833aca44928065a180db3016a
 model: # specifies model graph and weights resources
   graph_path: https://raw.githubusercontent.com/BVLC/caffe/master/models/bvlc_googlenet/deploy.prototxt
   weights_path: http://dl.caffe.berkeleyvision.org/bvlc_googlenet.caffemodel
   is_archive: false # if set, then the base_url is a url to an archive
                     # the graph_path and weights_path then denote the
                     # file names of the graph and weights within the archive
+  graph_checksum: 4a7281748d91b960ba86d681010d4aa2
+  weights_checksum: dc05671f0443708da1b0d0ae0e0c9cad
 attributes: # extra network attributes
   kind: CNN # the kind of neural network (CNN, RNN, ...)
   training_dataset: ImageNet # dataset used to for training
