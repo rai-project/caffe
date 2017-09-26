@@ -5,8 +5,6 @@ import (
 	"os"
 	"strings"
 
-	"github.com/k0kubun/pp"
-
 	opentracing "github.com/opentracing/opentracing-go"
 	"github.com/pkg/errors"
 	"github.com/rai-project/caffe"
@@ -213,7 +211,6 @@ func (p *ImagePredictor) Predict(ctx context.Context, data [][]float32, opts dlf
 
 	var output []dlframework.Features
 	batchSize := int(p.BatchSize())
-	pp.Println(len(predictions))
 	if batchSize == 0 {
 		batchSize = 1
 	}
