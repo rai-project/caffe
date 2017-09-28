@@ -23,7 +23,6 @@ import:
   - framework/predict
 - package: github.com/rai-project/downloadmanager
 - package: github.com/rai-project/go-caffe
-  version: ~0.3.10
 - package: github.com/rai-project/image
   subpackages:
   - types
