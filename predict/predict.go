@@ -207,7 +207,6 @@ func (p *ImagePredictor) loadPredictor(ctx context.Context) error {
 }
 
 func (p *ImagePredictor) Predict(ctx context.Context, data [][]float32, opts dlframework.PredictionOptions) ([]dlframework.Features, error) {
-
 	span, ctx := p.GetTracer().StartSpanFromContext(ctx, "Predict", opentracing.Tags{
 		"model_name":        p.Model.GetName(),
 		"model_version":     p.Model.GetVersion(),
@@ -216,7 +215,7 @@ func (p *ImagePredictor) Predict(ctx context.Context, data [][]float32, opts dlf
 		"batch_size":        p.BatchSize(),
 	})
 
-	if err := p.predictor.StartProfiling("caffe", "what"); err == nil {
+	if err := p.predictor.StartProfiling("caffe", "predict"); err == nil {
 		defer func() {
 			p.predictor.EndProfiling()
 			profBuffer, err := p.predictor.ReadProfile()
@@ -229,7 +228,6 @@ func (p *ImagePredictor) Predict(ctx context.Context, data [][]float32, opts dlf
 			p.predictor.DisableProfiling()
 		}()
 	}
-
 	defer span.Finish()
 
 	var input []float32
