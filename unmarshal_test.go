@@ -8,6 +8,7 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
+// TestUnmarshalModel ...
 func TestUnmarshalModel(t *testing.T) {
 
 	caffeModelFile := filepath.Join(sourcepath.MustAbsoluteDir(), "_fixtures", "imagenet_mean.binaryproto")

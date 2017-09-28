@@ -89,30 +89,37 @@ var _ = math.Inf
 // proto package needs to be updated.
 const _ = proto.GoGoProtoPackageIsVersion2 // please upgrade the proto package
 
+// Phase ...
 type Phase int32
 
+// Phase_TRAIN ...
 const (
 	Phase_TRAIN Phase = 0
 	Phase_TEST  Phase = 1
 )
 
+// Phase_name ...
 var Phase_name = map[int32]string{
 	0: "TRAIN",
 	1: "TEST",
-}
+} 
+// Phase_value ...
 var Phase_value = map[string]int32{
 	"TRAIN": 0,
 	"TEST":  1,
 }
 
+// Enum ...
 func (x Phase) Enum() *Phase {
 	p := new(Phase)
 	*p = x
 	return p
-}
+} 
+// String ...
 func (x Phase) String() string {
 	return proto.EnumName(Phase_name, int32(x))
-}
+} 
+// UnmarshalJSON ...
 func (x *Phase) UnmarshalJSON(data []byte) error {
 	value, err := proto.UnmarshalJSONEnum(Phase_value, data, "Phase")
 	if err != nil {
@@ -120,38 +127,45 @@ func (x *Phase) UnmarshalJSON(data []byte) error {
 	}
 	*x = Phase(value)
 	return nil
-}
+}                                             
+// EnumDescriptor ...
 func (Phase) EnumDescriptor() ([]byte, []int) { return fileDescriptorCaffe, []int{0} }
 
 // Normalize the filler variance by fan_in, fan_out, or their average.
 // Applies to 'xavier' and 'msra' fillers.
 type FillerParameter_VarianceNorm int32
 
+// FillerParameter_FAN_IN ...
 const (
 	FillerParameter_FAN_IN  FillerParameter_VarianceNorm = 0
 	FillerParameter_FAN_OUT FillerParameter_VarianceNorm = 1
 	FillerParameter_AVERAGE FillerParameter_VarianceNorm = 2
 )
 
+// FillerParameter_VarianceNorm_name ...
 var FillerParameter_VarianceNorm_name = map[int32]string{
 	0: "FAN_IN",
 	1: "FAN_OUT",
 	2: "AVERAGE",
-}
+} 
+// FillerParameter_VarianceNorm_value ...
 var FillerParameter_VarianceNorm_value = map[string]int32{
 	"FAN_IN":  0,
 	"FAN_OUT": 1,
 	"AVERAGE": 2,
 }
 
+// Enum ...
 func (x FillerParameter_VarianceNorm) Enum() *FillerParameter_VarianceNorm {
 	p := new(FillerParameter_VarianceNorm)
 	*p = x
 	return p
-}
+} 
+// String ...
 func (x FillerParameter_VarianceNorm) String() string {
 	return proto.EnumName(FillerParameter_VarianceNorm_name, int32(x))
-}
+} 
+// UnmarshalJSON ...
 func (x *FillerParameter_VarianceNorm) UnmarshalJSON(data []byte) error {
 	value, err := proto.UnmarshalJSONEnum(FillerParameter_VarianceNorm_value, data, "FillerParameter_VarianceNorm")
 	if err != nil {
@@ -159,35 +173,43 @@ func (x *FillerParameter_VarianceNorm) UnmarshalJSON(data []byte) error {
 	}
 	*x = FillerParameter_VarianceNorm(value)
 	return nil
-}
+} 
+// EnumDescriptor ...
 func (FillerParameter_VarianceNorm) EnumDescriptor() ([]byte, []int) {
 	return fileDescriptorCaffe, []int{4, 0}
 }
 
+// SolverParameter_SnapshotFormat ...
 type SolverParameter_SnapshotFormat int32
 
+// SolverParameter_HDF5 ...
 const (
 	SolverParameter_HDF5        SolverParameter_SnapshotFormat = 0
 	SolverParameter_BINARYPROTO SolverParameter_SnapshotFormat = 1
 )
 
+// SolverParameter_SnapshotFormat_name ...
 var SolverParameter_SnapshotFormat_name = map[int32]string{
 	0: "HDF5",
 	1: "BINARYPROTO",
-}
+} 
+// SolverParameter_SnapshotFormat_value ...
 var SolverParameter_SnapshotFormat_value = map[string]int32{
 	"HDF5":        0,
 	"BINARYPROTO": 1,
 }
 
+// Enum ...
 func (x SolverParameter_SnapshotFormat) Enum() *SolverParameter_SnapshotFormat {
 	p := new(SolverParameter_SnapshotFormat)
 	*p = x
 	return p
-}
+} 
+// String ...
 func (x SolverParameter_SnapshotFormat) String() string {
 	return proto.EnumName(SolverParameter_SnapshotFormat_name, int32(x))
-}
+} 
+// UnmarshalJSON ...
 func (x *SolverParameter_SnapshotFormat) UnmarshalJSON(data []byte) error {
 	value, err := proto.UnmarshalJSONEnum(SolverParameter_SnapshotFormat_value, data, "SolverParameter_SnapshotFormat")
 	if err != nil {
@@ -195,7 +217,8 @@ func (x *SolverParameter_SnapshotFormat) UnmarshalJSON(data []byte) error {
 	}
 	*x = SolverParameter_SnapshotFormat(value)
 	return nil
-}
+} 
+// EnumDescriptor ...
 func (SolverParameter_SnapshotFormat) EnumDescriptor() ([]byte, []int) {
 	return fileDescriptorCaffe, []int{6, 0}
 }
@@ -203,28 +226,34 @@ func (SolverParameter_SnapshotFormat) EnumDescriptor() ([]byte, []int) {
 // the mode solver will use: 0 for CPU and 1 for GPU. Use GPU in default.
 type SolverParameter_SolverMode int32
 
+// SolverParameter_CPU ...
 const (
 	SolverParameter_CPU SolverParameter_SolverMode = 0
 	SolverParameter_GPU SolverParameter_SolverMode = 1
 )
 
+// SolverParameter_SolverMode_name ...
 var SolverParameter_SolverMode_name = map[int32]string{
 	0: "CPU",
 	1: "GPU",
-}
+} 
+// SolverParameter_SolverMode_value ...
 var SolverParameter_SolverMode_value = map[string]int32{
 	"CPU": 0,
 	"GPU": 1,
 }
 
+// Enum ...
 func (x SolverParameter_SolverMode) Enum() *SolverParameter_SolverMode {
 	p := new(SolverParameter_SolverMode)
 	*p = x
 	return p
-}
+} 
+// String ...
 func (x SolverParameter_SolverMode) String() string {
 	return proto.EnumName(SolverParameter_SolverMode_name, int32(x))
-}
+} 
+// UnmarshalJSON ...
 func (x *SolverParameter_SolverMode) UnmarshalJSON(data []byte) error {
 	value, err := proto.UnmarshalJSONEnum(SolverParameter_SolverMode_value, data, "SolverParameter_SolverMode")
 	if err != nil {
@@ -232,7 +261,8 @@ func (x *SolverParameter_SolverMode) UnmarshalJSON(data []byte) error {
 	}
 	*x = SolverParameter_SolverMode(value)
 	return nil
-}
+} 
+// EnumDescriptor ...
 func (SolverParameter_SolverMode) EnumDescriptor() ([]byte, []int) {
 	return fileDescriptorCaffe, []int{6, 1}
 }
@@ -240,6 +270,7 @@ func (SolverParameter_SolverMode) EnumDescriptor() ([]byte, []int) {
 // DEPRECATED: old solver enum types, use string instead
 type SolverParameter_SolverType int32
 
+// SolverParameter_SGD ...
 const (
 	SolverParameter_SGD      SolverParameter_SolverType = 0
 	SolverParameter_NESTEROV SolverParameter_SolverType = 1
@@ -249,6 +280,7 @@ const (
 	SolverParameter_ADAM     SolverParameter_SolverType = 5
 )
 
+// SolverParameter_SolverType_name ...
 var SolverParameter_SolverType_name = map[int32]string{
 	0: "SGD",
 	1: "NESTEROV",
@@ -256,7 +288,8 @@ var SolverParameter_SolverType_name = map[int32]string{
 	3: "RMSPROP",
 	4: "ADADELTA",
 	5: "ADAM",
-}
+} 
+// SolverParameter_SolverType_value ...
 var SolverParameter_SolverType_value = map[string]int32{
 	"SGD":      0,
 	"NESTEROV": 1,
@@ -266,14 +299,17 @@ var SolverParameter_SolverType_value = map[string]int32{
 	"ADAM":     5,
 }
 
+// Enum ...
 func (x SolverParameter_SolverType) Enum() *SolverParameter_SolverType {
 	p := new(SolverParameter_SolverType)
 	*p = x
 	return p
-}
+} 
+// String ...
 func (x SolverParameter_SolverType) String() string {
 	return proto.EnumName(SolverParameter_SolverType_name, int32(x))
-}
+} 
+// UnmarshalJSON ...
 func (x *SolverParameter_SolverType) UnmarshalJSON(data []byte) error {
 	value, err := proto.UnmarshalJSONEnum(SolverParameter_SolverType_value, data, "SolverParameter_SolverType")
 	if err != nil {
@@ -281,13 +317,16 @@ func (x *SolverParameter_SolverType) UnmarshalJSON(data []byte) error {
 	}
 	*x = SolverParameter_SolverType(value)
 	return nil
-}
+} 
+// EnumDescriptor ...
 func (SolverParameter_SolverType) EnumDescriptor() ([]byte, []int) {
 	return fileDescriptorCaffe, []int{6, 2}
 }
 
+// ParamSpec_DimCheckMode ...
 type ParamSpec_DimCheckMode int32
 
+// ParamSpec_STRICT ...
 const (
 	// STRICT (default) requires that num, channels, height, width each match.
 	ParamSpec_STRICT ParamSpec_DimCheckMode = 0
@@ -295,23 +334,28 @@ const (
 	ParamSpec_PERMISSIVE ParamSpec_DimCheckMode = 1
 )
 
+// ParamSpec_DimCheckMode_name ...
 var ParamSpec_DimCheckMode_name = map[int32]string{
 	0: "STRICT",
 	1: "PERMISSIVE",
-}
+} 
+// ParamSpec_DimCheckMode_value ...
 var ParamSpec_DimCheckMode_value = map[string]int32{
 	"STRICT":     0,
 	"PERMISSIVE": 1,
 }
 
+// Enum ...
 func (x ParamSpec_DimCheckMode) Enum() *ParamSpec_DimCheckMode {
 	p := new(ParamSpec_DimCheckMode)
 	*p = x
 	return p
-}
+} 
+// String ...
 func (x ParamSpec_DimCheckMode) String() string {
 	return proto.EnumName(ParamSpec_DimCheckMode_name, int32(x))
-}
+} 
+// UnmarshalJSON ...
 func (x *ParamSpec_DimCheckMode) UnmarshalJSON(data []byte) error {
 	value, err := proto.UnmarshalJSONEnum(ParamSpec_DimCheckMode_value, data, "ParamSpec_DimCheckMode")
 	if err != nil {
@@ -319,7 +363,8 @@ func (x *ParamSpec_DimCheckMode) UnmarshalJSON(data []byte) error {
 	}
 	*x = ParamSpec_DimCheckMode(value)
 	return nil
-}
+} 
+// EnumDescriptor ...
 func (ParamSpec_DimCheckMode) EnumDescriptor() ([]byte, []int) {
 	return fileDescriptorCaffe, []int{10, 0}
 }
@@ -329,6 +374,7 @@ func (ParamSpec_DimCheckMode) EnumDescriptor() ([]byte, []int) {
 // SoftmaxWithLoss layer.
 type LossParameter_NormalizationMode int32
 
+// LossParameter_FULL ...
 const (
 	// Divide by the number of examples in the batch times spatial dimensions.
 	// Outputs that receive the ignore label will NOT be ignored in computing
@@ -343,12 +389,14 @@ const (
 	LossParameter_NONE LossParameter_NormalizationMode = 3
 )
 
+// LossParameter_NormalizationMode_name ...
 var LossParameter_NormalizationMode_name = map[int32]string{
 	0: "FULL",
 	1: "VALID",
 	2: "BATCH_SIZE",
 	3: "NONE",
-}
+} 
+// LossParameter_NormalizationMode_value ...
 var LossParameter_NormalizationMode_value = map[string]int32{
 	"FULL":       0,
 	"VALID":      1,
@@ -356,14 +404,17 @@ var LossParameter_NormalizationMode_value = map[string]int32{
 	"NONE":       3,
 }
 
+// Enum ...
 func (x LossParameter_NormalizationMode) Enum() *LossParameter_NormalizationMode {
 	p := new(LossParameter_NormalizationMode)
 	*p = x
 	return p
-}
+} 
+// String ...
 func (x LossParameter_NormalizationMode) String() string {
 	return proto.EnumName(LossParameter_NormalizationMode_name, int32(x))
-}
+} 
+// UnmarshalJSON ...
 func (x *LossParameter_NormalizationMode) UnmarshalJSON(data []byte) error {
 	value, err := proto.UnmarshalJSONEnum(LossParameter_NormalizationMode_value, data, "LossParameter_NormalizationMode")
 	if err != nil {
@@ -371,38 +422,46 @@ func (x *LossParameter_NormalizationMode) UnmarshalJSON(data []byte) error {
 	}
 	*x = LossParameter_NormalizationMode(value)
 	return nil
-}
+} 
+// EnumDescriptor ...
 func (LossParameter_NormalizationMode) EnumDescriptor() ([]byte, []int) {
 	return fileDescriptorCaffe, []int{13, 0}
 }
 
+// ConvolutionParameter_Engine ...
 type ConvolutionParameter_Engine int32
 
+// ConvolutionParameter_DEFAULT ...
 const (
 	ConvolutionParameter_DEFAULT ConvolutionParameter_Engine = 0
 	ConvolutionParameter_CAFFE   ConvolutionParameter_Engine = 1
 	ConvolutionParameter_CUDNN   ConvolutionParameter_Engine = 2
 )
 
+// ConvolutionParameter_Engine_name ...
 var ConvolutionParameter_Engine_name = map[int32]string{
 	0: "DEFAULT",
 	1: "CAFFE",
 	2: "CUDNN",
-}
+} 
+// ConvolutionParameter_Engine_value ...
 var ConvolutionParameter_Engine_value = map[string]int32{
 	"DEFAULT": 0,
 	"CAFFE":   1,
 	"CUDNN":   2,
 }
 
+// Enum ...
 func (x ConvolutionParameter_Engine) Enum() *ConvolutionParameter_Engine {
 	p := new(ConvolutionParameter_Engine)
 	*p = x
 	return p
-}
+} 
+// String ...
 func (x ConvolutionParameter_Engine) String() string {
 	return proto.EnumName(ConvolutionParameter_Engine_name, int32(x))
-}
+} 
+// UnmarshalJSON ...
 func (x *ConvolutionParameter_Engine) UnmarshalJSON(data []byte) error {
 	value, err := proto.UnmarshalJSONEnum(ConvolutionParameter_Engine_value, data, "ConvolutionParameter_Engine")
 	if err != nil {
@@ -410,35 +469,43 @@ func (x *ConvolutionParameter_Engine) UnmarshalJSON(data []byte) error {
 	}
 	*x = ConvolutionParameter_Engine(value)
 	return nil
-}
+} 
+// EnumDescriptor ...
 func (ConvolutionParameter_Engine) EnumDescriptor() ([]byte, []int) {
 	return fileDescriptorCaffe, []int{20, 0}
 }
 
+// DataParameter_DB ...
 type DataParameter_DB int32
 
+// DataParameter_LEVELDB ...
 const (
 	DataParameter_LEVELDB DataParameter_DB = 0
 	DataParameter_LMDB    DataParameter_DB = 1
 )
 
+// DataParameter_DB_name ...
 var DataParameter_DB_name = map[int32]string{
 	0: "LEVELDB",
 	1: "LMDB",
-}
+} 
+// DataParameter_DB_value ...
 var DataParameter_DB_value = map[string]int32{
 	"LEVELDB": 0,
 	"LMDB":    1,
 }
 
+// Enum ...
 func (x DataParameter_DB) Enum() *DataParameter_DB {
 	p := new(DataParameter_DB)
 	*p = x
 	return p
-}
+} 
+// String ...
 func (x DataParameter_DB) String() string {
 	return proto.EnumName(DataParameter_DB_name, int32(x))
-}
+} 
+// UnmarshalJSON ...
 func (x *DataParameter_DB) UnmarshalJSON(data []byte) error {
 	value, err := proto.UnmarshalJSONEnum(DataParameter_DB_value, data, "DataParameter_DB")
 	if err != nil {
@@ -446,36 +513,44 @@ func (x *DataParameter_DB) UnmarshalJSON(data []byte) error {
 	}
 	*x = DataParameter_DB(value)
 	return nil
-}
+}                                                        
+// EnumDescriptor ...
 func (DataParameter_DB) EnumDescriptor() ([]byte, []int) { return fileDescriptorCaffe, []int{22, 0} }
 
+// EltwiseParameter_EltwiseOp ...
 type EltwiseParameter_EltwiseOp int32
 
+// EltwiseParameter_PROD ...
 const (
 	EltwiseParameter_PROD EltwiseParameter_EltwiseOp = 0
 	EltwiseParameter_SUM  EltwiseParameter_EltwiseOp = 1
 	EltwiseParameter_MAX  EltwiseParameter_EltwiseOp = 2
 )
 
+// EltwiseParameter_EltwiseOp_name ...
 var EltwiseParameter_EltwiseOp_name = map[int32]string{
 	0: "PROD",
 	1: "SUM",
 	2: "MAX",
-}
+} 
+// EltwiseParameter_EltwiseOp_value ...
 var EltwiseParameter_EltwiseOp_value = map[string]int32{
 	"PROD": 0,
 	"SUM":  1,
 	"MAX":  2,
 }
 
+// Enum ...
 func (x EltwiseParameter_EltwiseOp) Enum() *EltwiseParameter_EltwiseOp {
 	p := new(EltwiseParameter_EltwiseOp)
 	*p = x
 	return p
-}
+} 
+// String ...
 func (x EltwiseParameter_EltwiseOp) String() string {
 	return proto.EnumName(EltwiseParameter_EltwiseOp_name, int32(x))
-}
+} 
+// UnmarshalJSON ...
 func (x *EltwiseParameter_EltwiseOp) UnmarshalJSON(data []byte) error {
 	value, err := proto.UnmarshalJSONEnum(EltwiseParameter_EltwiseOp_value, data, "EltwiseParameter_EltwiseOp")
 	if err != nil {
@@ -483,35 +558,43 @@ func (x *EltwiseParameter_EltwiseOp) UnmarshalJSON(data []byte) error {
 	}
 	*x = EltwiseParameter_EltwiseOp(value)
 	return nil
-}
+} 
+// EnumDescriptor ...
 func (EltwiseParameter_EltwiseOp) EnumDescriptor() ([]byte, []int) {
 	return fileDescriptorCaffe, []int{25, 0}
 }
 
+// HingeLossParameter_Norm ...
 type HingeLossParameter_Norm int32
 
+// HingeLossParameter_L1 ...
 const (
 	HingeLossParameter_L1 HingeLossParameter_Norm = 1
 	HingeLossParameter_L2 HingeLossParameter_Norm = 2
 )
 
+// HingeLossParameter_Norm_name ...
 var HingeLossParameter_Norm_name = map[int32]string{
 	1: "L1",
 	2: "L2",
-}
+} 
+// HingeLossParameter_Norm_value ...
 var HingeLossParameter_Norm_value = map[string]int32{
 	"L1": 1,
 	"L2": 2,
 }
 
+// Enum ...
 func (x HingeLossParameter_Norm) Enum() *HingeLossParameter_Norm {
 	p := new(HingeLossParameter_Norm)
 	*p = x
 	return p
-}
+} 
+// String ...
 func (x HingeLossParameter_Norm) String() string {
 	return proto.EnumName(HingeLossParameter_Norm_name, int32(x))
-}
+} 
+// UnmarshalJSON ...
 func (x *HingeLossParameter_Norm) UnmarshalJSON(data []byte) error {
 	value, err := proto.UnmarshalJSONEnum(HingeLossParameter_Norm_value, data, "HingeLossParameter_Norm")
 	if err != nil {
@@ -519,35 +602,43 @@ func (x *HingeLossParameter_Norm) UnmarshalJSON(data []byte) error {
 	}
 	*x = HingeLossParameter_Norm(value)
 	return nil
-}
+} 
+// EnumDescriptor ...
 func (HingeLossParameter_Norm) EnumDescriptor() ([]byte, []int) {
 	return fileDescriptorCaffe, []int{32, 0}
 }
 
+// LRNParameter_NormRegion ...
 type LRNParameter_NormRegion int32
 
+// LRNParameter_ACROSS_CHANNELS ...
 const (
 	LRNParameter_ACROSS_CHANNELS LRNParameter_NormRegion = 0
 	LRNParameter_WITHIN_CHANNEL  LRNParameter_NormRegion = 1
 )
 
+// LRNParameter_NormRegion_name ...
 var LRNParameter_NormRegion_name = map[int32]string{
 	0: "ACROSS_CHANNELS",
 	1: "WITHIN_CHANNEL",
-}
+} 
+// LRNParameter_NormRegion_value ...
 var LRNParameter_NormRegion_value = map[string]int32{
 	"ACROSS_CHANNELS": 0,
 	"WITHIN_CHANNEL":  1,
 }
 
+// Enum ...
 func (x LRNParameter_NormRegion) Enum() *LRNParameter_NormRegion {
 	p := new(LRNParameter_NormRegion)
 	*p = x
 	return p
-}
+} 
+// String ...
 func (x LRNParameter_NormRegion) String() string {
 	return proto.EnumName(LRNParameter_NormRegion_name, int32(x))
-}
+} 
+// UnmarshalJSON ...
 func (x *LRNParameter_NormRegion) UnmarshalJSON(data []byte) error {
 	value, err := proto.UnmarshalJSONEnum(LRNParameter_NormRegion_value, data, "LRNParameter_NormRegion")
 	if err != nil {
@@ -555,38 +646,46 @@ func (x *LRNParameter_NormRegion) UnmarshalJSON(data []byte) error {
 	}
 	*x = LRNParameter_NormRegion(value)
 	return nil
-}
+} 
+// EnumDescriptor ...
 func (LRNParameter_NormRegion) EnumDescriptor() ([]byte, []int) {
 	return fileDescriptorCaffe, []int{38, 0}
 }
 
+// LRNParameter_Engine ...
 type LRNParameter_Engine int32
 
+// LRNParameter_DEFAULT ...
 const (
 	LRNParameter_DEFAULT LRNParameter_Engine = 0
 	LRNParameter_CAFFE   LRNParameter_Engine = 1
 	LRNParameter_CUDNN   LRNParameter_Engine = 2
 )
 
+// LRNParameter_Engine_name ...
 var LRNParameter_Engine_name = map[int32]string{
 	0: "DEFAULT",
 	1: "CAFFE",
 	2: "CUDNN",
-}
+} 
+// LRNParameter_Engine_value ...
 var LRNParameter_Engine_value = map[string]int32{
 	"DEFAULT": 0,
 	"CAFFE":   1,
 	"CUDNN":   2,
 }
 
+// Enum ...
 func (x LRNParameter_Engine) Enum() *LRNParameter_Engine {
 	p := new(LRNParameter_Engine)
 	*p = x
 	return p
-}
+} 
+// String ...
 func (x LRNParameter_Engine) String() string {
 	return proto.EnumName(LRNParameter_Engine_name, int32(x))
-}
+} 
+// UnmarshalJSON ...
 func (x *LRNParameter_Engine) UnmarshalJSON(data []byte) error {
 	value, err := proto.UnmarshalJSONEnum(LRNParameter_Engine_value, data, "LRNParameter_Engine")
 	if err != nil {
@@ -594,36 +693,44 @@ func (x *LRNParameter_Engine) UnmarshalJSON(data []byte) error {
 	}
 	*x = LRNParameter_Engine(value)
 	return nil
-}
+}                                                           
+// EnumDescriptor ...
 func (LRNParameter_Engine) EnumDescriptor() ([]byte, []int) { return fileDescriptorCaffe, []int{38, 1} }
 
+// PoolingParameter_PoolMethod ...
 type PoolingParameter_PoolMethod int32
 
+// PoolingParameter_MAX ...
 const (
 	PoolingParameter_MAX        PoolingParameter_PoolMethod = 0
 	PoolingParameter_AVE        PoolingParameter_PoolMethod = 1
 	PoolingParameter_STOCHASTIC PoolingParameter_PoolMethod = 2
 )
 
+// PoolingParameter_PoolMethod_name ...
 var PoolingParameter_PoolMethod_name = map[int32]string{
 	0: "MAX",
 	1: "AVE",
 	2: "STOCHASTIC",
-}
+} 
+// PoolingParameter_PoolMethod_value ...
 var PoolingParameter_PoolMethod_value = map[string]int32{
 	"MAX":        0,
 	"AVE":        1,
 	"STOCHASTIC": 2,
 }
 
+// Enum ...
 func (x PoolingParameter_PoolMethod) Enum() *PoolingParameter_PoolMethod {
 	p := new(PoolingParameter_PoolMethod)
 	*p = x
 	return p
-}
+} 
+// String ...
 func (x PoolingParameter_PoolMethod) String() string {
 	return proto.EnumName(PoolingParameter_PoolMethod_name, int32(x))
-}
+} 
+// UnmarshalJSON ...
 func (x *PoolingParameter_PoolMethod) UnmarshalJSON(data []byte) error {
 	value, err := proto.UnmarshalJSONEnum(PoolingParameter_PoolMethod_value, data, "PoolingParameter_PoolMethod")
 	if err != nil {
@@ -631,38 +738,46 @@ func (x *PoolingParameter_PoolMethod) UnmarshalJSON(data []byte) error {
 	}
 	*x = PoolingParameter_PoolMethod(value)
 	return nil
-}
+} 
+// EnumDescriptor ...
 func (PoolingParameter_PoolMethod) EnumDescriptor() ([]byte, []int) {
 	return fileDescriptorCaffe, []int{42, 0}
 }
 
+// PoolingParameter_Engine ...
 type PoolingParameter_Engine int32
 
+// PoolingParameter_DEFAULT ...
 const (
 	PoolingParameter_DEFAULT PoolingParameter_Engine = 0
 	PoolingParameter_CAFFE   PoolingParameter_Engine = 1
 	PoolingParameter_CUDNN   PoolingParameter_Engine = 2
 )
 
+// PoolingParameter_Engine_name ...
 var PoolingParameter_Engine_name = map[int32]string{
 	0: "DEFAULT",
 	1: "CAFFE",
 	2: "CUDNN",
-}
+} 
+// PoolingParameter_Engine_value ...
 var PoolingParameter_Engine_value = map[string]int32{
 	"DEFAULT": 0,
 	"CAFFE":   1,
 	"CUDNN":   2,
 }
 
+// Enum ...
 func (x PoolingParameter_Engine) Enum() *PoolingParameter_Engine {
 	p := new(PoolingParameter_Engine)
 	*p = x
 	return p
-}
+} 
+// String ...
 func (x PoolingParameter_Engine) String() string {
 	return proto.EnumName(PoolingParameter_Engine_name, int32(x))
-}
+} 
+// UnmarshalJSON ...
 func (x *PoolingParameter_Engine) UnmarshalJSON(data []byte) error {
 	value, err := proto.UnmarshalJSONEnum(PoolingParameter_Engine_value, data, "PoolingParameter_Engine")
 	if err != nil {
@@ -670,13 +785,16 @@ func (x *PoolingParameter_Engine) UnmarshalJSON(data []byte) error {
 	}
 	*x = PoolingParameter_Engine(value)
 	return nil
-}
+} 
+// EnumDescriptor ...
 func (PoolingParameter_Engine) EnumDescriptor() ([]byte, []int) {
 	return fileDescriptorCaffe, []int{42, 1}
 }
 
+// ReductionParameter_ReductionOp ...
 type ReductionParameter_ReductionOp int32
 
+// ReductionParameter_SUM ...
 const (
 	ReductionParameter_SUM   ReductionParameter_ReductionOp = 1
 	ReductionParameter_ASUM  ReductionParameter_ReductionOp = 2
@@ -684,12 +802,14 @@ const (
 	ReductionParameter_MEAN  ReductionParameter_ReductionOp = 4
 )
 
+// ReductionParameter_ReductionOp_name ...
 var ReductionParameter_ReductionOp_name = map[int32]string{
 	1: "SUM",
 	2: "ASUM",
 	3: "SUMSQ",
 	4: "MEAN",
-}
+} 
+// ReductionParameter_ReductionOp_value ...
 var ReductionParameter_ReductionOp_value = map[string]int32{
 	"SUM":   1,
 	"ASUM":  2,
@@ -697,14 +817,17 @@ var ReductionParameter_ReductionOp_value = map[string]int32{
 	"MEAN":  4,
 }
 
+// Enum ...
 func (x ReductionParameter_ReductionOp) Enum() *ReductionParameter_ReductionOp {
 	p := new(ReductionParameter_ReductionOp)
 	*p = x
 	return p
-}
+} 
+// String ...
 func (x ReductionParameter_ReductionOp) String() string {
 	return proto.EnumName(ReductionParameter_ReductionOp_name, int32(x))
-}
+} 
+// UnmarshalJSON ...
 func (x *ReductionParameter_ReductionOp) UnmarshalJSON(data []byte) error {
 	value, err := proto.UnmarshalJSONEnum(ReductionParameter_ReductionOp_value, data, "ReductionParameter_ReductionOp")
 	if err != nil {
@@ -712,38 +835,46 @@ func (x *ReductionParameter_ReductionOp) UnmarshalJSON(data []byte) error {
 	}
 	*x = ReductionParameter_ReductionOp(value)
 	return nil
-}
+} 
+// EnumDescriptor ...
 func (ReductionParameter_ReductionOp) EnumDescriptor() ([]byte, []int) {
 	return fileDescriptorCaffe, []int{46, 0}
 }
 
+// ReLUParameter_Engine ...
 type ReLUParameter_Engine int32
 
+// ReLUParameter_DEFAULT ...
 const (
 	ReLUParameter_DEFAULT ReLUParameter_Engine = 0
 	ReLUParameter_CAFFE   ReLUParameter_Engine = 1
 	ReLUParameter_CUDNN   ReLUParameter_Engine = 2
 )
 
+// ReLUParameter_Engine_name ...
 var ReLUParameter_Engine_name = map[int32]string{
 	0: "DEFAULT",
 	1: "CAFFE",
 	2: "CUDNN",
-}
+} 
+// ReLUParameter_Engine_value ...
 var ReLUParameter_Engine_value = map[string]int32{
 	"DEFAULT": 0,
 	"CAFFE":   1,
 	"CUDNN":   2,
 }
 
+// Enum ...
 func (x ReLUParameter_Engine) Enum() *ReLUParameter_Engine {
 	p := new(ReLUParameter_Engine)
 	*p = x
 	return p
-}
+} 
+// String ...
 func (x ReLUParameter_Engine) String() string {
 	return proto.EnumName(ReLUParameter_Engine_name, int32(x))
-}
+} 
+// UnmarshalJSON ...
 func (x *ReLUParameter_Engine) UnmarshalJSON(data []byte) error {
 	value, err := proto.UnmarshalJSONEnum(ReLUParameter_Engine_value, data, "ReLUParameter_Engine")
 	if err != nil {
@@ -751,36 +882,44 @@ func (x *ReLUParameter_Engine) UnmarshalJSON(data []byte) error {
 	}
 	*x = ReLUParameter_Engine(value)
 	return nil
-}
+}                                                            
+// EnumDescriptor ...
 func (ReLUParameter_Engine) EnumDescriptor() ([]byte, []int) { return fileDescriptorCaffe, []int{47, 0} }
 
+// SigmoidParameter_Engine ...
 type SigmoidParameter_Engine int32
 
+// SigmoidParameter_DEFAULT ...
 const (
 	SigmoidParameter_DEFAULT SigmoidParameter_Engine = 0
 	SigmoidParameter_CAFFE   SigmoidParameter_Engine = 1
 	SigmoidParameter_CUDNN   SigmoidParameter_Engine = 2
 )
 
+// SigmoidParameter_Engine_name ...
 var SigmoidParameter_Engine_name = map[int32]string{
 	0: "DEFAULT",
 	1: "CAFFE",
 	2: "CUDNN",
-}
+} 
+// SigmoidParameter_Engine_value ...
 var SigmoidParameter_Engine_value = map[string]int32{
 	"DEFAULT": 0,
 	"CAFFE":   1,
 	"CUDNN":   2,
 }
 
+// Enum ...
 func (x SigmoidParameter_Engine) Enum() *SigmoidParameter_Engine {
 	p := new(SigmoidParameter_Engine)
 	*p = x
 	return p
-}
+} 
+// String ...
 func (x SigmoidParameter_Engine) String() string {
 	return proto.EnumName(SigmoidParameter_Engine_name, int32(x))
-}
+} 
+// UnmarshalJSON ...
 func (x *SigmoidParameter_Engine) UnmarshalJSON(data []byte) error {
 	value, err := proto.UnmarshalJSONEnum(SigmoidParameter_Engine_value, data, "SigmoidParameter_Engine")
 	if err != nil {
@@ -788,38 +927,46 @@ func (x *SigmoidParameter_Engine) UnmarshalJSON(data []byte) error {
 	}
 	*x = SigmoidParameter_Engine(value)
 	return nil
-}
+} 
+// EnumDescriptor ...
 func (SigmoidParameter_Engine) EnumDescriptor() ([]byte, []int) {
 	return fileDescriptorCaffe, []int{50, 0}
 }
 
+// SoftmaxParameter_Engine ...
 type SoftmaxParameter_Engine int32
 
+// SoftmaxParameter_DEFAULT ...
 const (
 	SoftmaxParameter_DEFAULT SoftmaxParameter_Engine = 0
 	SoftmaxParameter_CAFFE   SoftmaxParameter_Engine = 1
 	SoftmaxParameter_CUDNN   SoftmaxParameter_Engine = 2
 )
 
+// SoftmaxParameter_Engine_name ...
 var SoftmaxParameter_Engine_name = map[int32]string{
 	0: "DEFAULT",
 	1: "CAFFE",
 	2: "CUDNN",
-}
+} 
+// SoftmaxParameter_Engine_value ...
 var SoftmaxParameter_Engine_value = map[string]int32{
 	"DEFAULT": 0,
 	"CAFFE":   1,
 	"CUDNN":   2,
 }
 
+// Enum ...
 func (x SoftmaxParameter_Engine) Enum() *SoftmaxParameter_Engine {
 	p := new(SoftmaxParameter_Engine)
 	*p = x
 	return p
-}
+} 
+// String ...
 func (x SoftmaxParameter_Engine) String() string {
 	return proto.EnumName(SoftmaxParameter_Engine_name, int32(x))
-}
+} 
+// UnmarshalJSON ...
 func (x *SoftmaxParameter_Engine) UnmarshalJSON(data []byte) error {
 	value, err := proto.UnmarshalJSONEnum(SoftmaxParameter_Engine_value, data, "SoftmaxParameter_Engine")
 	if err != nil {
@@ -827,38 +974,46 @@ func (x *SoftmaxParameter_Engine) UnmarshalJSON(data []byte) error {
 	}
 	*x = SoftmaxParameter_Engine(value)
 	return nil
-}
+} 
+// EnumDescriptor ...
 func (SoftmaxParameter_Engine) EnumDescriptor() ([]byte, []int) {
 	return fileDescriptorCaffe, []int{52, 0}
 }
 
+// TanHParameter_Engine ...
 type TanHParameter_Engine int32
 
+// TanHParameter_DEFAULT ...
 const (
 	TanHParameter_DEFAULT TanHParameter_Engine = 0
 	TanHParameter_CAFFE   TanHParameter_Engine = 1
 	TanHParameter_CUDNN   TanHParameter_Engine = 2
 )
 
+// TanHParameter_Engine_name ...
 var TanHParameter_Engine_name = map[int32]string{
 	0: "DEFAULT",
 	1: "CAFFE",
 	2: "CUDNN",
-}
+} 
+// TanHParameter_Engine_value ...
 var TanHParameter_Engine_value = map[string]int32{
 	"DEFAULT": 0,
 	"CAFFE":   1,
 	"CUDNN":   2,
 }
 
+// Enum ...
 func (x TanHParameter_Engine) Enum() *TanHParameter_Engine {
 	p := new(TanHParameter_Engine)
 	*p = x
 	return p
-}
+} 
+// String ...
 func (x TanHParameter_Engine) String() string {
 	return proto.EnumName(TanHParameter_Engine_name, int32(x))
-}
+} 
+// UnmarshalJSON ...
 func (x *TanHParameter_Engine) UnmarshalJSON(data []byte) error {
 	value, err := proto.UnmarshalJSONEnum(TanHParameter_Engine_value, data, "TanHParameter_Engine")
 	if err != nil {
@@ -866,36 +1021,44 @@ func (x *TanHParameter_Engine) UnmarshalJSON(data []byte) error {
 	}
 	*x = TanHParameter_Engine(value)
 	return nil
-}
+}                                                            
+// EnumDescriptor ...
 func (TanHParameter_Engine) EnumDescriptor() ([]byte, []int) { return fileDescriptorCaffe, []int{53, 0} }
 
+// SPPParameter_PoolMethod ...
 type SPPParameter_PoolMethod int32
 
+// SPPParameter_MAX ...
 const (
 	SPPParameter_MAX        SPPParameter_PoolMethod = 0
 	SPPParameter_AVE        SPPParameter_PoolMethod = 1
 	SPPParameter_STOCHASTIC SPPParameter_PoolMethod = 2
 )
 
+// SPPParameter_PoolMethod_name ...
 var SPPParameter_PoolMethod_name = map[int32]string{
 	0: "MAX",
 	1: "AVE",
 	2: "STOCHASTIC",
-}
+} 
+// SPPParameter_PoolMethod_value ...
 var SPPParameter_PoolMethod_value = map[string]int32{
 	"MAX":        0,
 	"AVE":        1,
 	"STOCHASTIC": 2,
 }
 
+// Enum ...
 func (x SPPParameter_PoolMethod) Enum() *SPPParameter_PoolMethod {
 	p := new(SPPParameter_PoolMethod)
 	*p = x
 	return p
-}
+} 
+// String ...
 func (x SPPParameter_PoolMethod) String() string {
 	return proto.EnumName(SPPParameter_PoolMethod_name, int32(x))
-}
+} 
+// UnmarshalJSON ...
 func (x *SPPParameter_PoolMethod) UnmarshalJSON(data []byte) error {
 	value, err := proto.UnmarshalJSONEnum(SPPParameter_PoolMethod_value, data, "SPPParameter_PoolMethod")
 	if err != nil {
@@ -903,38 +1066,46 @@ func (x *SPPParameter_PoolMethod) UnmarshalJSON(data []byte) error {
 	}
 	*x = SPPParameter_PoolMethod(value)
 	return nil
-}
+} 
+// EnumDescriptor ...
 func (SPPParameter_PoolMethod) EnumDescriptor() ([]byte, []int) {
 	return fileDescriptorCaffe, []int{57, 0}
 }
 
+// SPPParameter_Engine ...
 type SPPParameter_Engine int32
 
+// SPPParameter_DEFAULT ...
 const (
 	SPPParameter_DEFAULT SPPParameter_Engine = 0
 	SPPParameter_CAFFE   SPPParameter_Engine = 1
 	SPPParameter_CUDNN   SPPParameter_Engine = 2
 )
 
+// SPPParameter_Engine_name ...
 var SPPParameter_Engine_name = map[int32]string{
 	0: "DEFAULT",
 	1: "CAFFE",
 	2: "CUDNN",
-}
+} 
+// SPPParameter_Engine_value ...
 var SPPParameter_Engine_value = map[string]int32{
 	"DEFAULT": 0,
 	"CAFFE":   1,
 	"CUDNN":   2,
 }
 
+// Enum ...
 func (x SPPParameter_Engine) Enum() *SPPParameter_Engine {
 	p := new(SPPParameter_Engine)
 	*p = x
 	return p
-}
+} 
+// String ...
 func (x SPPParameter_Engine) String() string {
 	return proto.EnumName(SPPParameter_Engine_name, int32(x))
-}
+} 
+// UnmarshalJSON ...
 func (x *SPPParameter_Engine) UnmarshalJSON(data []byte) error {
 	value, err := proto.UnmarshalJSONEnum(SPPParameter_Engine_value, data, "SPPParameter_Engine")
 	if err != nil {
@@ -942,11 +1113,14 @@ func (x *SPPParameter_Engine) UnmarshalJSON(data []byte) error {
 	}
 	*x = SPPParameter_Engine(value)
 	return nil
-}
+}                                                           
+// EnumDescriptor ...
 func (SPPParameter_Engine) EnumDescriptor() ([]byte, []int) { return fileDescriptorCaffe, []int{57, 1} }
 
+// V1LayerParameter_LayerType ...
 type V1LayerParameter_LayerType int32
 
+// V1LayerParameter_NONE ...
 const (
 	V1LayerParameter_NONE                       V1LayerParameter_LayerType = 0
 	V1LayerParameter_ABSVAL                     V1LayerParameter_LayerType = 35
@@ -990,6 +1164,7 @@ const (
 	V1LayerParameter_THRESHOLD                  V1LayerParameter_LayerType = 31
 )
 
+// V1LayerParameter_LayerType_name ...
 var V1LayerParameter_LayerType_name = map[int32]string{
 	0:  "NONE",
 	35: "ABSVAL",
@@ -1031,7 +1206,8 @@ var V1LayerParameter_LayerType_name = map[int32]string{
 	23: "TANH",
 	24: "WINDOW_DATA",
 	31: "THRESHOLD",
-}
+} 
+// V1LayerParameter_LayerType_value ...
 var V1LayerParameter_LayerType_value = map[string]int32{
 	"NONE":                      0,
 	"ABSVAL":                    35,
@@ -1075,14 +1251,17 @@ var V1LayerParameter_LayerType_value = map[string]int32{
 	"THRESHOLD":                  31,
 }
 
+// Enum ...
 func (x V1LayerParameter_LayerType) Enum() *V1LayerParameter_LayerType {
 	p := new(V1LayerParameter_LayerType)
 	*p = x
 	return p
-}
+} 
+// String ...
 func (x V1LayerParameter_LayerType) String() string {
 	return proto.EnumName(V1LayerParameter_LayerType_name, int32(x))
-}
+} 
+// UnmarshalJSON ...
 func (x *V1LayerParameter_LayerType) UnmarshalJSON(data []byte) error {
 	value, err := proto.UnmarshalJSONEnum(V1LayerParameter_LayerType_value, data, "V1LayerParameter_LayerType")
 	if err != nil {
@@ -1090,35 +1269,43 @@ func (x *V1LayerParameter_LayerType) UnmarshalJSON(data []byte) error {
 	}
 	*x = V1LayerParameter_LayerType(value)
 	return nil
-}
+} 
+// EnumDescriptor ...
 func (V1LayerParameter_LayerType) EnumDescriptor() ([]byte, []int) {
 	return fileDescriptorCaffe, []int{58, 0}
 }
 
+// V1LayerParameter_DimCheckMode ...
 type V1LayerParameter_DimCheckMode int32
 
+// V1LayerParameter_STRICT ...
 const (
 	V1LayerParameter_STRICT     V1LayerParameter_DimCheckMode = 0
 	V1LayerParameter_PERMISSIVE V1LayerParameter_DimCheckMode = 1
 )
 
+// V1LayerParameter_DimCheckMode_name ...
 var V1LayerParameter_DimCheckMode_name = map[int32]string{
 	0: "STRICT",
 	1: "PERMISSIVE",
-}
+} 
+// V1LayerParameter_DimCheckMode_value ...
 var V1LayerParameter_DimCheckMode_value = map[string]int32{
 	"STRICT":     0,
 	"PERMISSIVE": 1,
 }
 
+// Enum ...
 func (x V1LayerParameter_DimCheckMode) Enum() *V1LayerParameter_DimCheckMode {
 	p := new(V1LayerParameter_DimCheckMode)
 	*p = x
 	return p
-}
+} 
+// String ...
 func (x V1LayerParameter_DimCheckMode) String() string {
 	return proto.EnumName(V1LayerParameter_DimCheckMode_name, int32(x))
-}
+} 
+// UnmarshalJSON ...
 func (x *V1LayerParameter_DimCheckMode) UnmarshalJSON(data []byte) error {
 	value, err := proto.UnmarshalJSONEnum(V1LayerParameter_DimCheckMode_value, data, "V1LayerParameter_DimCheckMode")
 	if err != nil {
@@ -1126,38 +1313,46 @@ func (x *V1LayerParameter_DimCheckMode) UnmarshalJSON(data []byte) error {
 	}
 	*x = V1LayerParameter_DimCheckMode(value)
 	return nil
-}
+} 
+// EnumDescriptor ...
 func (V1LayerParameter_DimCheckMode) EnumDescriptor() ([]byte, []int) {
 	return fileDescriptorCaffe, []int{58, 1}
 }
 
+// V0LayerParameter_PoolMethod ...
 type V0LayerParameter_PoolMethod int32
 
+// V0LayerParameter_MAX ...
 const (
 	V0LayerParameter_MAX        V0LayerParameter_PoolMethod = 0
 	V0LayerParameter_AVE        V0LayerParameter_PoolMethod = 1
 	V0LayerParameter_STOCHASTIC V0LayerParameter_PoolMethod = 2
 )
 
+// V0LayerParameter_PoolMethod_name ...
 var V0LayerParameter_PoolMethod_name = map[int32]string{
 	0: "MAX",
 	1: "AVE",
 	2: "STOCHASTIC",
-}
+} 
+// V0LayerParameter_PoolMethod_value ...
 var V0LayerParameter_PoolMethod_value = map[string]int32{
 	"MAX":        0,
 	"AVE":        1,
 	"STOCHASTIC": 2,
 }
 
+// Enum ...
 func (x V0LayerParameter_PoolMethod) Enum() *V0LayerParameter_PoolMethod {
 	p := new(V0LayerParameter_PoolMethod)
 	*p = x
 	return p
-}
+} 
+// String ...
 func (x V0LayerParameter_PoolMethod) String() string {
 	return proto.EnumName(V0LayerParameter_PoolMethod_name, int32(x))
-}
+} 
+// UnmarshalJSON ...
 func (x *V0LayerParameter_PoolMethod) UnmarshalJSON(data []byte) error {
 	value, err := proto.UnmarshalJSONEnum(V0LayerParameter_PoolMethod_value, data, "V0LayerParameter_PoolMethod")
 	if err != nil {
@@ -1165,7 +1360,8 @@ func (x *V0LayerParameter_PoolMethod) UnmarshalJSON(data []byte) error {
 	}
 	*x = V0LayerParameter_PoolMethod(value)
 	return nil
-}
+} 
+// EnumDescriptor ...
 func (V0LayerParameter_PoolMethod) EnumDescriptor() ([]byte, []int) {
 	return fileDescriptorCaffe, []int{59, 0}
 }
@@ -1175,11 +1371,16 @@ type BlobShape struct {
 	Dim []int64 `protobuf:"varint,1,rep,packed,name=dim" json:"dim,omitempty"`
 }
 
-func (m *BlobShape) Reset()                    { *m = BlobShape{} }
-func (m *BlobShape) String() string            { return proto.CompactTextString(m) }
-func (*BlobShape) ProtoMessage()               {}
+// Reset ...
+func (m *BlobShape) Reset()                    { *m = BlobShape{} }                  
+// String ...
+func (m *BlobShape) String() string            { return proto.CompactTextString(m) } 
+// ProtoMessage ...
+func (*BlobShape) ProtoMessage()               {}                                    
+// Descriptor ...
 func (*BlobShape) Descriptor() ([]byte, []int) { return fileDescriptorCaffe, []int{0} }
 
+// GetDim ...
 func (m *BlobShape) GetDim() []int64 {
 	if m != nil {
 		return m.Dim
@@ -1187,6 +1388,7 @@ func (m *BlobShape) GetDim() []int64 {
 	return nil
 }
 
+// BlobProto ...
 type BlobProto struct {
 	Shape      *BlobShape `protobuf:"bytes,7,opt,name=shape" json:"shape,omitempty"`
 	Data       []float32  `protobuf:"fixed32,5,rep,packed,name=data" json:"data,omitempty"`
@@ -1200,16 +1402,25 @@ type BlobProto struct {
 	Width    *int32 `protobuf:"varint,4,opt,name=width,def=0" json:"width,omitempty"`
 }
 
-func (m *BlobProto) Reset()                    { *m = BlobProto{} }
-func (m *BlobProto) String() string            { return proto.CompactTextString(m) }
-func (*BlobProto) ProtoMessage()               {}
+// Reset ...
+func (m *BlobProto) Reset()                    { *m = BlobProto{} }                  
+// String ...
+func (m *BlobProto) String() string            { return proto.CompactTextString(m) } 
+// ProtoMessage ...
+func (*BlobProto) ProtoMessage()               {}                                    
+// Descriptor ...
 func (*BlobProto) Descriptor() ([]byte, []int) { return fileDescriptorCaffe, []int{1} }
 
-const Default_BlobProto_Num int32 = 0
-const Default_BlobProto_Channels int32 = 0
-const Default_BlobProto_Height int32 = 0
+// Default_BlobProto_Num ...
+const Default_BlobProto_Num int32 = 0      
+// Default_BlobProto_Channels ...
+const Default_BlobProto_Channels int32 = 0 
+// Default_BlobProto_Height ...
+const Default_BlobProto_Height int32 = 0   
+// Default_BlobProto_Width ...
 const Default_BlobProto_Width int32 = 0
 
+// GetShape ...
 func (m *BlobProto) GetShape() *BlobShape {
 	if m != nil {
 		return m.Shape
@@ -1217,6 +1428,7 @@ func (m *BlobProto) GetShape() *BlobShape {
 	return nil
 }
 
+// GetData ...
 func (m *BlobProto) GetData() []float32 {
 	if m != nil {
 		return m.Data
@@ -1224,6 +1436,7 @@ func (m *BlobProto) GetData() []float32 {
 	return nil
 }
 
+// GetDiff ...
 func (m *BlobProto) GetDiff() []float32 {
 	if m != nil {
 		return m.Diff
@@ -1231,6 +1444,7 @@ func (m *BlobProto) GetDiff() []float32 {
 	return nil
 }
 
+// GetDoubleData ...
 func (m *BlobProto) GetDoubleData() []float64 {
 	if m != nil {
 		return m.DoubleData
@@ -1238,6 +1452,7 @@ func (m *BlobProto) GetDoubleData() []float64 {
 	return nil
 }
 
+// GetDoubleDiff ...
 func (m *BlobProto) GetDoubleDiff() []float64 {
 	if m != nil {
 		return m.DoubleDiff
@@ -1245,6 +1460,7 @@ func (m *BlobProto) GetDoubleDiff() []float64 {
 	return nil
 }
 
+// GetNum ...
 func (m *BlobProto) GetNum() int32 {
 	if m != nil && m.Num != nil {
 		return *m.Num
@@ -1252,6 +1468,7 @@ func (m *BlobProto) GetNum() int32 {
 	return Default_BlobProto_Num
 }
 
+// GetChannels ...
 func (m *BlobProto) GetChannels() int32 {
 	if m != nil && m.Channels != nil {
 		return *m.Channels
@@ -1259,6 +1476,7 @@ func (m *BlobProto) GetChannels() int32 {
 	return Default_BlobProto_Channels
 }
 
+// GetHeight ...
 func (m *BlobProto) GetHeight() int32 {
 	if m != nil && m.Height != nil {
 		return *m.Height
@@ -1266,6 +1484,7 @@ func (m *BlobProto) GetHeight() int32 {
 	return Default_BlobProto_Height
 }
 
+// GetWidth ...
 func (m *BlobProto) GetWidth() int32 {
 	if m != nil && m.Width != nil {
 		return *m.Width
@@ -1279,11 +1498,16 @@ type BlobProtoVector struct {
 	Blobs []*BlobProto `protobuf:"bytes,1,rep,name=blobs" json:"blobs,omitempty"`
 }
 
-func (m *BlobProtoVector) Reset()                    { *m = BlobProtoVector{} }
-func (m *BlobProtoVector) String() string            { return proto.CompactTextString(m) }
-func (*BlobProtoVector) ProtoMessage()               {}
+// Reset ...
+func (m *BlobProtoVector) Reset()                    { *m = BlobProtoVector{} }            
+// String ...
+func (m *BlobProtoVector) String() string            { return proto.CompactTextString(m) } 
+// ProtoMessage ...
+func (*BlobProtoVector) ProtoMessage()               {}                                    
+// Descriptor ...
 func (*BlobProtoVector) Descriptor() ([]byte, []int) { return fileDescriptorCaffe, []int{2} }
 
+// GetBlobs ...
 func (m *BlobProtoVector) GetBlobs() []*BlobProto {
 	if m != nil {
 		return m.Blobs
@@ -1291,6 +1515,7 @@ func (m *BlobProtoVector) GetBlobs() []*BlobProto {
 	return nil
 }
 
+// Datum ...
 type Datum struct {
 	Channels int32 `protobuf:"varint,1,opt,name=channels" json:"channels"`
 	Height   int32 `protobuf:"varint,2,opt,name=height" json:"height"`
@@ -1304,13 +1529,19 @@ type Datum struct {
 	Encoded *bool `protobuf:"varint,7,opt,name=encoded,def=0" json:"encoded,omitempty"`
 }
 
-func (m *Datum) Reset()                    { *m = Datum{} }
-func (m *Datum) String() string            { return proto.CompactTextString(m) }
-func (*Datum) ProtoMessage()               {}
+// Reset ...
+func (m *Datum) Reset()                    { *m = Datum{} }                      
+// String ...
+func (m *Datum) String() string            { return proto.CompactTextString(m) } 
+// ProtoMessage ...
+func (*Datum) ProtoMessage()               {}                                    
+// Descriptor ...
 func (*Datum) Descriptor() ([]byte, []int) { return fileDescriptorCaffe, []int{3} }
 
+// Default_Datum_Encoded ...
 const Default_Datum_Encoded bool = false
 
+// GetChannels ...
 func (m *Datum) GetChannels() int32 {
 	if m != nil {
 		return m.Channels
@@ -1318,6 +1549,7 @@ func (m *Datum) GetChannels() int32 {
 	return 0
 }
 
+// GetHeight ...
 func (m *Datum) GetHeight() int32 {
 	if m != nil {
 		return m.Height
@@ -1325,6 +1557,7 @@ func (m *Datum) GetHeight() int32 {
 	return 0
 }
 
+// GetWidth ...
 func (m *Datum) GetWidth() int32 {
 	if m != nil {
 		return m.Width
@@ -1332,6 +1565,7 @@ func (m *Datum) GetWidth() int32 {
 	return 0
 }
 
+// GetData ...
 func (m *Datum) GetData() []byte {
 	if m != nil {
 		return m.Data
@@ -1339,6 +1573,7 @@ func (m *Datum) GetData() []byte {
 	return nil
 }
 
+// GetLabel ...
 func (m *Datum) GetLabel() int32 {
 	if m != nil {
 		return m.Label
@@ -1346,6 +1581,7 @@ func (m *Datum) GetLabel() int32 {
 	return 0
 }
 
+// GetFloatData ...
 func (m *Datum) GetFloatData() []float32 {
 	if m != nil {
 		return m.FloatData
@@ -1353,6 +1589,7 @@ func (m *Datum) GetFloatData() []float32 {
 	return nil
 }
 
+// GetEncoded ...
 func (m *Datum) GetEncoded() bool {
 	if m != nil && m.Encoded != nil {
 		return *m.Encoded
@@ -1360,6 +1597,7 @@ func (m *Datum) GetEncoded() bool {
 	return Default_Datum_Encoded
 }
 
+// FillerParameter ...
 type FillerParameter struct {
 	// The filler type.
 	Type  *string  `protobuf:"bytes,1,opt,name=type,def=constant" json:"type,omitempty"`
@@ -1374,20 +1612,33 @@ type FillerParameter struct {
 	VarianceNorm *FillerParameter_VarianceNorm `protobuf:"varint,8,opt,name=variance_norm,json=varianceNorm,enum=caffe.FillerParameter_VarianceNorm,def=0" json:"variance_norm,omitempty"`
 }
 
-func (m *FillerParameter) Reset()                    { *m = FillerParameter{} }
-func (m *FillerParameter) String() string            { return proto.CompactTextString(m) }
-func (*FillerParameter) ProtoMessage()               {}
+// Reset ...
+func (m *FillerParameter) Reset()                    { *m = FillerParameter{} }            
+// String ...
+func (m *FillerParameter) String() string            { return proto.CompactTextString(m) } 
+// ProtoMessage ...
+func (*FillerParameter) ProtoMessage()               {}                                    
+// Descriptor ...
 func (*FillerParameter) Descriptor() ([]byte, []int) { return fileDescriptorCaffe, []int{4} }
 
-const Default_FillerParameter_Type string = "constant"
-const Default_FillerParameter_Value float32 = 0
-const Default_FillerParameter_Min float32 = 0
-const Default_FillerParameter_Max float32 = 1
-const Default_FillerParameter_Mean float32 = 0
-const Default_FillerParameter_Std float32 = 1
-const Default_FillerParameter_Sparse int32 = -1
+// Default_FillerParameter_Type ...
+const Default_FillerParameter_Type string = "constant" 
+// Default_FillerParameter_Value ...
+const Default_FillerParameter_Value float32 = 0        
+// Default_FillerParameter_Min ...
+const Default_FillerParameter_Min float32 = 0          
+// Default_FillerParameter_Max ...
+const Default_FillerParameter_Max float32 = 1          
+// Default_FillerParameter_Mean ...
+const Default_FillerParameter_Mean float32 = 0         
+// Default_FillerParameter_Std ...
+const Default_FillerParameter_Std float32 = 1          
+// Default_FillerParameter_Sparse ...
+const Default_FillerParameter_Sparse int32 = -1        
+// Default_FillerParameter_VarianceNorm ...
 const Default_FillerParameter_VarianceNorm FillerParameter_VarianceNorm = FillerParameter_FAN_IN
 
+// GetType ...
 func (m *FillerParameter) GetType() string {
 	if m != nil && m.Type != nil {
 		return *m.Type
@@ -1395,6 +1646,7 @@ func (m *FillerParameter) GetType() string {
 	return Default_FillerParameter_Type
 }
 
+// GetValue ...
 func (m *FillerParameter) GetValue() float32 {
 	if m != nil && m.Value != nil {
 		return *m.Value
@@ -1402,6 +1654,7 @@ func (m *FillerParameter) GetValue() float32 {
 	return Default_FillerParameter_Value
 }
 
+// GetMin ...
 func (m *FillerParameter) GetMin() float32 {
 	if m != nil && m.Min != nil {
 		return *m.Min
@@ -1409,6 +1662,7 @@ func (m *FillerParameter) GetMin() float32 {
 	return Default_FillerParameter_Min
 }
 
+// GetMax ...
 func (m *FillerParameter) GetMax() float32 {
 	if m != nil && m.Max != nil {
 		return *m.Max
@@ -1416,6 +1670,7 @@ func (m *FillerParameter) GetMax() float32 {
 	return Default_FillerParameter_Max
 }
 
+// GetMean ...
 func (m *FillerParameter) GetMean() float32 {
 	if m != nil && m.Mean != nil {
 		return *m.Mean
@@ -1423,6 +1678,7 @@ func (m *FillerParameter) GetMean() float32 {
 	return Default_FillerParameter_Mean
 }
 
+// GetStd ...
 func (m *FillerParameter) GetStd() float32 {
 	if m != nil && m.Std != nil {
 		return *m.Std
@@ -1430,6 +1686,7 @@ func (m *FillerParameter) GetStd() float32 {
 	return Default_FillerParameter_Std
 }
 
+// GetSparse ...
 func (m *FillerParameter) GetSparse() int32 {
 	if m != nil && m.Sparse != nil {
 		return *m.Sparse
@@ -1437,6 +1694,7 @@ func (m *FillerParameter) GetSparse() int32 {
 	return Default_FillerParameter_Sparse
 }
 
+// GetVarianceNorm ...
 func (m *FillerParameter) GetVarianceNorm() FillerParameter_VarianceNorm {
 	if m != nil && m.VarianceNorm != nil {
 		return *m.VarianceNorm
@@ -1444,6 +1702,7 @@ func (m *FillerParameter) GetVarianceNorm() FillerParameter_VarianceNorm {
 	return Default_FillerParameter_VarianceNorm
 }
 
+// NetParameter ...
 type NetParameter struct {
 	Name string `protobuf:"bytes,1,opt,name=name" json:"name"`
 	// DEPRECATED. See InputParameter. The input blobs to the network.
@@ -1473,14 +1732,21 @@ type NetParameter struct {
 	Layers []*V1LayerParameter `protobuf:"bytes,2,rep,name=layers" json:"layers,omitempty"`
 }
 
-func (m *NetParameter) Reset()                    { *m = NetParameter{} }
-func (m *NetParameter) String() string            { return proto.CompactTextString(m) }
-func (*NetParameter) ProtoMessage()               {}
+// Reset ...
+func (m *NetParameter) Reset()                    { *m = NetParameter{} }               
+// String ...
+func (m *NetParameter) String() string            { return proto.CompactTextString(m) } 
+// ProtoMessage ...
+func (*NetParameter) ProtoMessage()               {}                                    
+// Descriptor ...
 func (*NetParameter) Descriptor() ([]byte, []int) { return fileDescriptorCaffe, []int{5} }
 
-const Default_NetParameter_ForceBackward bool = false
+// Default_NetParameter_ForceBackward ...
+const Default_NetParameter_ForceBackward bool = false 
+// Default_NetParameter_DebugInfo ...
 const Default_NetParameter_DebugInfo bool = false
 
+// GetName ...
 func (m *NetParameter) GetName() string {
 	if m != nil {
 		return m.Name
@@ -1488,6 +1754,7 @@ func (m *NetParameter) GetName() string {
 	return ""
 }
 
+// GetInput ...
 func (m *NetParameter) GetInput() []string {
 	if m != nil {
 		return m.Input
@@ -1495,6 +1762,7 @@ func (m *NetParameter) GetInput() []string {
 	return nil
 }
 
+// GetInputShape ...
 func (m *NetParameter) GetInputShape() []*BlobShape {
 	if m != nil {
 		return m.InputShape
@@ -1502,6 +1770,7 @@ func (m *NetParameter) GetInputShape() []*BlobShape {
 	return nil
 }
 
+// GetInputDim ...
 func (m *NetParameter) GetInputDim() []int32 {
 	if m != nil {
 		return m.InputDim
@@ -1509,6 +1778,7 @@ func (m *NetParameter) GetInputDim() []int32 {
 	return nil
 }
 
+// GetForceBackward ...
 func (m *NetParameter) GetForceBackward() bool {
 	if m != nil && m.ForceBackward != nil {
 		return *m.ForceBackward
@@ -1516,6 +1786,7 @@ func (m *NetParameter) GetForceBackward() bool {
 	return Default_NetParameter_ForceBackward
 }
 
+// GetState ...
 func (m *NetParameter) GetState() *NetState {
 	if m != nil {
 		return m.State
@@ -1523,6 +1794,7 @@ func (m *NetParameter) GetState() *NetState {
 	return nil
 }
 
+// GetDebugInfo ...
 func (m *NetParameter) GetDebugInfo() bool {
 	if m != nil && m.DebugInfo != nil {
 		return *m.DebugInfo
@@ -1530,6 +1802,7 @@ func (m *NetParameter) GetDebugInfo() bool {
 	return Default_NetParameter_DebugInfo
 }
 
+// GetLayer ...
 func (m *NetParameter) GetLayer() []*LayerParameter {
 	if m != nil {
 		return m.Layer
@@ -1537,6 +1810,7 @@ func (m *NetParameter) GetLayer() []*LayerParameter {
 	return nil
 }
 
+// GetLayers ...
 func (m *NetParameter) GetLayers() []*V1LayerParameter {
 	if m != nil {
 		return m.Layers
@@ -1645,31 +1919,55 @@ type SolverParameter struct {
 	SolverType *SolverParameter_SolverType `protobuf:"varint,30,opt,name=solver_type,json=solverType,enum=caffe.SolverParameter_SolverType,def=0" json:"solver_type,omitempty"`
 }
 
-func (m *SolverParameter) Reset()                    { *m = SolverParameter{} }
-func (m *SolverParameter) String() string            { return proto.CompactTextString(m) }
-func (*SolverParameter) ProtoMessage()               {}
+// Reset ...
+func (m *SolverParameter) Reset()                    { *m = SolverParameter{} }            
+// String ...
+func (m *SolverParameter) String() string            { return proto.CompactTextString(m) } 
+// ProtoMessage ...
+func (*SolverParameter) ProtoMessage()               {}                                    
+// Descriptor ...
 func (*SolverParameter) Descriptor() ([]byte, []int) { return fileDescriptorCaffe, []int{6} }
 
-const Default_SolverParameter_TestInterval int32 = 0
-const Default_SolverParameter_TestComputeLoss bool = false
-const Default_SolverParameter_TestInitialization bool = true
-const Default_SolverParameter_AverageLoss int32 = 1
-const Default_SolverParameter_IterSize int32 = 1
-const Default_SolverParameter_RegularizationType string = "L2"
-const Default_SolverParameter_ClipGradients float32 = -1
-const Default_SolverParameter_Snapshot int32 = 0
-const Default_SolverParameter_SnapshotDiff bool = false
-const Default_SolverParameter_SnapshotFormat SolverParameter_SnapshotFormat = SolverParameter_BINARYPROTO
-const Default_SolverParameter_SolverMode SolverParameter_SolverMode = SolverParameter_GPU
-const Default_SolverParameter_DeviceId int32 = 0
-const Default_SolverParameter_RandomSeed int64 = -1
-const Default_SolverParameter_Type string = "SGD"
-const Default_SolverParameter_Delta float32 = 1e-08
-const Default_SolverParameter_Momentum2 float32 = 0.999
-const Default_SolverParameter_DebugInfo bool = false
-const Default_SolverParameter_SnapshotAfterTrain bool = true
+// Default_SolverParameter_TestInterval ...
+const Default_SolverParameter_TestInterval int32 = 0                                                      
+// Default_SolverParameter_TestComputeLoss ...
+const Default_SolverParameter_TestComputeLoss bool = false                                                
+// Default_SolverParameter_TestInitialization ...
+const Default_SolverParameter_TestInitialization bool = true                                              
+// Default_SolverParameter_AverageLoss ...
+const Default_SolverParameter_AverageLoss int32 = 1                                                       
+// Default_SolverParameter_IterSize ...
+const Default_SolverParameter_IterSize int32 = 1                                                          
+// Default_SolverParameter_RegularizationType ...
+const Default_SolverParameter_RegularizationType string = "L2"                                            
+// Default_SolverParameter_ClipGradients ...
+const Default_SolverParameter_ClipGradients float32 = -1                                                  
+// Default_SolverParameter_Snapshot ...
+const Default_SolverParameter_Snapshot int32 = 0                                                          
+// Default_SolverParameter_SnapshotDiff ...
+const Default_SolverParameter_SnapshotDiff bool = false                                                   
+// Default_SolverParameter_SnapshotFormat ...
+const Default_SolverParameter_SnapshotFormat SolverParameter_SnapshotFormat = SolverParameter_BINARYPROTO 
+// Default_SolverParameter_SolverMode ...
+const Default_SolverParameter_SolverMode SolverParameter_SolverMode = SolverParameter_GPU                 
+// Default_SolverParameter_DeviceId ...
+const Default_SolverParameter_DeviceId int32 = 0                                                          
+// Default_SolverParameter_RandomSeed ...
+const Default_SolverParameter_RandomSeed int64 = -1                                                       
+// Default_SolverParameter_Type ...
+const Default_SolverParameter_Type string = "SGD"                                                         
+// Default_SolverParameter_Delta ...
+const Default_SolverParameter_Delta float32 = 1e-08                                                       
+// Default_SolverParameter_Momentum2 ...
+const Default_SolverParameter_Momentum2 float32 = 0.999                                                   
+// Default_SolverParameter_DebugInfo ...
+const Default_SolverParameter_DebugInfo bool = false                                                      
+// Default_SolverParameter_SnapshotAfterTrain ...
+const Default_SolverParameter_SnapshotAfterTrain bool = true                                              
+// Default_SolverParameter_SolverType ...
 const Default_SolverParameter_SolverType SolverParameter_SolverType = SolverParameter_SGD
 
+// GetNet ...
 func (m *SolverParameter) GetNet() string {
 	if m != nil {
 		return m.Net
@@ -1677,6 +1975,7 @@ func (m *SolverParameter) GetNet() string {
 	return ""
 }
 
+// GetNetParam ...
 func (m *SolverParameter) GetNetParam() *NetParameter {
 	if m != nil {
 		return m.NetParam
@@ -1684,6 +1983,7 @@ func (m *SolverParameter) GetNetParam() *NetParameter {
 	return nil
 }
 
+// GetTrainNet ...
 func (m *SolverParameter) GetTrainNet() string {
 	if m != nil {
 		return m.TrainNet
@@ -1691,6 +1991,7 @@ func (m *SolverParameter) GetTrainNet() string {
 	return ""
 }
 
+// GetTestNet ...
 func (m *SolverParameter) GetTestNet() []string {
 	if m != nil {
 		return m.TestNet
@@ -1698,6 +1999,7 @@ func (m *SolverParameter) GetTestNet() []string {
 	return nil
 }
 
+// GetTrainNetParam ...
 func (m *SolverParameter) GetTrainNetParam() *NetParameter {
 	if m != nil {
 		return m.TrainNetParam
@@ -1705,6 +2007,7 @@ func (m *SolverParameter) GetTrainNetParam() *NetParameter {
 	return nil
 }
 
+// GetTestNetParam ...
 func (m *SolverParameter) GetTestNetParam() []*NetParameter {
 	if m != nil {
 		return m.TestNetParam
@@ -1712,6 +2015,7 @@ func (m *SolverParameter) GetTestNetParam() []*NetParameter {
 	return nil
 }
 
+// GetTrainState ...
 func (m *SolverParameter) GetTrainState() *NetState {
 	if m != nil {
 		return m.TrainState
@@ -1719,6 +2023,7 @@ func (m *SolverParameter) GetTrainState() *NetState {
 	return nil
 }
 
+// GetTestState ...
 func (m *SolverParameter) GetTestState() []*NetState {
 	if m != nil {
 		return m.TestState
@@ -1726,6 +2031,7 @@ func (m *SolverParameter) GetTestState() []*NetState {
 	return nil
 }
 
+// GetTestIter ...
 func (m *SolverParameter) GetTestIter() []int32 {
 	if m != nil {
 		return m.TestIter
@@ -1733,6 +2039,7 @@ func (m *SolverParameter) GetTestIter() []int32 {
 	return nil
 }
 
+// GetTestInterval ...
 func (m *SolverParameter) GetTestInterval() int32 {
 	if m != nil && m.TestInterval != nil {
 		return *m.TestInterval
@@ -1740,6 +2047,7 @@ func (m *SolverParameter) GetTestInterval() int32 {
 	return Default_SolverParameter_TestInterval
 }
 
+// GetTestComputeLoss ...
 func (m *SolverParameter) GetTestComputeLoss() bool {
 	if m != nil && m.TestComputeLoss != nil {
 		return *m.TestComputeLoss
@@ -1747,6 +2055,7 @@ func (m *SolverParameter) GetTestComputeLoss() bool {
 	return Default_SolverParameter_TestComputeLoss
 }
 
+// GetTestInitialization ...
 func (m *SolverParameter) GetTestInitialization() bool {
 	if m != nil && m.TestInitialization != nil {
 		return *m.TestInitialization
@@ -1754,6 +2063,7 @@ func (m *SolverParameter) GetTestInitialization() bool {
 	return Default_SolverParameter_TestInitialization
 }
 
+// GetBaseLr ...
 func (m *SolverParameter) GetBaseLr() float32 {
 	if m != nil {
 		return m.BaseLr
@@ -1761,6 +2071,7 @@ func (m *SolverParameter) GetBaseLr() float32 {
 	return 0
 }
 
+// GetDisplay ...
 func (m *SolverParameter) GetDisplay() int32 {
 	if m != nil {
 		return m.Display
@@ -1768,6 +2079,7 @@ func (m *SolverParameter) GetDisplay() int32 {
 	return 0
 }
 
+// GetAverageLoss ...
 func (m *SolverParameter) GetAverageLoss() int32 {
 	if m != nil && m.AverageLoss != nil {
 		return *m.AverageLoss
@@ -1775,6 +2087,7 @@ func (m *SolverParameter) GetAverageLoss() int32 {
 	return Default_SolverParameter_AverageLoss
 }
 
+// GetMaxIter ...
 func (m *SolverParameter) GetMaxIter() int32 {
 	if m != nil {
 		return m.MaxIter
@@ -1782,6 +2095,7 @@ func (m *SolverParameter) GetMaxIter() int32 {
 	return 0
 }
 
+// GetIterSize ...
 func (m *SolverParameter) GetIterSize() int32 {
 	if m != nil && m.IterSize != nil {
 		return *m.IterSize
@@ -1789,6 +2103,7 @@ func (m *SolverParameter) GetIterSize() int32 {
 	return Default_SolverParameter_IterSize
 }
 
+// GetLrPolicy ...
 func (m *SolverParameter) GetLrPolicy() string {
 	if m != nil {
 		return m.LrPolicy
@@ -1796,6 +2111,7 @@ func (m *SolverParameter) GetLrPolicy() string {
 	return ""
 }
 
+// GetGamma ...
 func (m *SolverParameter) GetGamma() float32 {
 	if m != nil {
 		return m.Gamma
@@ -1803,6 +2119,7 @@ func (m *SolverParameter) GetGamma() float32 {
 	return 0
 }
 
+// GetPower ...
 func (m *SolverParameter) GetPower() float32 {
 	if m != nil {
 		return m.Power
@@ -1810,6 +2127,7 @@ func (m *SolverParameter) GetPower() float32 {
 	return 0
 }
 
+// GetMomentum ...
 func (m *SolverParameter) GetMomentum() float32 {
 	if m != nil {
 		return m.Momentum
@@ -1817,6 +2135,7 @@ func (m *SolverParameter) GetMomentum() float32 {
 	return 0
 }
 
+// GetWeightDecay ...
 func (m *SolverParameter) GetWeightDecay() float32 {
 	if m != nil {
 		return m.WeightDecay
@@ -1824,6 +2143,7 @@ func (m *SolverParameter) GetWeightDecay() float32 {
 	return 0
 }
 
+// GetRegularizationType ...
 func (m *SolverParameter) GetRegularizationType() string {
 	if m != nil && m.RegularizationType != nil {
 		return *m.RegularizationType
@@ -1831,6 +2151,7 @@ func (m *SolverParameter) GetRegularizationType() string {
 	return Default_SolverParameter_RegularizationType
 }
 
+// GetStepsize ...
 func (m *SolverParameter) GetStepsize() int32 {
 	if m != nil {
 		return m.Stepsize
@@ -1838,6 +2159,7 @@ func (m *SolverParameter) GetStepsize() int32 {
 	return 0
 }
 
+// GetStepvalue ...
 func (m *SolverParameter) GetStepvalue() []int32 {
 	if m != nil {
 		return m.Stepvalue
@@ -1845,6 +2167,7 @@ func (m *SolverParameter) GetStepvalue() []int32 {
 	return nil
 }
 
+// GetClipGradients ...
 func (m *SolverParameter) GetClipGradients() float32 {
 	if m != nil && m.ClipGradients != nil {
 		return *m.ClipGradients
@@ -1852,6 +2175,7 @@ func (m *SolverParameter) GetClipGradients() float32 {
 	return Default_SolverParameter_ClipGradients
 }
 
+// GetSnapshot ...
 func (m *SolverParameter) GetSnapshot() int32 {
 	if m != nil && m.Snapshot != nil {
 		return *m.Snapshot
@@ -1859,6 +2183,7 @@ func (m *SolverParameter) GetSnapshot() int32 {
 	return Default_SolverParameter_Snapshot
 }
 
+// GetSnapshotPrefix ...
 func (m *SolverParameter) GetSnapshotPrefix() string {
 	if m != nil {
 		return m.SnapshotPrefix
@@ -1866,6 +2191,7 @@ func (m *SolverParameter) GetSnapshotPrefix() string {
 	return ""
 }
 
+// GetSnapshotDiff ...
 func (m *SolverParameter) GetSnapshotDiff() bool {
 	if m != nil && m.SnapshotDiff != nil {
 		return *m.SnapshotDiff
@@ -1873,6 +2199,7 @@ func (m *SolverParameter) GetSnapshotDiff() bool {
 	return Default_SolverParameter_SnapshotDiff
 }
 
+// GetSnapshotFormat ...
 func (m *SolverParameter) GetSnapshotFormat() SolverParameter_SnapshotFormat {
 	if m != nil && m.SnapshotFormat != nil {
 		return *m.SnapshotFormat
@@ -1880,6 +2207,7 @@ func (m *SolverParameter) GetSnapshotFormat() SolverParameter_SnapshotFormat {
 	return Default_SolverParameter_SnapshotFormat
 }
 
+// GetSolverMode ...
 func (m *SolverParameter) GetSolverMode() SolverParameter_SolverMode {
 	if m != nil && m.SolverMode != nil {
 		return *m.SolverMode
@@ -1887,6 +2215,7 @@ func (m *SolverParameter) GetSolverMode() SolverParameter_SolverMode {
 	return Default_SolverParameter_SolverMode
 }
 
+// GetDeviceId ...
 func (m *SolverParameter) GetDeviceId() int32 {
 	if m != nil && m.DeviceId != nil {
 		return *m.DeviceId
@@ -1894,6 +2223,7 @@ func (m *SolverParameter) GetDeviceId() int32 {
 	return Default_SolverParameter_DeviceId
 }
 
+// GetRandomSeed ...
 func (m *SolverParameter) GetRandomSeed() int64 {
 	if m != nil && m.RandomSeed != nil {
 		return *m.RandomSeed
@@ -1901,6 +2231,7 @@ func (m *SolverParameter) GetRandomSeed() int64 {
 	return Default_SolverParameter_RandomSeed
 }
 
+// GetType ...
 func (m *SolverParameter) GetType() string {
 	if m != nil && m.Type != nil {
 		return *m.Type
@@ -1908,6 +2239,7 @@ func (m *SolverParameter) GetType() string {
 	return Default_SolverParameter_Type
 }
 
+// GetDelta ...
 func (m *SolverParameter) GetDelta() float32 {
 	if m != nil && m.Delta != nil {
 		return *m.Delta
@@ -1915,6 +2247,7 @@ func (m *SolverParameter) GetDelta() float32 {
 	return Default_SolverParameter_Delta
 }
 
+// GetMomentum2 ...
 func (m *SolverParameter) GetMomentum2() float32 {
 	if m != nil && m.Momentum2 != nil {
 		return *m.Momentum2
@@ -1922,6 +2255,7 @@ func (m *SolverParameter) GetMomentum2() float32 {
 	return Default_SolverParameter_Momentum2
 }
 
+// GetRmsDecay ...
 func (m *SolverParameter) GetRmsDecay() float32 {
 	if m != nil {
 		return m.RmsDecay
@@ -1929,6 +2263,7 @@ func (m *SolverParameter) GetRmsDecay() float32 {
 	return 0
 }
 
+// GetDebugInfo ...
 func (m *SolverParameter) GetDebugInfo() bool {
 	if m != nil && m.DebugInfo != nil {
 		return *m.DebugInfo
@@ -1936,6 +2271,7 @@ func (m *SolverParameter) GetDebugInfo() bool {
 	return Default_SolverParameter_DebugInfo
 }
 
+// GetSnapshotAfterTrain ...
 func (m *SolverParameter) GetSnapshotAfterTrain() bool {
 	if m != nil && m.SnapshotAfterTrain != nil {
 		return *m.SnapshotAfterTrain
@@ -1943,6 +2279,7 @@ func (m *SolverParameter) GetSnapshotAfterTrain() bool {
 	return Default_SolverParameter_SnapshotAfterTrain
 }
 
+// GetSolverType ...
 func (m *SolverParameter) GetSolverType() SolverParameter_SolverType {
 	if m != nil && m.SolverType != nil {
 		return *m.SolverType
@@ -1958,13 +2295,19 @@ type SolverState struct {
 	CurrentStep *int32       `protobuf:"varint,4,opt,name=current_step,json=currentStep,def=0" json:"current_step,omitempty"`
 }
 
-func (m *SolverState) Reset()                    { *m = SolverState{} }
-func (m *SolverState) String() string            { return proto.CompactTextString(m) }
-func (*SolverState) ProtoMessage()               {}
+// Reset ...
+func (m *SolverState) Reset()                    { *m = SolverState{} }                
+// String ...
+func (m *SolverState) String() string            { return proto.CompactTextString(m) } 
+// ProtoMessage ...
+func (*SolverState) ProtoMessage()               {}                                    
+// Descriptor ...
 func (*SolverState) Descriptor() ([]byte, []int) { return fileDescriptorCaffe, []int{7} }
 
+// Default_SolverState_CurrentStep ...
 const Default_SolverState_CurrentStep int32 = 0
 
+// GetIter ...
 func (m *SolverState) GetIter() int32 {
 	if m != nil {
 		return m.Iter
@@ -1972,6 +2315,7 @@ func (m *SolverState) GetIter() int32 {
 	return 0
 }
 
+// GetLearnedNet ...
 func (m *SolverState) GetLearnedNet() string {
 	if m != nil {
 		return m.LearnedNet
@@ -1979,6 +2323,7 @@ func (m *SolverState) GetLearnedNet() string {
 	return ""
 }
 
+// GetHistory ...
 func (m *SolverState) GetHistory() []*BlobProto {
 	if m != nil {
 		return m.History
@@ -1986,6 +2331,7 @@ func (m *SolverState) GetHistory() []*BlobProto {
 	return nil
 }
 
+// GetCurrentStep ...
 func (m *SolverState) GetCurrentStep() int32 {
 	if m != nil && m.CurrentStep != nil {
 		return *m.CurrentStep
@@ -1993,20 +2339,28 @@ func (m *SolverState) GetCurrentStep() int32 {
 	return Default_SolverState_CurrentStep
 }
 
+// NetState ...
 type NetState struct {
 	Phase *Phase   `protobuf:"varint,1,opt,name=phase,enum=caffe.Phase,def=1" json:"phase,omitempty"`
 	Level *int32   `protobuf:"varint,2,opt,name=level,def=0" json:"level,omitempty"`
 	Stage []string `protobuf:"bytes,3,rep,name=stage" json:"stage,omitempty"`
 }
 
-func (m *NetState) Reset()                    { *m = NetState{} }
-func (m *NetState) String() string            { return proto.CompactTextString(m) }
-func (*NetState) ProtoMessage()               {}
+// Reset ...
+func (m *NetState) Reset()                    { *m = NetState{} }                   
+// String ...
+func (m *NetState) String() string            { return proto.CompactTextString(m) } 
+// ProtoMessage ...
+func (*NetState) ProtoMessage()               {}                                    
+// Descriptor ...
 func (*NetState) Descriptor() ([]byte, []int) { return fileDescriptorCaffe, []int{8} }
 
-const Default_NetState_Phase Phase = Phase_TEST
+// Default_NetState_Phase ...
+const Default_NetState_Phase Phase = Phase_TEST 
+// Default_NetState_Level ...
 const Default_NetState_Level int32 = 0
 
+// GetPhase ...
 func (m *NetState) GetPhase() Phase {
 	if m != nil && m.Phase != nil {
 		return *m.Phase
@@ -2014,6 +2368,7 @@ func (m *NetState) GetPhase() Phase {
 	return Default_NetState_Phase
 }
 
+// GetLevel ...
 func (m *NetState) GetLevel() int32 {
 	if m != nil && m.Level != nil {
 		return *m.Level
@@ -2021,6 +2376,7 @@ func (m *NetState) GetLevel() int32 {
 	return Default_NetState_Level
 }
 
+// GetStage ...
 func (m *NetState) GetStage() []string {
 	if m != nil {
 		return m.Stage
@@ -2028,6 +2384,7 @@ func (m *NetState) GetStage() []string {
 	return nil
 }
 
+// NetStateRule ...
 type NetStateRule struct {
 	// Set phase to require the NetState have a particular phase (TRAIN or TEST)
 	// to meet this rule.
@@ -2044,11 +2401,16 @@ type NetStateRule struct {
 	NotStage []string `protobuf:"bytes,5,rep,name=not_stage,json=notStage" json:"not_stage,omitempty"`
 }
 
-func (m *NetStateRule) Reset()                    { *m = NetStateRule{} }
-func (m *NetStateRule) String() string            { return proto.CompactTextString(m) }
-func (*NetStateRule) ProtoMessage()               {}
+// Reset ...
+func (m *NetStateRule) Reset()                    { *m = NetStateRule{} }               
+// String ...
+func (m *NetStateRule) String() string            { return proto.CompactTextString(m) } 
+// ProtoMessage ...
+func (*NetStateRule) ProtoMessage()               {}                                    
+// Descriptor ...
 func (*NetStateRule) Descriptor() ([]byte, []int) { return fileDescriptorCaffe, []int{9} }
 
+// GetPhase ...
 func (m *NetStateRule) GetPhase() Phase {
 	if m != nil {
 		return m.Phase
@@ -2056,6 +2418,7 @@ func (m *NetStateRule) GetPhase() Phase {
 	return Phase_TRAIN
 }
 
+// GetMinLevel ...
 func (m *NetStateRule) GetMinLevel() int32 {
 	if m != nil {
 		return m.MinLevel
@@ -2063,6 +2426,7 @@ func (m *NetStateRule) GetMinLevel() int32 {
 	return 0
 }
 
+// GetMaxLevel ...
 func (m *NetStateRule) GetMaxLevel() int32 {
 	if m != nil {
 		return m.MaxLevel
@@ -2070,6 +2434,7 @@ func (m *NetStateRule) GetMaxLevel() int32 {
 	return 0
 }
 
+// GetStage ...
 func (m *NetStateRule) GetStage() []string {
 	if m != nil {
 		return m.Stage
@@ -2077,6 +2442,7 @@ func (m *NetStateRule) GetStage() []string {
 	return nil
 }
 
+// GetNotStage ...
 func (m *NetStateRule) GetNotStage() []string {
 	if m != nil {
 		return m.NotStage
@@ -2100,14 +2466,21 @@ type ParamSpec struct {
 	DecayMult *float32 `protobuf:"fixed32,4,opt,name=decay_mult,json=decayMult,def=1" json:"decay_mult,omitempty"`
 }
 
-func (m *ParamSpec) Reset()                    { *m = ParamSpec{} }
-func (m *ParamSpec) String() string            { return proto.CompactTextString(m) }
-func (*ParamSpec) ProtoMessage()               {}
+// Reset ...
+func (m *ParamSpec) Reset()                    { *m = ParamSpec{} }                  
+// String ...
+func (m *ParamSpec) String() string            { return proto.CompactTextString(m) } 
+// ProtoMessage ...
+func (*ParamSpec) ProtoMessage()               {}                                    
+// Descriptor ...
 func (*ParamSpec) Descriptor() ([]byte, []int) { return fileDescriptorCaffe, []int{10} }
 
-const Default_ParamSpec_LrMult float32 = 1
+// Default_ParamSpec_LrMult ...
+const Default_ParamSpec_LrMult float32 = 1 
+// Default_ParamSpec_DecayMult ...
 const Default_ParamSpec_DecayMult float32 = 1
 
+// GetName ...
 func (m *ParamSpec) GetName() string {
 	if m != nil {
 		return m.Name
@@ -2115,6 +2488,7 @@ func (m *ParamSpec) GetName() string {
 	return ""
 }
 
+// GetShareMode ...
 func (m *ParamSpec) GetShareMode() ParamSpec_DimCheckMode {
 	if m != nil {
 		return m.ShareMode
@@ -2122,6 +2496,7 @@ func (m *ParamSpec) GetShareMode() ParamSpec_DimCheckMode {
 	return ParamSpec_STRICT
 }
 
+// GetLrMult ...
 func (m *ParamSpec) GetLrMult() float32 {
 	if m != nil && m.LrMult != nil {
 		return *m.LrMult
@@ -2129,6 +2504,7 @@ func (m *ParamSpec) GetLrMult() float32 {
 	return Default_ParamSpec_LrMult
 }
 
+// GetDecayMult ...
 func (m *ParamSpec) GetDecayMult() float32 {
 	if m != nil && m.DecayMult != nil {
 		return *m.DecayMult
@@ -2229,11 +2605,16 @@ type LayerParameter struct {
 	WindowDataParam      *WindowDataParameter      `protobuf:"bytes,129,opt,name=window_data_param,json=windowDataParam" json:"window_data_param,omitempty"`
 }
 
-func (m *LayerParameter) Reset()                    { *m = LayerParameter{} }
-func (m *LayerParameter) String() string            { return proto.CompactTextString(m) }
-func (*LayerParameter) ProtoMessage()               {}
+// Reset ...
+func (m *LayerParameter) Reset()                    { *m = LayerParameter{} }             
+// String ...
+func (m *LayerParameter) String() string            { return proto.CompactTextString(m) } 
+// ProtoMessage ...
+func (*LayerParameter) ProtoMessage()               {}                                    
+// Descriptor ...
 func (*LayerParameter) Descriptor() ([]byte, []int) { return fileDescriptorCaffe, []int{11} }
 
+// GetName ...
 func (m *LayerParameter) GetName() string {
 	if m != nil {
 		return m.Name
@@ -2241,6 +2622,7 @@ func (m *LayerParameter) GetName() string {
 	return ""
 }
 
+// GetType ...
 func (m *LayerParameter) GetType() string {
 	if m != nil {
 		return m.Type
@@ -2248,6 +2630,7 @@ func (m *LayerParameter) GetType() string {
 	return ""
 }
 
+// GetBottom ...
 func (m *LayerParameter) GetBottom() []string {
 	if m != nil {
 		return m.Bottom
@@ -2255,6 +2638,7 @@ func (m *LayerParameter) GetBottom() []string {
 	return nil
 }
 
+// GetTop ...
 func (m *LayerParameter) GetTop() []string {
 	if m != nil {
 		return m.Top
@@ -2262,6 +2646,7 @@ func (m *LayerParameter) GetTop() []string {
 	return nil
 }
 
+// GetPhase ...
 func (m *LayerParameter) GetPhase() Phase {
 	if m != nil {
 		return m.Phase
@@ -2269,6 +2654,7 @@ func (m *LayerParameter) GetPhase() Phase {
 	return Phase_TRAIN
 }
 
+// GetLossWeight ...
 func (m *LayerParameter) GetLossWeight() []float32 {
 	if m != nil {
 		return m.LossWeight
@@ -2276,6 +2662,7 @@ func (m *LayerParameter) GetLossWeight() []float32 {
 	return nil
 }
 
+// GetParam ...
 func (m *LayerParameter) GetParam() []*ParamSpec {
 	if m != nil {
 		return m.Param
@@ -2283,6 +2670,7 @@ func (m *LayerParameter) GetParam() []*ParamSpec {
 	return nil
 }
 
+// GetBlobs ...
 func (m *LayerParameter) GetBlobs() []*BlobProto {
 	if m != nil {
 		return m.Blobs
@@ -2290,6 +2678,7 @@ func (m *LayerParameter) GetBlobs() []*BlobProto {
 	return nil
 }
 
+// GetPropagateDown ...
 func (m *LayerParameter) GetPropagateDown() []bool {
 	if m != nil {
 		return m.PropagateDown
@@ -2297,6 +2686,7 @@ func (m *LayerParameter) GetPropagateDown() []bool {
 	return nil
 }
 
+// GetInclude ...
 func (m *LayerParameter) GetInclude() []*NetStateRule {
 	if m != nil {
 		return m.Include
@@ -2304,6 +2694,7 @@ func (m *LayerParameter) GetInclude() []*NetStateRule {
 	return nil
 }
 
+// GetExclude ...
 func (m *LayerParameter) GetExclude() []*NetStateRule {
 	if m != nil {
 		return m.Exclude
@@ -2311,6 +2702,7 @@ func (m *LayerParameter) GetExclude() []*NetStateRule {
 	return nil
 }
 
+// GetTransformParam ...
 func (m *LayerParameter) GetTransformParam() *TransformationParameter {
 	if m != nil {
 		return m.TransformParam
@@ -2318,6 +2710,7 @@ func (m *LayerParameter) GetTransformParam() *TransformationParameter {
 	return nil
 }
 
+// GetLossParam ...
 func (m *LayerParameter) GetLossParam() *LossParameter {
 	if m != nil {
 		return m.LossParam
@@ -2325,6 +2718,7 @@ func (m *LayerParameter) GetLossParam() *LossParameter {
 	return nil
 }
 
+// GetAccuracyParam ...
 func (m *LayerParameter) GetAccuracyParam() *AccuracyParameter {
 	if m != nil {
 		return m.AccuracyParam
@@ -2332,6 +2726,7 @@ func (m *LayerParameter) GetAccuracyParam() *AccuracyParameter {
 	return nil
 }
 
+// GetArgmaxParam ...
 func (m *LayerParameter) GetArgmaxParam() *ArgMaxParameter {
 	if m != nil {
 		return m.ArgmaxParam
@@ -2339,6 +2734,7 @@ func (m *LayerParameter) GetArgmaxParam() *ArgMaxParameter {
 	return nil
 }
 
+// GetBatchNormParam ...
 func (m *LayerParameter) GetBatchNormParam() *BatchNormParameter {
 	if m != nil {
 		return m.BatchNormParam
@@ -2346,6 +2742,7 @@ func (m *LayerParameter) GetBatchNormParam() *BatchNormParameter {
 	return nil
 }
 
+// GetBiasParam ...
 func (m *LayerParameter) GetBiasParam() *BiasParameter {
 	if m != nil {
 		return m.BiasParam
@@ -2353,6 +2750,7 @@ func (m *LayerParameter) GetBiasParam() *BiasParameter {
 	return nil
 }
 
+// GetConcatParam ...
 func (m *LayerParameter) GetConcatParam() *ConcatParameter {
 	if m != nil {
 		return m.ConcatParam
@@ -2360,6 +2758,7 @@ func (m *LayerParameter) GetConcatParam() *ConcatParameter {
 	return nil
 }
 
+// GetContrastiveLossParam ...
 func (m *LayerParameter) GetContrastiveLossParam() *ContrastiveLossParameter {
 	if m != nil {
 		return m.ContrastiveLossParam
@@ -2367,6 +2766,7 @@ func (m *LayerParameter) GetContrastiveLossParam() *ContrastiveLossParameter {
 	return nil
 }
 
+// GetConvolutionParam ...
 func (m *LayerParameter) GetConvolutionParam() *ConvolutionParameter {
 	if m != nil {
 		return m.ConvolutionParam
@@ -2374,6 +2774,7 @@ func (m *LayerParameter) GetConvolutionParam() *ConvolutionParameter {
 	return nil
 }
 
+// GetCropParam ...
 func (m *LayerParameter) GetCropParam() *CropParameter {
 	if m != nil {
 		return m.CropParam
@@ -2381,6 +2782,7 @@ func (m *LayerParameter) GetCropParam() *CropParameter {
 	return nil
 }
 
+// GetDataParam ...
 func (m *LayerParameter) GetDataParam() *DataParameter {
 	if m != nil {
 		return m.DataParam
@@ -2388,6 +2790,7 @@ func (m *LayerParameter) GetDataParam() *DataParameter {
 	return nil
 }
 
+// GetDropoutParam ...
 func (m *LayerParameter) GetDropoutParam() *DropoutParameter {
 	if m != nil {
 		return m.DropoutParam
@@ -2395,6 +2798,7 @@ func (m *LayerParameter) GetDropoutParam() *DropoutParameter {
 	return nil
 }
 
+// GetDummyDataParam ...
 func (m *LayerParameter) GetDummyDataParam() *DummyDataParameter {
 	if m != nil {
 		return m.DummyDataParam
@@ -2402,6 +2806,7 @@ func (m *LayerParameter) GetDummyDataParam() *DummyDataParameter {
 	return nil
 }
 
+// GetEltwiseParam ...
 func (m *LayerParameter) GetEltwiseParam() *EltwiseParameter {
 	if m != nil {
 		return m.EltwiseParam
@@ -2409,6 +2814,7 @@ func (m *LayerParameter) GetEltwiseParam() *EltwiseParameter {
 	return nil
 }
 
+// GetEluParam ...
 func (m *LayerParameter) GetEluParam() *ELUParameter {
 	if m != nil {
 		return m.EluParam
@@ -2416,6 +2822,7 @@ func (m *LayerParameter) GetEluParam() *ELUParameter {
 	return nil
 }
 
+// GetEmbedParam ...
 func (m *LayerParameter) GetEmbedParam() *EmbedParameter {
 	if m != nil {
 		return m.EmbedParam
@@ -2423,6 +2830,7 @@ func (m *LayerParameter) GetEmbedParam() *EmbedParameter {
 	return nil
 }
 
+// GetExpParam ...
 func (m *LayerParameter) GetExpParam() *ExpParameter {
 	if m != nil {
 		return m.ExpParam
@@ -2430,6 +2838,7 @@ func (m *LayerParameter) GetExpParam() *ExpParameter {
 	return nil
 }
 
+// GetFlattenParam ...
 func (m *LayerParameter) GetFlattenParam() *FlattenParameter {
 	if m != nil {
 		return m.FlattenParam
@@ -2437,6 +2846,7 @@ func (m *LayerParameter) GetFlattenParam() *FlattenParameter {
 	return nil
 }
 
+// GetHdf5DataParam ...
 func (m *LayerParameter) GetHdf5DataParam() *HDF5DataParameter {
 	if m != nil {
 		return m.Hdf5DataParam
@@ -2444,6 +2854,7 @@ func (m *LayerParameter) GetHdf5DataParam() *HDF5DataParameter {
 	return nil
 }
 
+// GetHdf5OutputParam ...
 func (m *LayerParameter) GetHdf5OutputParam() *HDF5OutputParameter {
 	if m != nil {
 		return m.Hdf5OutputParam
@@ -2451,6 +2862,7 @@ func (m *LayerParameter) GetHdf5OutputParam() *HDF5OutputParameter {
 	return nil
 }
 
+// GetHingeLossParam ...
 func (m *LayerParameter) GetHingeLossParam() *HingeLossParameter {
 	if m != nil {
 		return m.HingeLossParam
@@ -2458,6 +2870,7 @@ func (m *LayerParameter) GetHingeLossParam() *HingeLossParameter {
 	return nil
 }
 
+// GetImageDataParam ...
 func (m *LayerParameter) GetImageDataParam() *ImageDataParameter {
 	if m != nil {
 		return m.ImageDataParam
@@ -2465,6 +2878,7 @@ func (m *LayerParameter) GetImageDataParam() *ImageDataParameter {
 	return nil
 }
 
+// GetInfogainLossParam ...
 func (m *LayerParameter) GetInfogainLossParam() *InfogainLossParameter {
 	if m != nil {
 		return m.InfogainLossParam
@@ -2472,6 +2886,7 @@ func (m *LayerParameter) GetInfogainLossParam() *InfogainLossParameter {
 	return nil
 }
 
+// GetInnerProductParam ...
 func (m *LayerParameter) GetInnerProductParam() *InnerProductParameter {
 	if m != nil {
 		return m.InnerProductParam
@@ -2479,6 +2894,7 @@ func (m *LayerParameter) GetInnerProductParam() *InnerProductParameter {
 	return nil
 }
 
+// GetInputParam ...
 func (m *LayerParameter) GetInputParam() *InputParameter {
 	if m != nil {
 		return m.InputParam
@@ -2486,6 +2902,7 @@ func (m *LayerParameter) GetInputParam() *InputParameter {
 	return nil
 }
 
+// GetLogParam ...
 func (m *LayerParameter) GetLogParam() *LogParameter {
 	if m != nil {
 		return m.LogParam
@@ -2493,6 +2910,7 @@ func (m *LayerParameter) GetLogParam() *LogParameter {
 	return nil
 }
 
+// GetLrnParam ...
 func (m *LayerParameter) GetLrnParam() *LRNParameter {
 	if m != nil {
 		return m.LrnParam
@@ -2500,6 +2918,7 @@ func (m *LayerParameter) GetLrnParam() *LRNParameter {
 	return nil
 }
 
+// GetMemoryDataParam ...
 func (m *LayerParameter) GetMemoryDataParam() *MemoryDataParameter {
 	if m != nil {
 		return m.MemoryDataParam
@@ -2507,6 +2926,7 @@ func (m *LayerParameter) GetMemoryDataParam() *MemoryDataParameter {
 	return nil
 }
 
+// GetMvnParam ...
 func (m *LayerParameter) GetMvnParam() *MVNParameter {
 	if m != nil {
 		return m.MvnParam
@@ -2514,6 +2934,7 @@ func (m *LayerParameter) GetMvnParam() *MVNParameter {
 	return nil
 }
 
+// GetParameterParam ...
 func (m *LayerParameter) GetParameterParam() *ParameterParameter {
 	if m != nil {
 		return m.ParameterParam
@@ -2521,6 +2942,7 @@ func (m *LayerParameter) GetParameterParam() *ParameterParameter {
 	return nil
 }
 
+// GetPoolingParam ...
 func (m *LayerParameter) GetPoolingParam() *PoolingParameter {
 	if m != nil {
 		return m.PoolingParam
@@ -2528,6 +2950,7 @@ func (m *LayerParameter) GetPoolingParam() *PoolingParameter {
 	return nil
 }
 
+// GetPowerParam ...
 func (m *LayerParameter) GetPowerParam() *PowerParameter {
 	if m != nil {
 		return m.PowerParam
@@ -2535,6 +2958,7 @@ func (m *LayerParameter) GetPowerParam() *PowerParameter {
 	return nil
 }
 
+// GetPreluParam ...
 func (m *LayerParameter) GetPreluParam() *PReLUParameter {
 	if m != nil {
 		return m.PreluParam
@@ -2542,6 +2966,7 @@ func (m *LayerParameter) GetPreluParam() *PReLUParameter {
 	return nil
 }
 
+// GetPythonParam ...
 func (m *LayerParameter) GetPythonParam() *PythonParameter {
 	if m != nil {
 		return m.PythonParam
@@ -2549,6 +2974,7 @@ func (m *LayerParameter) GetPythonParam() *PythonParameter {
 	return nil
 }
 
+// GetRecurrentParam ...
 func (m *LayerParameter) GetRecurrentParam() *RecurrentParameter {
 	if m != nil {
 		return m.RecurrentParam
@@ -2556,6 +2982,7 @@ func (m *LayerParameter) GetRecurrentParam() *RecurrentParameter {
 	return nil
 }
 
+// GetReductionParam ...
 func (m *LayerParameter) GetReductionParam() *ReductionParameter {
 	if m != nil {
 		return m.ReductionParam
@@ -2563,6 +2990,7 @@ func (m *LayerParameter) GetReductionParam() *ReductionParameter {
 	return nil
 }
 
+// GetReluParam ...
 func (m *LayerParameter) GetReluParam() *ReLUParameter {
 	if m != nil {
 		return m.ReluParam
@@ -2570,6 +2998,7 @@ func (m *LayerParameter) GetReluParam() *ReLUParameter {
 	return nil
 }
 
+// GetReshapeParam ...
 func (m *LayerParameter) GetReshapeParam() *ReshapeParameter {
 	if m != nil {
 		return m.ReshapeParam
@@ -2577,6 +3006,7 @@ func (m *LayerParameter) GetReshapeParam() *ReshapeParameter {
 	return nil
 }
 
+// GetScaleParam ...
 func (m *LayerParameter) GetScaleParam() *ScaleParameter {
 	if m != nil {
 		return m.ScaleParam
@@ -2584,6 +3014,7 @@ func (m *LayerParameter) GetScaleParam() *ScaleParameter {
 	return nil
 }
 
+// GetSigmoidParam ...
 func (m *LayerParameter) GetSigmoidParam() *SigmoidParameter {
 	if m != nil {
 		return m.SigmoidParam
@@ -2591,6 +3022,7 @@ func (m *LayerParameter) GetSigmoidParam() *SigmoidParameter {
 	return nil
 }
 
+// GetSoftmaxParam ...
 func (m *LayerParameter) GetSoftmaxParam() *SoftmaxParameter {
 	if m != nil {
 		return m.SoftmaxParam
@@ -2598,6 +3030,7 @@ func (m *LayerParameter) GetSoftmaxParam() *SoftmaxParameter {
 	return nil
 }
 
+// GetSppParam ...
 func (m *LayerParameter) GetSppParam() *SPPParameter {
 	if m != nil {
 		return m.SppParam
@@ -2605,6 +3038,7 @@ func (m *LayerParameter) GetSppParam() *SPPParameter {
 	return nil
 }
 
+// GetSliceParam ...
 func (m *LayerParameter) GetSliceParam() *SliceParameter {
 	if m != nil {
 		return m.SliceParam
@@ -2612,6 +3046,7 @@ func (m *LayerParameter) GetSliceParam() *SliceParameter {
 	return nil
 }
 
+// GetTanhParam ...
 func (m *LayerParameter) GetTanhParam() *TanHParameter {
 	if m != nil {
 		return m.TanhParam
@@ -2619,6 +3054,7 @@ func (m *LayerParameter) GetTanhParam() *TanHParameter {
 	return nil
 }
 
+// GetThresholdParam ...
 func (m *LayerParameter) GetThresholdParam() *ThresholdParameter {
 	if m != nil {
 		return m.ThresholdParam
@@ -2626,6 +3062,7 @@ func (m *LayerParameter) GetThresholdParam() *ThresholdParameter {
 	return nil
 }
 
+// GetTileParam ...
 func (m *LayerParameter) GetTileParam() *TileParameter {
 	if m != nil {
 		return m.TileParam
@@ -2633,6 +3070,7 @@ func (m *LayerParameter) GetTileParam() *TileParameter {
 	return nil
 }
 
+// GetWindowDataParam ...
 func (m *LayerParameter) GetWindowDataParam() *WindowDataParameter {
 	if m != nil {
 		return m.WindowDataParam
@@ -2663,17 +3101,27 @@ type TransformationParameter struct {
 	ForceGray *bool `protobuf:"varint,7,opt,name=force_gray,json=forceGray,def=0" json:"force_gray,omitempty"`
 }
 
-func (m *TransformationParameter) Reset()                    { *m = TransformationParameter{} }
-func (m *TransformationParameter) String() string            { return proto.CompactTextString(m) }
-func (*TransformationParameter) ProtoMessage()               {}
+// Reset ...
+func (m *TransformationParameter) Reset()                    { *m = TransformationParameter{} }    
+// String ...
+func (m *TransformationParameter) String() string            { return proto.CompactTextString(m) } 
+// ProtoMessage ...
+func (*TransformationParameter) ProtoMessage()               {}                                    
+// Descriptor ...
 func (*TransformationParameter) Descriptor() ([]byte, []int) { return fileDescriptorCaffe, []int{12} }
 
-const Default_TransformationParameter_Scale float32 = 1
-const Default_TransformationParameter_Mirror bool = false
-const Default_TransformationParameter_CropSize uint32 = 0
-const Default_TransformationParameter_ForceColor bool = false
+// Default_TransformationParameter_Scale ...
+const Default_TransformationParameter_Scale float32 = 1       
+// Default_TransformationParameter_Mirror ...
+const Default_TransformationParameter_Mirror bool = false     
+// Default_TransformationParameter_CropSize ...
+const Default_TransformationParameter_CropSize uint32 = 0     
+// Default_TransformationParameter_ForceColor ...
+const Default_TransformationParameter_ForceColor bool = false 
+// Default_TransformationParameter_ForceGray ...
 const Default_TransformationParameter_ForceGray bool = false
 
+// GetScale ...
 func (m *TransformationParameter) GetScale() float32 {
 	if m != nil && m.Scale != nil {
 		return *m.Scale
@@ -2681,6 +3129,7 @@ func (m *TransformationParameter) GetScale() float32 {
 	return Default_TransformationParameter_Scale
 }
 
+// GetMirror ...
 func (m *TransformationParameter) GetMirror() bool {
 	if m != nil && m.Mirror != nil {
 		return *m.Mirror
@@ -2688,6 +3137,7 @@ func (m *TransformationParameter) GetMirror() bool {
 	return Default_TransformationParameter_Mirror
 }
 
+// GetCropSize ...
 func (m *TransformationParameter) GetCropSize() uint32 {
 	if m != nil && m.CropSize != nil {
 		return *m.CropSize
@@ -2695,6 +3145,7 @@ func (m *TransformationParameter) GetCropSize() uint32 {
 	return Default_TransformationParameter_CropSize
 }
 
+// GetMeanFile ...
 func (m *TransformationParameter) GetMeanFile() string {
 	if m != nil {
 		return m.MeanFile
@@ -2702,6 +3153,7 @@ func (m *TransformationParameter) GetMeanFile() string {
 	return ""
 }
 
+// GetMeanValue ...
 func (m *TransformationParameter) GetMeanValue() []float32 {
 	if m != nil {
 		return m.MeanValue
@@ -2709,6 +3161,7 @@ func (m *TransformationParameter) GetMeanValue() []float32 {
 	return nil
 }
 
+// GetForceColor ...
 func (m *TransformationParameter) GetForceColor() bool {
 	if m != nil && m.ForceColor != nil {
 		return *m.ForceColor
@@ -2716,6 +3169,7 @@ func (m *TransformationParameter) GetForceColor() bool {
 	return Default_TransformationParameter_ForceColor
 }
 
+// GetForceGray ...
 func (m *TransformationParameter) GetForceGray() bool {
 	if m != nil && m.ForceGray != nil {
 		return *m.ForceGray
@@ -2734,13 +3188,19 @@ type LossParameter struct {
 	Normalize bool `protobuf:"varint,2,opt,name=normalize" json:"normalize"`
 }
 
-func (m *LossParameter) Reset()                    { *m = LossParameter{} }
-func (m *LossParameter) String() string            { return proto.CompactTextString(m) }
-func (*LossParameter) ProtoMessage()               {}
+// Reset ...
+func (m *LossParameter) Reset()                    { *m = LossParameter{} }              
+// String ...
+func (m *LossParameter) String() string            { return proto.CompactTextString(m) } 
+// ProtoMessage ...
+func (*LossParameter) ProtoMessage()               {}                                    
+// Descriptor ...
 func (*LossParameter) Descriptor() ([]byte, []int) { return fileDescriptorCaffe, []int{13} }
 
+// Default_LossParameter_Normalization ...
 const Default_LossParameter_Normalization LossParameter_NormalizationMode = LossParameter_VALID
 
+// GetIgnoreLabel ...
 func (m *LossParameter) GetIgnoreLabel() int32 {
 	if m != nil {
 		return m.IgnoreLabel
@@ -2748,6 +3208,7 @@ func (m *LossParameter) GetIgnoreLabel() int32 {
 	return 0
 }
 
+// GetNormalization ...
 func (m *LossParameter) GetNormalization() LossParameter_NormalizationMode {
 	if m != nil && m.Normalization != nil {
 		return *m.Normalization
@@ -2755,6 +3216,7 @@ func (m *LossParameter) GetNormalization() LossParameter_NormalizationMode {
 	return Default_LossParameter_Normalization
 }
 
+// GetNormalize ...
 func (m *LossParameter) GetNormalize() bool {
 	if m != nil {
 		return m.Normalize
@@ -2762,6 +3224,7 @@ func (m *LossParameter) GetNormalize() bool {
 	return false
 }
 
+// AccuracyParameter ...
 type AccuracyParameter struct {
 	// When computing accuracy, count as correct by comparing the true label to
 	// the top k scoring classes.  By default, only compare to the top scoring
@@ -2777,14 +3240,21 @@ type AccuracyParameter struct {
 	IgnoreLabel int32 `protobuf:"varint,3,opt,name=ignore_label,json=ignoreLabel" json:"ignore_label"`
 }
 
-func (m *AccuracyParameter) Reset()                    { *m = AccuracyParameter{} }
-func (m *AccuracyParameter) String() string            { return proto.CompactTextString(m) }
-func (*AccuracyParameter) ProtoMessage()               {}
+// Reset ...
+func (m *AccuracyParameter) Reset()                    { *m = AccuracyParameter{} }          
+// String ...
+func (m *AccuracyParameter) String() string            { return proto.CompactTextString(m) } 
+// ProtoMessage ...
+func (*AccuracyParameter) ProtoMessage()               {}                                    
+// Descriptor ...
 func (*AccuracyParameter) Descriptor() ([]byte, []int) { return fileDescriptorCaffe, []int{14} }
 
-const Default_AccuracyParameter_TopK uint32 = 1
+// Default_AccuracyParameter_TopK ...
+const Default_AccuracyParameter_TopK uint32 = 1 
+// Default_AccuracyParameter_Axis ...
 const Default_AccuracyParameter_Axis int32 = 1
 
+// GetTopK ...
 func (m *AccuracyParameter) GetTopK() uint32 {
 	if m != nil && m.TopK != nil {
 		return *m.TopK
@@ -2792,6 +3262,7 @@ func (m *AccuracyParameter) GetTopK() uint32 {
 	return Default_AccuracyParameter_TopK
 }
 
+// GetAxis ...
 func (m *AccuracyParameter) GetAxis() int32 {
 	if m != nil && m.Axis != nil {
 		return *m.Axis
@@ -2799,6 +3270,7 @@ func (m *AccuracyParameter) GetAxis() int32 {
 	return Default_AccuracyParameter_Axis
 }
 
+// GetIgnoreLabel ...
 func (m *AccuracyParameter) GetIgnoreLabel() int32 {
 	if m != nil {
 		return m.IgnoreLabel
@@ -2806,6 +3278,7 @@ func (m *AccuracyParameter) GetIgnoreLabel() int32 {
 	return 0
 }
 
+// ArgMaxParameter ...
 type ArgMaxParameter struct {
 	// If true produce pairs (argmax, maxval)
 	OutMaxVal *bool   `protobuf:"varint,1,opt,name=out_max_val,json=outMaxVal,def=0" json:"out_max_val,omitempty"`
@@ -2817,14 +3290,21 @@ type ArgMaxParameter struct {
 	Axis int32 `protobuf:"varint,3,opt,name=axis" json:"axis"`
 }
 
-func (m *ArgMaxParameter) Reset()                    { *m = ArgMaxParameter{} }
-func (m *ArgMaxParameter) String() string            { return proto.CompactTextString(m) }
-func (*ArgMaxParameter) ProtoMessage()               {}
+// Reset ...
+func (m *ArgMaxParameter) Reset()                    { *m = ArgMaxParameter{} }            
+// String ...
+func (m *ArgMaxParameter) String() string            { return proto.CompactTextString(m) } 
+// ProtoMessage ...
+func (*ArgMaxParameter) ProtoMessage()               {}                                    
+// Descriptor ...
 func (*ArgMaxParameter) Descriptor() ([]byte, []int) { return fileDescriptorCaffe, []int{15} }
 
-const Default_ArgMaxParameter_OutMaxVal bool = false
+// Default_ArgMaxParameter_OutMaxVal ...
+const Default_ArgMaxParameter_OutMaxVal bool = false 
+// Default_ArgMaxParameter_TopK ...
 const Default_ArgMaxParameter_TopK uint32 = 1
 
+// GetOutMaxVal ...
 func (m *ArgMaxParameter) GetOutMaxVal() bool {
 	if m != nil && m.OutMaxVal != nil {
 		return *m.OutMaxVal
@@ -2832,6 +3312,7 @@ func (m *ArgMaxParameter) GetOutMaxVal() bool {
 	return Default_ArgMaxParameter_OutMaxVal
 }
 
+// GetTopK ...
 func (m *ArgMaxParameter) GetTopK() uint32 {
 	if m != nil && m.TopK != nil {
 		return *m.TopK
@@ -2839,6 +3320,7 @@ func (m *ArgMaxParameter) GetTopK() uint32 {
 	return Default_ArgMaxParameter_TopK
 }
 
+// GetAxis ...
 func (m *ArgMaxParameter) GetAxis() int32 {
 	if m != nil {
 		return m.Axis
@@ -2846,6 +3328,7 @@ func (m *ArgMaxParameter) GetAxis() int32 {
 	return 0
 }
 
+// ConcatParameter ...
 type ConcatParameter struct {
 	// The axis along which to concatenate -- may be negative to index from the
 	// end (e.g., -1 for the last axis).  Other axes must have the
@@ -2856,14 +3339,21 @@ type ConcatParameter struct {
 	ConcatDim *uint32 `protobuf:"varint,1,opt,name=concat_dim,json=concatDim,def=1" json:"concat_dim,omitempty"`
 }
 
-func (m *ConcatParameter) Reset()                    { *m = ConcatParameter{} }
-func (m *ConcatParameter) String() string            { return proto.CompactTextString(m) }
-func (*ConcatParameter) ProtoMessage()               {}
+// Reset ...
+func (m *ConcatParameter) Reset()                    { *m = ConcatParameter{} }            
+// String ...
+func (m *ConcatParameter) String() string            { return proto.CompactTextString(m) } 
+// ProtoMessage ...
+func (*ConcatParameter) ProtoMessage()               {}                                    
+// Descriptor ...
 func (*ConcatParameter) Descriptor() ([]byte, []int) { return fileDescriptorCaffe, []int{16} }
 
-const Default_ConcatParameter_Axis int32 = 1
+// Default_ConcatParameter_Axis ...
+const Default_ConcatParameter_Axis int32 = 1 
+// Default_ConcatParameter_ConcatDim ...
 const Default_ConcatParameter_ConcatDim uint32 = 1
 
+// GetAxis ...
 func (m *ConcatParameter) GetAxis() int32 {
 	if m != nil && m.Axis != nil {
 		return *m.Axis
@@ -2871,6 +3361,7 @@ func (m *ConcatParameter) GetAxis() int32 {
 	return Default_ConcatParameter_Axis
 }
 
+// GetConcatDim ...
 func (m *ConcatParameter) GetConcatDim() uint32 {
 	if m != nil && m.ConcatDim != nil {
 		return *m.ConcatDim
@@ -2878,6 +3369,7 @@ func (m *ConcatParameter) GetConcatDim() uint32 {
 	return Default_ConcatParameter_ConcatDim
 }
 
+// BatchNormParameter ...
 type BatchNormParameter struct {
 	// If false, accumulate global mean/variance values via a moving average. If
 	// true, use those accumulated values instead of computing mean/variance
@@ -2890,14 +3382,21 @@ type BatchNormParameter struct {
 	Eps *float32 `protobuf:"fixed32,3,opt,name=eps,def=1e-05" json:"eps,omitempty"`
 }
 
-func (m *BatchNormParameter) Reset()                    { *m = BatchNormParameter{} }
-func (m *BatchNormParameter) String() string            { return proto.CompactTextString(m) }
-func (*BatchNormParameter) ProtoMessage()               {}
+// Reset ...
+func (m *BatchNormParameter) Reset()                    { *m = BatchNormParameter{} }         
+// String ...
+func (m *BatchNormParameter) String() string            { return proto.CompactTextString(m) } 
+// ProtoMessage ...
+func (*BatchNormParameter) ProtoMessage()               {}                                    
+// Descriptor ...
 func (*BatchNormParameter) Descriptor() ([]byte, []int) { return fileDescriptorCaffe, []int{17} }
 
-const Default_BatchNormParameter_MovingAverageFraction float32 = 0.999
+// Default_BatchNormParameter_MovingAverageFraction ...
+const Default_BatchNormParameter_MovingAverageFraction float32 = 0.999 
+// Default_BatchNormParameter_Eps ...
 const Default_BatchNormParameter_Eps float32 = 1e-05
 
+// GetUseGlobalStats ...
 func (m *BatchNormParameter) GetUseGlobalStats() bool {
 	if m != nil {
 		return m.UseGlobalStats
@@ -2905,6 +3404,7 @@ func (m *BatchNormParameter) GetUseGlobalStats() bool {
 	return false
 }
 
+// GetMovingAverageFraction ...
 func (m *BatchNormParameter) GetMovingAverageFraction() float32 {
 	if m != nil && m.MovingAverageFraction != nil {
 		return *m.MovingAverageFraction
@@ -2912,6 +3412,7 @@ func (m *BatchNormParameter) GetMovingAverageFraction() float32 {
 	return Default_BatchNormParameter_MovingAverageFraction
 }
 
+// GetEps ...
 func (m *BatchNormParameter) GetEps() float32 {
 	if m != nil && m.Eps != nil {
 		return *m.Eps
@@ -2919,6 +3420,7 @@ func (m *BatchNormParameter) GetEps() float32 {
 	return Default_BatchNormParameter_Eps
 }
 
+// BiasParameter ...
 type BiasParameter struct {
 	// The first axis of bottom[0] (the first input Blob) along which to apply
 	// bottom[1] (the second input Blob).  May be negative to index from the end
@@ -2949,14 +3451,21 @@ type BiasParameter struct {
 	Filler *FillerParameter `protobuf:"bytes,3,opt,name=filler" json:"filler,omitempty"`
 }
 
-func (m *BiasParameter) Reset()                    { *m = BiasParameter{} }
-func (m *BiasParameter) String() string            { return proto.CompactTextString(m) }
-func (*BiasParameter) ProtoMessage()               {}
+// Reset ...
+func (m *BiasParameter) Reset()                    { *m = BiasParameter{} }              
+// String ...
+func (m *BiasParameter) String() string            { return proto.CompactTextString(m) } 
+// ProtoMessage ...
+func (*BiasParameter) ProtoMessage()               {}                                    
+// Descriptor ...
 func (*BiasParameter) Descriptor() ([]byte, []int) { return fileDescriptorCaffe, []int{18} }
 
-const Default_BiasParameter_Axis int32 = 1
+// Default_BiasParameter_Axis ...
+const Default_BiasParameter_Axis int32 = 1 
+// Default_BiasParameter_NumAxes ...
 const Default_BiasParameter_NumAxes int32 = 1
 
+// GetAxis ...
 func (m *BiasParameter) GetAxis() int32 {
 	if m != nil && m.Axis != nil {
 		return *m.Axis
@@ -2964,6 +3473,7 @@ func (m *BiasParameter) GetAxis() int32 {
 	return Default_BiasParameter_Axis
 }
 
+// GetNumAxes ...
 func (m *BiasParameter) GetNumAxes() int32 {
 	if m != nil && m.NumAxes != nil {
 		return *m.NumAxes
@@ -2971,6 +3481,7 @@ func (m *BiasParameter) GetNumAxes() int32 {
 	return Default_BiasParameter_NumAxes
 }
 
+// GetFiller ...
 func (m *BiasParameter) GetFiller() *FillerParameter {
 	if m != nil {
 		return m.Filler
@@ -2978,6 +3489,7 @@ func (m *BiasParameter) GetFiller() *FillerParameter {
 	return nil
 }
 
+// ContrastiveLossParameter ...
 type ContrastiveLossParameter struct {
 	// margin for dissimilar pair
 	Margin *float32 `protobuf:"fixed32,1,opt,name=margin,def=1" json:"margin,omitempty"`
@@ -2990,14 +3502,21 @@ type ContrastiveLossParameter struct {
 	LegacyVersion *bool `protobuf:"varint,2,opt,name=legacy_version,json=legacyVersion,def=0" json:"legacy_version,omitempty"`
 }
 
-func (m *ContrastiveLossParameter) Reset()                    { *m = ContrastiveLossParameter{} }
-func (m *ContrastiveLossParameter) String() string            { return proto.CompactTextString(m) }
-func (*ContrastiveLossParameter) ProtoMessage()               {}
+// Reset ...
+func (m *ContrastiveLossParameter) Reset()                    { *m = ContrastiveLossParameter{} }   
+// String ...
+func (m *ContrastiveLossParameter) String() string            { return proto.CompactTextString(m) } 
+// ProtoMessage ...
+func (*ContrastiveLossParameter) ProtoMessage()               {}                                    
+// Descriptor ...
 func (*ContrastiveLossParameter) Descriptor() ([]byte, []int) { return fileDescriptorCaffe, []int{19} }
 
-const Default_ContrastiveLossParameter_Margin float32 = 1
+// Default_ContrastiveLossParameter_Margin ...
+const Default_ContrastiveLossParameter_Margin float32 = 1 
+// Default_ContrastiveLossParameter_LegacyVersion ...
 const Default_ContrastiveLossParameter_LegacyVersion bool = false
 
+// GetMargin ...
 func (m *ContrastiveLossParameter) GetMargin() float32 {
 	if m != nil && m.Margin != nil {
 		return *m.Margin
@@ -3005,6 +3524,7 @@ func (m *ContrastiveLossParameter) GetMargin() float32 {
 	return Default_ContrastiveLossParameter_Margin
 }
 
+// GetLegacyVersion ...
 func (m *ContrastiveLossParameter) GetLegacyVersion() bool {
 	if m != nil && m.LegacyVersion != nil {
 		return *m.LegacyVersion
@@ -3012,6 +3532,7 @@ func (m *ContrastiveLossParameter) GetLegacyVersion() bool {
 	return Default_ContrastiveLossParameter_LegacyVersion
 }
 
+// ConvolutionParameter ...
 type ConvolutionParameter struct {
 	NumOutput uint32 `protobuf:"varint,1,opt,name=num_output,json=numOutput" json:"num_output"`
 	BiasTerm  *bool  `protobuf:"varint,2,opt,name=bias_term,json=biasTerm,def=1" json:"bias_term,omitempty"`
@@ -3054,19 +3575,31 @@ type ConvolutionParameter struct {
 	ForceNdIm2Col *bool `protobuf:"varint,17,opt,name=force_nd_im2col,json=forceNdIm2col,def=0" json:"force_nd_im2col,omitempty"`
 }
 
-func (m *ConvolutionParameter) Reset()                    { *m = ConvolutionParameter{} }
-func (m *ConvolutionParameter) String() string            { return proto.CompactTextString(m) }
-func (*ConvolutionParameter) ProtoMessage()               {}
+// Reset ...
+func (m *ConvolutionParameter) Reset()                    { *m = ConvolutionParameter{} }       
+// String ...
+func (m *ConvolutionParameter) String() string            { return proto.CompactTextString(m) } 
+// ProtoMessage ...
+func (*ConvolutionParameter) ProtoMessage()               {}                                    
+// Descriptor ...
 func (*ConvolutionParameter) Descriptor() ([]byte, []int) { return fileDescriptorCaffe, []int{20} }
 
-const Default_ConvolutionParameter_BiasTerm bool = true
-const Default_ConvolutionParameter_PadH uint32 = 0
-const Default_ConvolutionParameter_PadW uint32 = 0
-const Default_ConvolutionParameter_Group uint32 = 1
-const Default_ConvolutionParameter_Engine ConvolutionParameter_Engine = ConvolutionParameter_DEFAULT
-const Default_ConvolutionParameter_Axis int32 = 1
+// Default_ConvolutionParameter_BiasTerm ...
+const Default_ConvolutionParameter_BiasTerm bool = true                                              
+// Default_ConvolutionParameter_PadH ...
+const Default_ConvolutionParameter_PadH uint32 = 0                                                   
+// Default_ConvolutionParameter_PadW ...
+const Default_ConvolutionParameter_PadW uint32 = 0                                                   
+// Default_ConvolutionParameter_Group ...
+const Default_ConvolutionParameter_Group uint32 = 1                                                  
+// Default_ConvolutionParameter_Engine ...
+const Default_ConvolutionParameter_Engine ConvolutionParameter_Engine = ConvolutionParameter_DEFAULT 
+// Default_ConvolutionParameter_Axis ...
+const Default_ConvolutionParameter_Axis int32 = 1                                                    
+// Default_ConvolutionParameter_ForceNdIm2Col ...
 const Default_ConvolutionParameter_ForceNdIm2Col bool = false
 
+// GetNumOutput ...
 func (m *ConvolutionParameter) GetNumOutput() uint32 {
 	if m != nil {
 		return m.NumOutput
@@ -3074,6 +3607,7 @@ func (m *ConvolutionParameter) GetNumOutput() uint32 {
 	return 0
 }
 
+// GetBiasTerm ...
 func (m *ConvolutionParameter) GetBiasTerm() bool {
 	if m != nil && m.BiasTerm != nil {
 		return *m.BiasTerm
@@ -3081,6 +3615,7 @@ func (m *ConvolutionParameter) GetBiasTerm() bool {
 	return Default_ConvolutionParameter_BiasTerm
 }
 
+// GetPad ...
 func (m *ConvolutionParameter) GetPad() []uint32 {
 	if m != nil {
 		return m.Pad
@@ -3088,6 +3623,7 @@ func (m *ConvolutionParameter) GetPad() []uint32 {
 	return nil
 }
 
+// GetKernelSize ...
 func (m *ConvolutionParameter) GetKernelSize() []uint32 {
 	if m != nil {
 		return m.KernelSize
@@ -3095,6 +3631,7 @@ func (m *ConvolutionParameter) GetKernelSize() []uint32 {
 	return nil
 }
 
+// GetStride ...
 func (m *ConvolutionParameter) GetStride() []uint32 {
 	if m != nil {
 		return m.Stride
@@ -3102,6 +3639,7 @@ func (m *ConvolutionParameter) GetStride() []uint32 {
 	return nil
 }
 
+// GetDilation ...
 func (m *ConvolutionParameter) GetDilation() []uint32 {
 	if m != nil {
 		return m.Dilation
@@ -3109,6 +3647,7 @@ func (m *ConvolutionParameter) GetDilation() []uint32 {
 	return nil
 }
 
+// GetPadH ...
 func (m *ConvolutionParameter) GetPadH() uint32 {
 	if m != nil && m.PadH != nil {
 		return *m.PadH
@@ -3116,6 +3655,7 @@ func (m *ConvolutionParameter) GetPadH() uint32 {
 	return Default_ConvolutionParameter_PadH
 }
 
+// GetPadW ...
 func (m *ConvolutionParameter) GetPadW() uint32 {
 	if m != nil && m.PadW != nil {
 		return *m.PadW
@@ -3123,6 +3663,7 @@ func (m *ConvolutionParameter) GetPadW() uint32 {
 	return Default_ConvolutionParameter_PadW
 }
 
+// GetKernelH ...
 func (m *ConvolutionParameter) GetKernelH() uint32 {
 	if m != nil {
 		return m.KernelH
@@ -3130,6 +3671,7 @@ func (m *ConvolutionParameter) GetKernelH() uint32 {
 	return 0
 }
 
+// GetKernelW ...
 func (m *ConvolutionParameter) GetKernelW() uint32 {
 	if m != nil {
 		return m.KernelW
@@ -3137,6 +3679,7 @@ func (m *ConvolutionParameter) GetKernelW() uint32 {
 	return 0
 }
 
+// GetStrideH ...
 func (m *ConvolutionParameter) GetStrideH() uint32 {
 	if m != nil {
 		return m.StrideH
@@ -3144,6 +3687,7 @@ func (m *ConvolutionParameter) GetStrideH() uint32 {
 	return 0
 }
 
+// GetStrideW ...
 func (m *ConvolutionParameter) GetStrideW() uint32 {
 	if m != nil {
 		return m.StrideW
@@ -3151,6 +3695,7 @@ func (m *ConvolutionParameter) GetStrideW() uint32 {
 	return 0
 }
 
+// GetGroup ...
 func (m *ConvolutionParameter) GetGroup() uint32 {
 	if m != nil && m.Group != nil {
 		return *m.Group
@@ -3158,6 +3703,7 @@ func (m *ConvolutionParameter) GetGroup() uint32 {
 	return Default_ConvolutionParameter_Group
 }
 
+// GetWeightFiller ...
 func (m *ConvolutionParameter) GetWeightFiller() *FillerParameter {
 	if m != nil {
 		return m.WeightFiller
@@ -3165,6 +3711,7 @@ func (m *ConvolutionParameter) GetWeightFiller() *FillerParameter {
 	return nil
 }
 
+// GetBiasFiller ...
 func (m *ConvolutionParameter) GetBiasFiller() *FillerParameter {
 	if m != nil {
 		return m.BiasFiller
@@ -3172,6 +3719,7 @@ func (m *ConvolutionParameter) GetBiasFiller() *FillerParameter {
 	return nil
 }
 
+// GetEngine ...
 func (m *ConvolutionParameter) GetEngine() ConvolutionParameter_Engine {
 	if m != nil && m.Engine != nil {
 		return *m.Engine
@@ -3179,6 +3727,7 @@ func (m *ConvolutionParameter) GetEngine() ConvolutionParameter_Engine {
 	return Default_ConvolutionParameter_Engine
 }
 
+// GetAxis ...
 func (m *ConvolutionParameter) GetAxis() int32 {
 	if m != nil && m.Axis != nil {
 		return *m.Axis
@@ -3186,6 +3735,7 @@ func (m *ConvolutionParameter) GetAxis() int32 {
 	return Default_ConvolutionParameter_Axis
 }
 
+// GetForceNdIm2Col ...
 func (m *ConvolutionParameter) GetForceNdIm2Col() bool {
 	if m != nil && m.ForceNdIm2Col != nil {
 		return *m.ForceNdIm2Col
@@ -3193,6 +3743,7 @@ func (m *ConvolutionParameter) GetForceNdIm2Col() bool {
 	return Default_ConvolutionParameter_ForceNdIm2Col
 }
 
+// CropParameter ...
 type CropParameter struct {
 	// To crop, elements of the first bottom are selected to fit the dimensions
 	// of the second, reference bottom. The crop is configured by
@@ -3211,13 +3762,19 @@ type CropParameter struct {
 	Offset []uint32 `protobuf:"varint,2,rep,name=offset" json:"offset,omitempty"`
 }
 
-func (m *CropParameter) Reset()                    { *m = CropParameter{} }
-func (m *CropParameter) String() string            { return proto.CompactTextString(m) }
-func (*CropParameter) ProtoMessage()               {}
+// Reset ...
+func (m *CropParameter) Reset()                    { *m = CropParameter{} }              
+// String ...
+func (m *CropParameter) String() string            { return proto.CompactTextString(m) } 
+// ProtoMessage ...
+func (*CropParameter) ProtoMessage()               {}                                    
+// Descriptor ...
 func (*CropParameter) Descriptor() ([]byte, []int) { return fileDescriptorCaffe, []int{21} }
 
+// Default_CropParameter_Axis ...
 const Default_CropParameter_Axis int32 = 2
 
+// GetAxis ...
 func (m *CropParameter) GetAxis() int32 {
 	if m != nil && m.Axis != nil {
 		return *m.Axis
@@ -3225,6 +3782,7 @@ func (m *CropParameter) GetAxis() int32 {
 	return Default_CropParameter_Axis
 }
 
+// GetOffset ...
 func (m *CropParameter) GetOffset() []uint32 {
 	if m != nil {
 		return m.Offset
@@ -3232,6 +3790,7 @@ func (m *CropParameter) GetOffset() []uint32 {
 	return nil
 }
 
+// DataParameter ...
 type DataParameter struct {
 	// Specify the data source.
 	Source string `protobuf:"bytes,1,opt,name=source" json:"source"`
@@ -3262,19 +3821,31 @@ type DataParameter struct {
 	Prefetch *uint32 `protobuf:"varint,10,opt,name=prefetch,def=4" json:"prefetch,omitempty"`
 }
 
-func (m *DataParameter) Reset()                    { *m = DataParameter{} }
-func (m *DataParameter) String() string            { return proto.CompactTextString(m) }
-func (*DataParameter) ProtoMessage()               {}
+// Reset ...
+func (m *DataParameter) Reset()                    { *m = DataParameter{} }              
+// String ...
+func (m *DataParameter) String() string            { return proto.CompactTextString(m) } 
+// ProtoMessage ...
+func (*DataParameter) ProtoMessage()               {}                                    
+// Descriptor ...
 func (*DataParameter) Descriptor() ([]byte, []int) { return fileDescriptorCaffe, []int{22} }
 
-const Default_DataParameter_RandSkip uint32 = 0
-const Default_DataParameter_Backend DataParameter_DB = DataParameter_LEVELDB
-const Default_DataParameter_Scale float32 = 1
-const Default_DataParameter_CropSize uint32 = 0
-const Default_DataParameter_Mirror bool = false
-const Default_DataParameter_ForceEncodedColor bool = false
+// Default_DataParameter_RandSkip ...
+const Default_DataParameter_RandSkip uint32 = 0                              
+// Default_DataParameter_Backend ...
+const Default_DataParameter_Backend DataParameter_DB = DataParameter_LEVELDB 
+// Default_DataParameter_Scale ...
+const Default_DataParameter_Scale float32 = 1                                
+// Default_DataParameter_CropSize ...
+const Default_DataParameter_CropSize uint32 = 0                              
+// Default_DataParameter_Mirror ...
+const Default_DataParameter_Mirror bool = false                              
+// Default_DataParameter_ForceEncodedColor ...
+const Default_DataParameter_ForceEncodedColor bool = false                   
+// Default_DataParameter_Prefetch ...
 const Default_DataParameter_Prefetch uint32 = 4
 
+// GetSource ...
 func (m *DataParameter) GetSource() string {
 	if m != nil {
 		return m.Source
@@ -3282,6 +3853,7 @@ func (m *DataParameter) GetSource() string {
 	return ""
 }
 
+// GetBatchSize ...
 func (m *DataParameter) GetBatchSize() uint32 {
 	if m != nil {
 		return m.BatchSize
@@ -3289,6 +3861,7 @@ func (m *DataParameter) GetBatchSize() uint32 {
 	return 0
 }
 
+// GetRandSkip ...
 func (m *DataParameter) GetRandSkip() uint32 {
 	if m != nil && m.RandSkip != nil {
 		return *m.RandSkip
@@ -3296,6 +3869,7 @@ func (m *DataParameter) GetRandSkip() uint32 {
 	return Default_DataParameter_RandSkip
 }
 
+// GetBackend ...
 func (m *DataParameter) GetBackend() DataParameter_DB {
 	if m != nil && m.Backend != nil {
 		return *m.Backend
@@ -3303,6 +3877,7 @@ func (m *DataParameter) GetBackend() DataParameter_DB {
 	return Default_DataParameter_Backend
 }
 
+// GetScale ...
 func (m *DataParameter) GetScale() float32 {
 	if m != nil && m.Scale != nil {
 		return *m.Scale
@@ -3310,6 +3885,7 @@ func (m *DataParameter) GetScale() float32 {
 	return Default_DataParameter_Scale
 }
 
+// GetMeanFile ...
 func (m *DataParameter) GetMeanFile() string {
 	if m != nil {
 		return m.MeanFile
@@ -3317,6 +3893,7 @@ func (m *DataParameter) GetMeanFile() string {
 	return ""
 }
 
+// GetCropSize ...
 func (m *DataParameter) GetCropSize() uint32 {
 	if m != nil && m.CropSize != nil {
 		return *m.CropSize
@@ -3324,6 +3901,7 @@ func (m *DataParameter) GetCropSize() uint32 {
 	return Default_DataParameter_CropSize
 }
 
+// GetMirror ...
 func (m *DataParameter) GetMirror() bool {
 	if m != nil && m.Mirror != nil {
 		return *m.Mirror
@@ -3331,6 +3909,7 @@ func (m *DataParameter) GetMirror() bool {
 	return Default_DataParameter_Mirror
 }
 
+// GetForceEncodedColor ...
 func (m *DataParameter) GetForceEncodedColor() bool {
 	if m != nil && m.ForceEncodedColor != nil {
 		return *m.ForceEncodedColor
@@ -3338,6 +3917,7 @@ func (m *DataParameter) GetForceEncodedColor() bool {
 	return Default_DataParameter_ForceEncodedColor
 }
 
+// GetPrefetch ...
 func (m *DataParameter) GetPrefetch() uint32 {
 	if m != nil && m.Prefetch != nil {
 		return *m.Prefetch
@@ -3345,17 +3925,24 @@ func (m *DataParameter) GetPrefetch() uint32 {
 	return Default_DataParameter_Prefetch
 }
 
+// DropoutParameter ...
 type DropoutParameter struct {
 	DropoutRatio *float32 `protobuf:"fixed32,1,opt,name=dropout_ratio,json=dropoutRatio,def=0.5" json:"dropout_ratio,omitempty"`
 }
 
-func (m *DropoutParameter) Reset()                    { *m = DropoutParameter{} }
-func (m *DropoutParameter) String() string            { return proto.CompactTextString(m) }
-func (*DropoutParameter) ProtoMessage()               {}
+// Reset ...
+func (m *DropoutParameter) Reset()                    { *m = DropoutParameter{} }           
+// String ...
+func (m *DropoutParameter) String() string            { return proto.CompactTextString(m) } 
+// ProtoMessage ...
+func (*DropoutParameter) ProtoMessage()               {}                                    
+// Descriptor ...
 func (*DropoutParameter) Descriptor() ([]byte, []int) { return fileDescriptorCaffe, []int{23} }
 
+// Default_DropoutParameter_DropoutRatio ...
 const Default_DropoutParameter_DropoutRatio float32 = 0.5
 
+// GetDropoutRatio ...
 func (m *DropoutParameter) GetDropoutRatio() float32 {
 	if m != nil && m.DropoutRatio != nil {
 		return *m.DropoutRatio
@@ -3381,11 +3968,16 @@ type DummyDataParameter struct {
 	Width    []uint32 `protobuf:"varint,5,rep,name=width" json:"width,omitempty"`
 }
 
-func (m *DummyDataParameter) Reset()                    { *m = DummyDataParameter{} }
-func (m *DummyDataParameter) String() string            { return proto.CompactTextString(m) }
-func (*DummyDataParameter) ProtoMessage()               {}
+// Reset ...
+func (m *DummyDataParameter) Reset()                    { *m = DummyDataParameter{} }         
+// String ...
+func (m *DummyDataParameter) String() string            { return proto.CompactTextString(m) } 
+// ProtoMessage ...
+func (*DummyDataParameter) ProtoMessage()               {}                                    
+// Descriptor ...
 func (*DummyDataParameter) Descriptor() ([]byte, []int) { return fileDescriptorCaffe, []int{24} }
 
+// GetDataFiller ...
 func (m *DummyDataParameter) GetDataFiller() []*FillerParameter {
 	if m != nil {
 		return m.DataFiller
@@ -3393,6 +3985,7 @@ func (m *DummyDataParameter) GetDataFiller() []*FillerParameter {
 	return nil
 }
 
+// GetShape ...
 func (m *DummyDataParameter) GetShape() []*BlobShape {
 	if m != nil {
 		return m.Shape
@@ -3400,6 +3993,7 @@ func (m *DummyDataParameter) GetShape() []*BlobShape {
 	return nil
 }
 
+// GetNum ...
 func (m *DummyDataParameter) GetNum() []uint32 {
 	if m != nil {
 		return m.Num
@@ -3407,6 +4001,7 @@ func (m *DummyDataParameter) GetNum() []uint32 {
 	return nil
 }
 
+// GetChannels ...
 func (m *DummyDataParameter) GetChannels() []uint32 {
 	if m != nil {
 		return m.Channels
@@ -3414,6 +4009,7 @@ func (m *DummyDataParameter) GetChannels() []uint32 {
 	return nil
 }
 
+// GetHeight ...
 func (m *DummyDataParameter) GetHeight() []uint32 {
 	if m != nil {
 		return m.Height
@@ -3421,6 +4017,7 @@ func (m *DummyDataParameter) GetHeight() []uint32 {
 	return nil
 }
 
+// GetWidth ...
 func (m *DummyDataParameter) GetWidth() []uint32 {
 	if m != nil {
 		return m.Width
@@ -3428,6 +4025,7 @@ func (m *DummyDataParameter) GetWidth() []uint32 {
 	return nil
 }
 
+// EltwiseParameter ...
 type EltwiseParameter struct {
 	Operation *EltwiseParameter_EltwiseOp `protobuf:"varint,1,opt,name=operation,enum=caffe.EltwiseParameter_EltwiseOp,def=1" json:"operation,omitempty"`
 	Coeff     []float32                   `protobuf:"fixed32,2,rep,name=coeff" json:"coeff,omitempty"`
@@ -3436,14 +4034,21 @@ type EltwiseParameter struct {
 	StableProdGrad *bool `protobuf:"varint,3,opt,name=stable_prod_grad,json=stableProdGrad,def=1" json:"stable_prod_grad,omitempty"`
 }
 
-func (m *EltwiseParameter) Reset()                    { *m = EltwiseParameter{} }
-func (m *EltwiseParameter) String() string            { return proto.CompactTextString(m) }
-func (*EltwiseParameter) ProtoMessage()               {}
+// Reset ...
+func (m *EltwiseParameter) Reset()                    { *m = EltwiseParameter{} }           
+// String ...
+func (m *EltwiseParameter) String() string            { return proto.CompactTextString(m) } 
+// ProtoMessage ...
+func (*EltwiseParameter) ProtoMessage()               {}                                    
+// Descriptor ...
 func (*EltwiseParameter) Descriptor() ([]byte, []int) { return fileDescriptorCaffe, []int{25} }
 
-const Default_EltwiseParameter_Operation EltwiseParameter_EltwiseOp = EltwiseParameter_SUM
+// Default_EltwiseParameter_Operation ...
+const Default_EltwiseParameter_Operation EltwiseParameter_EltwiseOp = EltwiseParameter_SUM 
+// Default_EltwiseParameter_StableProdGrad ...
 const Default_EltwiseParameter_StableProdGrad bool = true
 
+// GetOperation ...
 func (m *EltwiseParameter) GetOperation() EltwiseParameter_EltwiseOp {
 	if m != nil && m.Operation != nil {
 		return *m.Operation
@@ -3451,6 +4056,7 @@ func (m *EltwiseParameter) GetOperation() EltwiseParameter_EltwiseOp {
 	return Default_EltwiseParameter_Operation
 }
 
+// GetCoeff ...
 func (m *EltwiseParameter) GetCoeff() []float32 {
 	if m != nil {
 		return m.Coeff
@@ -3458,6 +4064,7 @@ func (m *EltwiseParameter) GetCoeff() []float32 {
 	return nil
 }
 
+// GetStableProdGrad ...
 func (m *EltwiseParameter) GetStableProdGrad() bool {
 	if m != nil && m.StableProdGrad != nil {
 		return *m.StableProdGrad
@@ -3473,13 +4080,19 @@ type ELUParameter struct {
 	Alpha *float32 `protobuf:"fixed32,1,opt,name=alpha,def=1" json:"alpha,omitempty"`
 }
 
-func (m *ELUParameter) Reset()                    { *m = ELUParameter{} }
-func (m *ELUParameter) String() string            { return proto.CompactTextString(m) }
-func (*ELUParameter) ProtoMessage()               {}
+// Reset ...
+func (m *ELUParameter) Reset()                    { *m = ELUParameter{} }               
+// String ...
+func (m *ELUParameter) String() string            { return proto.CompactTextString(m) } 
+// ProtoMessage ...
+func (*ELUParameter) ProtoMessage()               {}                                    
+// Descriptor ...
 func (*ELUParameter) Descriptor() ([]byte, []int) { return fileDescriptorCaffe, []int{26} }
 
+// Default_ELUParameter_Alpha ...
 const Default_ELUParameter_Alpha float32 = 1
 
+// GetAlpha ...
 func (m *ELUParameter) GetAlpha() float32 {
 	if m != nil && m.Alpha != nil {
 		return *m.Alpha
@@ -3499,13 +4112,19 @@ type EmbedParameter struct {
 	BiasFiller   *FillerParameter `protobuf:"bytes,5,opt,name=bias_filler,json=biasFiller" json:"bias_filler,omitempty"`
 }
 
-func (m *EmbedParameter) Reset()                    { *m = EmbedParameter{} }
-func (m *EmbedParameter) String() string            { return proto.CompactTextString(m) }
-func (*EmbedParameter) ProtoMessage()               {}
+// Reset ...
+func (m *EmbedParameter) Reset()                    { *m = EmbedParameter{} }             
+// String ...
+func (m *EmbedParameter) String() string            { return proto.CompactTextString(m) } 
+// ProtoMessage ...
+func (*EmbedParameter) ProtoMessage()               {}                                    
+// Descriptor ...
 func (*EmbedParameter) Descriptor() ([]byte, []int) { return fileDescriptorCaffe, []int{27} }
 
+// Default_EmbedParameter_BiasTerm ...
 const Default_EmbedParameter_BiasTerm bool = true
 
+// GetNumOutput ...
 func (m *EmbedParameter) GetNumOutput() uint32 {
 	if m != nil {
 		return m.NumOutput
@@ -3513,6 +4132,7 @@ func (m *EmbedParameter) GetNumOutput() uint32 {
 	return 0
 }
 
+// GetInputDim ...
 func (m *EmbedParameter) GetInputDim() uint32 {
 	if m != nil {
 		return m.InputDim
@@ -3520,6 +4140,7 @@ func (m *EmbedParameter) GetInputDim() uint32 {
 	return 0
 }
 
+// GetBiasTerm ...
 func (m *EmbedParameter) GetBiasTerm() bool {
 	if m != nil && m.BiasTerm != nil {
 		return *m.BiasTerm
@@ -3527,6 +4148,7 @@ func (m *EmbedParameter) GetBiasTerm() bool {
 	return Default_EmbedParameter_BiasTerm
 }
 
+// GetWeightFiller ...
 func (m *EmbedParameter) GetWeightFiller() *FillerParameter {
 	if m != nil {
 		return m.WeightFiller
@@ -3534,6 +4156,7 @@ func (m *EmbedParameter) GetWeightFiller() *FillerParameter {
 	return nil
 }
 
+// GetBiasFiller ...
 func (m *EmbedParameter) GetBiasFiller() *FillerParameter {
 	if m != nil {
 		return m.BiasFiller
@@ -3551,15 +4174,23 @@ type ExpParameter struct {
 	Shift *float32 `protobuf:"fixed32,3,opt,name=shift,def=0" json:"shift,omitempty"`
 }
 
-func (m *ExpParameter) Reset()                    { *m = ExpParameter{} }
-func (m *ExpParameter) String() string            { return proto.CompactTextString(m) }
-func (*ExpParameter) ProtoMessage()               {}
+// Reset ...
+func (m *ExpParameter) Reset()                    { *m = ExpParameter{} }               
+// String ...
+func (m *ExpParameter) String() string            { return proto.CompactTextString(m) } 
+// ProtoMessage ...
+func (*ExpParameter) ProtoMessage()               {}                                    
+// Descriptor ...
 func (*ExpParameter) Descriptor() ([]byte, []int) { return fileDescriptorCaffe, []int{28} }
 
-const Default_ExpParameter_Base float32 = -1
-const Default_ExpParameter_Scale float32 = 1
+// Default_ExpParameter_Base ...
+const Default_ExpParameter_Base float32 = -1 
+// Default_ExpParameter_Scale ...
+const Default_ExpParameter_Scale float32 = 1 
+// Default_ExpParameter_Shift ...
 const Default_ExpParameter_Shift float32 = 0
 
+// GetBase ...
 func (m *ExpParameter) GetBase() float32 {
 	if m != nil && m.Base != nil {
 		return *m.Base
@@ -3567,6 +4198,7 @@ func (m *ExpParameter) GetBase() float32 {
 	return Default_ExpParameter_Base
 }
 
+// GetScale ...
 func (m *ExpParameter) GetScale() float32 {
 	if m != nil && m.Scale != nil {
 		return *m.Scale
@@ -3574,6 +4206,7 @@ func (m *ExpParameter) GetScale() float32 {
 	return Default_ExpParameter_Scale
 }
 
+// GetShift ...
 func (m *ExpParameter) GetShift() float32 {
 	if m != nil && m.Shift != nil {
 		return *m.Shift
@@ -3592,14 +4225,21 @@ type FlattenParameter struct {
 	EndAxis *int32 `protobuf:"varint,2,opt,name=end_axis,json=endAxis,def=-1" json:"end_axis,omitempty"`
 }
 
-func (m *FlattenParameter) Reset()                    { *m = FlattenParameter{} }
-func (m *FlattenParameter) String() string            { return proto.CompactTextString(m) }
-func (*FlattenParameter) ProtoMessage()               {}
+// Reset ...
+func (m *FlattenParameter) Reset()                    { *m = FlattenParameter{} }           
+// String ...
+func (m *FlattenParameter) String() string            { return proto.CompactTextString(m) } 
+// ProtoMessage ...
+func (*FlattenParameter) ProtoMessage()               {}                                    
+// Descriptor ...
 func (*FlattenParameter) Descriptor() ([]byte, []int) { return fileDescriptorCaffe, []int{29} }
 
-const Default_FlattenParameter_Axis int32 = 1
+// Default_FlattenParameter_Axis ...
+const Default_FlattenParameter_Axis int32 = 1 
+// Default_FlattenParameter_EndAxis ...
 const Default_FlattenParameter_EndAxis int32 = -1
 
+// GetAxis ...
 func (m *FlattenParameter) GetAxis() int32 {
 	if m != nil && m.Axis != nil {
 		return *m.Axis
@@ -3607,6 +4247,7 @@ func (m *FlattenParameter) GetAxis() int32 {
 	return Default_FlattenParameter_Axis
 }
 
+// GetEndAxis ...
 func (m *FlattenParameter) GetEndAxis() int32 {
 	if m != nil && m.EndAxis != nil {
 		return *m.EndAxis
@@ -3628,13 +4269,19 @@ type HDF5DataParameter struct {
 	Shuffle *bool `protobuf:"varint,3,opt,name=shuffle,def=0" json:"shuffle,omitempty"`
 }
 
-func (m *HDF5DataParameter) Reset()                    { *m = HDF5DataParameter{} }
-func (m *HDF5DataParameter) String() string            { return proto.CompactTextString(m) }
-func (*HDF5DataParameter) ProtoMessage()               {}
+// Reset ...
+func (m *HDF5DataParameter) Reset()                    { *m = HDF5DataParameter{} }          
+// String ...
+func (m *HDF5DataParameter) String() string            { return proto.CompactTextString(m) } 
+// ProtoMessage ...
+func (*HDF5DataParameter) ProtoMessage()               {}                                    
+// Descriptor ...
 func (*HDF5DataParameter) Descriptor() ([]byte, []int) { return fileDescriptorCaffe, []int{30} }
 
+// Default_HDF5DataParameter_Shuffle ...
 const Default_HDF5DataParameter_Shuffle bool = false
 
+// GetSource ...
 func (m *HDF5DataParameter) GetSource() string {
 	if m != nil {
 		return m.Source
@@ -3642,6 +4289,7 @@ func (m *HDF5DataParameter) GetSource() string {
 	return ""
 }
 
+// GetBatchSize ...
 func (m *HDF5DataParameter) GetBatchSize() uint32 {
 	if m != nil {
 		return m.BatchSize
@@ -3649,6 +4297,7 @@ func (m *HDF5DataParameter) GetBatchSize() uint32 {
 	return 0
 }
 
+// GetShuffle ...
 func (m *HDF5DataParameter) GetShuffle() bool {
 	if m != nil && m.Shuffle != nil {
 		return *m.Shuffle
@@ -3656,15 +4305,21 @@ func (m *HDF5DataParameter) GetShuffle() bool {
 	return Default_HDF5DataParameter_Shuffle
 }
 
+// HDF5OutputParameter ...
 type HDF5OutputParameter struct {
 	FileName string `protobuf:"bytes,1,opt,name=file_name,json=fileName" json:"file_name"`
 }
 
-func (m *HDF5OutputParameter) Reset()                    { *m = HDF5OutputParameter{} }
-func (m *HDF5OutputParameter) String() string            { return proto.CompactTextString(m) }
-func (*HDF5OutputParameter) ProtoMessage()               {}
+// Reset ...
+func (m *HDF5OutputParameter) Reset()                    { *m = HDF5OutputParameter{} }        
+// String ...
+func (m *HDF5OutputParameter) String() string            { return proto.CompactTextString(m) } 
+// ProtoMessage ...
+func (*HDF5OutputParameter) ProtoMessage()               {}                                    
+// Descriptor ...
 func (*HDF5OutputParameter) Descriptor() ([]byte, []int) { return fileDescriptorCaffe, []int{31} }
 
+// GetFileName ...
 func (m *HDF5OutputParameter) GetFileName() string {
 	if m != nil {
 		return m.FileName
@@ -3672,18 +4327,25 @@ func (m *HDF5OutputParameter) GetFileName() string {
 	return ""
 }
 
+// HingeLossParameter ...
 type HingeLossParameter struct {
 	// Specify the Norm to use L1 or L2
 	Norm *HingeLossParameter_Norm `protobuf:"varint,1,opt,name=norm,enum=caffe.HingeLossParameter_Norm,def=1" json:"norm,omitempty"`
 }
 
-func (m *HingeLossParameter) Reset()                    { *m = HingeLossParameter{} }
-func (m *HingeLossParameter) String() string            { return proto.CompactTextString(m) }
-func (*HingeLossParameter) ProtoMessage()               {}
+// Reset ...
+func (m *HingeLossParameter) Reset()                    { *m = HingeLossParameter{} }         
+// String ...
+func (m *HingeLossParameter) String() string            { return proto.CompactTextString(m) } 
+// ProtoMessage ...
+func (*HingeLossParameter) ProtoMessage()               {}                                    
+// Descriptor ...
 func (*HingeLossParameter) Descriptor() ([]byte, []int) { return fileDescriptorCaffe, []int{32} }
 
+// Default_HingeLossParameter_Norm ...
 const Default_HingeLossParameter_Norm HingeLossParameter_Norm = HingeLossParameter_L1
 
+// GetNorm ...
 func (m *HingeLossParameter) GetNorm() HingeLossParameter_Norm {
 	if m != nil && m.Norm != nil {
 		return *m.Norm
@@ -3691,6 +4353,7 @@ func (m *HingeLossParameter) GetNorm() HingeLossParameter_Norm {
 	return Default_HingeLossParameter_Norm
 }
 
+// ImageDataParameter ...
 type ImageDataParameter struct {
 	// Specify the data source.
 	Source string `protobuf:"bytes,1,opt,name=source" json:"source"`
@@ -3722,21 +4385,35 @@ type ImageDataParameter struct {
 	RootFolder *string `protobuf:"bytes,12,opt,name=root_folder,json=rootFolder,def=" json:"root_folder,omitempty"`
 }
 
-func (m *ImageDataParameter) Reset()                    { *m = ImageDataParameter{} }
-func (m *ImageDataParameter) String() string            { return proto.CompactTextString(m) }
-func (*ImageDataParameter) ProtoMessage()               {}
+// Reset ...
+func (m *ImageDataParameter) Reset()                    { *m = ImageDataParameter{} }         
+// String ...
+func (m *ImageDataParameter) String() string            { return proto.CompactTextString(m) } 
+// ProtoMessage ...
+func (*ImageDataParameter) ProtoMessage()               {}                                    
+// Descriptor ...
 func (*ImageDataParameter) Descriptor() ([]byte, []int) { return fileDescriptorCaffe, []int{33} }
 
-const Default_ImageDataParameter_BatchSize uint32 = 1
-const Default_ImageDataParameter_RandSkip uint32 = 0
-const Default_ImageDataParameter_Shuffle bool = false
-const Default_ImageDataParameter_NewHeight uint32 = 0
-const Default_ImageDataParameter_NewWidth uint32 = 0
-const Default_ImageDataParameter_IsColor bool = true
-const Default_ImageDataParameter_Scale float32 = 1
-const Default_ImageDataParameter_CropSize uint32 = 0
+// Default_ImageDataParameter_BatchSize ...
+const Default_ImageDataParameter_BatchSize uint32 = 1 
+// Default_ImageDataParameter_RandSkip ...
+const Default_ImageDataParameter_RandSkip uint32 = 0  
+// Default_ImageDataParameter_Shuffle ...
+const Default_ImageDataParameter_Shuffle bool = false 
+// Default_ImageDataParameter_NewHeight ...
+const Default_ImageDataParameter_NewHeight uint32 = 0 
+// Default_ImageDataParameter_NewWidth ...
+const Default_ImageDataParameter_NewWidth uint32 = 0  
+// Default_ImageDataParameter_IsColor ...
+const Default_ImageDataParameter_IsColor bool = true  
+// Default_ImageDataParameter_Scale ...
+const Default_ImageDataParameter_Scale float32 = 1    
+// Default_ImageDataParameter_CropSize ...
+const Default_ImageDataParameter_CropSize uint32 = 0  
+// Default_ImageDataParameter_Mirror ...
 const Default_ImageDataParameter_Mirror bool = false
 
+// GetSource ...
 func (m *ImageDataParameter) GetSource() string {
 	if m != nil {
 		return m.Source
@@ -3744,6 +4421,7 @@ func (m *ImageDataParameter) GetSource() string {
 	return ""
 }
 
+// GetBatchSize ...
 func (m *ImageDataParameter) GetBatchSize() uint32 {
 	if m != nil && m.BatchSize != nil {
 		return *m.BatchSize
@@ -3751,6 +4429,7 @@ func (m *ImageDataParameter) GetBatchSize() uint32 {
 	return Default_ImageDataParameter_BatchSize
 }
 
+// GetRandSkip ...
 func (m *ImageDataParameter) GetRandSkip() uint32 {
 	if m != nil && m.RandSkip != nil {
 		return *m.RandSkip
@@ -3758,6 +4437,7 @@ func (m *ImageDataParameter) GetRandSkip() uint32 {
 	return Default_ImageDataParameter_RandSkip
 }
 
+// GetShuffle ...
 func (m *ImageDataParameter) GetShuffle() bool {
 	if m != nil && m.Shuffle != nil {
 		return *m.Shuffle
@@ -3765,6 +4445,7 @@ func (m *ImageDataParameter) GetShuffle() bool {
 	return Default_ImageDataParameter_Shuffle
 }
 
+// GetNewHeight ...
 func (m *ImageDataParameter) GetNewHeight() uint32 {
 	if m != nil && m.NewHeight != nil {
 		return *m.NewHeight
@@ -3772,6 +4453,7 @@ func (m *ImageDataParameter) GetNewHeight() uint32 {
 	return Default_ImageDataParameter_NewHeight
 }
 
+// GetNewWidth ...
 func (m *ImageDataParameter) GetNewWidth() uint32 {
 	if m != nil && m.NewWidth != nil {
 		return *m.NewWidth
@@ -3779,6 +4461,7 @@ func (m *ImageDataParameter) GetNewWidth() uint32 {
 	return Default_ImageDataParameter_NewWidth
 }
 
+// GetIsColor ...
 func (m *ImageDataParameter) GetIsColor() bool {
 	if m != nil && m.IsColor != nil {
 		return *m.IsColor
@@ -3786,6 +4469,7 @@ func (m *ImageDataParameter) GetIsColor() bool {
 	return Default_ImageDataParameter_IsColor
 }
 
+// GetScale ...
 func (m *ImageDataParameter) GetScale() float32 {
 	if m != nil && m.Scale != nil {
 		return *m.Scale
@@ -3793,6 +4477,7 @@ func (m *ImageDataParameter) GetScale() float32 {
 	return Default_ImageDataParameter_Scale
 }
 
+// GetMeanFile ...
 func (m *ImageDataParameter) GetMeanFile() string {
 	if m != nil {
 		return m.MeanFile
@@ -3800,6 +4485,7 @@ func (m *ImageDataParameter) GetMeanFile() string {
 	return ""
 }
 
+// GetCropSize ...
 func (m *ImageDataParameter) GetCropSize() uint32 {
 	if m != nil && m.CropSize != nil {
 		return *m.CropSize
@@ -3807,6 +4493,7 @@ func (m *ImageDataParameter) GetCropSize() uint32 {
 	return Default_ImageDataParameter_CropSize
 }
 
+// GetMirror ...
 func (m *ImageDataParameter) GetMirror() bool {
 	if m != nil && m.Mirror != nil {
 		return *m.Mirror
@@ -3814,6 +4501,7 @@ func (m *ImageDataParameter) GetMirror() bool {
 	return Default_ImageDataParameter_Mirror
 }
 
+// GetRootFolder ...
 func (m *ImageDataParameter) GetRootFolder() string {
 	if m != nil && m.RootFolder != nil {
 		return *m.RootFolder
@@ -3821,16 +4509,22 @@ func (m *ImageDataParameter) GetRootFolder() string {
 	return ""
 }
 
+// InfogainLossParameter ...
 type InfogainLossParameter struct {
 	// Specify the infogain matrix source.
 	Source string `protobuf:"bytes,1,opt,name=source" json:"source"`
 }
 
-func (m *InfogainLossParameter) Reset()                    { *m = InfogainLossParameter{} }
-func (m *InfogainLossParameter) String() string            { return proto.CompactTextString(m) }
-func (*InfogainLossParameter) ProtoMessage()               {}
+// Reset ...
+func (m *InfogainLossParameter) Reset()                    { *m = InfogainLossParameter{} }      
+// String ...
+func (m *InfogainLossParameter) String() string            { return proto.CompactTextString(m) } 
+// ProtoMessage ...
+func (*InfogainLossParameter) ProtoMessage()               {}                                    
+// Descriptor ...
 func (*InfogainLossParameter) Descriptor() ([]byte, []int) { return fileDescriptorCaffe, []int{34} }
 
+// GetSource ...
 func (m *InfogainLossParameter) GetSource() string {
 	if m != nil {
 		return m.Source
@@ -3838,6 +4532,7 @@ func (m *InfogainLossParameter) GetSource() string {
 	return ""
 }
 
+// InnerProductParameter ...
 type InnerProductParameter struct {
 	NumOutput    uint32           `protobuf:"varint,1,opt,name=num_output,json=numOutput" json:"num_output"`
 	BiasTerm     *bool            `protobuf:"varint,2,opt,name=bias_term,json=biasTerm,def=1" json:"bias_term,omitempty"`
@@ -3854,15 +4549,23 @@ type InnerProductParameter struct {
 	Transpose *bool `protobuf:"varint,6,opt,name=transpose,def=0" json:"transpose,omitempty"`
 }
 
-func (m *InnerProductParameter) Reset()                    { *m = InnerProductParameter{} }
-func (m *InnerProductParameter) String() string            { return proto.CompactTextString(m) }
-func (*InnerProductParameter) ProtoMessage()               {}
+// Reset ...
+func (m *InnerProductParameter) Reset()                    { *m = InnerProductParameter{} }      
+// String ...
+func (m *InnerProductParameter) String() string            { return proto.CompactTextString(m) } 
+// ProtoMessage ...
+func (*InnerProductParameter) ProtoMessage()               {}                                    
+// Descriptor ...
 func (*InnerProductParameter) Descriptor() ([]byte, []int) { return fileDescriptorCaffe, []int{35} }
 
-const Default_InnerProductParameter_BiasTerm bool = true
-const Default_InnerProductParameter_Axis int32 = 1
+// Default_InnerProductParameter_BiasTerm ...
+const Default_InnerProductParameter_BiasTerm bool = true 
+// Default_InnerProductParameter_Axis ...
+const Default_InnerProductParameter_Axis int32 = 1       
+// Default_InnerProductParameter_Transpose ...
 const Default_InnerProductParameter_Transpose bool = false
 
+// GetNumOutput ...
 func (m *InnerProductParameter) GetNumOutput() uint32 {
 	if m != nil {
 		return m.NumOutput
@@ -3870,6 +4573,7 @@ func (m *InnerProductParameter) GetNumOutput() uint32 {
 	return 0
 }
 
+// GetBiasTerm ...
 func (m *InnerProductParameter) GetBiasTerm() bool {
 	if m != nil && m.BiasTerm != nil {
 		return *m.BiasTerm
@@ -3877,6 +4581,7 @@ func (m *InnerProductParameter) GetBiasTerm() bool {
 	return Default_InnerProductParameter_BiasTerm
 }
 
+// GetWeightFiller ...
 func (m *InnerProductParameter) GetWeightFiller() *FillerParameter {
 	if m != nil {
 		return m.WeightFiller
@@ -3884,6 +4589,7 @@ func (m *InnerProductParameter) GetWeightFiller() *FillerParameter {
 	return nil
 }
 
+// GetBiasFiller ...
 func (m *InnerProductParameter) GetBiasFiller() *FillerParameter {
 	if m != nil {
 		return m.BiasFiller
@@ -3891,6 +4597,7 @@ func (m *InnerProductParameter) GetBiasFiller() *FillerParameter {
 	return nil
 }
 
+// GetAxis ...
 func (m *InnerProductParameter) GetAxis() int32 {
 	if m != nil && m.Axis != nil {
 		return *m.Axis
@@ -3898,6 +4605,7 @@ func (m *InnerProductParameter) GetAxis() int32 {
 	return Default_InnerProductParameter_Axis
 }
 
+// GetTranspose ...
 func (m *InnerProductParameter) GetTranspose() bool {
 	if m != nil && m.Transpose != nil {
 		return *m.Transpose
@@ -3905,6 +4613,7 @@ func (m *InnerProductParameter) GetTranspose() bool {
 	return Default_InnerProductParameter_Transpose
 }
 
+// InputParameter ...
 type InputParameter struct {
 	// This layer produces N >= 1 top blob(s) to be assigned manually.
 	// Define N shapes to set a shape for each top.
@@ -3913,11 +4622,16 @@ type InputParameter struct {
 	Shape []*BlobShape `protobuf:"bytes,1,rep,name=shape" json:"shape,omitempty"`
 }
 
-func (m *InputParameter) Reset()                    { *m = InputParameter{} }
-func (m *InputParameter) String() string            { return proto.CompactTextString(m) }
-func (*InputParameter) ProtoMessage()               {}
+// Reset ...
+func (m *InputParameter) Reset()                    { *m = InputParameter{} }             
+// String ...
+func (m *InputParameter) String() string            { return proto.CompactTextString(m) } 
+// ProtoMessage ...
+func (*InputParameter) ProtoMessage()               {}                                    
+// Descriptor ...
 func (*InputParameter) Descriptor() ([]byte, []int) { return fileDescriptorCaffe, []int{36} }
 
+// GetShape ...
 func (m *InputParameter) GetShape() []*BlobShape {
 	if m != nil {
 		return m.Shape
@@ -3935,15 +4649,23 @@ type LogParameter struct {
 	Shift *float32 `protobuf:"fixed32,3,opt,name=shift,def=0" json:"shift,omitempty"`
 }
 
-func (m *LogParameter) Reset()                    { *m = LogParameter{} }
-func (m *LogParameter) String() string            { return proto.CompactTextString(m) }
-func (*LogParameter) ProtoMessage()               {}
+// Reset ...
+func (m *LogParameter) Reset()                    { *m = LogParameter{} }               
+// String ...
+func (m *LogParameter) String() string            { return proto.CompactTextString(m) } 
+// ProtoMessage ...
+func (*LogParameter) ProtoMessage()               {}                                    
+// Descriptor ...
 func (*LogParameter) Descriptor() ([]byte, []int) { return fileDescriptorCaffe, []int{37} }
 
-const Default_LogParameter_Base float32 = -1
-const Default_LogParameter_Scale float32 = 1
+// Default_LogParameter_Base ...
+const Default_LogParameter_Base float32 = -1 
+// Default_LogParameter_Scale ...
+const Default_LogParameter_Scale float32 = 1 
+// Default_LogParameter_Shift ...
 const Default_LogParameter_Shift float32 = 0
 
+// GetBase ...
 func (m *LogParameter) GetBase() float32 {
 	if m != nil && m.Base != nil {
 		return *m.Base
@@ -3951,6 +4673,7 @@ func (m *LogParameter) GetBase() float32 {
 	return Default_LogParameter_Base
 }
 
+// GetScale ...
 func (m *LogParameter) GetScale() float32 {
 	if m != nil && m.Scale != nil {
 		return *m.Scale
@@ -3958,6 +4681,7 @@ func (m *LogParameter) GetScale() float32 {
 	return Default_LogParameter_Scale
 }
 
+// GetShift ...
 func (m *LogParameter) GetShift() float32 {
 	if m != nil && m.Shift != nil {
 		return *m.Shift
@@ -3975,18 +4699,29 @@ type LRNParameter struct {
 	Engine     *LRNParameter_Engine     `protobuf:"varint,6,opt,name=engine,enum=caffe.LRNParameter_Engine,def=0" json:"engine,omitempty"`
 }
 
-func (m *LRNParameter) Reset()                    { *m = LRNParameter{} }
-func (m *LRNParameter) String() string            { return proto.CompactTextString(m) }
-func (*LRNParameter) ProtoMessage()               {}
+// Reset ...
+func (m *LRNParameter) Reset()                    { *m = LRNParameter{} }               
+// String ...
+func (m *LRNParameter) String() string            { return proto.CompactTextString(m) } 
+// ProtoMessage ...
+func (*LRNParameter) ProtoMessage()               {}                                    
+// Descriptor ...
 func (*LRNParameter) Descriptor() ([]byte, []int) { return fileDescriptorCaffe, []int{38} }
 
-const Default_LRNParameter_LocalSize uint32 = 5
-const Default_LRNParameter_Alpha float32 = 1
-const Default_LRNParameter_Beta float32 = 0.75
-const Default_LRNParameter_NormRegion LRNParameter_NormRegion = LRNParameter_ACROSS_CHANNELS
-const Default_LRNParameter_K float32 = 1
+// Default_LRNParameter_LocalSize ...
+const Default_LRNParameter_LocalSize uint32 = 5                                              
+// Default_LRNParameter_Alpha ...
+const Default_LRNParameter_Alpha float32 = 1                                                 
+// Default_LRNParameter_Beta ...
+const Default_LRNParameter_Beta float32 = 0.75                                               
+// Default_LRNParameter_NormRegion ...
+const Default_LRNParameter_NormRegion LRNParameter_NormRegion = LRNParameter_ACROSS_CHANNELS 
+// Default_LRNParameter_K ...
+const Default_LRNParameter_K float32 = 1                                                     
+// Default_LRNParameter_Engine ...
 const Default_LRNParameter_Engine LRNParameter_Engine = LRNParameter_DEFAULT
 
+// GetLocalSize ...
 func (m *LRNParameter) GetLocalSize() uint32 {
 	if m != nil && m.LocalSize != nil {
 		return *m.LocalSize
@@ -3994,6 +4729,7 @@ func (m *LRNParameter) GetLocalSize() uint32 {
 	return Default_LRNParameter_LocalSize
 }
 
+// GetAlpha ...
 func (m *LRNParameter) GetAlpha() float32 {
 	if m != nil && m.Alpha != nil {
 		return *m.Alpha
@@ -4001,6 +4737,7 @@ func (m *LRNParameter) GetAlpha() float32 {
 	return Default_LRNParameter_Alpha
 }
 
+// GetBeta ...
 func (m *LRNParameter) GetBeta() float32 {
 	if m != nil && m.Beta != nil {
 		return *m.Beta
@@ -4008,6 +4745,7 @@ func (m *LRNParameter) GetBeta() float32 {
 	return Default_LRNParameter_Beta
 }
 
+// GetNormRegion ...
 func (m *LRNParameter) GetNormRegion() LRNParameter_NormRegion {
 	if m != nil && m.NormRegion != nil {
 		return *m.NormRegion
@@ -4015,6 +4753,7 @@ func (m *LRNParameter) GetNormRegion() LRNParameter_NormRegion {
 	return Default_LRNParameter_NormRegion
 }
 
+// GetK ...
 func (m *LRNParameter) GetK() float32 {
 	if m != nil && m.K != nil {
 		return *m.K
@@ -4022,6 +4761,7 @@ func (m *LRNParameter) GetK() float32 {
 	return Default_LRNParameter_K
 }
 
+// GetEngine ...
 func (m *LRNParameter) GetEngine() LRNParameter_Engine {
 	if m != nil && m.Engine != nil {
 		return *m.Engine
@@ -4029,6 +4769,7 @@ func (m *LRNParameter) GetEngine() LRNParameter_Engine {
 	return Default_LRNParameter_Engine
 }
 
+// MemoryDataParameter ...
 type MemoryDataParameter struct {
 	BatchSize uint32 `protobuf:"varint,1,opt,name=batch_size,json=batchSize" json:"batch_size"`
 	Channels  uint32 `protobuf:"varint,2,opt,name=channels" json:"channels"`
@@ -4036,11 +4777,16 @@ type MemoryDataParameter struct {
 	Width     uint32 `protobuf:"varint,4,opt,name=width" json:"width"`
 }
 
-func (m *MemoryDataParameter) Reset()                    { *m = MemoryDataParameter{} }
-func (m *MemoryDataParameter) String() string            { return proto.CompactTextString(m) }
-func (*MemoryDataParameter) ProtoMessage()               {}
+// Reset ...
+func (m *MemoryDataParameter) Reset()                    { *m = MemoryDataParameter{} }        
+// String ...
+func (m *MemoryDataParameter) String() string            { return proto.CompactTextString(m) } 
+// ProtoMessage ...
+func (*MemoryDataParameter) ProtoMessage()               {}                                    
+// Descriptor ...
 func (*MemoryDataParameter) Descriptor() ([]byte, []int) { return fileDescriptorCaffe, []int{39} }
 
+// GetBatchSize ...
 func (m *MemoryDataParameter) GetBatchSize() uint32 {
 	if m != nil {
 		return m.BatchSize
@@ -4048,6 +4794,7 @@ func (m *MemoryDataParameter) GetBatchSize() uint32 {
 	return 0
 }
 
+// GetChannels ...
 func (m *MemoryDataParameter) GetChannels() uint32 {
 	if m != nil {
 		return m.Channels
@@ -4055,6 +4802,7 @@ func (m *MemoryDataParameter) GetChannels() uint32 {
 	return 0
 }
 
+// GetHeight ...
 func (m *MemoryDataParameter) GetHeight() uint32 {
 	if m != nil {
 		return m.Height
@@ -4062,6 +4810,7 @@ func (m *MemoryDataParameter) GetHeight() uint32 {
 	return 0
 }
 
+// GetWidth ...
 func (m *MemoryDataParameter) GetWidth() uint32 {
 	if m != nil {
 		return m.Width
@@ -4069,6 +4818,7 @@ func (m *MemoryDataParameter) GetWidth() uint32 {
 	return 0
 }
 
+// MVNParameter ...
 type MVNParameter struct {
 	// This parameter can be set to false to normalize mean only
 	NormalizeVariance *bool `protobuf:"varint,1,opt,name=normalize_variance,json=normalizeVariance,def=1" json:"normalize_variance,omitempty"`
@@ -4078,15 +4828,23 @@ type MVNParameter struct {
 	Eps *float32 `protobuf:"fixed32,3,opt,name=eps,def=1e-09" json:"eps,omitempty"`
 }
 
-func (m *MVNParameter) Reset()                    { *m = MVNParameter{} }
-func (m *MVNParameter) String() string            { return proto.CompactTextString(m) }
-func (*MVNParameter) ProtoMessage()               {}
+// Reset ...
+func (m *MVNParameter) Reset()                    { *m = MVNParameter{} }               
+// String ...
+func (m *MVNParameter) String() string            { return proto.CompactTextString(m) } 
+// ProtoMessage ...
+func (*MVNParameter) ProtoMessage()               {}                                    
+// Descriptor ...
 func (*MVNParameter) Descriptor() ([]byte, []int) { return fileDescriptorCaffe, []int{40} }
 
-const Default_MVNParameter_NormalizeVariance bool = true
-const Default_MVNParameter_AcrossChannels bool = false
+// Default_MVNParameter_NormalizeVariance ...
+const Default_MVNParameter_NormalizeVariance bool = true 
+// Default_MVNParameter_AcrossChannels ...
+const Default_MVNParameter_AcrossChannels bool = false   
+// Default_MVNParameter_Eps ...
 const Default_MVNParameter_Eps float32 = 1e-09
 
+// GetNormalizeVariance ...
 func (m *MVNParameter) GetNormalizeVariance() bool {
 	if m != nil && m.NormalizeVariance != nil {
 		return *m.NormalizeVariance
@@ -4094,6 +4852,7 @@ func (m *MVNParameter) GetNormalizeVariance() bool {
 	return Default_MVNParameter_NormalizeVariance
 }
 
+// GetAcrossChannels ...
 func (m *MVNParameter) GetAcrossChannels() bool {
 	if m != nil && m.AcrossChannels != nil {
 		return *m.AcrossChannels
@@ -4101,6 +4860,7 @@ func (m *MVNParameter) GetAcrossChannels() bool {
 	return Default_MVNParameter_AcrossChannels
 }
 
+// GetEps ...
 func (m *MVNParameter) GetEps() float32 {
 	if m != nil && m.Eps != nil {
 		return *m.Eps
@@ -4108,15 +4868,21 @@ func (m *MVNParameter) GetEps() float32 {
 	return Default_MVNParameter_Eps
 }
 
+// ParameterParameter ...
 type ParameterParameter struct {
 	Shape *BlobShape `protobuf:"bytes,1,opt,name=shape" json:"shape,omitempty"`
 }
 
-func (m *ParameterParameter) Reset()                    { *m = ParameterParameter{} }
-func (m *ParameterParameter) String() string            { return proto.CompactTextString(m) }
-func (*ParameterParameter) ProtoMessage()               {}
+// Reset ...
+func (m *ParameterParameter) Reset()                    { *m = ParameterParameter{} }         
+// String ...
+func (m *ParameterParameter) String() string            { return proto.CompactTextString(m) } 
+// ProtoMessage ...
+func (*ParameterParameter) ProtoMessage()               {}                                    
+// Descriptor ...
 func (*ParameterParameter) Descriptor() ([]byte, []int) { return fileDescriptorCaffe, []int{41} }
 
+// GetShape ...
 func (m *ParameterParameter) GetShape() *BlobShape {
 	if m != nil {
 		return m.Shape
@@ -4124,6 +4890,7 @@ func (m *ParameterParameter) GetShape() *BlobShape {
 	return nil
 }
 
+// PoolingParameter ...
 type PoolingParameter struct {
 	Pool *PoolingParameter_PoolMethod `protobuf:"varint,1,opt,name=pool,enum=caffe.PoolingParameter_PoolMethod,def=0" json:"pool,omitempty"`
 	// Pad, kernel size, and stride are all given as a single value for equal
@@ -4143,19 +4910,31 @@ type PoolingParameter struct {
 	GlobalPooling *bool `protobuf:"varint,12,opt,name=global_pooling,json=globalPooling,def=0" json:"global_pooling,omitempty"`
 }
 
-func (m *PoolingParameter) Reset()                    { *m = PoolingParameter{} }
-func (m *PoolingParameter) String() string            { return proto.CompactTextString(m) }
-func (*PoolingParameter) ProtoMessage()               {}
+// Reset ...
+func (m *PoolingParameter) Reset()                    { *m = PoolingParameter{} }           
+// String ...
+func (m *PoolingParameter) String() string            { return proto.CompactTextString(m) } 
+// ProtoMessage ...
+func (*PoolingParameter) ProtoMessage()               {}                                    
+// Descriptor ...
 func (*PoolingParameter) Descriptor() ([]byte, []int) { return fileDescriptorCaffe, []int{42} }
 
-const Default_PoolingParameter_Pool PoolingParameter_PoolMethod = PoolingParameter_MAX
-const Default_PoolingParameter_Pad uint32 = 0
-const Default_PoolingParameter_PadH uint32 = 0
-const Default_PoolingParameter_PadW uint32 = 0
-const Default_PoolingParameter_Stride uint32 = 1
-const Default_PoolingParameter_Engine PoolingParameter_Engine = PoolingParameter_DEFAULT
+// Default_PoolingParameter_Pool ...
+const Default_PoolingParameter_Pool PoolingParameter_PoolMethod = PoolingParameter_MAX   
+// Default_PoolingParameter_Pad ...
+const Default_PoolingParameter_Pad uint32 = 0                                            
+// Default_PoolingParameter_PadH ...
+const Default_PoolingParameter_PadH uint32 = 0                                           
+// Default_PoolingParameter_PadW ...
+const Default_PoolingParameter_PadW uint32 = 0                                           
+// Default_PoolingParameter_Stride ...
+const Default_PoolingParameter_Stride uint32 = 1                                         
+// Default_PoolingParameter_Engine ...
+const Default_PoolingParameter_Engine PoolingParameter_Engine = PoolingParameter_DEFAULT 
+// Default_PoolingParameter_GlobalPooling ...
 const Default_PoolingParameter_GlobalPooling bool = false
 
+// GetPool ...
 func (m *PoolingParameter) GetPool() PoolingParameter_PoolMethod {
 	if m != nil && m.Pool != nil {
 		return *m.Pool
@@ -4163,6 +4942,7 @@ func (m *PoolingParameter) GetPool() PoolingParameter_PoolMethod {
 	return Default_PoolingParameter_Pool
 }
 
+// GetPad ...
 func (m *PoolingParameter) GetPad() uint32 {
 	if m != nil && m.Pad != nil {
 		return *m.Pad
@@ -4170,6 +4950,7 @@ func (m *PoolingParameter) GetPad() uint32 {
 	return Default_PoolingParameter_Pad
 }
 
+// GetPadH ...
 func (m *PoolingParameter) GetPadH() uint32 {
 	if m != nil && m.PadH != nil {
 		return *m.PadH
@@ -4177,6 +4958,7 @@ func (m *PoolingParameter) GetPadH() uint32 {
 	return Default_PoolingParameter_PadH
 }
 
+// GetPadW ...
 func (m *PoolingParameter) GetPadW() uint32 {
 	if m != nil && m.PadW != nil {
 		return *m.PadW
@@ -4184,6 +4966,7 @@ func (m *PoolingParameter) GetPadW() uint32 {
 	return Default_PoolingParameter_PadW
 }
 
+// GetKernelSize ...
 func (m *PoolingParameter) GetKernelSize() uint32 {
 	if m != nil {
 		return m.KernelSize
@@ -4191,6 +4974,7 @@ func (m *PoolingParameter) GetKernelSize() uint32 {
 	return 0
 }
 
+// GetKernelH ...
 func (m *PoolingParameter) GetKernelH() uint32 {
 	if m != nil {
 		return m.KernelH
@@ -4198,6 +4982,7 @@ func (m *PoolingParameter) GetKernelH() uint32 {
 	return 0
 }
 
+// GetKernelW ...
 func (m *PoolingParameter) GetKernelW() uint32 {
 	if m != nil {
 		return m.KernelW
@@ -4205,6 +4990,7 @@ func (m *PoolingParameter) GetKernelW() uint32 {
 	return 0
 }
 
+// GetStride ...
 func (m *PoolingParameter) GetStride() uint32 {
 	if m != nil && m.Stride != nil {
 		return *m.Stride
@@ -4212,6 +4998,7 @@ func (m *PoolingParameter) GetStride() uint32 {
 	return Default_PoolingParameter_Stride
 }
 
+// GetStrideH ...
 func (m *PoolingParameter) GetStrideH() uint32 {
 	if m != nil {
 		return m.StrideH
@@ -4219,6 +5006,7 @@ func (m *PoolingParameter) GetStrideH() uint32 {
 	return 0
 }
 
+// GetStrideW ...
 func (m *PoolingParameter) GetStrideW() uint32 {
 	if m != nil {
 		return m.StrideW
@@ -4226,6 +5014,7 @@ func (m *PoolingParameter) GetStrideW() uint32 {
 	return 0
 }
 
+// GetEngine ...
 func (m *PoolingParameter) GetEngine() PoolingParameter_Engine {
 	if m != nil && m.Engine != nil {
 		return *m.Engine
@@ -4233,6 +5022,7 @@ func (m *PoolingParameter) GetEngine() PoolingParameter_Engine {
 	return Default_PoolingParameter_Engine
 }
 
+// GetGlobalPooling ...
 func (m *PoolingParameter) GetGlobalPooling() bool {
 	if m != nil && m.GlobalPooling != nil {
 		return *m.GlobalPooling
@@ -4240,6 +5030,7 @@ func (m *PoolingParameter) GetGlobalPooling() bool {
 	return Default_PoolingParameter_GlobalPooling
 }
 
+// PowerParameter ...
 type PowerParameter struct {
 	// PowerLayer computes outputs y = (shift + scale * x) ^ power.
 	Power *float32 `protobuf:"fixed32,1,opt,name=power,def=1" json:"power,omitempty"`
@@ -4247,15 +5038,23 @@ type PowerParameter struct {
 	Shift *float32 `protobuf:"fixed32,3,opt,name=shift,def=0" json:"shift,omitempty"`
 }
 
-func (m *PowerParameter) Reset()                    { *m = PowerParameter{} }
-func (m *PowerParameter) String() string            { return proto.CompactTextString(m) }
-func (*PowerParameter) ProtoMessage()               {}
+// Reset ...
+func (m *PowerParameter) Reset()                    { *m = PowerParameter{} }             
+// String ...
+func (m *PowerParameter) String() string            { return proto.CompactTextString(m) } 
+// ProtoMessage ...
+func (*PowerParameter) ProtoMessage()               {}                                    
+// Descriptor ...
 func (*PowerParameter) Descriptor() ([]byte, []int) { return fileDescriptorCaffe, []int{43} }
 
-const Default_PowerParameter_Power float32 = 1
-const Default_PowerParameter_Scale float32 = 1
+// Default_PowerParameter_Power ...
+const Default_PowerParameter_Power float32 = 1 
+// Default_PowerParameter_Scale ...
+const Default_PowerParameter_Scale float32 = 1 
+// Default_PowerParameter_Shift ...
 const Default_PowerParameter_Shift float32 = 0
 
+// GetPower ...
 func (m *PowerParameter) GetPower() float32 {
 	if m != nil && m.Power != nil {
 		return *m.Power
@@ -4263,6 +5062,7 @@ func (m *PowerParameter) GetPower() float32 {
 	return Default_PowerParameter_Power
 }
 
+// GetScale ...
 func (m *PowerParameter) GetScale() float32 {
 	if m != nil && m.Scale != nil {
 		return *m.Scale
@@ -4270,6 +5070,7 @@ func (m *PowerParameter) GetScale() float32 {
 	return Default_PowerParameter_Scale
 }
 
+// GetShift ...
 func (m *PowerParameter) GetShift() float32 {
 	if m != nil && m.Shift != nil {
 		return *m.Shift
@@ -4277,6 +5078,7 @@ func (m *PowerParameter) GetShift() float32 {
 	return Default_PowerParameter_Shift
 }
 
+// PythonParameter ...
 type PythonParameter struct {
 	Module string `protobuf:"bytes,1,opt,name=module" json:"module"`
 	Layer  string `protobuf:"bytes,2,opt,name=layer" json:"layer"`
@@ -4291,13 +5093,19 @@ type PythonParameter struct {
 	ShareInParallel *bool `protobuf:"varint,4,opt,name=share_in_parallel,json=shareInParallel,def=0" json:"share_in_parallel,omitempty"`
 }
 
-func (m *PythonParameter) Reset()                    { *m = PythonParameter{} }
-func (m *PythonParameter) String() string            { return proto.CompactTextString(m) }
-func (*PythonParameter) ProtoMessage()               {}
+// Reset ...
+func (m *PythonParameter) Reset()                    { *m = PythonParameter{} }            
+// String ...
+func (m *PythonParameter) String() string            { return proto.CompactTextString(m) } 
+// ProtoMessage ...
+func (*PythonParameter) ProtoMessage()               {}                                    
+// Descriptor ...
 func (*PythonParameter) Descriptor() ([]byte, []int) { return fileDescriptorCaffe, []int{44} }
 
+// Default_PythonParameter_ShareInParallel ...
 const Default_PythonParameter_ShareInParallel bool = false
 
+// GetModule ...
 func (m *PythonParameter) GetModule() string {
 	if m != nil {
 		return m.Module
@@ -4305,6 +5113,7 @@ func (m *PythonParameter) GetModule() string {
 	return ""
 }
 
+// GetLayer ...
 func (m *PythonParameter) GetLayer() string {
 	if m != nil {
 		return m.Layer
@@ -4312,6 +5121,7 @@ func (m *PythonParameter) GetLayer() string {
 	return ""
 }
 
+// GetParamStr ...
 func (m *PythonParameter) GetParamStr() string {
 	if m != nil && m.ParamStr != nil {
 		return *m.ParamStr
@@ -4319,6 +5129,7 @@ func (m *PythonParameter) GetParamStr() string {
 	return ""
 }
 
+// GetShareInParallel ...
 func (m *PythonParameter) GetShareInParallel() bool {
 	if m != nil && m.ShareInParallel != nil {
 		return *m.ShareInParallel
@@ -4342,15 +5153,23 @@ type RecurrentParameter struct {
 	ExposeHidden *bool `protobuf:"varint,5,opt,name=expose_hidden,json=exposeHidden,def=0" json:"expose_hidden,omitempty"`
 }
 
-func (m *RecurrentParameter) Reset()                    { *m = RecurrentParameter{} }
-func (m *RecurrentParameter) String() string            { return proto.CompactTextString(m) }
-func (*RecurrentParameter) ProtoMessage()               {}
+// Reset ...
+func (m *RecurrentParameter) Reset()                    { *m = RecurrentParameter{} }         
+// String ...
+func (m *RecurrentParameter) String() string            { return proto.CompactTextString(m) } 
+// ProtoMessage ...
+func (*RecurrentParameter) ProtoMessage()               {}                                    
+// Descriptor ...
 func (*RecurrentParameter) Descriptor() ([]byte, []int) { return fileDescriptorCaffe, []int{45} }
 
-const Default_RecurrentParameter_NumOutput uint32 = 0
-const Default_RecurrentParameter_DebugInfo bool = false
+// Default_RecurrentParameter_NumOutput ...
+const Default_RecurrentParameter_NumOutput uint32 = 0   
+// Default_RecurrentParameter_DebugInfo ...
+const Default_RecurrentParameter_DebugInfo bool = false 
+// Default_RecurrentParameter_ExposeHidden ...
 const Default_RecurrentParameter_ExposeHidden bool = false
 
+// GetNumOutput ...
 func (m *RecurrentParameter) GetNumOutput() uint32 {
 	if m != nil && m.NumOutput != nil {
 		return *m.NumOutput
@@ -4358,6 +5177,7 @@ func (m *RecurrentParameter) GetNumOutput() uint32 {
 	return Default_RecurrentParameter_NumOutput
 }
 
+// GetWeightFiller ...
 func (m *RecurrentParameter) GetWeightFiller() *FillerParameter {
 	if m != nil {
 		return m.WeightFiller
@@ -4365,6 +5185,7 @@ func (m *RecurrentParameter) GetWeightFiller() *FillerParameter {
 	return nil
 }
 
+// GetBiasFiller ...
 func (m *RecurrentParameter) GetBiasFiller() *FillerParameter {
 	if m != nil {
 		return m.BiasFiller
@@ -4372,6 +5193,7 @@ func (m *RecurrentParameter) GetBiasFiller() *FillerParameter {
 	return nil
 }
 
+// GetDebugInfo ...
 func (m *RecurrentParameter) GetDebugInfo() bool {
 	if m != nil && m.DebugInfo != nil {
 		return *m.DebugInfo
@@ -4379,6 +5201,7 @@ func (m *RecurrentParameter) GetDebugInfo() bool {
 	return Default_RecurrentParameter_DebugInfo
 }
 
+// GetExposeHidden ...
 func (m *RecurrentParameter) GetExposeHidden() bool {
 	if m != nil && m.ExposeHidden != nil {
 		return *m.ExposeHidden
@@ -4406,15 +5229,23 @@ type ReductionParameter struct {
 	Coeff *float32 `protobuf:"fixed32,3,opt,name=coeff,def=1" json:"coeff,omitempty"`
 }
 
-func (m *ReductionParameter) Reset()                    { *m = ReductionParameter{} }
-func (m *ReductionParameter) String() string            { return proto.CompactTextString(m) }
-func (*ReductionParameter) ProtoMessage()               {}
+// Reset ...
+func (m *ReductionParameter) Reset()                    { *m = ReductionParameter{} }         
+// String ...
+func (m *ReductionParameter) String() string            { return proto.CompactTextString(m) } 
+// ProtoMessage ...
+func (*ReductionParameter) ProtoMessage()               {}                                    
+// Descriptor ...
 func (*ReductionParameter) Descriptor() ([]byte, []int) { return fileDescriptorCaffe, []int{46} }
 
-const Default_ReductionParameter_Operation ReductionParameter_ReductionOp = ReductionParameter_SUM
-const Default_ReductionParameter_Axis int32 = 0
+// Default_ReductionParameter_Operation ...
+const Default_ReductionParameter_Operation ReductionParameter_ReductionOp = ReductionParameter_SUM 
+// Default_ReductionParameter_Axis ...
+const Default_ReductionParameter_Axis int32 = 0                                                    
+// Default_ReductionParameter_Coeff ...
 const Default_ReductionParameter_Coeff float32 = 1
 
+// GetOperation ...
 func (m *ReductionParameter) GetOperation() ReductionParameter_ReductionOp {
 	if m != nil && m.Operation != nil {
 		return *m.Operation
@@ -4422,6 +5253,7 @@ func (m *ReductionParameter) GetOperation() ReductionParameter_ReductionOp {
 	return Default_ReductionParameter_Operation
 }
 
+// GetAxis ...
 func (m *ReductionParameter) GetAxis() int32 {
 	if m != nil && m.Axis != nil {
 		return *m.Axis
@@ -4429,6 +5261,7 @@ func (m *ReductionParameter) GetAxis() int32 {
 	return Default_ReductionParameter_Axis
 }
 
+// GetCoeff ...
 func (m *ReductionParameter) GetCoeff() float32 {
 	if m != nil && m.Coeff != nil {
 		return *m.Coeff
@@ -4447,14 +5280,21 @@ type ReLUParameter struct {
 	Engine        *ReLUParameter_Engine `protobuf:"varint,2,opt,name=engine,enum=caffe.ReLUParameter_Engine,def=0" json:"engine,omitempty"`
 }
 
-func (m *ReLUParameter) Reset()                    { *m = ReLUParameter{} }
-func (m *ReLUParameter) String() string            { return proto.CompactTextString(m) }
-func (*ReLUParameter) ProtoMessage()               {}
+// Reset ...
+func (m *ReLUParameter) Reset()                    { *m = ReLUParameter{} }              
+// String ...
+func (m *ReLUParameter) String() string            { return proto.CompactTextString(m) } 
+// ProtoMessage ...
+func (*ReLUParameter) ProtoMessage()               {}                                    
+// Descriptor ...
 func (*ReLUParameter) Descriptor() ([]byte, []int) { return fileDescriptorCaffe, []int{47} }
 
-const Default_ReLUParameter_NegativeSlope float32 = 0
+// Default_ReLUParameter_NegativeSlope ...
+const Default_ReLUParameter_NegativeSlope float32 = 0 
+// Default_ReLUParameter_Engine ...
 const Default_ReLUParameter_Engine ReLUParameter_Engine = ReLUParameter_DEFAULT
 
+// GetNegativeSlope ...
 func (m *ReLUParameter) GetNegativeSlope() float32 {
 	if m != nil && m.NegativeSlope != nil {
 		return *m.NegativeSlope
@@ -4462,6 +5302,7 @@ func (m *ReLUParameter) GetNegativeSlope() float32 {
 	return Default_ReLUParameter_NegativeSlope
 }
 
+// GetEngine ...
 func (m *ReLUParameter) GetEngine() ReLUParameter_Engine {
 	if m != nil && m.Engine != nil {
 		return *m.Engine
@@ -4469,6 +5310,7 @@ func (m *ReLUParameter) GetEngine() ReLUParameter_Engine {
 	return Default_ReLUParameter_Engine
 }
 
+// ReshapeParameter ...
 type ReshapeParameter struct {
 	// Specify the output dimensions. If some of the dimensions are set to 0,
 	// the corresponding dimension from the bottom layer is used (unchanged).
@@ -4532,14 +5374,21 @@ type ReshapeParameter struct {
 	NumAxes *int32 `protobuf:"varint,3,opt,name=num_axes,json=numAxes,def=-1" json:"num_axes,omitempty"`
 }
 
-func (m *ReshapeParameter) Reset()                    { *m = ReshapeParameter{} }
-func (m *ReshapeParameter) String() string            { return proto.CompactTextString(m) }
-func (*ReshapeParameter) ProtoMessage()               {}
+// Reset ...
+func (m *ReshapeParameter) Reset()                    { *m = ReshapeParameter{} }           
+// String ...
+func (m *ReshapeParameter) String() string            { return proto.CompactTextString(m) } 
+// ProtoMessage ...
+func (*ReshapeParameter) ProtoMessage()               {}                                    
+// Descriptor ...
 func (*ReshapeParameter) Descriptor() ([]byte, []int) { return fileDescriptorCaffe, []int{48} }
 
-const Default_ReshapeParameter_Axis int32 = 0
+// Default_ReshapeParameter_Axis ...
+const Default_ReshapeParameter_Axis int32 = 0 
+// Default_ReshapeParameter_NumAxes ...
 const Default_ReshapeParameter_NumAxes int32 = -1
 
+// GetShape ...
 func (m *ReshapeParameter) GetShape() *BlobShape {
 	if m != nil {
 		return m.Shape
@@ -4547,6 +5396,7 @@ func (m *ReshapeParameter) GetShape() *BlobShape {
 	return nil
 }
 
+// GetAxis ...
 func (m *ReshapeParameter) GetAxis() int32 {
 	if m != nil && m.Axis != nil {
 		return *m.Axis
@@ -4554,6 +5404,7 @@ func (m *ReshapeParameter) GetAxis() int32 {
 	return Default_ReshapeParameter_Axis
 }
 
+// GetNumAxes ...
 func (m *ReshapeParameter) GetNumAxes() int32 {
 	if m != nil && m.NumAxes != nil {
 		return *m.NumAxes
@@ -4561,6 +5412,7 @@ func (m *ReshapeParameter) GetNumAxes() int32 {
 	return Default_ReshapeParameter_NumAxes
 }
 
+// ScaleParameter ...
 type ScaleParameter struct {
 	// The first axis of bottom[0] (the first input Blob) along which to apply
 	// bottom[1] (the second input Blob).  May be negative to index from the end
@@ -4595,15 +5447,23 @@ type ScaleParameter struct {
 	BiasFiller *FillerParameter `protobuf:"bytes,5,opt,name=bias_filler,json=biasFiller" json:"bias_filler,omitempty"`
 }
 
-func (m *ScaleParameter) Reset()                    { *m = ScaleParameter{} }
-func (m *ScaleParameter) String() string            { return proto.CompactTextString(m) }
-func (*ScaleParameter) ProtoMessage()               {}
+// Reset ...
+func (m *ScaleParameter) Reset()                    { *m = ScaleParameter{} }             
+// String ...
+func (m *ScaleParameter) String() string            { return proto.CompactTextString(m) } 
+// ProtoMessage ...
+func (*ScaleParameter) ProtoMessage()               {}                                    
+// Descriptor ...
 func (*ScaleParameter) Descriptor() ([]byte, []int) { return fileDescriptorCaffe, []int{49} }
 
-const Default_ScaleParameter_Axis int32 = 1
-const Default_ScaleParameter_NumAxes int32 = 1
+// Default_ScaleParameter_Axis ...
+const Default_ScaleParameter_Axis int32 = 1    
+// Default_ScaleParameter_NumAxes ...
+const Default_ScaleParameter_NumAxes int32 = 1 
+// Default_ScaleParameter_BiasTerm ...
 const Default_ScaleParameter_BiasTerm bool = false
 
+// GetAxis ...
 func (m *ScaleParameter) GetAxis() int32 {
 	if m != nil && m.Axis != nil {
 		return *m.Axis
@@ -4611,6 +5471,7 @@ func (m *ScaleParameter) GetAxis() int32 {
 	return Default_ScaleParameter_Axis
 }
 
+// GetNumAxes ...
 func (m *ScaleParameter) GetNumAxes() int32 {
 	if m != nil && m.NumAxes != nil {
 		return *m.NumAxes
@@ -4618,6 +5479,7 @@ func (m *ScaleParameter) GetNumAxes() int32 {
 	return Default_ScaleParameter_NumAxes
 }
 
+// GetFiller ...
 func (m *ScaleParameter) GetFiller() *FillerParameter {
 	if m != nil {
 		return m.Filler
@@ -4625,6 +5487,7 @@ func (m *ScaleParameter) GetFiller() *FillerParameter {
 	return nil
 }
 
+// GetBiasTerm ...
 func (m *ScaleParameter) GetBiasTerm() bool {
 	if m != nil && m.BiasTerm != nil {
 		return *m.BiasTerm
@@ -4632,6 +5495,7 @@ func (m *ScaleParameter) GetBiasTerm() bool {
 	return Default_ScaleParameter_BiasTerm
 }
 
+// GetBiasFiller ...
 func (m *ScaleParameter) GetBiasFiller() *FillerParameter {
 	if m != nil {
 		return m.BiasFiller
@@ -4639,17 +5503,24 @@ func (m *ScaleParameter) GetBiasFiller() *FillerParameter {
 	return nil
 }
 
+// SigmoidParameter ...
 type SigmoidParameter struct {
 	Engine *SigmoidParameter_Engine `protobuf:"varint,1,opt,name=engine,enum=caffe.SigmoidParameter_Engine,def=0" json:"engine,omitempty"`
 }
 
-func (m *SigmoidParameter) Reset()                    { *m = SigmoidParameter{} }
-func (m *SigmoidParameter) String() string            { return proto.CompactTextString(m) }
-func (*SigmoidParameter) ProtoMessage()               {}
+// Reset ...
+func (m *SigmoidParameter) Reset()                    { *m = SigmoidParameter{} }           
+// String ...
+func (m *SigmoidParameter) String() string            { return proto.CompactTextString(m) } 
+// ProtoMessage ...
+func (*SigmoidParameter) ProtoMessage()               {}                                    
+// Descriptor ...
 func (*SigmoidParameter) Descriptor() ([]byte, []int) { return fileDescriptorCaffe, []int{50} }
 
+// Default_SigmoidParameter_Engine ...
 const Default_SigmoidParameter_Engine SigmoidParameter_Engine = SigmoidParameter_DEFAULT
 
+// GetEngine ...
 func (m *SigmoidParameter) GetEngine() SigmoidParameter_Engine {
 	if m != nil && m.Engine != nil {
 		return *m.Engine
@@ -4657,6 +5528,7 @@ func (m *SigmoidParameter) GetEngine() SigmoidParameter_Engine {
 	return Default_SigmoidParameter_Engine
 }
 
+// SliceParameter ...
 type SliceParameter struct {
 	// The axis along which to slice -- may be negative to index from the end
 	// (e.g., -1 for the last axis).
@@ -4667,14 +5539,21 @@ type SliceParameter struct {
 	SliceDim *uint32 `protobuf:"varint,1,opt,name=slice_dim,json=sliceDim,def=1" json:"slice_dim,omitempty"`
 }
 
-func (m *SliceParameter) Reset()                    { *m = SliceParameter{} }
-func (m *SliceParameter) String() string            { return proto.CompactTextString(m) }
-func (*SliceParameter) ProtoMessage()               {}
+// Reset ...
+func (m *SliceParameter) Reset()                    { *m = SliceParameter{} }             
+// String ...
+func (m *SliceParameter) String() string            { return proto.CompactTextString(m) } 
+// ProtoMessage ...
+func (*SliceParameter) ProtoMessage()               {}                                    
+// Descriptor ...
 func (*SliceParameter) Descriptor() ([]byte, []int) { return fileDescriptorCaffe, []int{51} }
 
-const Default_SliceParameter_Axis int32 = 1
+// Default_SliceParameter_Axis ...
+const Default_SliceParameter_Axis int32 = 1 
+// Default_SliceParameter_SliceDim ...
 const Default_SliceParameter_SliceDim uint32 = 1
 
+// GetAxis ...
 func (m *SliceParameter) GetAxis() int32 {
 	if m != nil && m.Axis != nil {
 		return *m.Axis
@@ -4682,6 +5561,7 @@ func (m *SliceParameter) GetAxis() int32 {
 	return Default_SliceParameter_Axis
 }
 
+// GetSlicePoint ...
 func (m *SliceParameter) GetSlicePoint() []uint32 {
 	if m != nil {
 		return m.SlicePoint
@@ -4689,6 +5569,7 @@ func (m *SliceParameter) GetSlicePoint() []uint32 {
 	return nil
 }
 
+// GetSliceDim ...
 func (m *SliceParameter) GetSliceDim() uint32 {
 	if m != nil && m.SliceDim != nil {
 		return *m.SliceDim
@@ -4705,14 +5586,21 @@ type SoftmaxParameter struct {
 	Axis *int32 `protobuf:"varint,2,opt,name=axis,def=1" json:"axis,omitempty"`
 }
 
-func (m *SoftmaxParameter) Reset()                    { *m = SoftmaxParameter{} }
-func (m *SoftmaxParameter) String() string            { return proto.CompactTextString(m) }
-func (*SoftmaxParameter) ProtoMessage()               {}
+// Reset ...
+func (m *SoftmaxParameter) Reset()                    { *m = SoftmaxParameter{} }           
+// String ...
+func (m *SoftmaxParameter) String() string            { return proto.CompactTextString(m) } 
+// ProtoMessage ...
+func (*SoftmaxParameter) ProtoMessage()               {}                                    
+// Descriptor ...
 func (*SoftmaxParameter) Descriptor() ([]byte, []int) { return fileDescriptorCaffe, []int{52} }
 
-const Default_SoftmaxParameter_Engine SoftmaxParameter_Engine = SoftmaxParameter_DEFAULT
+// Default_SoftmaxParameter_Engine ...
+const Default_SoftmaxParameter_Engine SoftmaxParameter_Engine = SoftmaxParameter_DEFAULT 
+// Default_SoftmaxParameter_Axis ...
 const Default_SoftmaxParameter_Axis int32 = 1
 
+// GetEngine ...
 func (m *SoftmaxParameter) GetEngine() SoftmaxParameter_Engine {
 	if m != nil && m.Engine != nil {
 		return *m.Engine
@@ -4720,6 +5608,7 @@ func (m *SoftmaxParameter) GetEngine() SoftmaxParameter_Engine {
 	return Default_SoftmaxParameter_Engine
 }
 
+// GetAxis ...
 func (m *SoftmaxParameter) GetAxis() int32 {
 	if m != nil && m.Axis != nil {
 		return *m.Axis
@@ -4727,17 +5616,24 @@ func (m *SoftmaxParameter) GetAxis() int32 {
 	return Default_SoftmaxParameter_Axis
 }
 
+// TanHParameter ...
 type TanHParameter struct {
 	Engine *TanHParameter_Engine `protobuf:"varint,1,opt,name=engine,enum=caffe.TanHParameter_Engine,def=0" json:"engine,omitempty"`
 }
 
-func (m *TanHParameter) Reset()                    { *m = TanHParameter{} }
-func (m *TanHParameter) String() string            { return proto.CompactTextString(m) }
-func (*TanHParameter) ProtoMessage()               {}
+// Reset ...
+func (m *TanHParameter) Reset()                    { *m = TanHParameter{} }              
+// String ...
+func (m *TanHParameter) String() string            { return proto.CompactTextString(m) } 
+// ProtoMessage ...
+func (*TanHParameter) ProtoMessage()               {}                                    
+// Descriptor ...
 func (*TanHParameter) Descriptor() ([]byte, []int) { return fileDescriptorCaffe, []int{53} }
 
+// Default_TanHParameter_Engine ...
 const Default_TanHParameter_Engine TanHParameter_Engine = TanHParameter_DEFAULT
 
+// GetEngine ...
 func (m *TanHParameter) GetEngine() TanHParameter_Engine {
 	if m != nil && m.Engine != nil {
 		return *m.Engine
@@ -4753,13 +5649,19 @@ type TileParameter struct {
 	Tiles int32 `protobuf:"varint,2,opt,name=tiles" json:"tiles"`
 }
 
-func (m *TileParameter) Reset()                    { *m = TileParameter{} }
-func (m *TileParameter) String() string            { return proto.CompactTextString(m) }
-func (*TileParameter) ProtoMessage()               {}
+// Reset ...
+func (m *TileParameter) Reset()                    { *m = TileParameter{} }              
+// String ...
+func (m *TileParameter) String() string            { return proto.CompactTextString(m) } 
+// ProtoMessage ...
+func (*TileParameter) ProtoMessage()               {}                                    
+// Descriptor ...
 func (*TileParameter) Descriptor() ([]byte, []int) { return fileDescriptorCaffe, []int{54} }
 
+// Default_TileParameter_Axis ...
 const Default_TileParameter_Axis int32 = 1
 
+// GetAxis ...
 func (m *TileParameter) GetAxis() int32 {
 	if m != nil && m.Axis != nil {
 		return *m.Axis
@@ -4767,6 +5669,7 @@ func (m *TileParameter) GetAxis() int32 {
 	return Default_TileParameter_Axis
 }
 
+// GetTiles ...
 func (m *TileParameter) GetTiles() int32 {
 	if m != nil {
 		return m.Tiles
@@ -4779,13 +5682,19 @@ type ThresholdParameter struct {
 	Threshold *float32 `protobuf:"fixed32,1,opt,name=threshold,def=0" json:"threshold,omitempty"`
 }
 
-func (m *ThresholdParameter) Reset()                    { *m = ThresholdParameter{} }
-func (m *ThresholdParameter) String() string            { return proto.CompactTextString(m) }
-func (*ThresholdParameter) ProtoMessage()               {}
+// Reset ...
+func (m *ThresholdParameter) Reset()                    { *m = ThresholdParameter{} }         
+// String ...
+func (m *ThresholdParameter) String() string            { return proto.CompactTextString(m) } 
+// ProtoMessage ...
+func (*ThresholdParameter) ProtoMessage()               {}                                    
+// Descriptor ...
 func (*ThresholdParameter) Descriptor() ([]byte, []int) { return fileDescriptorCaffe, []int{55} }
 
+// Default_ThresholdParameter_Threshold ...
 const Default_ThresholdParameter_Threshold float32 = 0
 
+// GetThreshold ...
 func (m *ThresholdParameter) GetThreshold() float32 {
 	if m != nil && m.Threshold != nil {
 		return *m.Threshold
@@ -4793,6 +5702,7 @@ func (m *ThresholdParameter) GetThreshold() float32 {
 	return Default_ThresholdParameter_Threshold
 }
 
+// WindowDataParameter ...
 type WindowDataParameter struct {
 	// Specify the data source.
 	Source string `protobuf:"bytes,1,opt,name=source" json:"source"`
@@ -4826,21 +5736,35 @@ type WindowDataParameter struct {
 	RootFolder *string `protobuf:"bytes,13,opt,name=root_folder,json=rootFolder,def=" json:"root_folder,omitempty"`
 }
 
-func (m *WindowDataParameter) Reset()                    { *m = WindowDataParameter{} }
-func (m *WindowDataParameter) String() string            { return proto.CompactTextString(m) }
-func (*WindowDataParameter) ProtoMessage()               {}
+// Reset ...
+func (m *WindowDataParameter) Reset()                    { *m = WindowDataParameter{} }        
+// String ...
+func (m *WindowDataParameter) String() string            { return proto.CompactTextString(m) } 
+// ProtoMessage ...
+func (*WindowDataParameter) ProtoMessage()               {}                                    
+// Descriptor ...
 func (*WindowDataParameter) Descriptor() ([]byte, []int) { return fileDescriptorCaffe, []int{56} }
 
-const Default_WindowDataParameter_Scale float32 = 1
-const Default_WindowDataParameter_CropSize uint32 = 0
-const Default_WindowDataParameter_Mirror bool = false
-const Default_WindowDataParameter_FgThreshold float32 = 0.5
-const Default_WindowDataParameter_BgThreshold float32 = 0.5
-const Default_WindowDataParameter_FgFraction float32 = 0.25
-const Default_WindowDataParameter_ContextPad uint32 = 0
-const Default_WindowDataParameter_CropMode string = "warp"
+// Default_WindowDataParameter_Scale ...
+const Default_WindowDataParameter_Scale float32 = 1         
+// Default_WindowDataParameter_CropSize ...
+const Default_WindowDataParameter_CropSize uint32 = 0       
+// Default_WindowDataParameter_Mirror ...
+const Default_WindowDataParameter_Mirror bool = false       
+// Default_WindowDataParameter_FgThreshold ...
+const Default_WindowDataParameter_FgThreshold float32 = 0.5 
+// Default_WindowDataParameter_BgThreshold ...
+const Default_WindowDataParameter_BgThreshold float32 = 0.5 
+// Default_WindowDataParameter_FgFraction ...
+const Default_WindowDataParameter_FgFraction float32 = 0.25 
+// Default_WindowDataParameter_ContextPad ...
+const Default_WindowDataParameter_ContextPad uint32 = 0     
+// Default_WindowDataParameter_CropMode ...
+const Default_WindowDataParameter_CropMode string = "warp"  
+// Default_WindowDataParameter_CacheImages ...
 const Default_WindowDataParameter_CacheImages bool = false
 
+// GetSource ...
 func (m *WindowDataParameter) GetSource() string {
 	if m != nil {
 		return m.Source
@@ -4848,6 +5772,7 @@ func (m *WindowDataParameter) GetSource() string {
 	return ""
 }
 
+// GetScale ...
 func (m *WindowDataParameter) GetScale() float32 {
 	if m != nil && m.Scale != nil {
 		return *m.Scale
@@ -4855,6 +5780,7 @@ func (m *WindowDataParameter) GetScale() float32 {
 	return Default_WindowDataParameter_Scale
 }
 
+// GetMeanFile ...
 func (m *WindowDataParameter) GetMeanFile() string {
 	if m != nil {
 		return m.MeanFile
@@ -4862,6 +5788,7 @@ func (m *WindowDataParameter) GetMeanFile() string {
 	return ""
 }
 
+// GetBatchSize ...
 func (m *WindowDataParameter) GetBatchSize() uint32 {
 	if m != nil {
 		return m.BatchSize
@@ -4869,6 +5796,7 @@ func (m *WindowDataParameter) GetBatchSize() uint32 {
 	return 0
 }
 
+// GetCropSize ...
 func (m *WindowDataParameter) GetCropSize() uint32 {
 	if m != nil && m.CropSize != nil {
 		return *m.CropSize
@@ -4876,6 +5804,7 @@ func (m *WindowDataParameter) GetCropSize() uint32 {
 	return Default_WindowDataParameter_CropSize
 }
 
+// GetMirror ...
 func (m *WindowDataParameter) GetMirror() bool {
 	if m != nil && m.Mirror != nil {
 		return *m.Mirror
@@ -4883,6 +5812,7 @@ func (m *WindowDataParameter) GetMirror() bool {
 	return Default_WindowDataParameter_Mirror
 }
 
+// GetFgThreshold ...
 func (m *WindowDataParameter) GetFgThreshold() float32 {
 	if m != nil && m.FgThreshold != nil {
 		return *m.FgThreshold
@@ -4890,6 +5820,7 @@ func (m *WindowDataParameter) GetFgThreshold() float32 {
 	return Default_WindowDataParameter_FgThreshold
 }
 
+// GetBgThreshold ...
 func (m *WindowDataParameter) GetBgThreshold() float32 {
 	if m != nil && m.BgThreshold != nil {
 		return *m.BgThreshold
@@ -4897,6 +5828,7 @@ func (m *WindowDataParameter) GetBgThreshold() float32 {
 	return Default_WindowDataParameter_BgThreshold
 }
 
+// GetFgFraction ...
 func (m *WindowDataParameter) GetFgFraction() float32 {
 	if m != nil && m.FgFraction != nil {
 		return *m.FgFraction
@@ -4904,6 +5836,7 @@ func (m *WindowDataParameter) GetFgFraction() float32 {
 	return Default_WindowDataParameter_FgFraction
 }
 
+// GetContextPad ...
 func (m *WindowDataParameter) GetContextPad() uint32 {
 	if m != nil && m.ContextPad != nil {
 		return *m.ContextPad
@@ -4911,6 +5844,7 @@ func (m *WindowDataParameter) GetContextPad() uint32 {
 	return Default_WindowDataParameter_ContextPad
 }
 
+// GetCropMode ...
 func (m *WindowDataParameter) GetCropMode() string {
 	if m != nil && m.CropMode != nil {
 		return *m.CropMode
@@ -4918,6 +5852,7 @@ func (m *WindowDataParameter) GetCropMode() string {
 	return Default_WindowDataParameter_CropMode
 }
 
+// GetCacheImages ...
 func (m *WindowDataParameter) GetCacheImages() bool {
 	if m != nil && m.CacheImages != nil {
 		return *m.CacheImages
@@ -4925,6 +5860,7 @@ func (m *WindowDataParameter) GetCacheImages() bool {
 	return Default_WindowDataParameter_CacheImages
 }
 
+// GetRootFolder ...
 func (m *WindowDataParameter) GetRootFolder() string {
 	if m != nil && m.RootFolder != nil {
 		return *m.RootFolder
@@ -4932,20 +5868,28 @@ func (m *WindowDataParameter) GetRootFolder() string {
 	return ""
 }
 
+// SPPParameter ...
 type SPPParameter struct {
 	PyramidHeight uint32                   `protobuf:"varint,1,opt,name=pyramid_height,json=pyramidHeight" json:"pyramid_height"`
 	Pool          *SPPParameter_PoolMethod `protobuf:"varint,2,opt,name=pool,enum=caffe.SPPParameter_PoolMethod,def=0" json:"pool,omitempty"`
 	Engine        *SPPParameter_Engine     `protobuf:"varint,6,opt,name=engine,enum=caffe.SPPParameter_Engine,def=0" json:"engine,omitempty"`
 }
 
-func (m *SPPParameter) Reset()                    { *m = SPPParameter{} }
-func (m *SPPParameter) String() string            { return proto.CompactTextString(m) }
-func (*SPPParameter) ProtoMessage()               {}
+// Reset ...
+func (m *SPPParameter) Reset()                    { *m = SPPParameter{} }               
+// String ...
+func (m *SPPParameter) String() string            { return proto.CompactTextString(m) } 
+// ProtoMessage ...
+func (*SPPParameter) ProtoMessage()               {}                                    
+// Descriptor ...
 func (*SPPParameter) Descriptor() ([]byte, []int) { return fileDescriptorCaffe, []int{57} }
 
-const Default_SPPParameter_Pool SPPParameter_PoolMethod = SPPParameter_MAX
+// Default_SPPParameter_Pool ...
+const Default_SPPParameter_Pool SPPParameter_PoolMethod = SPPParameter_MAX 
+// Default_SPPParameter_Engine ...
 const Default_SPPParameter_Engine SPPParameter_Engine = SPPParameter_DEFAULT
 
+// GetPyramidHeight ...
 func (m *SPPParameter) GetPyramidHeight() uint32 {
 	if m != nil {
 		return m.PyramidHeight
@@ -4953,6 +5897,7 @@ func (m *SPPParameter) GetPyramidHeight() uint32 {
 	return 0
 }
 
+// GetPool ...
 func (m *SPPParameter) GetPool() SPPParameter_PoolMethod {
 	if m != nil && m.Pool != nil {
 		return *m.Pool
@@ -4960,6 +5905,7 @@ func (m *SPPParameter) GetPool() SPPParameter_PoolMethod {
 	return Default_SPPParameter_Pool
 }
 
+// GetEngine ...
 func (m *SPPParameter) GetEngine() SPPParameter_Engine {
 	if m != nil && m.Engine != nil {
 		return *m.Engine
@@ -5014,11 +5960,16 @@ type V1LayerParameter struct {
 	Layer                *V0LayerParameter               `protobuf:"bytes,1,opt,name=layer" json:"layer,omitempty"`
 }
 
-func (m *V1LayerParameter) Reset()                    { *m = V1LayerParameter{} }
-func (m *V1LayerParameter) String() string            { return proto.CompactTextString(m) }
-func (*V1LayerParameter) ProtoMessage()               {}
+// Reset ...
+func (m *V1LayerParameter) Reset()                    { *m = V1LayerParameter{} }           
+// String ...
+func (m *V1LayerParameter) String() string            { return proto.CompactTextString(m) } 
+// ProtoMessage ...
+func (*V1LayerParameter) ProtoMessage()               {}                                    
+// Descriptor ...
 func (*V1LayerParameter) Descriptor() ([]byte, []int) { return fileDescriptorCaffe, []int{58} }
 
+// GetBottom ...
 func (m *V1LayerParameter) GetBottom() []string {
 	if m != nil {
 		return m.Bottom
@@ -5026,6 +5977,7 @@ func (m *V1LayerParameter) GetBottom() []string {
 	return nil
 }
 
+// GetTop ...
 func (m *V1LayerParameter) GetTop() []string {
 	if m != nil {
 		return m.Top
@@ -5033,6 +5985,7 @@ func (m *V1LayerParameter) GetTop() []string {
 	return nil
 }
 
+// GetName ...
 func (m *V1LayerParameter) GetName() string {
 	if m != nil {
 		return m.Name
@@ -5040,6 +5993,7 @@ func (m *V1LayerParameter) GetName() string {
 	return ""
 }
 
+// GetInclude ...
 func (m *V1LayerParameter) GetInclude() []*NetStateRule {
 	if m != nil {
 		return m.Include
@@ -5047,6 +6001,7 @@ func (m *V1LayerParameter) GetInclude() []*NetStateRule {
 	return nil
 }
 
+// GetExclude ...
 func (m *V1LayerParameter) GetExclude() []*NetStateRule {
 	if m != nil {
 		return m.Exclude
@@ -5054,6 +6009,7 @@ func (m *V1LayerParameter) GetExclude() []*NetStateRule {
 	return nil
 }
 
+// GetType ...
 func (m *V1LayerParameter) GetType() V1LayerParameter_LayerType {
 	if m != nil {
 		return m.Type
@@ -5061,6 +6017,7 @@ func (m *V1LayerParameter) GetType() V1LayerParameter_LayerType {
 	return V1LayerParameter_NONE
 }
 
+// GetBlobs ...
 func (m *V1LayerParameter) GetBlobs() []*BlobProto {
 	if m != nil {
 		return m.Blobs
@@ -5068,6 +6025,7 @@ func (m *V1LayerParameter) GetBlobs() []*BlobProto {
 	return nil
 }
 
+// GetParam ...
 func (m *V1LayerParameter) GetParam() []string {
 	if m != nil {
 		return m.Param
@@ -5075,6 +6033,7 @@ func (m *V1LayerParameter) GetParam() []string {
 	return nil
 }
 
+// GetBlobShareMode ...
 func (m *V1LayerParameter) GetBlobShareMode() []V1LayerParameter_DimCheckMode {
 	if m != nil {
 		return m.BlobShareMode
@@ -5082,6 +6041,7 @@ func (m *V1LayerParameter) GetBlobShareMode() []V1LayerParameter_DimCheckMode {
 	return nil
 }
 
+// GetBlobsLr ...
 func (m *V1LayerParameter) GetBlobsLr() []float32 {
 	if m != nil {
 		return m.BlobsLr
@@ -5089,6 +6049,7 @@ func (m *V1LayerParameter) GetBlobsLr() []float32 {
 	return nil
 }
 
+// GetWeightDecay ...
 func (m *V1LayerParameter) GetWeightDecay() []float32 {
 	if m != nil {
 		return m.WeightDecay
@@ -5096,6 +6057,7 @@ func (m *V1LayerParameter) GetWeightDecay() []float32 {
 	return nil
 }
 
+// GetLossWeight ...
 func (m *V1LayerParameter) GetLossWeight() []float32 {
 	if m != nil {
 		return m.LossWeight
@@ -5103,6 +6065,7 @@ func (m *V1LayerParameter) GetLossWeight() []float32 {
 	return nil
 }
 
+// GetAccuracyParam ...
 func (m *V1LayerParameter) GetAccuracyParam() *AccuracyParameter {
 	if m != nil {
 		return m.AccuracyParam
@@ -5110,6 +6073,7 @@ func (m *V1LayerParameter) GetAccuracyParam() *AccuracyParameter {
 	return nil
 }
 
+// GetArgmaxParam ...
 func (m *V1LayerParameter) GetArgmaxParam() *ArgMaxParameter {
 	if m != nil {
 		return m.ArgmaxParam
@@ -5117,6 +6081,7 @@ func (m *V1LayerParameter) GetArgmaxParam() *ArgMaxParameter {
 	return nil
 }
 
+// GetConcatParam ...
 func (m *V1LayerParameter) GetConcatParam() *ConcatParameter {
 	if m != nil {
 		return m.ConcatParam
@@ -5124,6 +6089,7 @@ func (m *V1LayerParameter) GetConcatParam() *ConcatParameter {
 	return nil
 }
 
+// GetContrastiveLossParam ...
 func (m *V1LayerParameter) GetContrastiveLossParam() *ContrastiveLossParameter {
 	if m != nil {
 		return m.ContrastiveLossParam
@@ -5131,6 +6097,7 @@ func (m *V1LayerParameter) GetContrastiveLossParam() *ContrastiveLossParameter {
 	return nil
 }
 
+// GetConvolutionParam ...
 func (m *V1LayerParameter) GetConvolutionParam() *ConvolutionParameter {
 	if m != nil {
 		return m.ConvolutionParam
@@ -5138,6 +6105,7 @@ func (m *V1LayerParameter) GetConvolutionParam() *ConvolutionParameter {
 	return nil
 }
 
+// GetDataParam ...
 func (m *V1LayerParameter) GetDataParam() *DataParameter {
 	if m != nil {
 		return m.DataParam
@@ -5145,6 +6113,7 @@ func (m *V1LayerParameter) GetDataParam() *DataParameter {
 	return nil
 }
 
+// GetDropoutParam ...
 func (m *V1LayerParameter) GetDropoutParam() *DropoutParameter {
 	if m != nil {
 		return m.DropoutParam
@@ -5152,6 +6121,7 @@ func (m *V1LayerParameter) GetDropoutParam() *DropoutParameter {
 	return nil
 }
 
+// GetDummyDataParam ...
 func (m *V1LayerParameter) GetDummyDataParam() *DummyDataParameter {
 	if m != nil {
 		return m.DummyDataParam
@@ -5159,6 +6129,7 @@ func (m *V1LayerParameter) GetDummyDataParam() *DummyDataParameter {
 	return nil
 }
 
+// GetEltwiseParam ...
 func (m *V1LayerParameter) GetEltwiseParam() *EltwiseParameter {
 	if m != nil {
 		return m.EltwiseParam
@@ -5166,6 +6137,7 @@ func (m *V1LayerParameter) GetEltwiseParam() *EltwiseParameter {
 	return nil
 }
 
+// GetExpParam ...
 func (m *V1LayerParameter) GetExpParam() *ExpParameter {
 	if m != nil {
 		return m.ExpParam
@@ -5173,6 +6145,7 @@ func (m *V1LayerParameter) GetExpParam() *ExpParameter {
 	return nil
 }
 
+// GetHdf5DataParam ...
 func (m *V1LayerParameter) GetHdf5DataParam() *HDF5DataParameter {
 	if m != nil {
 		return m.Hdf5DataParam
@@ -5180,6 +6153,7 @@ func (m *V1LayerParameter) GetHdf5DataParam() *HDF5DataParameter {
 	return nil
 }
 
+// GetHdf5OutputParam ...
 func (m *V1LayerParameter) GetHdf5OutputParam() *HDF5OutputParameter {
 	if m != nil {
 		return m.Hdf5OutputParam
@@ -5187,6 +6161,7 @@ func (m *V1LayerParameter) GetHdf5OutputParam() *HDF5OutputParameter {
 	return nil
 }
 
+// GetHingeLossParam ...
 func (m *V1LayerParameter) GetHingeLossParam() *HingeLossParameter {
 	if m != nil {
 		return m.HingeLossParam
@@ -5194,6 +6169,7 @@ func (m *V1LayerParameter) GetHingeLossParam() *HingeLossParameter {
 	return nil
 }
 
+// GetImageDataParam ...
 func (m *V1LayerParameter) GetImageDataParam() *ImageDataParameter {
 	if m != nil {
 		return m.ImageDataParam
@@ -5201,6 +6177,7 @@ func (m *V1LayerParameter) GetImageDataParam() *ImageDataParameter {
 	return nil
 }
 
+// GetInfogainLossParam ...
 func (m *V1LayerParameter) GetInfogainLossParam() *InfogainLossParameter {
 	if m != nil {
 		return m.InfogainLossParam
@@ -5208,6 +6185,7 @@ func (m *V1LayerParameter) GetInfogainLossParam() *InfogainLossParameter {
 	return nil
 }
 
+// GetInnerProductParam ...
 func (m *V1LayerParameter) GetInnerProductParam() *InnerProductParameter {
 	if m != nil {
 		return m.InnerProductParam
@@ -5215,6 +6193,7 @@ func (m *V1LayerParameter) GetInnerProductParam() *InnerProductParameter {
 	return nil
 }
 
+// GetLrnParam ...
 func (m *V1LayerParameter) GetLrnParam() *LRNParameter {
 	if m != nil {
 		return m.LrnParam
@@ -5222,6 +6201,7 @@ func (m *V1LayerParameter) GetLrnParam() *LRNParameter {
 	return nil
 }
 
+// GetMemoryDataParam ...
 func (m *V1LayerParameter) GetMemoryDataParam() *MemoryDataParameter {
 	if m != nil {
 		return m.MemoryDataParam
@@ -5229,6 +6209,7 @@ func (m *V1LayerParameter) GetMemoryDataParam() *MemoryDataParameter {
 	return nil
 }
 
+// GetMvnParam ...
 func (m *V1LayerParameter) GetMvnParam() *MVNParameter {
 	if m != nil {
 		return m.MvnParam
@@ -5236,6 +6217,7 @@ func (m *V1LayerParameter) GetMvnParam() *MVNParameter {
 	return nil
 }
 
+// GetPoolingParam ...
 func (m *V1LayerParameter) GetPoolingParam() *PoolingParameter {
 	if m != nil {
 		return m.PoolingParam
@@ -5243,6 +6225,7 @@ func (m *V1LayerParameter) GetPoolingParam() *PoolingParameter {
 	return nil
 }
 
+// GetPowerParam ...
 func (m *V1LayerParameter) GetPowerParam() *PowerParameter {
 	if m != nil {
 		return m.PowerParam
@@ -5250,6 +6233,7 @@ func (m *V1LayerParameter) GetPowerParam() *PowerParameter {
 	return nil
 }
 
+// GetReluParam ...
 func (m *V1LayerParameter) GetReluParam() *ReLUParameter {
 	if m != nil {
 		return m.ReluParam
@@ -5257,6 +6241,7 @@ func (m *V1LayerParameter) GetReluParam() *ReLUParameter {
 	return nil
 }
 
+// GetSigmoidParam ...
 func (m *V1LayerParameter) GetSigmoidParam() *SigmoidParameter {
 	if m != nil {
 		return m.SigmoidParam
@@ -5264,6 +6249,7 @@ func (m *V1LayerParameter) GetSigmoidParam() *SigmoidParameter {
 	return nil
 }
 
+// GetSoftmaxParam ...
 func (m *V1LayerParameter) GetSoftmaxParam() *SoftmaxParameter {
 	if m != nil {
 		return m.SoftmaxParam
@@ -5271,6 +6257,7 @@ func (m *V1LayerParameter) GetSoftmaxParam() *SoftmaxParameter {
 	return nil
 }
 
+// GetSliceParam ...
 func (m *V1LayerParameter) GetSliceParam() *SliceParameter {
 	if m != nil {
 		return m.SliceParam
@@ -5278,6 +6265,7 @@ func (m *V1LayerParameter) GetSliceParam() *SliceParameter {
 	return nil
 }
 
+// GetTanhParam ...
 func (m *V1LayerParameter) GetTanhParam() *TanHParameter {
 	if m != nil {
 		return m.TanhParam
@@ -5285,6 +6273,7 @@ func (m *V1LayerParameter) GetTanhParam() *TanHParameter {
 	return nil
 }
 
+// GetThresholdParam ...
 func (m *V1LayerParameter) GetThresholdParam() *ThresholdParameter {
 	if m != nil {
 		return m.ThresholdParam
@@ -5292,6 +6281,7 @@ func (m *V1LayerParameter) GetThresholdParam() *ThresholdParameter {
 	return nil
 }
 
+// GetWindowDataParam ...
 func (m *V1LayerParameter) GetWindowDataParam() *WindowDataParameter {
 	if m != nil {
 		return m.WindowDataParam
@@ -5299,6 +6289,7 @@ func (m *V1LayerParameter) GetWindowDataParam() *WindowDataParameter {
 	return nil
 }
 
+// GetTransformParam ...
 func (m *V1LayerParameter) GetTransformParam() *TransformationParameter {
 	if m != nil {
 		return m.TransformParam
@@ -5306,6 +6297,7 @@ func (m *V1LayerParameter) GetTransformParam() *TransformationParameter {
 	return nil
 }
 
+// GetLossParam ...
 func (m *V1LayerParameter) GetLossParam() *LossParameter {
 	if m != nil {
 		return m.LossParam
@@ -5313,6 +6305,7 @@ func (m *V1LayerParameter) GetLossParam() *LossParameter {
 	return nil
 }
 
+// GetLayer ...
 func (m *V1LayerParameter) GetLayer() *V0LayerParameter {
 	if m != nil {
 		return m.Layer
@@ -5394,37 +6387,67 @@ type V0LayerParameter struct {
 	Hdf5OutputParam *HDF5OutputParameter `protobuf:"bytes,1001,opt,name=hdf5_output_param,json=hdf5OutputParam" json:"hdf5_output_param,omitempty"`
 }
 
-func (m *V0LayerParameter) Reset()                    { *m = V0LayerParameter{} }
-func (m *V0LayerParameter) String() string            { return proto.CompactTextString(m) }
-func (*V0LayerParameter) ProtoMessage()               {}
+// Reset ...
+func (m *V0LayerParameter) Reset()                    { *m = V0LayerParameter{} }           
+// String ...
+func (m *V0LayerParameter) String() string            { return proto.CompactTextString(m) } 
+// ProtoMessage ...
+func (*V0LayerParameter) ProtoMessage()               {}                                    
+// Descriptor ...
 func (*V0LayerParameter) Descriptor() ([]byte, []int) { return fileDescriptorCaffe, []int{59} }
 
-const Default_V0LayerParameter_Biasterm bool = true
-const Default_V0LayerParameter_Pad uint32 = 0
-const Default_V0LayerParameter_Group uint32 = 1
-const Default_V0LayerParameter_Stride uint32 = 1
-const Default_V0LayerParameter_Pool V0LayerParameter_PoolMethod = V0LayerParameter_MAX
-const Default_V0LayerParameter_DropoutRatio float32 = 0.5
-const Default_V0LayerParameter_LocalSize uint32 = 5
-const Default_V0LayerParameter_Alpha float32 = 1
-const Default_V0LayerParameter_Beta float32 = 0.75
-const Default_V0LayerParameter_K float32 = 1
-const Default_V0LayerParameter_Scale float32 = 1
-const Default_V0LayerParameter_Cropsize uint32 = 0
-const Default_V0LayerParameter_Mirror bool = false
-const Default_V0LayerParameter_RandSkip uint32 = 0
-const Default_V0LayerParameter_DetFgThreshold float32 = 0.5
-const Default_V0LayerParameter_DetBgThreshold float32 = 0.5
-const Default_V0LayerParameter_DetFgFraction float32 = 0.25
-const Default_V0LayerParameter_DetContextPad uint32 = 0
-const Default_V0LayerParameter_DetCropMode string = "warp"
-const Default_V0LayerParameter_NewNum int32 = 0
-const Default_V0LayerParameter_NewChannels int32 = 0
-const Default_V0LayerParameter_NewHeight int32 = 0
-const Default_V0LayerParameter_NewWidth int32 = 0
-const Default_V0LayerParameter_ShuffleImages bool = false
+// Default_V0LayerParameter_Biasterm ...
+const Default_V0LayerParameter_Biasterm bool = true                                    
+// Default_V0LayerParameter_Pad ...
+const Default_V0LayerParameter_Pad uint32 = 0                                          
+// Default_V0LayerParameter_Group ...
+const Default_V0LayerParameter_Group uint32 = 1                                        
+// Default_V0LayerParameter_Stride ...
+const Default_V0LayerParameter_Stride uint32 = 1                                       
+// Default_V0LayerParameter_Pool ...
+const Default_V0LayerParameter_Pool V0LayerParameter_PoolMethod = V0LayerParameter_MAX 
+// Default_V0LayerParameter_DropoutRatio ...
+const Default_V0LayerParameter_DropoutRatio float32 = 0.5                              
+// Default_V0LayerParameter_LocalSize ...
+const Default_V0LayerParameter_LocalSize uint32 = 5                                    
+// Default_V0LayerParameter_Alpha ...
+const Default_V0LayerParameter_Alpha float32 = 1                                       
+// Default_V0LayerParameter_Beta ...
+const Default_V0LayerParameter_Beta float32 = 0.75                                     
+// Default_V0LayerParameter_K ...
+const Default_V0LayerParameter_K float32 = 1                                           
+// Default_V0LayerParameter_Scale ...
+const Default_V0LayerParameter_Scale float32 = 1                                       
+// Default_V0LayerParameter_Cropsize ...
+const Default_V0LayerParameter_Cropsize uint32 = 0                                     
+// Default_V0LayerParameter_Mirror ...
+const Default_V0LayerParameter_Mirror bool = false                                     
+// Default_V0LayerParameter_RandSkip ...
+const Default_V0LayerParameter_RandSkip uint32 = 0                                     
+// Default_V0LayerParameter_DetFgThreshold ...
+const Default_V0LayerParameter_DetFgThreshold float32 = 0.5                            
+// Default_V0LayerParameter_DetBgThreshold ...
+const Default_V0LayerParameter_DetBgThreshold float32 = 0.5                            
+// Default_V0LayerParameter_DetFgFraction ...
+const Default_V0LayerParameter_DetFgFraction float32 = 0.25                            
+// Default_V0LayerParameter_DetContextPad ...
+const Default_V0LayerParameter_DetContextPad uint32 = 0                                
+// Default_V0LayerParameter_DetCropMode ...
+const Default_V0LayerParameter_DetCropMode string = "warp"                             
+// Default_V0LayerParameter_NewNum ...
+const Default_V0LayerParameter_NewNum int32 = 0                                        
+// Default_V0LayerParameter_NewChannels ...
+const Default_V0LayerParameter_NewChannels int32 = 0                                   
+// Default_V0LayerParameter_NewHeight ...
+const Default_V0LayerParameter_NewHeight int32 = 0                                     
+// Default_V0LayerParameter_NewWidth ...
+const Default_V0LayerParameter_NewWidth int32 = 0                                      
+// Default_V0LayerParameter_ShuffleImages ...
+const Default_V0LayerParameter_ShuffleImages bool = false                              
+// Default_V0LayerParameter_ConcatDim ...
 const Default_V0LayerParameter_ConcatDim uint32 = 1
 
+// GetName ...
 func (m *V0LayerParameter) GetName() string {
 	if m != nil {
 		return m.Name
@@ -5432,6 +6455,7 @@ func (m *V0LayerParameter) GetName() string {
 	return ""
 }
 
+// GetType ...
 func (m *V0LayerParameter) GetType() string {
 	if m != nil {
 		return m.Type
@@ -5439,6 +6463,7 @@ func (m *V0LayerParameter) GetType() string {
 	return ""
 }
 
+// GetNumOutput ...
 func (m *V0LayerParameter) GetNumOutput() uint32 {
 	if m != nil {
 		return m.NumOutput
@@ -5446,6 +6471,7 @@ func (m *V0LayerParameter) GetNumOutput() uint32 {
 	return 0
 }
 
+// GetBiasterm ...
 func (m *V0LayerParameter) GetBiasterm() bool {
 	if m != nil && m.Biasterm != nil {
 		return *m.Biasterm
@@ -5453,6 +6479,7 @@ func (m *V0LayerParameter) GetBiasterm() bool {
 	return Default_V0LayerParameter_Biasterm
 }
 
+// GetWeightFiller ...
 func (m *V0LayerParameter) GetWeightFiller() *FillerParameter {
 	if m != nil {
 		return m.WeightFiller
@@ -5460,6 +6487,7 @@ func (m *V0LayerParameter) GetWeightFiller() *FillerParameter {
 	return nil
 }
 
+// GetBiasFiller ...
 func (m *V0LayerParameter) GetBiasFiller() *FillerParameter {
 	if m != nil {
 		return m.BiasFiller
@@ -5467,6 +6495,7 @@ func (m *V0LayerParameter) GetBiasFiller() *FillerParameter {
 	return nil
 }
 
+// GetPad ...
 func (m *V0LayerParameter) GetPad() uint32 {
 	if m != nil && m.Pad != nil {
 		return *m.Pad
@@ -5474,6 +6503,7 @@ func (m *V0LayerParameter) GetPad() uint32 {
 	return Default_V0LayerParameter_Pad
 }
 
+// GetKernelsize ...
 func (m *V0LayerParameter) GetKernelsize() uint32 {
 	if m != nil {
 		return m.Kernelsize
@@ -5481,6 +6511,7 @@ func (m *V0LayerParameter) GetKernelsize() uint32 {
 	return 0
 }
 
+// GetGroup ...
 func (m *V0LayerParameter) GetGroup() uint32 {
 	if m != nil && m.Group != nil {
 		return *m.Group
@@ -5488,6 +6519,7 @@ func (m *V0LayerParameter) GetGroup() uint32 {
 	return Default_V0LayerParameter_Group
 }
 
+// GetStride ...
 func (m *V0LayerParameter) GetStride() uint32 {
 	if m != nil && m.Stride != nil {
 		return *m.Stride
@@ -5495,6 +6527,7 @@ func (m *V0LayerParameter) GetStride() uint32 {
 	return Default_V0LayerParameter_Stride
 }
 
+// GetPool ...
 func (m *V0LayerParameter) GetPool() V0LayerParameter_PoolMethod {
 	if m != nil && m.Pool != nil {
 		return *m.Pool
@@ -5502,6 +6535,7 @@ func (m *V0LayerParameter) GetPool() V0LayerParameter_PoolMethod {
 	return Default_V0LayerParameter_Pool
 }
 
+// GetDropoutRatio ...
 func (m *V0LayerParameter) GetDropoutRatio() float32 {
 	if m != nil && m.DropoutRatio != nil {
 		return *m.DropoutRatio
@@ -5509,6 +6543,7 @@ func (m *V0LayerParameter) GetDropoutRatio() float32 {
 	return Default_V0LayerParameter_DropoutRatio
 }
 
+// GetLocalSize ...
 func (m *V0LayerParameter) GetLocalSize() uint32 {
 	if m != nil && m.LocalSize != nil {
 		return *m.LocalSize
@@ -5516,6 +6551,7 @@ func (m *V0LayerParameter) GetLocalSize() uint32 {
 	return Default_V0LayerParameter_LocalSize
 }
 
+// GetAlpha ...
 func (m *V0LayerParameter) GetAlpha() float32 {
 	if m != nil && m.Alpha != nil {
 		return *m.Alpha
@@ -5523,6 +6559,7 @@ func (m *V0LayerParameter) GetAlpha() float32 {
 	return Default_V0LayerParameter_Alpha
 }
 
+// GetBeta ...
 func (m *V0LayerParameter) GetBeta() float32 {
 	if m != nil && m.Beta != nil {
 		return *m.Beta
@@ -5530,6 +6567,7 @@ func (m *V0LayerParameter) GetBeta() float32 {
 	return Default_V0LayerParameter_Beta
 }
 
+// GetK ...
 func (m *V0LayerParameter) GetK() float32 {
 	if m != nil && m.K != nil {
 		return *m.K
@@ -5537,6 +6575,7 @@ func (m *V0LayerParameter) GetK() float32 {
 	return Default_V0LayerParameter_K
 }
 
+// GetSource ...
 func (m *V0LayerParameter) GetSource() string {
 	if m != nil {
 		return m.Source
@@ -5544,6 +6583,7 @@ func (m *V0LayerParameter) GetSource() string {
 	return ""
 }
 
+// GetScale ...
 func (m *V0LayerParameter) GetScale() float32 {
 	if m != nil && m.Scale != nil {
 		return *m.Scale
@@ -5551,6 +6591,7 @@ func (m *V0LayerParameter) GetScale() float32 {
 	return Default_V0LayerParameter_Scale
 }
 
+// GetMeanfile ...
 func (m *V0LayerParameter) GetMeanfile() string {
 	if m != nil {
 		return m.Meanfile
@@ -5558,6 +6599,7 @@ func (m *V0LayerParameter) GetMeanfile() string {
 	return ""
 }
 
+// GetBatchsize ...
 func (m *V0LayerParameter) GetBatchsize() uint32 {
 	if m != nil {
 		return m.Batchsize
@@ -5565,6 +6607,7 @@ func (m *V0LayerParameter) GetBatchsize() uint32 {
 	return 0
 }
 
+// GetCropsize ...
 func (m *V0LayerParameter) GetCropsize() uint32 {
 	if m != nil && m.Cropsize != nil {
 		return *m.Cropsize
@@ -5572,6 +6615,7 @@ func (m *V0LayerParameter) GetCropsize() uint32 {
 	return Default_V0LayerParameter_Cropsize
 }
 
+// GetMirror ...
 func (m *V0LayerParameter) GetMirror() bool {
 	if m != nil && m.Mirror != nil {
 		return *m.Mirror
@@ -5579,6 +6623,7 @@ func (m *V0LayerParameter) GetMirror() bool {
 	return Default_V0LayerParameter_Mirror
 }
 
+// GetBlobs ...
 func (m *V0LayerParameter) GetBlobs() []*BlobProto {
 	if m != nil {
 		return m.Blobs
@@ -5586,6 +6631,7 @@ func (m *V0LayerParameter) GetBlobs() []*BlobProto {
 	return nil
 }
 
+// GetBlobsLr ...
 func (m *V0LayerParameter) GetBlobsLr() []float32 {
 	if m != nil {
 		return m.BlobsLr
@@ -5593,6 +6639,7 @@ func (m *V0LayerParameter) GetBlobsLr() []float32 {
 	return nil
 }
 
+// GetWeightDecay ...
 func (m *V0LayerParameter) GetWeightDecay() []float32 {
 	if m != nil {
 		return m.WeightDecay
@@ -5600,6 +6647,7 @@ func (m *V0LayerParameter) GetWeightDecay() []float32 {
 	return nil
 }
 
+// GetRandSkip ...
 func (m *V0LayerParameter) GetRandSkip() uint32 {
 	if m != nil && m.RandSkip != nil {
 		return *m.RandSkip
@@ -5607,6 +6655,7 @@ func (m *V0LayerParameter) GetRandSkip() uint32 {
 	return Default_V0LayerParameter_RandSkip
 }
 
+// GetDetFgThreshold ...
 func (m *V0LayerParameter) GetDetFgThreshold() float32 {
 	if m != nil && m.DetFgThreshold != nil {
 		return *m.DetFgThreshold
@@ -5614,6 +6663,7 @@ func (m *V0LayerParameter) GetDetFgThreshold() float32 {
 	return Default_V0LayerParameter_DetFgThreshold
 }
 
+// GetDetBgThreshold ...
 func (m *V0LayerParameter) GetDetBgThreshold() float32 {
 	if m != nil && m.DetBgThreshold != nil {
 		return *m.DetBgThreshold
@@ -5621,6 +6671,7 @@ func (m *V0LayerParameter) GetDetBgThreshold() float32 {
 	return Default_V0LayerParameter_DetBgThreshold
 }
 
+// GetDetFgFraction ...
 func (m *V0LayerParameter) GetDetFgFraction() float32 {
 	if m != nil && m.DetFgFraction != nil {
 		return *m.DetFgFraction
@@ -5628,6 +6679,7 @@ func (m *V0LayerParameter) GetDetFgFraction() float32 {
 	return Default_V0LayerParameter_DetFgFraction
 }
 
+// GetDetContextPad ...
 func (m *V0LayerParameter) GetDetContextPad() uint32 {
 	if m != nil && m.DetContextPad != nil {
 		return *m.DetContextPad
@@ -5635,6 +6687,7 @@ func (m *V0LayerParameter) GetDetContextPad() uint32 {
 	return Default_V0LayerParameter_DetContextPad
 }
 
+// GetDetCropMode ...
 func (m *V0LayerParameter) GetDetCropMode() string {
 	if m != nil && m.DetCropMode != nil {
 		return *m.DetCropMode
@@ -5642,6 +6695,7 @@ func (m *V0LayerParameter) GetDetCropMode() string {
 	return Default_V0LayerParameter_DetCropMode
 }
 
+// GetNewNum ...
 func (m *V0LayerParameter) GetNewNum() int32 {
 	if m != nil && m.NewNum != nil {
 		return *m.NewNum
@@ -5649,6 +6703,7 @@ func (m *V0LayerParameter) GetNewNum() int32 {
 	return Default_V0LayerParameter_NewNum
 }
 
+// GetNewChannels ...
 func (m *V0LayerParameter) GetNewChannels() int32 {
 	if m != nil && m.NewChannels != nil {
 		return *m.NewChannels
@@ -5656,6 +6711,7 @@ func (m *V0LayerParameter) GetNewChannels() int32 {
 	return Default_V0LayerParameter_NewChannels
 }
 
+// GetNewHeight ...
 func (m *V0LayerParameter) GetNewHeight() int32 {
 	if m != nil && m.NewHeight != nil {
 		return *m.NewHeight
@@ -5663,6 +6719,7 @@ func (m *V0LayerParameter) GetNewHeight() int32 {
 	return Default_V0LayerParameter_NewHeight
 }
 
+// GetNewWidth ...
 func (m *V0LayerParameter) GetNewWidth() int32 {
 	if m != nil && m.NewWidth != nil {
 		return *m.NewWidth
@@ -5670,6 +6727,7 @@ func (m *V0LayerParameter) GetNewWidth() int32 {
 	return Default_V0LayerParameter_NewWidth
 }
 
+// GetShuffleImages ...
 func (m *V0LayerParameter) GetShuffleImages() bool {
 	if m != nil && m.ShuffleImages != nil {
 		return *m.ShuffleImages
@@ -5677,6 +6735,7 @@ func (m *V0LayerParameter) GetShuffleImages() bool {
 	return Default_V0LayerParameter_ShuffleImages
 }
 
+// GetConcatDim ...
 func (m *V0LayerParameter) GetConcatDim() uint32 {
 	if m != nil && m.ConcatDim != nil {
 		return *m.ConcatDim
@@ -5684,6 +6743,7 @@ func (m *V0LayerParameter) GetConcatDim() uint32 {
 	return Default_V0LayerParameter_ConcatDim
 }
 
+// GetHdf5OutputParam ...
 func (m *V0LayerParameter) GetHdf5OutputParam() *HDF5OutputParameter {
 	if m != nil {
 		return m.Hdf5OutputParam
@@ -5691,6 +6751,7 @@ func (m *V0LayerParameter) GetHdf5OutputParam() *HDF5OutputParameter {
 	return nil
 }
 
+// PReLUParameter ...
 type PReLUParameter struct {
 	// Initial value of a_i. Default is a_i=0.25 for all i.
 	Filler *FillerParameter `protobuf:"bytes,1,opt,name=filler" json:"filler,omitempty"`
@@ -5698,13 +6759,19 @@ type PReLUParameter struct {
 	ChannelShared *bool `protobuf:"varint,2,opt,name=channel_shared,json=channelShared,def=0" json:"channel_shared,omitempty"`
 }
 
-func (m *PReLUParameter) Reset()                    { *m = PReLUParameter{} }
-func (m *PReLUParameter) String() string            { return proto.CompactTextString(m) }
-func (*PReLUParameter) ProtoMessage()               {}
+// Reset ...
+func (m *PReLUParameter) Reset()                    { *m = PReLUParameter{} }             
+// String ...
+func (m *PReLUParameter) String() string            { return proto.CompactTextString(m) } 
+// ProtoMessage ...
+func (*PReLUParameter) ProtoMessage()               {}                                    
+// Descriptor ...
 func (*PReLUParameter) Descriptor() ([]byte, []int) { return fileDescriptorCaffe, []int{60} }
 
+// Default_PReLUParameter_ChannelShared ...
 const Default_PReLUParameter_ChannelShared bool = false
 
+// GetFiller ...
 func (m *PReLUParameter) GetFiller() *FillerParameter {
 	if m != nil {
 		return m.Filler
@@ -5712,6 +6779,7 @@ func (m *PReLUParameter) GetFiller() *FillerParameter {
 	return nil
 }
 
+// GetChannelShared ...
 func (m *PReLUParameter) GetChannelShared() bool {
 	if m != nil && m.ChannelShared != nil {
 		return *m.ChannelShared
@@ -5806,7 +6874,8 @@ func init() {
 	proto.RegisterEnum("caffe.V1LayerParameter_LayerType", V1LayerParameter_LayerType_name, V1LayerParameter_LayerType_value)
 	proto.RegisterEnum("caffe.V1LayerParameter_DimCheckMode", V1LayerParameter_DimCheckMode_name, V1LayerParameter_DimCheckMode_value)
 	proto.RegisterEnum("caffe.V0LayerParameter_PoolMethod", V0LayerParameter_PoolMethod_name, V0LayerParameter_PoolMethod_value)
-}
+} 
+// Marshal ...
 func (m *BlobShape) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
@@ -5817,6 +6886,7 @@ func (m *BlobShape) Marshal() (dAtA []byte, err error) {
 	return dAtA[:n], nil
 }
 
+// MarshalTo ...
 func (m *BlobShape) MarshalTo(dAtA []byte) (int, error) {
 	var i int
 	_ = i
@@ -5843,6 +6913,7 @@ func (m *BlobShape) MarshalTo(dAtA []byte) (int, error) {
 	return i, nil
 }
 
+// Marshal ...
 func (m *BlobProto) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
@@ -5853,6 +6924,7 @@ func (m *BlobProto) Marshal() (dAtA []byte, err error) {
 	return dAtA[:n], nil
 }
 
+// MarshalTo ...
 func (m *BlobProto) MarshalTo(dAtA []byte) (int, error) {
 	var i int
 	_ = i
@@ -5971,6 +7043,7 @@ func (m *BlobProto) MarshalTo(dAtA []byte) (int, error) {
 	return i, nil
 }
 
+// Marshal ...
 func (m *BlobProtoVector) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
@@ -5981,6 +7054,7 @@ func (m *BlobProtoVector) Marshal() (dAtA []byte, err error) {
 	return dAtA[:n], nil
 }
 
+// MarshalTo ...
 func (m *BlobProtoVector) MarshalTo(dAtA []byte) (int, error) {
 	var i int
 	_ = i
@@ -6001,6 +7075,7 @@ func (m *BlobProtoVector) MarshalTo(dAtA []byte) (int, error) {
 	return i, nil
 }
 
+// Marshal ...
 func (m *Datum) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
@@ -6011,6 +7086,7 @@ func (m *Datum) Marshal() (dAtA []byte, err error) {
 	return dAtA[:n], nil
 }
 
+// MarshalTo ...
 func (m *Datum) MarshalTo(dAtA []byte) (int, error) {
 	var i int
 	_ = i
@@ -6062,6 +7138,7 @@ func (m *Datum) MarshalTo(dAtA []byte) (int, error) {
 	return i, nil
 }
 
+// Marshal ...
 func (m *FillerParameter) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
@@ -6072,6 +7149,7 @@ func (m *FillerParameter) Marshal() (dAtA []byte, err error) {
 	return dAtA[:n], nil
 }
 
+// MarshalTo ...
 func (m *FillerParameter) MarshalTo(dAtA []byte) (int, error) {
 	var i int
 	_ = i
@@ -6121,6 +7199,7 @@ func (m *FillerParameter) MarshalTo(dAtA []byte) (int, error) {
 	return i, nil
 }
 
+// Marshal ...
 func (m *NetParameter) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
@@ -6131,6 +7210,7 @@ func (m *NetParameter) Marshal() (dAtA []byte, err error) {
 	return dAtA[:n], nil
 }
 
+// MarshalTo ...
 func (m *NetParameter) MarshalTo(dAtA []byte) (int, error) {
 	var i int
 	_ = i
@@ -6233,6 +7313,7 @@ func (m *NetParameter) MarshalTo(dAtA []byte) (int, error) {
 	return i, nil
 }
 
+// Marshal ...
 func (m *SolverParameter) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
@@ -6243,6 +7324,7 @@ func (m *SolverParameter) Marshal() (dAtA []byte, err error) {
 	return dAtA[:n], nil
 }
 
+// MarshalTo ...
 func (m *SolverParameter) MarshalTo(dAtA []byte) (int, error) {
 	var i int
 	_ = i
@@ -6549,6 +7631,7 @@ func (m *SolverParameter) MarshalTo(dAtA []byte) (int, error) {
 	return i, nil
 }
 
+// Marshal ...
 func (m *SolverState) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
@@ -6559,6 +7642,7 @@ func (m *SolverState) Marshal() (dAtA []byte, err error) {
 	return dAtA[:n], nil
 }
 
+// MarshalTo ...
 func (m *SolverState) MarshalTo(dAtA []byte) (int, error) {
 	var i int
 	_ = i
@@ -6591,6 +7675,7 @@ func (m *SolverState) MarshalTo(dAtA []byte) (int, error) {
 	return i, nil
 }
 
+// Marshal ...
 func (m *NetState) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
@@ -6601,6 +7686,7 @@ func (m *NetState) Marshal() (dAtA []byte, err error) {
 	return dAtA[:n], nil
 }
 
+// MarshalTo ...
 func (m *NetState) MarshalTo(dAtA []byte) (int, error) {
 	var i int
 	_ = i
@@ -6634,6 +7720,7 @@ func (m *NetState) MarshalTo(dAtA []byte) (int, error) {
 	return i, nil
 }
 
+// Marshal ...
 func (m *NetStateRule) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
@@ -6644,6 +7731,7 @@ func (m *NetStateRule) Marshal() (dAtA []byte, err error) {
 	return dAtA[:n], nil
 }
 
+// MarshalTo ...
 func (m *NetStateRule) MarshalTo(dAtA []byte) (int, error) {
 	var i int
 	_ = i
@@ -6691,6 +7779,7 @@ func (m *NetStateRule) MarshalTo(dAtA []byte) (int, error) {
 	return i, nil
 }
 
+// Marshal ...
 func (m *ParamSpec) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
@@ -6701,6 +7790,7 @@ func (m *ParamSpec) Marshal() (dAtA []byte, err error) {
 	return dAtA[:n], nil
 }
 
+// MarshalTo ...
 func (m *ParamSpec) MarshalTo(dAtA []byte) (int, error) {
 	var i int
 	_ = i
@@ -6726,6 +7816,7 @@ func (m *ParamSpec) MarshalTo(dAtA []byte) (int, error) {
 	return i, nil
 }
 
+// Marshal ...
 func (m *LayerParameter) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
@@ -6736,6 +7827,7 @@ func (m *LayerParameter) Marshal() (dAtA []byte, err error) {
 	return dAtA[:n], nil
 }
 
+// MarshalTo ...
 func (m *LayerParameter) MarshalTo(dAtA []byte) (int, error) {
 	var i int
 	_ = i
@@ -7424,6 +8516,7 @@ func (m *LayerParameter) MarshalTo(dAtA []byte) (int, error) {
 	return i, nil
 }
 
+// Marshal ...
 func (m *TransformationParameter) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
@@ -7434,6 +8527,7 @@ func (m *TransformationParameter) Marshal() (dAtA []byte, err error) {
 	return dAtA[:n], nil
 }
 
+// MarshalTo ...
 func (m *TransformationParameter) MarshalTo(dAtA []byte) (int, error) {
 	var i int
 	_ = i
@@ -7501,6 +8595,7 @@ func (m *TransformationParameter) MarshalTo(dAtA []byte) (int, error) {
 	return i, nil
 }
 
+// Marshal ...
 func (m *LossParameter) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
@@ -7511,6 +8606,7 @@ func (m *LossParameter) Marshal() (dAtA []byte, err error) {
 	return dAtA[:n], nil
 }
 
+// MarshalTo ...
 func (m *LossParameter) MarshalTo(dAtA []byte) (int, error) {
 	var i int
 	_ = i
@@ -7535,6 +8631,7 @@ func (m *LossParameter) MarshalTo(dAtA []byte) (int, error) {
 	return i, nil
 }
 
+// Marshal ...
 func (m *AccuracyParameter) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
@@ -7545,6 +8642,7 @@ func (m *AccuracyParameter) Marshal() (dAtA []byte, err error) {
 	return dAtA[:n], nil
 }
 
+// MarshalTo ...
 func (m *AccuracyParameter) MarshalTo(dAtA []byte) (int, error) {
 	var i int
 	_ = i
@@ -7566,6 +8664,7 @@ func (m *AccuracyParameter) MarshalTo(dAtA []byte) (int, error) {
 	return i, nil
 }
 
+// Marshal ...
 func (m *ArgMaxParameter) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
@@ -7576,6 +8675,7 @@ func (m *ArgMaxParameter) Marshal() (dAtA []byte, err error) {
 	return dAtA[:n], nil
 }
 
+// MarshalTo ...
 func (m *ArgMaxParameter) MarshalTo(dAtA []byte) (int, error) {
 	var i int
 	_ = i
@@ -7602,6 +8702,7 @@ func (m *ArgMaxParameter) MarshalTo(dAtA []byte) (int, error) {
 	return i, nil
 }
 
+// Marshal ...
 func (m *ConcatParameter) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
@@ -7612,6 +8713,7 @@ func (m *ConcatParameter) Marshal() (dAtA []byte, err error) {
 	return dAtA[:n], nil
 }
 
+// MarshalTo ...
 func (m *ConcatParameter) MarshalTo(dAtA []byte) (int, error) {
 	var i int
 	_ = i
@@ -7630,6 +8732,7 @@ func (m *ConcatParameter) MarshalTo(dAtA []byte) (int, error) {
 	return i, nil
 }
 
+// Marshal ...
 func (m *BatchNormParameter) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
@@ -7640,6 +8743,7 @@ func (m *BatchNormParameter) Marshal() (dAtA []byte, err error) {
 	return dAtA[:n], nil
 }
 
+// MarshalTo ...
 func (m *BatchNormParameter) MarshalTo(dAtA []byte) (int, error) {
 	var i int
 	_ = i
@@ -7666,6 +8770,7 @@ func (m *BatchNormParameter) MarshalTo(dAtA []byte) (int, error) {
 	return i, nil
 }
 
+// Marshal ...
 func (m *BiasParameter) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
@@ -7676,6 +8781,7 @@ func (m *BiasParameter) Marshal() (dAtA []byte, err error) {
 	return dAtA[:n], nil
 }
 
+// MarshalTo ...
 func (m *BiasParameter) MarshalTo(dAtA []byte) (int, error) {
 	var i int
 	_ = i
@@ -7704,6 +8810,7 @@ func (m *BiasParameter) MarshalTo(dAtA []byte) (int, error) {
 	return i, nil
 }
 
+// Marshal ...
 func (m *ContrastiveLossParameter) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
@@ -7714,6 +8821,7 @@ func (m *ContrastiveLossParameter) Marshal() (dAtA []byte, err error) {
 	return dAtA[:n], nil
 }
 
+// MarshalTo ...
 func (m *ContrastiveLossParameter) MarshalTo(dAtA []byte) (int, error) {
 	var i int
 	_ = i
@@ -7737,6 +8845,7 @@ func (m *ContrastiveLossParameter) MarshalTo(dAtA []byte) (int, error) {
 	return i, nil
 }
 
+// Marshal ...
 func (m *ConvolutionParameter) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
@@ -7747,6 +8856,7 @@ func (m *ConvolutionParameter) Marshal() (dAtA []byte, err error) {
 	return dAtA[:n], nil
 }
 
+// MarshalTo ...
 func (m *ConvolutionParameter) MarshalTo(dAtA []byte) (int, error) {
 	var i int
 	_ = i
@@ -7869,6 +8979,7 @@ func (m *ConvolutionParameter) MarshalTo(dAtA []byte) (int, error) {
 	return i, nil
 }
 
+// Marshal ...
 func (m *CropParameter) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
@@ -7879,6 +8990,7 @@ func (m *CropParameter) Marshal() (dAtA []byte, err error) {
 	return dAtA[:n], nil
 }
 
+// MarshalTo ...
 func (m *CropParameter) MarshalTo(dAtA []byte) (int, error) {
 	var i int
 	_ = i
@@ -7899,6 +9011,7 @@ func (m *CropParameter) MarshalTo(dAtA []byte) (int, error) {
 	return i, nil
 }
 
+// Marshal ...
 func (m *DataParameter) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
@@ -7909,6 +9022,7 @@ func (m *DataParameter) Marshal() (dAtA []byte, err error) {
 	return dAtA[:n], nil
 }
 
+// MarshalTo ...
 func (m *DataParameter) MarshalTo(dAtA []byte) (int, error) {
 	var i int
 	_ = i
@@ -7973,6 +9087,7 @@ func (m *DataParameter) MarshalTo(dAtA []byte) (int, error) {
 	return i, nil
 }
 
+// Marshal ...
 func (m *DropoutParameter) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
@@ -7983,6 +9098,7 @@ func (m *DropoutParameter) Marshal() (dAtA []byte, err error) {
 	return dAtA[:n], nil
 }
 
+// MarshalTo ...
 func (m *DropoutParameter) MarshalTo(dAtA []byte) (int, error) {
 	var i int
 	_ = i
@@ -7996,6 +9112,7 @@ func (m *DropoutParameter) MarshalTo(dAtA []byte) (int, error) {
 	return i, nil
 }
 
+// Marshal ...
 func (m *DummyDataParameter) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
@@ -8006,6 +9123,7 @@ func (m *DummyDataParameter) Marshal() (dAtA []byte, err error) {
 	return dAtA[:n], nil
 }
 
+// MarshalTo ...
 func (m *DummyDataParameter) MarshalTo(dAtA []byte) (int, error) {
 	var i int
 	_ = i
@@ -8066,6 +9184,7 @@ func (m *DummyDataParameter) MarshalTo(dAtA []byte) (int, error) {
 	return i, nil
 }
 
+// Marshal ...
 func (m *EltwiseParameter) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
@@ -8076,6 +9195,7 @@ func (m *EltwiseParameter) Marshal() (dAtA []byte, err error) {
 	return dAtA[:n], nil
 }
 
+// MarshalTo ...
 func (m *EltwiseParameter) MarshalTo(dAtA []byte) (int, error) {
 	var i int
 	_ = i
@@ -8114,6 +9234,7 @@ func (m *EltwiseParameter) MarshalTo(dAtA []byte) (int, error) {
 	return i, nil
 }
 
+// Marshal ...
 func (m *ELUParameter) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
@@ -8124,6 +9245,7 @@ func (m *ELUParameter) Marshal() (dAtA []byte, err error) {
 	return dAtA[:n], nil
 }
 
+// MarshalTo ...
 func (m *ELUParameter) MarshalTo(dAtA []byte) (int, error) {
 	var i int
 	_ = i
@@ -8137,6 +9259,7 @@ func (m *ELUParameter) MarshalTo(dAtA []byte) (int, error) {
 	return i, nil
 }
 
+// Marshal ...
 func (m *EmbedParameter) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
@@ -8147,6 +9270,7 @@ func (m *EmbedParameter) Marshal() (dAtA []byte, err error) {
 	return dAtA[:n], nil
 }
 
+// MarshalTo ...
 func (m *EmbedParameter) MarshalTo(dAtA []byte) (int, error) {
 	var i int
 	_ = i
@@ -8191,6 +9315,7 @@ func (m *EmbedParameter) MarshalTo(dAtA []byte) (int, error) {
 	return i, nil
 }
 
+// Marshal ...
 func (m *ExpParameter) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
@@ -8201,6 +9326,7 @@ func (m *ExpParameter) Marshal() (dAtA []byte, err error) {
 	return dAtA[:n], nil
 }
 
+// MarshalTo ...
 func (m *ExpParameter) MarshalTo(dAtA []byte) (int, error) {
 	var i int
 	_ = i
@@ -8224,6 +9350,7 @@ func (m *ExpParameter) MarshalTo(dAtA []byte) (int, error) {
 	return i, nil
 }
 
+// Marshal ...
 func (m *FlattenParameter) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
@@ -8234,6 +9361,7 @@ func (m *FlattenParameter) Marshal() (dAtA []byte, err error) {
 	return dAtA[:n], nil
 }
 
+// MarshalTo ...
 func (m *FlattenParameter) MarshalTo(dAtA []byte) (int, error) {
 	var i int
 	_ = i
@@ -8252,6 +9380,7 @@ func (m *FlattenParameter) MarshalTo(dAtA []byte) (int, error) {
 	return i, nil
 }
 
+// Marshal ...
 func (m *HDF5DataParameter) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
@@ -8262,6 +9391,7 @@ func (m *HDF5DataParameter) Marshal() (dAtA []byte, err error) {
 	return dAtA[:n], nil
 }
 
+// MarshalTo ...
 func (m *HDF5DataParameter) MarshalTo(dAtA []byte) (int, error) {
 	var i int
 	_ = i
@@ -8287,6 +9417,7 @@ func (m *HDF5DataParameter) MarshalTo(dAtA []byte) (int, error) {
 	return i, nil
 }
 
+// Marshal ...
 func (m *HDF5OutputParameter) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
@@ -8297,6 +9428,7 @@ func (m *HDF5OutputParameter) Marshal() (dAtA []byte, err error) {
 	return dAtA[:n], nil
 }
 
+// MarshalTo ...
 func (m *HDF5OutputParameter) MarshalTo(dAtA []byte) (int, error) {
 	var i int
 	_ = i
@@ -8309,6 +9441,7 @@ func (m *HDF5OutputParameter) MarshalTo(dAtA []byte) (int, error) {
 	return i, nil
 }
 
+// Marshal ...
 func (m *HingeLossParameter) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
@@ -8319,6 +9452,7 @@ func (m *HingeLossParameter) Marshal() (dAtA []byte, err error) {
 	return dAtA[:n], nil
 }
 
+// MarshalTo ...
 func (m *HingeLossParameter) MarshalTo(dAtA []byte) (int, error) {
 	var i int
 	_ = i
@@ -8332,6 +9466,7 @@ func (m *HingeLossParameter) MarshalTo(dAtA []byte) (int, error) {
 	return i, nil
 }
 
+// Marshal ...
 func (m *ImageDataParameter) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
@@ -8342,6 +9477,7 @@ func (m *ImageDataParameter) Marshal() (dAtA []byte, err error) {
 	return dAtA[:n], nil
 }
 
+// MarshalTo ...
 func (m *ImageDataParameter) MarshalTo(dAtA []byte) (int, error) {
 	var i int
 	_ = i
@@ -8424,6 +9560,7 @@ func (m *ImageDataParameter) MarshalTo(dAtA []byte) (int, error) {
 	return i, nil
 }
 
+// Marshal ...
 func (m *InfogainLossParameter) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
@@ -8434,6 +9571,7 @@ func (m *InfogainLossParameter) Marshal() (dAtA []byte, err error) {
 	return dAtA[:n], nil
 }
 
+// MarshalTo ...
 func (m *InfogainLossParameter) MarshalTo(dAtA []byte) (int, error) {
 	var i int
 	_ = i
@@ -8446,6 +9584,7 @@ func (m *InfogainLossParameter) MarshalTo(dAtA []byte) (int, error) {
 	return i, nil
 }
 
+// Marshal ...
 func (m *InnerProductParameter) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
@@ -8456,6 +9595,7 @@ func (m *InnerProductParameter) Marshal() (dAtA []byte, err error) {
 	return dAtA[:n], nil
 }
 
+// MarshalTo ...
 func (m *InnerProductParameter) MarshalTo(dAtA []byte) (int, error) {
 	var i int
 	_ = i
@@ -8512,6 +9652,7 @@ func (m *InnerProductParameter) MarshalTo(dAtA []byte) (int, error) {
 	return i, nil
 }
 
+// Marshal ...
 func (m *InputParameter) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
@@ -8522,6 +9663,7 @@ func (m *InputParameter) Marshal() (dAtA []byte, err error) {
 	return dAtA[:n], nil
 }
 
+// MarshalTo ...
 func (m *InputParameter) MarshalTo(dAtA []byte) (int, error) {
 	var i int
 	_ = i
@@ -8542,6 +9684,7 @@ func (m *InputParameter) MarshalTo(dAtA []byte) (int, error) {
 	return i, nil
 }
 
+// Marshal ...
 func (m *LogParameter) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
@@ -8552,6 +9695,7 @@ func (m *LogParameter) Marshal() (dAtA []byte, err error) {
 	return dAtA[:n], nil
 }
 
+// MarshalTo ...
 func (m *LogParameter) MarshalTo(dAtA []byte) (int, error) {
 	var i int
 	_ = i
@@ -8575,6 +9719,7 @@ func (m *LogParameter) MarshalTo(dAtA []byte) (int, error) {
 	return i, nil
 }
 
+// Marshal ...
 func (m *LRNParameter) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
@@ -8585,6 +9730,7 @@ func (m *LRNParameter) Marshal() (dAtA []byte, err error) {
 	return dAtA[:n], nil
 }
 
+// MarshalTo ...
 func (m *LRNParameter) MarshalTo(dAtA []byte) (int, error) {
 	var i int
 	_ = i
@@ -8623,6 +9769,7 @@ func (m *LRNParameter) MarshalTo(dAtA []byte) (int, error) {
 	return i, nil
 }
 
+// Marshal ...
 func (m *MemoryDataParameter) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
@@ -8633,6 +9780,7 @@ func (m *MemoryDataParameter) Marshal() (dAtA []byte, err error) {
 	return dAtA[:n], nil
 }
 
+// MarshalTo ...
 func (m *MemoryDataParameter) MarshalTo(dAtA []byte) (int, error) {
 	var i int
 	_ = i
@@ -8653,6 +9801,7 @@ func (m *MemoryDataParameter) MarshalTo(dAtA []byte) (int, error) {
 	return i, nil
 }
 
+// Marshal ...
 func (m *MVNParameter) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
@@ -8663,6 +9812,7 @@ func (m *MVNParameter) Marshal() (dAtA []byte, err error) {
 	return dAtA[:n], nil
 }
 
+// MarshalTo ...
 func (m *MVNParameter) MarshalTo(dAtA []byte) (int, error) {
 	var i int
 	_ = i
@@ -8696,6 +9846,7 @@ func (m *MVNParameter) MarshalTo(dAtA []byte) (int, error) {
 	return i, nil
 }
 
+// Marshal ...
 func (m *ParameterParameter) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
@@ -8706,6 +9857,7 @@ func (m *ParameterParameter) Marshal() (dAtA []byte, err error) {
 	return dAtA[:n], nil
 }
 
+// MarshalTo ...
 func (m *ParameterParameter) MarshalTo(dAtA []byte) (int, error) {
 	var i int
 	_ = i
@@ -8724,6 +9876,7 @@ func (m *ParameterParameter) MarshalTo(dAtA []byte) (int, error) {
 	return i, nil
 }
 
+// Marshal ...
 func (m *PoolingParameter) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
@@ -8734,6 +9887,7 @@ func (m *PoolingParameter) Marshal() (dAtA []byte, err error) {
 	return dAtA[:n], nil
 }
 
+// MarshalTo ...
 func (m *PoolingParameter) MarshalTo(dAtA []byte) (int, error) {
 	var i int
 	_ = i
@@ -8797,6 +9951,7 @@ func (m *PoolingParameter) MarshalTo(dAtA []byte) (int, error) {
 	return i, nil
 }
 
+// Marshal ...
 func (m *PowerParameter) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
@@ -8807,6 +9962,7 @@ func (m *PowerParameter) Marshal() (dAtA []byte, err error) {
 	return dAtA[:n], nil
 }
 
+// MarshalTo ...
 func (m *PowerParameter) MarshalTo(dAtA []byte) (int, error) {
 	var i int
 	_ = i
@@ -8830,6 +9986,7 @@ func (m *PowerParameter) MarshalTo(dAtA []byte) (int, error) {
 	return i, nil
 }
 
+// Marshal ...
 func (m *PythonParameter) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
@@ -8840,6 +9997,7 @@ func (m *PythonParameter) Marshal() (dAtA []byte, err error) {
 	return dAtA[:n], nil
 }
 
+// MarshalTo ...
 func (m *PythonParameter) MarshalTo(dAtA []byte) (int, error) {
 	var i int
 	_ = i
@@ -8872,6 +10030,7 @@ func (m *PythonParameter) MarshalTo(dAtA []byte) (int, error) {
 	return i, nil
 }
 
+// Marshal ...
 func (m *RecurrentParameter) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
@@ -8882,6 +10041,7 @@ func (m *RecurrentParameter) Marshal() (dAtA []byte, err error) {
 	return dAtA[:n], nil
 }
 
+// MarshalTo ...
 func (m *RecurrentParameter) MarshalTo(dAtA []byte) (int, error) {
 	var i int
 	_ = i
@@ -8935,6 +10095,7 @@ func (m *RecurrentParameter) MarshalTo(dAtA []byte) (int, error) {
 	return i, nil
 }
 
+// Marshal ...
 func (m *ReductionParameter) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
@@ -8945,6 +10106,7 @@ func (m *ReductionParameter) Marshal() (dAtA []byte, err error) {
 	return dAtA[:n], nil
 }
 
+// MarshalTo ...
 func (m *ReductionParameter) MarshalTo(dAtA []byte) (int, error) {
 	var i int
 	_ = i
@@ -8968,6 +10130,7 @@ func (m *ReductionParameter) MarshalTo(dAtA []byte) (int, error) {
 	return i, nil
 }
 
+// Marshal ...
 func (m *ReLUParameter) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
@@ -8978,6 +10141,7 @@ func (m *ReLUParameter) Marshal() (dAtA []byte, err error) {
 	return dAtA[:n], nil
 }
 
+// MarshalTo ...
 func (m *ReLUParameter) MarshalTo(dAtA []byte) (int, error) {
 	var i int
 	_ = i
@@ -8996,6 +10160,7 @@ func (m *ReLUParameter) MarshalTo(dAtA []byte) (int, error) {
 	return i, nil
 }
 
+// Marshal ...
 func (m *ReshapeParameter) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
@@ -9006,6 +10171,7 @@ func (m *ReshapeParameter) Marshal() (dAtA []byte, err error) {
 	return dAtA[:n], nil
 }
 
+// MarshalTo ...
 func (m *ReshapeParameter) MarshalTo(dAtA []byte) (int, error) {
 	var i int
 	_ = i
@@ -9034,6 +10200,7 @@ func (m *ReshapeParameter) MarshalTo(dAtA []byte) (int, error) {
 	return i, nil
 }
 
+// Marshal ...
 func (m *ScaleParameter) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
@@ -9044,6 +10211,7 @@ func (m *ScaleParameter) Marshal() (dAtA []byte, err error) {
 	return dAtA[:n], nil
 }
 
+// MarshalTo ...
 func (m *ScaleParameter) MarshalTo(dAtA []byte) (int, error) {
 	var i int
 	_ = i
@@ -9092,6 +10260,7 @@ func (m *ScaleParameter) MarshalTo(dAtA []byte) (int, error) {
 	return i, nil
 }
 
+// Marshal ...
 func (m *SigmoidParameter) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
@@ -9102,6 +10271,7 @@ func (m *SigmoidParameter) Marshal() (dAtA []byte, err error) {
 	return dAtA[:n], nil
 }
 
+// MarshalTo ...
 func (m *SigmoidParameter) MarshalTo(dAtA []byte) (int, error) {
 	var i int
 	_ = i
@@ -9115,6 +10285,7 @@ func (m *SigmoidParameter) MarshalTo(dAtA []byte) (int, error) {
 	return i, nil
 }
 
+// Marshal ...
 func (m *SliceParameter) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
@@ -9125,6 +10296,7 @@ func (m *SliceParameter) Marshal() (dAtA []byte, err error) {
 	return dAtA[:n], nil
 }
 
+// MarshalTo ...
 func (m *SliceParameter) MarshalTo(dAtA []byte) (int, error) {
 	var i int
 	_ = i
@@ -9150,6 +10322,7 @@ func (m *SliceParameter) MarshalTo(dAtA []byte) (int, error) {
 	return i, nil
 }
 
+// Marshal ...
 func (m *SoftmaxParameter) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
@@ -9160,6 +10333,7 @@ func (m *SoftmaxParameter) Marshal() (dAtA []byte, err error) {
 	return dAtA[:n], nil
 }
 
+// MarshalTo ...
 func (m *SoftmaxParameter) MarshalTo(dAtA []byte) (int, error) {
 	var i int
 	_ = i
@@ -9178,6 +10352,7 @@ func (m *SoftmaxParameter) MarshalTo(dAtA []byte) (int, error) {
 	return i, nil
 }
 
+// Marshal ...
 func (m *TanHParameter) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
@@ -9188,6 +10363,7 @@ func (m *TanHParameter) Marshal() (dAtA []byte, err error) {
 	return dAtA[:n], nil
 }
 
+// MarshalTo ...
 func (m *TanHParameter) MarshalTo(dAtA []byte) (int, error) {
 	var i int
 	_ = i
@@ -9201,6 +10377,7 @@ func (m *TanHParameter) MarshalTo(dAtA []byte) (int, error) {
 	return i, nil
 }
 
+// Marshal ...
 func (m *TileParameter) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
@@ -9211,6 +10388,7 @@ func (m *TileParameter) Marshal() (dAtA []byte, err error) {
 	return dAtA[:n], nil
 }
 
+// MarshalTo ...
 func (m *TileParameter) MarshalTo(dAtA []byte) (int, error) {
 	var i int
 	_ = i
@@ -9227,6 +10405,7 @@ func (m *TileParameter) MarshalTo(dAtA []byte) (int, error) {
 	return i, nil
 }
 
+// Marshal ...
 func (m *ThresholdParameter) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
@@ -9237,6 +10416,7 @@ func (m *ThresholdParameter) Marshal() (dAtA []byte, err error) {
 	return dAtA[:n], nil
 }
 
+// MarshalTo ...
 func (m *ThresholdParameter) MarshalTo(dAtA []byte) (int, error) {
 	var i int
 	_ = i
@@ -9250,6 +10430,7 @@ func (m *ThresholdParameter) MarshalTo(dAtA []byte) (int, error) {
 	return i, nil
 }
 
+// Marshal ...
 func (m *WindowDataParameter) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
@@ -9260,6 +10441,7 @@ func (m *WindowDataParameter) Marshal() (dAtA []byte, err error) {
 	return dAtA[:n], nil
 }
 
+// MarshalTo ...
 func (m *WindowDataParameter) MarshalTo(dAtA []byte) (int, error) {
 	var i int
 	_ = i
@@ -9341,6 +10523,7 @@ func (m *WindowDataParameter) MarshalTo(dAtA []byte) (int, error) {
 	return i, nil
 }
 
+// Marshal ...
 func (m *SPPParameter) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
@@ -9351,6 +10534,7 @@ func (m *SPPParameter) Marshal() (dAtA []byte, err error) {
 	return dAtA[:n], nil
 }
 
+// MarshalTo ...
 func (m *SPPParameter) MarshalTo(dAtA []byte) (int, error) {
 	var i int
 	_ = i
@@ -9372,6 +10556,7 @@ func (m *SPPParameter) MarshalTo(dAtA []byte) (int, error) {
 	return i, nil
 }
 
+// Marshal ...
 func (m *V1LayerParameter) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
@@ -9382,6 +10567,7 @@ func (m *V1LayerParameter) Marshal() (dAtA []byte, err error) {
 	return dAtA[:n], nil
 }
 
+// MarshalTo ...
 func (m *V1LayerParameter) MarshalTo(dAtA []byte) (int, error) {
 	var i int
 	_ = i
@@ -9896,6 +11082,7 @@ func (m *V1LayerParameter) MarshalTo(dAtA []byte) (int, error) {
 	return i, nil
 }
 
+// Marshal ...
 func (m *V0LayerParameter) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
@@ -9906,6 +11093,7 @@ func (m *V0LayerParameter) Marshal() (dAtA []byte, err error) {
 	return dAtA[:n], nil
 }
 
+// MarshalTo ...
 func (m *V0LayerParameter) MarshalTo(dAtA []byte) (int, error) {
 	var i int
 	_ = i
@@ -10198,6 +11386,7 @@ func (m *V0LayerParameter) MarshalTo(dAtA []byte) (int, error) {
 	return i, nil
 }
 
+// Marshal ...
 func (m *PReLUParameter) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
@@ -10208,6 +11397,7 @@ func (m *PReLUParameter) Marshal() (dAtA []byte, err error) {
 	return dAtA[:n], nil
 }
 
+// MarshalTo ...
 func (m *PReLUParameter) MarshalTo(dAtA []byte) (int, error) {
 	var i int
 	_ = i
@@ -10262,7 +11452,8 @@ func encodeVarintCaffe(dAtA []byte, offset int, v uint64) int {
 	}
 	dAtA[offset] = uint8(v)
 	return offset + 1
-}
+} 
+// Size ...
 func (m *BlobShape) Size() (n int) {
 	var l int
 	_ = l
@@ -10276,6 +11467,7 @@ func (m *BlobShape) Size() (n int) {
 	return n
 }
 
+// Size ...
 func (m *BlobProto) Size() (n int) {
 	var l int
 	_ = l
@@ -10310,6 +11502,7 @@ func (m *BlobProto) Size() (n int) {
 	return n
 }
 
+// Size ...
 func (m *BlobProtoVector) Size() (n int) {
 	var l int
 	_ = l
@@ -10322,6 +11515,7 @@ func (m *BlobProtoVector) Size() (n int) {
 	return n
 }
 
+// Size ...
 func (m *Datum) Size() (n int) {
 	var l int
 	_ = l
@@ -10342,6 +11536,7 @@ func (m *Datum) Size() (n int) {
 	return n
 }
 
+// Size ...
 func (m *FillerParameter) Size() (n int) {
 	var l int
 	_ = l
@@ -10373,6 +11568,7 @@ func (m *FillerParameter) Size() (n int) {
 	return n
 }
 
+// Size ...
 func (m *NetParameter) Size() (n int) {
 	var l int
 	_ = l
@@ -10420,6 +11616,7 @@ func (m *NetParameter) Size() (n int) {
 	return n
 }
 
+// Size ...
 func (m *SolverParameter) Size() (n int) {
 	var l int
 	_ = l
@@ -10542,6 +11739,7 @@ func (m *SolverParameter) Size() (n int) {
 	return n
 }
 
+// Size ...
 func (m *SolverState) Size() (n int) {
 	var l int
 	_ = l
@@ -10560,6 +11758,7 @@ func (m *SolverState) Size() (n int) {
 	return n
 }
 
+// Size ...
 func (m *NetState) Size() (n int) {
 	var l int
 	_ = l
@@ -10578,6 +11777,7 @@ func (m *NetState) Size() (n int) {
 	return n
 }
 
+// Size ...
 func (m *NetStateRule) Size() (n int) {
 	var l int
 	_ = l
@@ -10599,6 +11799,7 @@ func (m *NetStateRule) Size() (n int) {
 	return n
 }
 
+// Size ...
 func (m *ParamSpec) Size() (n int) {
 	var l int
 	_ = l
@@ -10614,6 +11815,7 @@ func (m *ParamSpec) Size() (n int) {
 	return n
 }
 
+// Size ...
 func (m *LayerParameter) Size() (n int) {
 	var l int
 	_ = l
@@ -10855,6 +12057,7 @@ func (m *LayerParameter) Size() (n int) {
 	return n
 }
 
+// Size ...
 func (m *TransformationParameter) Size() (n int) {
 	var l int
 	_ = l
@@ -10881,6 +12084,7 @@ func (m *TransformationParameter) Size() (n int) {
 	return n
 }
 
+// Size ...
 func (m *LossParameter) Size() (n int) {
 	var l int
 	_ = l
@@ -10892,6 +12096,7 @@ func (m *LossParameter) Size() (n int) {
 	return n
 }
 
+// Size ...
 func (m *AccuracyParameter) Size() (n int) {
 	var l int
 	_ = l
@@ -10905,6 +12110,7 @@ func (m *AccuracyParameter) Size() (n int) {
 	return n
 }
 
+// Size ...
 func (m *ArgMaxParameter) Size() (n int) {
 	var l int
 	_ = l
@@ -10918,6 +12124,7 @@ func (m *ArgMaxParameter) Size() (n int) {
 	return n
 }
 
+// Size ...
 func (m *ConcatParameter) Size() (n int) {
 	var l int
 	_ = l
@@ -10930,6 +12137,7 @@ func (m *ConcatParameter) Size() (n int) {
 	return n
 }
 
+// Size ...
 func (m *BatchNormParameter) Size() (n int) {
 	var l int
 	_ = l
@@ -10943,6 +12151,7 @@ func (m *BatchNormParameter) Size() (n int) {
 	return n
 }
 
+// Size ...
 func (m *BiasParameter) Size() (n int) {
 	var l int
 	_ = l
@@ -10959,6 +12168,7 @@ func (m *BiasParameter) Size() (n int) {
 	return n
 }
 
+// Size ...
 func (m *ContrastiveLossParameter) Size() (n int) {
 	var l int
 	_ = l
@@ -10971,6 +12181,7 @@ func (m *ContrastiveLossParameter) Size() (n int) {
 	return n
 }
 
+// Size ...
 func (m *ConvolutionParameter) Size() (n int) {
 	var l int
 	_ = l
@@ -11031,6 +12242,7 @@ func (m *ConvolutionParameter) Size() (n int) {
 	return n
 }
 
+// Size ...
 func (m *CropParameter) Size() (n int) {
 	var l int
 	_ = l
@@ -11045,6 +12257,7 @@ func (m *CropParameter) Size() (n int) {
 	return n
 }
 
+// Size ...
 func (m *DataParameter) Size() (n int) {
 	var l int
 	_ = l
@@ -11077,6 +12290,7 @@ func (m *DataParameter) Size() (n int) {
 	return n
 }
 
+// Size ...
 func (m *DropoutParameter) Size() (n int) {
 	var l int
 	_ = l
@@ -11086,6 +12300,7 @@ func (m *DropoutParameter) Size() (n int) {
 	return n
 }
 
+// Size ...
 func (m *DummyDataParameter) Size() (n int) {
 	var l int
 	_ = l
@@ -11124,6 +12339,7 @@ func (m *DummyDataParameter) Size() (n int) {
 	return n
 }
 
+// Size ...
 func (m *EltwiseParameter) Size() (n int) {
 	var l int
 	_ = l
@@ -11139,6 +12355,7 @@ func (m *EltwiseParameter) Size() (n int) {
 	return n
 }
 
+// Size ...
 func (m *ELUParameter) Size() (n int) {
 	var l int
 	_ = l
@@ -11148,6 +12365,7 @@ func (m *ELUParameter) Size() (n int) {
 	return n
 }
 
+// Size ...
 func (m *EmbedParameter) Size() (n int) {
 	var l int
 	_ = l
@@ -11167,6 +12385,7 @@ func (m *EmbedParameter) Size() (n int) {
 	return n
 }
 
+// Size ...
 func (m *ExpParameter) Size() (n int) {
 	var l int
 	_ = l
@@ -11182,6 +12401,7 @@ func (m *ExpParameter) Size() (n int) {
 	return n
 }
 
+// Size ...
 func (m *FlattenParameter) Size() (n int) {
 	var l int
 	_ = l
@@ -11194,6 +12414,7 @@ func (m *FlattenParameter) Size() (n int) {
 	return n
 }
 
+// Size ...
 func (m *HDF5DataParameter) Size() (n int) {
 	var l int
 	_ = l
@@ -11206,6 +12427,7 @@ func (m *HDF5DataParameter) Size() (n int) {
 	return n
 }
 
+// Size ...
 func (m *HDF5OutputParameter) Size() (n int) {
 	var l int
 	_ = l
@@ -11214,6 +12436,7 @@ func (m *HDF5OutputParameter) Size() (n int) {
 	return n
 }
 
+// Size ...
 func (m *HingeLossParameter) Size() (n int) {
 	var l int
 	_ = l
@@ -11223,6 +12446,7 @@ func (m *HingeLossParameter) Size() (n int) {
 	return n
 }
 
+// Size ...
 func (m *ImageDataParameter) Size() (n int) {
 	var l int
 	_ = l
@@ -11264,6 +12488,7 @@ func (m *ImageDataParameter) Size() (n int) {
 	return n
 }
 
+// Size ...
 func (m *InfogainLossParameter) Size() (n int) {
 	var l int
 	_ = l
@@ -11272,6 +12497,7 @@ func (m *InfogainLossParameter) Size() (n int) {
 	return n
 }
 
+// Size ...
 func (m *InnerProductParameter) Size() (n int) {
 	var l int
 	_ = l
@@ -11296,6 +12522,7 @@ func (m *InnerProductParameter) Size() (n int) {
 	return n
 }
 
+// Size ...
 func (m *InputParameter) Size() (n int) {
 	var l int
 	_ = l
@@ -11308,6 +12535,7 @@ func (m *InputParameter) Size() (n int) {
 	return n
 }
 
+// Size ...
 func (m *LogParameter) Size() (n int) {
 	var l int
 	_ = l
@@ -11323,6 +12551,7 @@ func (m *LogParameter) Size() (n int) {
 	return n
 }
 
+// Size ...
 func (m *LRNParameter) Size() (n int) {
 	var l int
 	_ = l
@@ -11347,6 +12576,7 @@ func (m *LRNParameter) Size() (n int) {
 	return n
 }
 
+// Size ...
 func (m *MemoryDataParameter) Size() (n int) {
 	var l int
 	_ = l
@@ -11357,6 +12587,7 @@ func (m *MemoryDataParameter) Size() (n int) {
 	return n
 }
 
+// Size ...
 func (m *MVNParameter) Size() (n int) {
 	var l int
 	_ = l
@@ -11372,6 +12603,7 @@ func (m *MVNParameter) Size() (n int) {
 	return n
 }
 
+// Size ...
 func (m *ParameterParameter) Size() (n int) {
 	var l int
 	_ = l
@@ -11382,6 +12614,7 @@ func (m *ParameterParameter) Size() (n int) {
 	return n
 }
 
+// Size ...
 func (m *PoolingParameter) Size() (n int) {
 	var l int
 	_ = l
@@ -11414,6 +12647,7 @@ func (m *PoolingParameter) Size() (n int) {
 	return n
 }
 
+// Size ...
 func (m *PowerParameter) Size() (n int) {
 	var l int
 	_ = l
@@ -11429,6 +12663,7 @@ func (m *PowerParameter) Size() (n int) {
 	return n
 }
 
+// Size ...
 func (m *PythonParameter) Size() (n int) {
 	var l int
 	_ = l
@@ -11446,6 +12681,7 @@ func (m *PythonParameter) Size() (n int) {
 	return n
 }
 
+// Size ...
 func (m *RecurrentParameter) Size() (n int) {
 	var l int
 	_ = l
@@ -11469,6 +12705,7 @@ func (m *RecurrentParameter) Size() (n int) {
 	return n
 }
 
+// Size ...
 func (m *ReductionParameter) Size() (n int) {
 	var l int
 	_ = l
@@ -11484,6 +12721,7 @@ func (m *ReductionParameter) Size() (n int) {
 	return n
 }
 
+// Size ...
 func (m *ReLUParameter) Size() (n int) {
 	var l int
 	_ = l
@@ -11496,6 +12734,7 @@ func (m *ReLUParameter) Size() (n int) {
 	return n
 }
 
+// Size ...
 func (m *ReshapeParameter) Size() (n int) {
 	var l int
 	_ = l
@@ -11512,6 +12751,7 @@ func (m *ReshapeParameter) Size() (n int) {
 	return n
 }
 
+// Size ...
 func (m *ScaleParameter) Size() (n int) {
 	var l int
 	_ = l
@@ -11535,6 +12775,7 @@ func (m *ScaleParameter) Size() (n int) {
 	return n
 }
 
+// Size ...
 func (m *SigmoidParameter) Size() (n int) {
 	var l int
 	_ = l
@@ -11544,6 +12785,7 @@ func (m *SigmoidParameter) Size() (n int) {
 	return n
 }
 
+// Size ...
 func (m *SliceParameter) Size() (n int) {
 	var l int
 	_ = l
@@ -11561,6 +12803,7 @@ func (m *SliceParameter) Size() (n int) {
 	return n
 }
 
+// Size ...
 func (m *SoftmaxParameter) Size() (n int) {
 	var l int
 	_ = l
@@ -11573,6 +12816,7 @@ func (m *SoftmaxParameter) Size() (n int) {
 	return n
 }
 
+// Size ...
 func (m *TanHParameter) Size() (n int) {
 	var l int
 	_ = l
@@ -11582,6 +12826,7 @@ func (m *TanHParameter) Size() (n int) {
 	return n
 }
 
+// Size ...
 func (m *TileParameter) Size() (n int) {
 	var l int
 	_ = l
@@ -11592,6 +12837,7 @@ func (m *TileParameter) Size() (n int) {
 	return n
 }
 
+// Size ...
 func (m *ThresholdParameter) Size() (n int) {
 	var l int
 	_ = l
@@ -11601,6 +12847,7 @@ func (m *ThresholdParameter) Size() (n int) {
 	return n
 }
 
+// Size ...
 func (m *WindowDataParameter) Size() (n int) {
 	var l int
 	_ = l
@@ -11644,6 +12891,7 @@ func (m *WindowDataParameter) Size() (n int) {
 	return n
 }
 
+// Size ...
 func (m *SPPParameter) Size() (n int) {
 	var l int
 	_ = l
@@ -11657,6 +12905,7 @@ func (m *SPPParameter) Size() (n int) {
 	return n
 }
 
+// Size ...
 func (m *V1LayerParameter) Size() (n int) {
 	var l int
 	_ = l
@@ -11840,6 +13089,7 @@ func (m *V1LayerParameter) Size() (n int) {
 	return n
 }
 
+// Size ...
 func (m *V0LayerParameter) Size() (n int) {
 	var l int
 	_ = l
@@ -11957,6 +13207,7 @@ func (m *V0LayerParameter) Size() (n int) {
 	return n
 }
 
+// Size ...
 func (m *PReLUParameter) Size() (n int) {
 	var l int
 	_ = l
@@ -11982,7 +13233,8 @@ func sovCaffe(x uint64) (n int) {
 }
 func sozCaffe(x uint64) (n int) {
 	return sovCaffe(uint64((x << 1) ^ uint64((int64(x) >> 63))))
-}
+} 
+// Unmarshal ...
 func (m *BlobShape) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
@@ -12094,7 +13346,8 @@ func (m *BlobShape) Unmarshal(dAtA []byte) error {
 		return io.ErrUnexpectedEOF
 	}
 	return nil
-}
+} 
+// Unmarshal ...
 func (m *BlobProto) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
@@ -12481,7 +13734,8 @@ func (m *BlobProto) Unmarshal(dAtA []byte) error {
 		return io.ErrUnexpectedEOF
 	}
 	return nil
-}
+} 
+// Unmarshal ...
 func (m *BlobProtoVector) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
@@ -12562,7 +13816,8 @@ func (m *BlobProtoVector) Unmarshal(dAtA []byte) error {
 		return io.ErrUnexpectedEOF
 	}
 	return nil
-}
+} 
+// Unmarshal ...
 func (m *Datum) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
@@ -12792,7 +14047,8 @@ func (m *Datum) Unmarshal(dAtA []byte) error {
 		return io.ErrUnexpectedEOF
 	}
 	return nil
-}
+} 
+// Unmarshal ...
 func (m *FillerParameter) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
@@ -12987,7 +14243,8 @@ func (m *FillerParameter) Unmarshal(dAtA []byte) error {
 		return io.ErrUnexpectedEOF
 	}
 	return nil
-}
+} 
+// Unmarshal ...
 func (m *NetParameter) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
@@ -13325,7 +14582,8 @@ func (m *NetParameter) Unmarshal(dAtA []byte) error {
 		return io.ErrUnexpectedEOF
 	}
 	return nil
-}
+} 
+// Unmarshal ...
 func (m *SolverParameter) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
@@ -14336,7 +15594,8 @@ func (m *SolverParameter) Unmarshal(dAtA []byte) error {
 		return io.ErrUnexpectedEOF
 	}
 	return nil
-}
+} 
+// Unmarshal ...
 func (m *SolverState) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
@@ -14485,7 +15744,8 @@ func (m *SolverState) Unmarshal(dAtA []byte) error {
 		return io.ErrUnexpectedEOF
 	}
 	return nil
-}
+} 
+// Unmarshal ...
 func (m *NetState) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
@@ -14604,7 +15864,8 @@ func (m *NetState) Unmarshal(dAtA []byte) error {
 		return io.ErrUnexpectedEOF
 	}
 	return nil
-}
+} 
+// Unmarshal ...
 func (m *NetStateRule) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
@@ -14769,7 +16030,8 @@ func (m *NetStateRule) Unmarshal(dAtA []byte) error {
 		return io.ErrUnexpectedEOF
 	}
 	return nil
-}
+} 
+// Unmarshal ...
 func (m *ParamSpec) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
@@ -14897,7 +16159,8 @@ func (m *ParamSpec) Unmarshal(dAtA []byte) error {
 		return io.ErrUnexpectedEOF
 	}
 	return nil
-}
+} 
+// Unmarshal ...
 func (m *LayerParameter) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
@@ -16871,7 +18134,8 @@ func (m *LayerParameter) Unmarshal(dAtA []byte) error {
 		return io.ErrUnexpectedEOF
 	}
 	return nil
-}
+} 
+// Unmarshal ...
 func (m *TransformationParameter) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
@@ -17100,7 +18364,8 @@ func (m *TransformationParameter) Unmarshal(dAtA []byte) error {
 		return io.ErrUnexpectedEOF
 	}
 	return nil
-}
+} 
+// Unmarshal ...
 func (m *LossParameter) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
@@ -17209,7 +18474,8 @@ func (m *LossParameter) Unmarshal(dAtA []byte) error {
 		return io.ErrUnexpectedEOF
 	}
 	return nil
-}
+} 
+// Unmarshal ...
 func (m *AccuracyParameter) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
@@ -17318,7 +18584,8 @@ func (m *AccuracyParameter) Unmarshal(dAtA []byte) error {
 		return io.ErrUnexpectedEOF
 	}
 	return nil
-}
+} 
+// Unmarshal ...
 func (m *ArgMaxParameter) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
@@ -17428,7 +18695,8 @@ func (m *ArgMaxParameter) Unmarshal(dAtA []byte) error {
 		return io.ErrUnexpectedEOF
 	}
 	return nil
-}
+} 
+// Unmarshal ...
 func (m *ConcatParameter) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
@@ -17518,7 +18786,8 @@ func (m *ConcatParameter) Unmarshal(dAtA []byte) error {
 		return io.ErrUnexpectedEOF
 	}
 	return nil
-}
+} 
+// Unmarshal ...
 func (m *BatchNormParameter) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
@@ -17618,7 +18887,8 @@ func (m *BatchNormParameter) Unmarshal(dAtA []byte) error {
 		return io.ErrUnexpectedEOF
 	}
 	return nil
-}
+} 
+// Unmarshal ...
 func (m *BiasParameter) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
@@ -17741,7 +19011,8 @@ func (m *BiasParameter) Unmarshal(dAtA []byte) error {
 		return io.ErrUnexpectedEOF
 	}
 	return nil
-}
+} 
+// Unmarshal ...
 func (m *ContrastiveLossParameter) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
@@ -17827,7 +19098,8 @@ func (m *ContrastiveLossParameter) Unmarshal(dAtA []byte) error {
 		return io.ErrUnexpectedEOF
 	}
 	return nil
-}
+} 
+// Unmarshal ...
 func (m *ConvolutionParameter) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
@@ -18428,7 +19700,8 @@ func (m *ConvolutionParameter) Unmarshal(dAtA []byte) error {
 		return io.ErrUnexpectedEOF
 	}
 	return nil
-}
+} 
+// Unmarshal ...
 func (m *CropParameter) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
@@ -18560,7 +19833,8 @@ func (m *CropParameter) Unmarshal(dAtA []byte) error {
 		return io.ErrUnexpectedEOF
 	}
 	return nil
-}
+} 
+// Unmarshal ...
 func (m *DataParameter) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
@@ -18824,7 +20098,8 @@ func (m *DataParameter) Unmarshal(dAtA []byte) error {
 		return io.ErrUnexpectedEOF
 	}
 	return nil
-}
+} 
+// Unmarshal ...
 func (m *DropoutParameter) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
@@ -18889,7 +20164,8 @@ func (m *DropoutParameter) Unmarshal(dAtA []byte) error {
 		return io.ErrUnexpectedEOF
 	}
 	return nil
-}
+} 
+// Unmarshal ...
 func (m *DummyDataParameter) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
@@ -19249,7 +20525,8 @@ func (m *DummyDataParameter) Unmarshal(dAtA []byte) error {
 		return io.ErrUnexpectedEOF
 	}
 	return nil
-}
+} 
+// Unmarshal ...
 func (m *EltwiseParameter) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
@@ -19392,7 +20669,8 @@ func (m *EltwiseParameter) Unmarshal(dAtA []byte) error {
 		return io.ErrUnexpectedEOF
 	}
 	return nil
-}
+} 
+// Unmarshal ...
 func (m *ELUParameter) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
@@ -19457,7 +20735,8 @@ func (m *ELUParameter) Unmarshal(dAtA []byte) error {
 		return io.ErrUnexpectedEOF
 	}
 	return nil
-}
+} 
+// Unmarshal ...
 func (m *EmbedParameter) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
@@ -19632,7 +20911,8 @@ func (m *EmbedParameter) Unmarshal(dAtA []byte) error {
 		return io.ErrUnexpectedEOF
 	}
 	return nil
-}
+} 
+// Unmarshal ...
 func (m *ExpParameter) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
@@ -19727,7 +21007,8 @@ func (m *ExpParameter) Unmarshal(dAtA []byte) error {
 		return io.ErrUnexpectedEOF
 	}
 	return nil
-}
+} 
+// Unmarshal ...
 func (m *FlattenParameter) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
@@ -19817,7 +21098,8 @@ func (m *FlattenParameter) Unmarshal(dAtA []byte) error {
 		return io.ErrUnexpectedEOF
 	}
 	return nil
-}
+} 
+// Unmarshal ...
 func (m *HDF5DataParameter) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
@@ -19936,7 +21218,8 @@ func (m *HDF5DataParameter) Unmarshal(dAtA []byte) error {
 		return io.ErrUnexpectedEOF
 	}
 	return nil
-}
+} 
+// Unmarshal ...
 func (m *HDF5OutputParameter) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
@@ -20015,7 +21298,8 @@ func (m *HDF5OutputParameter) Unmarshal(dAtA []byte) error {
 		return io.ErrUnexpectedEOF
 	}
 	return nil
-}
+} 
+// Unmarshal ...
 func (m *HingeLossParameter) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
@@ -20085,7 +21369,8 @@ func (m *HingeLossParameter) Unmarshal(dAtA []byte) error {
 		return io.ErrUnexpectedEOF
 	}
 	return nil
-}
+} 
+// Unmarshal ...
 func (m *ImageDataParameter) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
@@ -20401,7 +21686,8 @@ func (m *ImageDataParameter) Unmarshal(dAtA []byte) error {
 		return io.ErrUnexpectedEOF
 	}
 	return nil
-}
+} 
+// Unmarshal ...
 func (m *InfogainLossParameter) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
@@ -20480,7 +21766,8 @@ func (m *InfogainLossParameter) Unmarshal(dAtA []byte) error {
 		return io.ErrUnexpectedEOF
 	}
 	return nil
-}
+} 
+// Unmarshal ...
 func (m *InnerProductParameter) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
@@ -20677,7 +21964,8 @@ func (m *InnerProductParameter) Unmarshal(dAtA []byte) error {
 		return io.ErrUnexpectedEOF
 	}
 	return nil
-}
+} 
+// Unmarshal ...
 func (m *InputParameter) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
@@ -20758,7 +22046,8 @@ func (m *InputParameter) Unmarshal(dAtA []byte) error {
 		return io.ErrUnexpectedEOF
 	}
 	return nil
-}
+} 
+// Unmarshal ...
 func (m *LogParameter) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
@@ -20853,7 +22142,8 @@ func (m *LogParameter) Unmarshal(dAtA []byte) error {
 		return io.ErrUnexpectedEOF
 	}
 	return nil
-}
+} 
+// Unmarshal ...
 func (m *LRNParameter) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
@@ -21008,7 +22298,8 @@ func (m *LRNParameter) Unmarshal(dAtA []byte) error {
 		return io.ErrUnexpectedEOF
 	}
 	return nil
-}
+} 
+// Unmarshal ...
 func (m *MemoryDataParameter) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
@@ -21134,7 +22425,8 @@ func (m *MemoryDataParameter) Unmarshal(dAtA []byte) error {
 		return io.ErrUnexpectedEOF
 	}
 	return nil
-}
+} 
+// Unmarshal ...
 func (m *MVNParameter) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
@@ -21241,7 +22533,8 @@ func (m *MVNParameter) Unmarshal(dAtA []byte) error {
 		return io.ErrUnexpectedEOF
 	}
 	return nil
-}
+} 
+// Unmarshal ...
 func (m *ParameterParameter) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
@@ -21324,7 +22617,8 @@ func (m *ParameterParameter) Unmarshal(dAtA []byte) error {
 		return io.ErrUnexpectedEOF
 	}
 	return nil
-}
+} 
+// Unmarshal ...
 func (m *PoolingParameter) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
@@ -21610,7 +22904,8 @@ func (m *PoolingParameter) Unmarshal(dAtA []byte) error {
 		return io.ErrUnexpectedEOF
 	}
 	return nil
-}
+} 
+// Unmarshal ...
 func (m *PowerParameter) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
@@ -21705,7 +23000,8 @@ func (m *PowerParameter) Unmarshal(dAtA []byte) error {
 		return io.ErrUnexpectedEOF
 	}
 	return nil
-}
+} 
+// Unmarshal ...
 func (m *PythonParameter) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
@@ -21864,7 +23160,8 @@ func (m *PythonParameter) Unmarshal(dAtA []byte) error {
 		return io.ErrUnexpectedEOF
 	}
 	return nil
-}
+} 
+// Unmarshal ...
 func (m *RecurrentParameter) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
@@ -22042,7 +23339,8 @@ func (m *RecurrentParameter) Unmarshal(dAtA []byte) error {
 		return io.ErrUnexpectedEOF
 	}
 	return nil
-}
+} 
+// Unmarshal ...
 func (m *ReductionParameter) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
@@ -22147,7 +23445,8 @@ func (m *ReductionParameter) Unmarshal(dAtA []byte) error {
 		return io.ErrUnexpectedEOF
 	}
 	return nil
-}
+} 
+// Unmarshal ...
 func (m *ReLUParameter) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
@@ -22232,7 +23531,8 @@ func (m *ReLUParameter) Unmarshal(dAtA []byte) error {
 		return io.ErrUnexpectedEOF
 	}
 	return nil
-}
+} 
+// Unmarshal ...
 func (m *ReshapeParameter) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
@@ -22355,7 +23655,8 @@ func (m *ReshapeParameter) Unmarshal(dAtA []byte) error {
 		return io.ErrUnexpectedEOF
 	}
 	return nil
-}
+} 
+// Unmarshal ...
 func (m *ScaleParameter) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
@@ -22532,7 +23833,8 @@ func (m *ScaleParameter) Unmarshal(dAtA []byte) error {
 		return io.ErrUnexpectedEOF
 	}
 	return nil
-}
+} 
+// Unmarshal ...
 func (m *SigmoidParameter) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
@@ -22602,7 +23904,8 @@ func (m *SigmoidParameter) Unmarshal(dAtA []byte) error {
 		return io.ErrUnexpectedEOF
 	}
 	return nil
-}
+} 
+// Unmarshal ...
 func (m *SliceParameter) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
@@ -22754,7 +24057,8 @@ func (m *SliceParameter) Unmarshal(dAtA []byte) error {
 		return io.ErrUnexpectedEOF
 	}
 	return nil
-}
+} 
+// Unmarshal ...
 func (m *SoftmaxParameter) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
@@ -22844,7 +24148,8 @@ func (m *SoftmaxParameter) Unmarshal(dAtA []byte) error {
 		return io.ErrUnexpectedEOF
 	}
 	return nil
-}
+} 
+// Unmarshal ...
 func (m *TanHParameter) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
@@ -22914,7 +24219,8 @@ func (m *TanHParameter) Unmarshal(dAtA []byte) error {
 		return io.ErrUnexpectedEOF
 	}
 	return nil
-}
+} 
+// Unmarshal ...
 func (m *TileParameter) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
@@ -23003,7 +24309,8 @@ func (m *TileParameter) Unmarshal(dAtA []byte) error {
 		return io.ErrUnexpectedEOF
 	}
 	return nil
-}
+} 
+// Unmarshal ...
 func (m *ThresholdParameter) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
@@ -23068,7 +24375,8 @@ func (m *ThresholdParameter) Unmarshal(dAtA []byte) error {
 		return io.ErrUnexpectedEOF
 	}
 	return nil
-}
+} 
+// Unmarshal ...
 func (m *WindowDataParameter) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
@@ -23397,7 +24705,8 @@ func (m *WindowDataParameter) Unmarshal(dAtA []byte) error {
 		return io.ErrUnexpectedEOF
 	}
 	return nil
-}
+} 
+// Unmarshal ...
 func (m *SPPParameter) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
@@ -23506,7 +24815,8 @@ func (m *SPPParameter) Unmarshal(dAtA []byte) error {
 		return io.ErrUnexpectedEOF
 	}
 	return nil
-}
+} 
+// Unmarshal ...
 func (m *V1LayerParameter) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
@@ -25025,7 +26335,8 @@ func (m *V1LayerParameter) Unmarshal(dAtA []byte) error {
 		return io.ErrUnexpectedEOF
 	}
 	return nil
-}
+} 
+// Unmarshal ...
 func (m *V0LayerParameter) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
@@ -25955,7 +27266,8 @@ func (m *V0LayerParameter) Unmarshal(dAtA []byte) error {
 		return io.ErrUnexpectedEOF
 	}
 	return nil
-}
+} 
+// Unmarshal ...
 func (m *PReLUParameter) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
@@ -26160,6 +27472,7 @@ func skipCaffe(dAtA []byte) (n int, err error) {
 	panic("unreachable")
 }
 
+// ErrInvalidLengthCaffe ...
 var (
 	ErrInvalidLengthCaffe = fmt.Errorf("proto: negative length found during unmarshaling")
 	ErrIntOverflowCaffe   = fmt.Errorf("proto: integer overflow")

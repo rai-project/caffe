@@ -20,6 +20,7 @@ func unmarshal(target proto.Message, protoFileName string) error {
 	return proto.Unmarshal(buf, target)
 }
 
+// ReadBlob ...
 func ReadBlob(protoFileName string) (*BlobProto, error) {
 	blob := new(BlobProto)
 	err := unmarshal(blob, protoFileName)
