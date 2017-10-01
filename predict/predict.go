@@ -249,9 +249,6 @@ func (p *ImagePredictor) Predict(ctx context.Context, data [][]float32, opts dlf
 
 	var output []dlframework.Features
 	batchSize := int(p.BatchSize())
-	if batchSize == 0 {
-		batchSize = 1
-	}
 	length := len(predictions) / batchSize
 	for i := 0; i < batchSize; i++ {
 		rprobs := make([]*dlframework.Feature, length)
