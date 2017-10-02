@@ -1,4 +1,4 @@
-name: Xception-dw # name of your model
+name: Xception # name of your model
 framework:
   name: Caffe # framework for the model
   version: 1.0 # framework version contraint
@@ -11,7 +11,8 @@ container: # containers used to perform model prediction
   ppc64le:
     cpu: raiproject/carml-caffe:ppc64le-gpu
     gpu: raiproject/carml-caffe:ppc64le-gpu
-description:
+description: >
+  TODO
 references: # references to papers / websites / etc.. describing the model
   - https://github.com/soeaver/caffe-model/tree/master/cls
   - https://github.com/BVLC/caffe/pull/5665/files
@@ -26,8 +27,9 @@ inputs:
     # description of the first input
     description: the input image
     parameters: # type parameters
-      dimensions: [3, 299 299]
+      dimensions: [3, 299, 299]
       mean: [128, 128, 128]
+      scale: 128
 output:
   # the type of the output
   type: feature
@@ -38,7 +40,7 @@ output:
     features_url: http://s3.amazonaws.com/store.carml.org/synsets/imagenet/synset.txt
     features_checksum: 4d234b5833aca44928065a180db3016a
 model: # specifies model graph and weights resources
-  graph_path: http://s3.amazonaws.com/store.carml.org/models/caffe/xception/deploy_xception-dw.prototxt
+  graph_path: http://s3.amazonaws.com/store.carml.org/models/caffe/xception/deploy_xception.prototxt
   weights_path: http://s3.amazonaws.com/store.carml.org/models/caffe/xception/xception.caffemodel
   is_archive: false # if set, then the base_url is a url to an archive
                     # the graph_path and weights_path then denote the

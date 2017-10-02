@@ -11,11 +11,13 @@ container: # containers used to perform model prediction
   ppc64le:
     cpu: raiproject/carml-caffe:ppc64le-gpu
     gpu: raiproject/carml-caffe:ppc64le-gpu
-description:
+description: >
+  TODO
 references: # references to papers / websites / etc.. describing the model
   - https://github.com/soeaver/caffe-model/tree/master/cls
   - https://arxiv.org/abs/1605.07146
   - https://github.com/szagoruyko/wide-residual-networks
+  - https://github.com/szagoruyko/functional-zoo/blob/master/imagenet-validation.py#L69-L88
 # license of the model
 license: unrestricted
 # inputs to the model
@@ -27,6 +29,7 @@ inputs:
     parameters: # type parameters
       dimensions: [3, 224, 224]
       mean: [123.68, 116.779, 103.939]
+      scale: 256
 output:
   # the type of the output
   type: feature
