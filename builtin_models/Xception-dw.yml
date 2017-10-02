@@ -1,8 +1,8 @@
-name: ResNet152 # name of your model
+name: Xception-dw # name of your model
 framework:
   name: Caffe # framework for the model
   version: 1.0 # framework version contraint
-version: 2.0 # version information in semantic version format
+version: 1.0 # version information in semantic version format
 container: # containers used to perform model prediction
            # multiple platforms can be specified
   amd64:
@@ -11,10 +11,12 @@ container: # containers used to perform model prediction
   ppc64le:
     cpu: raiproject/carml-caffe:ppc64le-gpu
     gpu: raiproject/carml-caffe:ppc64le-gpu
-description: >
+description:
 references: # references to papers / websites / etc.. describing the model
   - https://github.com/soeaver/caffe-model/tree/master/cls
-  - https://github.com/craftGBD/craftGBD
+  - https://github.com/BVLC/caffe/pull/5665/files
+  - https://github.com/fchollet/deep-learning-models/blob/master/xception.py
+  - https://arxiv.org/abs/1610.02357
 # license of the model
 license: unrestricted
 # inputs to the model
@@ -24,8 +26,8 @@ inputs:
     # description of the first input
     description: the input image
     parameters: # type parameters
-      dimensions: [3, 224, 224]
-      mean: [122.772, 115.947, 102.98]
+      dimensions: [3, 299 299]
+      mean: [128, 128, 128]
 output:
   # the type of the output
   type: feature
@@ -36,16 +38,14 @@ output:
     features_url: http://s3.amazonaws.com/store.carml.org/synsets/imagenet/synset.txt
     features_checksum: 4d234b5833aca44928065a180db3016a
 model: # specifies model graph and weights resources
-  graph_path: http://s3.amazonaws.com/store.carml.org/models/caffe/resnet152-v2/deploy_resnet152-v2-merge.prototxt
-  weights_path: http://s3.amazonaws.com/store.carml.org/models/caffe/resnet152-v2/resnet152-v2-merge.caffemodel
+  graph_path: http://s3.amazonaws.com/store.carml.org/models/caffe/xception/deploy_xception-dw.prototxt
+  weights_path: http://s3.amazonaws.com/store.carml.org/models/caffe/xception/xception.caffemodel
   is_archive: false # if set, then the base_url is a url to an archive
                     # the graph_path and weights_path then denote the
                     # file names of the graph and weights within the archive
-  graph_checksum: 406d50860ba0c201f583c75d2d229f7b
-  weights_checksum: f08957a745720ba1fbf394568decb9df
+  graph_checksum: d0df3aaaa43e4b82e4794b89420b7067
+  weights_checksum: cad1c76e17becaeb0bde0351cfb6dba8
 attributes: # extra network attributes
   kind: CNN # the kind of neural network (CNN, RNN, ...)
   training_dataset: ImageNet # dataset used to for training
   manifest_author: abduld
-hidden: false # non-merge one crashes the agent
-

@@ -1,8 +1,8 @@
-name: ResNet101 # name of your model
+name: ResNet152 # name of your model
 framework:
   name: Caffe # framework for the model
   version: 1.0 # framework version contraint
-version: 1.0 # version information in semantic version format
+version: 2.0 # version information in semantic version format
 container: # containers used to perform model prediction
            # multiple platforms can be specified
   amd64:
@@ -13,7 +13,8 @@ container: # containers used to perform model prediction
     gpu: raiproject/carml-caffe:ppc64le-gpu
 description:
 references: # references to papers / websites / etc.. describing the model
-  - https://github.com/KaimingHe/deep-residual-networks
+  - https://github.com/soeaver/caffe-model/tree/master/cls
+  - https://github.com/craftGBD/craftGBD
 # license of the model
 license: unrestricted
 # inputs to the model
@@ -24,7 +25,7 @@ inputs:
     description: the input image
     parameters: # type parameters
       dimensions: [3, 224, 224]
-      mean: [123.68, 116.779, 103.939]
+      mean: [122.772, 115.947, 102.98]
 output:
   # the type of the output
   type: feature
@@ -35,14 +36,16 @@ output:
     features_url: http://s3.amazonaws.com/store.carml.org/synsets/imagenet/synset.txt
     features_checksum: 4d234b5833aca44928065a180db3016a
 model: # specifies model graph and weights resources
-  graph_path: http://s3.amazonaws.com/store.carml.org/models/caffe/resnet/ResNet-101-deploy.prototxt
-  weights_path: http://s3.amazonaws.com/store.carml.org/models/caffe/resnet/ResNet-101-model.caffemodel
+  graph_path: http://s3.amazonaws.com/store.carml.org/models/caffe/resnet152-v2/deploy_resnet152-v2-merge.prototxt
+  weights_path: http://s3.amazonaws.com/store.carml.org/models/caffe/resnet152-v2/resnet152-v2-merge.caffemodel
   is_archive: false # if set, then the base_url is a url to an archive
                     # the graph_path and weights_path then denote the
                     # file names of the graph and weights within the archive
-  graph_checksum: 3ec3d1a5d432ef54cb2d1afc9f83403a
-  weights_checksum: 3f8ccc93329ddc280b91efae09f71973
+  graph_checksum: 406d50860ba0c201f583c75d2d229f7b
+  weights_checksum: f08957a745720ba1fbf394568decb9df
 attributes: # extra network attributes
   kind: CNN # the kind of neural network (CNN, RNN, ...)
   training_dataset: ImageNet # dataset used to for training
   manifest_author: abduld
+hidden: false # non-merge one crashes the agent
+
