@@ -1,4 +1,4 @@
-name: ResNeXt101-32x4d # name of your model
+name: VGG16_SOS # name of your model
 framework:
   name: Caffe # framework for the model
   version: 1.0 # framework version contraint
@@ -14,11 +14,12 @@ container: # containers used to perform model prediction
 description: >
   TODO
 references: # references to papers / websites / etc.. describing the model
-  - https://github.com/soeaver/caffe-model/tree/master/cls
-  - https://github.com/facebookresearch/ResNeXt
-  - https://github.com/facebookresearch/ResNeXt/blob/master/datasets/README.md
+  - https://gist.github.com/jimmie33/27c1c0a7736ba66c2395
+  - http://cs-people.bu.edu/jmzhang/sos.html
+  - https://github.com/BVLC/caffe/wiki/Model-Zoo
+  - https://arxiv.org/abs/1409.1556
 # license of the model
-license: unrestricted
+license: CC BY-NC 4.0
 # inputs to the model
 inputs:
   # first input type for the model
@@ -27,8 +28,7 @@ inputs:
     description: the input image
     parameters: # type parameters
       dimensions: [3, 224, 224]
-      mean: [123.675, 116.28, 103.52]
-      scale: 256
+      mean: [123.68, 116.779, 103.939]
 output:
   # the type of the output
   type: feature
@@ -36,19 +36,17 @@ output:
   description: the output label
   parameters:
     # type parameters
-    features_url: http://s3.amazonaws.com/store.carml.org/synsets/imagenet/synset.txt
-    features_checksum: 4d234b5833aca44928065a180db3016a
+    features_url: http://s3.amazonaws.com/store.carml.org/models/caffe/vgg16_sos/%20salient_object_subitizing.txt
+    features_checksum: da8e6ab825a44a900f1654f09f51d71f
 model: # specifies model graph and weights resources
-  graph_path: http://s3.amazonaws.com/store.carml.org/models/caffe/resnext101-32x4d/deploy_resnext101-32x4d_no_ceil_mode.prototxt
-  weights_path: http://s3.amazonaws.com/store.carml.org/models/caffe/resnext101-32x4d/resnext101-32x4d.caffemodel
+  graph_path: http://s3.amazonaws.com/store.carml.org/models/caffe/vgg16_sos/deploy.prototxt
+  weights_path: http://s3.amazonaws.com/store.carml.org/models/caffe/vgg16_sos/VGG16_SalObjSub.caffemodel
   is_archive: false # if set, then the base_url is a url to an archive
                     # the graph_path and weights_path then denote the
                     # file names of the graph and weights within the archive
-  graph_checksum: ec0c8e578040cbf76056deb41ba0af7d
-  weights_checksum: 5e5ec49b00d9f16d14ac6555dc992fcf
+  graph_checksum: eb820e9e4d6f35a961666acf0f2f15a2
+  weights_checksum: fa7886a2fcf21b0c49fe2f2b20fe5643
 attributes: # extra network attributes
   kind: CNN # the kind of neural network (CNN, RNN, ...)
-  training_dataset: ImageNet # dataset used to for training
+  training_dataset: The SOS Dataset # dataset used to for training
   manifest_author: abduld
-# hidden: true # Message type "caffe.PoolingParameter" has no field named "ceil_mode"
-# https://github.com/BVLC/caffe/pull/3057/files
