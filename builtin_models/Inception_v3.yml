@@ -15,6 +15,7 @@ description:
 references: # references to papers / websites / etc.. describing the model
   - https://github.com/soeaver/caffe-model/tree/master/cls
   - https://github.com/dmlc/mxnet-model-gallery/blob/master/imagenet-1k-inception-v3.md
+  - https://github.com/tensorflow/models/blob/master/research/slim/preprocessing/inception_preprocessing.py
 # license of the model
 license: unrestricted
 # inputs to the model

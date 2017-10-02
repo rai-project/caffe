@@ -11,10 +11,12 @@ container: # containers used to perform model prediction
   ppc64le:
     cpu: raiproject/carml-caffe:ppc64le-gpu
     gpu: raiproject/carml-caffe:ppc64le-gpu
-description:
+description: >
+  TO DO
 references: # references to papers / websites / etc.. describing the model
   - https://github.com/soeaver/caffe-model/tree/master/cls
   - https://github.com/craftGBD/craftGBD
+  - https://arxiv.org/abs/1512.03385
 # license of the model
 license: unrestricted
 # inputs to the model

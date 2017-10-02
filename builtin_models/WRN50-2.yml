@@ -1,4 +1,4 @@
-name: ResNet269 # name of your model
+name: WRN50 # name of your model
 framework:
   name: Caffe # framework for the model
   version: 1.0 # framework version contraint
@@ -11,12 +11,11 @@ container: # containers used to perform model prediction
   ppc64le:
     cpu: raiproject/carml-caffe:ppc64le-gpu
     gpu: raiproject/carml-caffe:ppc64le-gpu
-description: >
-  TO DO
+description:
 references: # references to papers / websites / etc.. describing the model
   - https://github.com/soeaver/caffe-model/tree/master/cls
-  - https://github.com/craftGBD/craftGBD
-  - https://arxiv.org/abs/1512.03385
+  - https://arxiv.org/abs/1605.07146
+  - https://github.com/szagoruyko/wide-residual-networks
 # license of the model
 license: unrestricted
 # inputs to the model
@@ -27,7 +26,7 @@ inputs:
     description: the input image
     parameters: # type parameters
       dimensions: [3, 224, 224]
-      mean: [122.772, 115.947, 102.98]
+      mean: [123.68, 116.779, 103.939]
 output:
   # the type of the output
   type: feature
@@ -38,13 +37,13 @@ output:
     features_url: http://s3.amazonaws.com/store.carml.org/synsets/imagenet/synset.txt
     features_checksum: 4d234b5833aca44928065a180db3016a
 model: # specifies model graph and weights resources
-  graph_path: http://s3.amazonaws.com/store.carml.org/models/caffe/resnet269-v2/deploy_resnet269-v2.prototxt
-  weights_path: http://s3.amazonaws.com/store.carml.org/models/caffe/resnet269-v2/resnet269-v2.caffemodel
+  graph_path: http://s3.amazonaws.com/store.carml.org/models/caffe/wrn50-2/deploy_wrn50-2_no_ceil_mode.prototxt
+  weights_path: http://s3.amazonaws.com/store.carml.org/models/caffe/wrn50-2/wrn50-2.caffemodel
   is_archive: false # if set, then the base_url is a url to an archive
                     # the graph_path and weights_path then denote the
                     # file names of the graph and weights within the archive
-  graph_checksum: 05f07aed80e87d63db734f3f28a2b1f1
-  weights_checksum: d984f4774cf865728219ada8bfec0094
+  graph_checksum: efd258e3c28cab1f0e0a36c77aab2dec
+  weights_checksum: ea6c90d2f16a140d038359626bf78211
 attributes: # extra network attributes
   kind: CNN # the kind of neural network (CNN, RNN, ...)
   training_dataset: ImageNet # dataset used to for training

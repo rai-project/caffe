@@ -11,10 +11,14 @@ container: # containers used to perform model prediction
   ppc64le:
     cpu: raiproject/carml-caffe:ppc64le-gpu
     gpu: raiproject/carml-caffe:ppc64le-gpu
-description:
+description: >
+  TO DO
 references: # references to papers / websites / etc.. describing the model
   - https://github.com/soeaver/caffe-model/tree/master/cls
-  - https://github.com/tensorflow/models/tree/master/slim
+  - https://arxiv.org/abs/1602.07261
+  - https://github.com/tensorflow/models/blob/master/research/slim/nets/inception_v4.py
+  - https://github.com/tensorflow/models/blob/master/research/slim/preprocessing/inception_preprocessing.py
+  - https://github.com/kentsommer/keras-inceptionV4/issues/5
 # license of the model
 license: unrestricted
 # inputs to the model
@@ -25,8 +29,8 @@ inputs:
     description: the input image
     parameters: # type parameters
       dimensions: [3, 299, 299]
-      mean: [63.75, 63.75, 63.75]
-      scale: 127.5
+      mean: [128, 128, 128]
+      scale: 128
 output:
   # the type of the output
   type: feature

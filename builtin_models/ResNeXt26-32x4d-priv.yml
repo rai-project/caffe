@@ -11,7 +11,8 @@ container: # containers used to perform model prediction
   ppc64le:
     cpu: raiproject/carml-caffe:ppc64le-gpu
     gpu: raiproject/carml-caffe:ppc64le-gpu
-description:
+description: >
+  TO DO
 references: # references to papers / websites / etc.. describing the model
   - https://github.com/soeaver/caffe-model/tree/master/cls
   - https://github.com/soeaver/pytorch-classification
@@ -26,6 +27,7 @@ inputs:
     parameters: # type parameters
       dimensions: [3, 224, 224]
       mean: [123.675, 116.28, 103.52]
+      scale: 256 # not sure
 output:
   # the type of the output
   type: feature
@@ -36,15 +38,16 @@ output:
     features_url: http://s3.amazonaws.com/store.carml.org/synsets/imagenet/synset.txt
     features_checksum: 4d234b5833aca44928065a180db3016a
 model: # specifies model graph and weights resources
-  graph_path: http://s3.amazonaws.com/store.carml.org/models/caffe/resnext26-32x4d-priv/deploy_resnext26-32x4d-priv.prototxt
+  graph_path: http://s3.amazonaws.com/store.carml.org/models/caffe/resnext26-32x4d-priv/deploy_resnext26-32x4d-priv_no_ceil_mode.prototxt
   weights_path: http://s3.amazonaws.com/store.carml.org/models/caffe/resnext26-32x4d-priv/resnext26-32x4d-priv.caffemodel
   is_archive: false # if set, then the base_url is a url to an archive
                     # the graph_path and weights_path then denote the
                     # file names of the graph and weights within the archive
-  graph_checksum: 1a8ca0f08a981e2f8bb3d046dc898e67
+  graph_checksum: dde4af4f993b0db6c9b6dfec8fc3e615
   weights_checksum: a1d0f76137c4194aa4198df3a67fff26
 attributes: # extra network attributes
   kind: CNN # the kind of neural network (CNN, RNN, ...)
   training_dataset: ImageNet # dataset used to for training
   manifest_author: abduld
-hidden: true # crashes the agent
+# hidden: true # Message type "caffe.PoolingParameter" has no field named "ceil_mode"
+# https://github.com/BVLC/caffe/pull/3057/files
