@@ -69,7 +69,7 @@ func (p *ImagePredictor) Load(ctx context.Context, model dlframework.ModelManife
 				Framework:         framework,
 				Model:             model,
 				PredictionOptions: opts,
-				Tracer:            tracer,
+				Tracer:            tracer.Std(),
 			},
 			WorkDir: workDir,
 		},
