@@ -18,7 +18,6 @@ import (
 	gocaffe "github.com/rai-project/go-caffe"
 	"github.com/rai-project/image"
 	"github.com/rai-project/image/types"
-	"github.com/rai-project/tracer"
 	"github.com/rai-project/tracer/ctimer"
 	context "golang.org/x/net/context"
 )
@@ -49,7 +48,7 @@ func New(model dlframework.ModelManifest, opts ...options.Option) (common.Predic
 
 // Load ...
 func (p *ImagePredictor) Load(ctx context.Context, model dlframework.ModelManifest, opts ...options.Option) (common.Predictor, error) {
-	if span, newCtx := tracer.StartSpanFromContext(ctx, "Load"); span != nil {
+	if span, newCtx := opentracing.StartSpanFromContext(ctx, "Load"); span != nil {
 		ctx = newCtx
 		defer span.Finish()
 	}
