@@ -17,6 +17,7 @@ import (
 	gocaffe "github.com/rai-project/go-caffe"
 	"github.com/rai-project/image"
 	"github.com/rai-project/image/types"
+	"github.com/rai-project/tracer"
 	"github.com/rai-project/tracer/ctimer"
 	context "golang.org/x/net/context"
 )
