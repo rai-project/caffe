@@ -212,7 +212,7 @@ func (p *ImagePredictor) loadPredictor(ctx context.Context) error {
 	pred, err := gocaffe.New(
 		options.WithOptions(opts),
 		options.Graph([]byte(p.GetGraphPath())),
-		options.Weights([]byte(p.GetGraphPath())),
+		options.Weights([]byte(p.GetWeightsPath())),
 		options.BatchSize(p.BatchSize()),
 	)
 	if err != nil {
