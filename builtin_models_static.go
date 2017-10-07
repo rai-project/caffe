@@ -113,7 +113,7 @@ func bvlcAlexnetYml() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "BVLC-AlexNet.yml", size: 2872, mode: os.FileMode(436), modTime: time.Unix(1506449237, 0)}
+	info := bindataFileInfo{name: "BVLC-AlexNet.yml", size: 2872, mode: os.FileMode(420), modTime: time.Unix(1506935484, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -133,7 +133,7 @@ func bvlcGooglenetYml() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "BVLC-GoogLeNet.yml", size: 3143, mode: os.FileMode(436), modTime: time.Unix(1506449237, 0)}
+	info := bindataFileInfo{name: "BVLC-GoogLeNet.yml", size: 3143, mode: os.FileMode(420), modTime: time.Unix(1506275191, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -153,7 +153,7 @@ func bvlcReferenceCaffenetYml() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "BVLC-Reference-CaffeNet.yml", size: 2926, mode: os.FileMode(436), modTime: time.Unix(1506449237, 0)}
+	info := bindataFileInfo{name: "BVLC-Reference-CaffeNet.yml", size: 2926, mode: os.FileMode(420), modTime: time.Unix(1506917988, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -173,7 +173,7 @@ func bvlcReferenceRcnnIlsvrc13Yml() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "BVLC-Reference-RCNN-ILSVRC13.yml", size: 2591, mode: os.FileMode(436), modTime: time.Unix(1506449237, 0)}
+	info := bindataFileInfo{name: "BVLC-Reference-RCNN-ILSVRC13.yml", size: 2591, mode: os.FileMode(420), modTime: time.Unix(1506918017, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -193,7 +193,7 @@ func dpn68Yml() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "DPN68.yml", size: 2206, mode: os.FileMode(436), modTime: time.Unix(1506963246, 0)}
+	info := bindataFileInfo{name: "DPN68.yml", size: 2206, mode: os.FileMode(420), modTime: time.Unix(1506921278, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -213,7 +213,7 @@ func dpn92Yml() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "DPN92.yml", size: 2194, mode: os.FileMode(436), modTime: time.Unix(1506963246, 0)}
+	info := bindataFileInfo{name: "DPN92.yml", size: 2194, mode: os.FileMode(420), modTime: time.Unix(1506920190, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -233,7 +233,7 @@ func inceptionResnetV2Yml() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "Inception-ResNet-v2.yml", size: 2211, mode: os.FileMode(436), modTime: time.Unix(1506963246, 0)}
+	info := bindataFileInfo{name: "Inception-ResNet-v2.yml", size: 2211, mode: os.FileMode(420), modTime: time.Unix(1506949038, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -253,7 +253,7 @@ func inceptionV3Yml() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "Inception-v3.yml", size: 2231, mode: os.FileMode(436), modTime: time.Unix(1506963246, 0)}
+	info := bindataFileInfo{name: "Inception-v3.yml", size: 2231, mode: os.FileMode(420), modTime: time.Unix(1506944253, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -273,7 +273,7 @@ func inceptionV4Yml() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "Inception-v4.yml", size: 2325, mode: os.FileMode(436), modTime: time.Unix(1506963246, 0)}
+	info := bindataFileInfo{name: "Inception-v4.yml", size: 2325, mode: os.FileMode(420), modTime: time.Unix(1506944269, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -293,7 +293,7 @@ func inceptionbn21kYml() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "InceptionBN-21K.yml", size: 2150, mode: os.FileMode(436), modTime: time.Unix(1506920802, 0)}
+	info := bindataFileInfo{name: "InceptionBN-21K.yml", size: 2150, mode: os.FileMode(420), modTime: time.Unix(1506916255, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -313,7 +313,7 @@ func ninYml() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "NIN.yml", size: 2138, mode: os.FileMode(436), modTime: time.Unix(1506963246, 0)}
+	info := bindataFileInfo{name: "NIN.yml", size: 2138, mode: os.FileMode(420), modTime: time.Unix(1506937226, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -333,7 +333,7 @@ func resnext10132x4dYml() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "ResNeXt101-32x4d.yml", size: 2338, mode: os.FileMode(436), modTime: time.Unix(1506963246, 0)}
+	info := bindataFileInfo{name: "ResNeXt101-32x4d.yml", size: 2338, mode: os.FileMode(420), modTime: time.Unix(1506925518, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -353,7 +353,7 @@ func resnext2632x4dPrivYml() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "ResNeXt26-32x4d-priv.yml", size: 2280, mode: os.FileMode(436), modTime: time.Unix(1506920802, 0)}
+	info := bindataFileInfo{name: "ResNeXt26-32x4d-priv.yml", size: 2280, mode: os.FileMode(420), modTime: time.Unix(1506916755, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -373,7 +373,7 @@ func resnext5032x4dYml() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "ResNeXt50-32x4d..yml", size: 2333, mode: os.FileMode(436), modTime: time.Unix(1506920802, 0)}
+	info := bindataFileInfo{name: "ResNeXt50-32x4d..yml", size: 2333, mode: os.FileMode(420), modTime: time.Unix(1506916752, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -393,7 +393,7 @@ func resnet101V2Yml() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "ResNet101-v2.yml", size: 2103, mode: os.FileMode(436), modTime: time.Unix(1506963246, 0)}
+	info := bindataFileInfo{name: "ResNet101-v2.yml", size: 2103, mode: os.FileMode(420), modTime: time.Unix(1506952603, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -413,12 +413,12 @@ func resnet101Yml() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "ResNet101.yml", size: 2055, mode: os.FileMode(436), modTime: time.Unix(1506963246, 0)}
+	info := bindataFileInfo{name: "ResNet101.yml", size: 2055, mode: os.FileMode(420), modTime: time.Unix(1506924379, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
 
-var _resnet152V2Yml = "\x1f\x8b\x08\x00\x00\x00\x00\x00\x00\xff\xac\x55\xcb\xae\xdb\x36\x13\xde\xeb\x29\x06\xf0\xe6\xff\x81\x63\xdd\x6c\xf9\xa2\x45\x17\x4d\x80\xa2\x1b\x07\x08\xba\x0b\x02\x63\x44\x8e\x6c\x36\x12\x49\x90\xa3\x73\xe9\xd3\x17\x24\x75\x2c\x1f\xe4\xa4\xe9\xa2\x5e\x18\xd4\xcc\x37\xb7\x6f\x86\x43\x8d\x23\xb5\xf0\x99\xfc\x89\xb8\x6a\x6a\x58\x41\x90\x80\xe9\xe1\xc5\x4c\x0e\x46\x23\x69\xc8\x7a\x87\x23\x3d\x19\xf7\xad\xcd\x00\x92\xc5\x07\xec\x7b\x82\x15\xdc\x54\xd0\x1b\x07\x7c\xa5\xd9\x04\xe0\x91\x9c\x57\x46\xb7\x50\xe5\xe5\x1b\xe0\xac\x00\x61\x34\x3b\x54\x9a\xb3\x1b\xb4\x8e\xd0\x57\x80\xd2\xbd\x71\x23\x72\x3a\x83\xa7\x11\x35\x2b\x71\xd3\x27\x6d\x16\xfc\xa0\xd2\xe4\x5a\x58\xc1\xed\xc3\xc3\xe4\x49\x02\x1b\xb0\xe4\x02\x32\x25\x06\xd6\x91\x54\x22\xf8\xcc\x60\xf9\xad\x60\x9c\x06\x56\x76\x20\xb0\x03\x72\xc0\x7b\x10\xa8\xa1\x23\xf0\x96\x84\xea\x15\xc9\x0c\x00\x47\xb9\xdb\xb6\xd1\xf2\x62\xa7\x16\x1c\x2a\xeb\xcc\x9f\x24\xb8\x10\xe8\xc6\x61\x2d\x02\x2f\x6d\x84\xad\x85\x9d\x22\x52\xfc\x14\x79\x89\x48\x6b\xc5\x6e\x3b\x50\xfb\x53\xa3\x19\x38\x9b\xfd\x73\x2a\xf7\x58\x49\x5e\x38\x65\x39\x72\xfd\x4b\x06\xf0\xc7\xa7\x8f\x9f\x32\x47\x3d\x39\xd2\x82\x7c\x20\x70\xf9\x8a\xdc\xa1\x0d\x54\x16\xf0\x44\x9d\x57\x4c\xe1\x48\x2c\xf2\x1c\x92\xaf\x4e\xe9\xcb\x9b\xae\xaf\xe1\xca\x6c\x7d\x5b\x14\x17\xc5\xd7\xa9\xcb\x85\x19\x0b\x6f\x08\x1f\xc9\x15\x31\xa3\x75\x84\x16\xec\x88\x8a\x11\x3d\x07\xf9\xe0\x7f\x64\x2a\x1c\xf6\xfc\xdb\xaf\x1f\x6f\x87\x37\x40\x74\xcf\xea\x31\x37\xee\x52\x60\xe7\x8b\xaa\xa9\xea\xbc\xdc\x6c\x0e\x4d\xb6\x82\x41\x09\xd2\x3e\x4e\xf2\x92\xdf\x2c\x6c\x61\xd2\x8e\x3c\x3b\x25\x98\x64\xb6\x02\xa5\xed\xc4\xb1\xe0\x05\x9b\x64\xa1\x19\x2b\xe8\x95\xf3\x9c\x50\xc0\x2f\x96\xbe\x1b\xf6\x75\x14\xb7\xa0\x46\xbc\x50\x96\x26\xea\x8e\xed\xd7\x2c\xee\xfc\x44\xd0\x9b\x86\x04\x40\x0a\xb1\x78\xb1\x18\xae\x0d\x93\x8b\xbd\x89\xa1\x17\xd1\x3c\xc0\x52\x8d\xa4\xc3\x85\xf0\x2d\x7c\xd9\x3c\x40\x5d\x6f\xe3\xdf\xd7\x59\x3f\x12\xea\x16\xbe\x54\x75\x9d\xef\xf7\xf5\x03\x54\x55\x93\x1f\xb7\xfb\x07\xa8\xca\x3a\x3f\x1e\xbe\x66\x66\x62\x3b\x71\xaa\x34\x24\x11\xc3\xcc\x19\x27\x5d\x06\x73\x7d\x3d\x21\x4f\x8e\x22\x14\xdf\xab\x30\xe1\x97\x24\xb3\x77\x8a\x9c\x31\x03\x76\x91\xbb\xbb\x1a\x67\xe6\xde\xab\x73\x8e\xec\xcf\x93\x1b\xda\x38\x00\x6d\x51\xf8\x4d\x8e\x23\xfe\x65\x34\x3e\xf9\x34\x69\x6c\x1c\xe5\x71\xfe\xe3\x58\xf8\x17\xed\x89\x7d\x11\x19\xd5\xc4\xb3\x20\xe7\x67\x7e\xeb\x55\x5c\x49\x7c\xf3\xd3\xd8\xc2\x56\xd6\x9b\x6d\xd7\x1c\x36\x1b\x14\xb8\xdd\x1e\xeb\x43\xb9\x6b\xb0\x3a\x94\xb2\xdb\x94\xd5\x0e\xb3\xd8\xf3\xd0\x8e\xd7\xc5\xe0\xe7\xd5\x72\x71\x68\xaf\x80\x5a\xc2\x13\xa9\xcb\x95\x3d\x38\xf2\x66\x72\x82\x42\x09\x51\x7b\xb6\xc8\xd7\x7f\x9f\x7e\xf4\xeb\xd3\xbd\x29\x1c\x79\x1d\x97\xf4\xfa\xb1\x2e\x24\xd9\xc1\xbc\x9c\xef\x65\xeb\x91\xdc\x85\x72\xeb\x0c\x9b\x54\xdf\x9c\xc6\x7f\x16\xf4\x9d\x68\x11\xf5\x7a\x0b\x94\x3f\xa3\x13\x57\xf5\x18\x26\x05\x07\x1f\x1e\x08\xd5\x83\x27\x7e\x08\x8d\xd7\xb1\xfb\x1d\x7a\x0a\x4d\x04\xe5\x01\x21\x1c\xd8\x00\x6a\x98\x2d\xef\xb7\xf2\xdd\x7a\x0e\x96\x0b\x83\xf7\x24\x27\x41\x74\x2f\x49\x1b\xa6\x70\xfe\x81\x97\x5e\x0d\x14\x1f\x30\xff\x3a\xaf\xdf\xf7\xec\x49\xf1\x55\xa5\x54\x97\x94\x52\xe8\xbb\x21\x29\x77\xb2\x29\x0f\xbb\xb2\xc3\x52\xd4\x65\xd5\x37\x87\x8d\xd8\x37\xb2\x96\x75\x7d\xec\xf7\xdd\x1d\xf9\x8b\x51\x5f\x1e\x8e\xcd\x1e\xf7\xdb\x66\x5f\x97\x1d\x56\x7d\xd7\x6f\x8e\xdb\x66\x77\x90\x24\xba\xa3\xec\x33\x64\x76\xaa\x9b\x38\x6d\x62\x7a\x66\x87\xa0\x89\xe3\xab\xb9\xe8\x32\x80\x6f\x4a\xcb\x16\x3e\x9c\x4e\x33\x33\xe1\x3b\x54\xa4\x69\x72\x38\xdc\x6c\xfe\xf7\xe1\x74\x7a\x80\xcf\xe1\x2f\xcf\xf3\xff\x87\x5b\x1c\x1e\x5c\xa5\x2f\x67\x89\x8c\x9e\xb8\x85\xdf\xc3\xcd\x38\x11\x87\x85\x95\x64\xb7\x87\x33\x2e\xb9\xd9\x20\x03\x18\x51\xab\x9e\x3c\x9f\x71\xe2\xab\x71\x2d\x60\x27\xa7\x21\xac\x4f\x6d\x74\x1a\x07\x30\x9a\x42\x5f\x95\x46\x21\x26\x87\x4c\x59\xf6\x77\x00\x00\x00\xff\xff\xf8\x01\x04\x12\x62\x08\x00\x00"
+var _resnet152V2Yml = "\x1f\x8b\x08\x00\x00\x00\x00\x00\x00\xff\xac\x55\x4d\x8f\xdb\x36\x13\xbe\xeb\x57\x0c\xe0\xcb\xfb\x02\x6b\x7d\xcb\x92\x75\xe8\xa1\x09\x50\xf4\xb2\x01\x82\xde\x82\xc0\x18\x91\x23\x9b\x8d\x44\x0a\xe4\x68\x37\xdb\x5f\x5f\x90\x92\x2d\x1b\x49\x9a\x1e\xea\x83\x41\xcd\x3c\xf3\xfd\x70\xa8\x71\xa4\x16\x3e\x92\x7b\x26\xce\xaa\x1c\x76\xe0\x25\x60\x7a\x78\x33\xb3\x85\xd1\x48\x1a\xa2\xde\xe2\x48\xaf\xc6\x7e\x69\x23\x80\xc5\xe2\x1d\xf6\x3d\xc1\x0e\x6e\x2a\xe8\x8d\x05\xbe\xd0\x6a\x02\xf0\x42\xd6\x29\xa3\x5b\xc8\xe2\xf4\x01\xb8\x2a\x40\x18\xcd\x16\x95\xe6\xe8\x06\xcd\x03\xf4\x0a\x50\xba\x37\x76\x44\x5e\xce\xe0\x68\x44\xcd\x4a\xdc\xf4\x8b\x36\xf2\x7e\x50\x69\xb2\x2d\xec\xe0\xf6\xe1\x60\x76\x24\x81\x0d\x4c\x64\x3d\x72\x49\x0c\x26\x4b\x52\x09\xef\x33\x82\xed\xb7\x83\x71\x1e\x58\x4d\x03\xc1\x34\x20\x7b\xbc\x03\x81\x1a\x3a\x02\x37\x91\x50\xbd\x22\x19\x01\xe0\x28\x0f\x65\x1b\x2c\xcf\xd3\xdc\x82\x45\x35\x59\xf3\x27\x09\x4e\x04\xda\x71\xd8\x0b\xdf\x97\x36\xc0\xf6\x62\x9a\x03\x52\xfc\x14\x79\x0e\xc8\x69\x12\x87\x72\xa0\xf6\xa7\x46\x2b\x70\x35\xfb\xe7\x54\xee\xb1\x92\x9c\xb0\x6a\xe2\xd0\xeb\x5f\x22\x80\x3f\x3e\xbc\xff\x10\x59\xea\xc9\x92\x16\xe4\x7c\x03\xb7\xaf\xd0\x3b\x9c\x7c\x2b\x13\x78\xa5\xce\x29\x26\x7f\x24\x16\x71\x0c\x8b\xaf\x4e\xe9\xf3\xc3\xd4\xf7\x70\x61\x9e\x5c\x9b\x24\x67\xc5\x97\xb9\x8b\x85\x19\x13\x67\x08\x5f\xc8\x26\x21\xa3\x7d\x80\x26\x6c\x89\x92\x11\x1d\x7b\xf9\xe0\x7e\x64\x2a\x2c\xf6\xfc\xdb\xaf\xef\x6f\x87\x07\x20\xda\xaf\xea\x25\x36\xf6\x9c\x60\xe7\x92\xac\xca\xf2\x38\x2d\x8a\xa6\x8a\x76\x30\x28\x41\xda\x05\x26\x6f\xf9\xad\xc2\x16\x66\x6d\xc9\xb1\x55\x82\x49\x46\x3b\x50\x7a\x9a\x39\x14\xbc\x61\x17\x99\x1f\xc6\x0e\x7a\x65\x1d\x2f\x28\xe0\xb7\x89\xbe\x21\xfb\x3e\x88\x5b\x50\x23\x9e\x29\x5a\x18\x75\xd7\xed\x6b\x16\x77\x7e\x02\xe8\x61\x20\x1e\xb0\x84\xd8\xbc\x4c\xe8\xaf\x0d\x93\x0d\xb3\x09\xa1\x37\xd1\x4a\x60\xa9\x46\xd2\xfe\x42\xb8\x16\x3e\x15\x4f\x90\xe7\x65\xf8\xfb\xbc\xea\x47\x42\xdd\xc2\xa7\x2c\xcf\xe3\xba\xce\x9f\x20\xcb\xaa\xf8\x58\xd6\x4f\x90\xa5\x79\x7c\x6c\x3e\x47\x66\xe6\x69\xe6\xa5\x52\x9f\x44\x08\xb3\x66\xbc\xe8\x22\x58\xeb\xeb\x09\x79\xb6\x14\xa0\xf8\xbd\x0a\x17\xfc\x96\x64\xf4\x9d\x22\x57\xcc\x80\x5d\xe8\xdd\x5d\x8d\x6b\xe7\xbe\x57\xe7\x1a\xd9\x9d\x66\x3b\xb4\x81\x00\x6d\x92\xb8\x22\xc6\x11\xff\x32\x1a\x5f\xdd\xc2\x34\x36\x96\xe2\xc0\xff\x40\x0b\xf7\xa6\x1d\xb1\x4b\x42\x47\x35\xf1\x2a\x88\xf9\x2b\x3f\x7a\x15\x17\x12\x5f\xdc\x3c\xb6\x50\xca\xbc\x28\xbb\xaa\x29\x0a\x14\x58\x96\xc7\xbc\x49\x0f\x15\x66\x4d\x2a\xbb\x22\xcd\x0e\x18\x85\x99\xfb\x71\x5c\x17\x83\x5b\x57\xcb\xd9\xe2\x74\x01\xd4\x12\x5e\x49\x9d\x2f\xec\xc0\x92\x33\xb3\x15\xe4\x4b\x08\xda\xd3\x84\x7c\xf9\xf7\xe9\x07\xbf\x6e\xb9\x37\x89\x25\xa7\xc3\x92\xde\xbf\xe4\x89\xa4\x69\x30\x6f\xa7\x7b\x59\x3c\x59\xc3\x66\xa9\x6c\x4d\xe0\x3f\x0b\xf7\x10\x27\xe8\xaf\xcc\x57\xee\x84\x56\x5c\xd4\x8b\x67\x07\x0e\xce\x3f\x0a\xaa\x07\x47\xfc\xe4\x87\xad\xc3\xc4\x3b\x74\xe4\x07\x07\xca\x01\x82\x3f\xb0\x01\xd4\xb0\x5a\xde\x6f\xe2\xbb\x95\xec\x2d\xb7\xae\xdd\x37\x76\x11\x04\xf7\x92\xb4\x61\xf2\xe7\x1f\x78\xe9\xd5\x40\xe1\xd1\x72\x57\x8e\x7e\x3b\xa7\x57\xc5\x17\xb5\xa4\xba\xa5\xb4\x5b\x83\xdf\x51\x23\x3d\xc8\x2a\x6d\x0e\x69\x87\xa9\xc8\xd3\xac\xaf\x9a\x42\xd4\x95\xcc\x65\x9e\x1f\xfb\xba\x0b\x46\xd7\x14\x37\xb3\x3e\x6d\x8e\x55\x8d\x75\x59\xd5\x79\xda\x61\xd6\x77\x7d\x71\x2c\xab\x43\x23\x49\x74\x47\xd9\xdf\xc8\xb1\x99\x50\x4e\x5d\x5a\x97\x3d\x55\x07\x51\x36\x55\x89\x32\x4b\x8f\x45\x43\x45\x2d\xeb\x43\x95\xa6\x77\x23\xde\x8c\x8e\x4d\x5e\x1c\x52\xec\x0e\xa5\x48\x31\xc3\x8a\x64\x4d\x3d\xf6\xb2\x29\x45\x55\xc9\x14\x23\x64\xb6\xaa\x9b\x79\xd9\xf4\xf4\x95\x2d\x82\x26\x0e\xaf\xf2\xa6\x8b\x00\xbe\x28\x2d\x5b\x78\xf7\xfc\xbc\x4e\xc1\x7f\xfb\xee\x69\x9a\x2d\x0e\x37\x9b\xff\xbd\x7b\x7e\x7e\x82\x8f\xfe\x2f\x8e\xe3\xff\xfb\x2d\xe1\x1f\x74\xa5\xcf\x27\x89\x8c\x8e\xb8\x85\xdf\xfd\xcd\x7b\x26\xf6\x0b\x71\x91\xdd\x1e\xe6\xb0\x44\x57\x83\x08\x60\x44\xad\x7a\x72\x7c\xc2\x99\x2f\xc6\xb6\x80\x9d\x9c\x07\xbf\x9e\xb5\xd1\xfb\x91\xec\x99\xc0\x68\xf2\x1c\x52\x1a\x85\x98\x2d\x32\x45\xd1\xdf\x01\x00\x00\xff\xff\x1c\x47\x91\x88\xc2\x08\x00\x00"
 
 func resnet152V2YmlBytes() ([]byte, error) {
 	return bindataRead(
@@ -433,7 +433,7 @@ func resnet152V2Yml() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "ResNet152-v2.yml", size: 2146, mode: os.FileMode(436), modTime: time.Unix(1506963246, 0)}
+	info := bindataFileInfo{name: "ResNet152-v2.yml", size: 2242, mode: os.FileMode(420), modTime: time.Unix(1507349452, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -453,7 +453,7 @@ func resnet152Yml() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "ResNet152.yml", size: 2055, mode: os.FileMode(436), modTime: time.Unix(1506963246, 0)}
+	info := bindataFileInfo{name: "ResNet152.yml", size: 2055, mode: os.FileMode(420), modTime: time.Unix(1506926707, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -473,7 +473,7 @@ func resnet18PrivYml() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "ResNet18-priv.yml", size: 2283, mode: os.FileMode(436), modTime: time.Unix(1507078895, 0)}
+	info := bindataFileInfo{name: "ResNet18-priv.yml", size: 2283, mode: os.FileMode(420), modTime: time.Unix(1507080414, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -493,7 +493,7 @@ func resnet269V2Yml() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "ResNet269-v2.yml", size: 2103, mode: os.FileMode(436), modTime: time.Unix(1506963246, 0)}
+	info := bindataFileInfo{name: "ResNet269-v2.yml", size: 2103, mode: os.FileMode(420), modTime: time.Unix(1506952611, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -513,7 +513,7 @@ func resnet50Yml() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "ResNet50.yml", size: 2050, mode: os.FileMode(436), modTime: time.Unix(1506963246, 0)}
+	info := bindataFileInfo{name: "ResNet50.yml", size: 2050, mode: os.FileMode(420), modTime: time.Unix(1507057946, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -533,7 +533,7 @@ func squeezenetV10Yml() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "SqueezeNet-v1.0.yml", size: 2292, mode: os.FileMode(436), modTime: time.Unix(1506963246, 0)}
+	info := bindataFileInfo{name: "SqueezeNet-v1.0.yml", size: 2292, mode: os.FileMode(420), modTime: time.Unix(1506949046, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -553,7 +553,7 @@ func squeezenetV11Yml() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "SqueezeNet-v1.1.yml", size: 2293, mode: os.FileMode(436), modTime: time.Unix(1506963246, 0)}
+	info := bindataFileInfo{name: "SqueezeNet-v1.1.yml", size: 2293, mode: os.FileMode(420), modTime: time.Unix(1506949052, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -573,7 +573,7 @@ func vgg16Yml() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "VGG16.yml", size: 2314, mode: os.FileMode(436), modTime: time.Unix(1506449237, 0)}
+	info := bindataFileInfo{name: "VGG16.yml", size: 2314, mode: os.FileMode(420), modTime: time.Unix(1506928224, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -593,7 +593,7 @@ func vgg16_sodYml() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "VGG16_SOD.yml", size: 2196, mode: os.FileMode(436), modTime: time.Unix(1506963246, 0)}
+	info := bindataFileInfo{name: "VGG16_SOD.yml", size: 2196, mode: os.FileMode(420), modTime: time.Unix(1506931519, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -613,7 +613,7 @@ func vgg16_sosYml() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "VGG16_SOS.yml", size: 2173, mode: os.FileMode(436), modTime: time.Unix(1506963246, 0)}
+	info := bindataFileInfo{name: "VGG16_SOS.yml", size: 2173, mode: os.FileMode(420), modTime: time.Unix(1506931936, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -633,7 +633,7 @@ func vgg19Yml() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "VGG19.yml", size: 2314, mode: os.FileMode(436), modTime: time.Unix(1506449237, 0)}
+	info := bindataFileInfo{name: "VGG19.yml", size: 2314, mode: os.FileMode(420), modTime: time.Unix(1506275215, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -653,7 +653,7 @@ func wrn502Yml() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "WRN50-2.yml", size: 2217, mode: os.FileMode(436), modTime: time.Unix(1506920802, 0)}
+	info := bindataFileInfo{name: "WRN50-2.yml", size: 2217, mode: os.FileMode(420), modTime: time.Unix(1506916738, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -673,7 +673,7 @@ func xceptionYml() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "Xception.yml", size: 2178, mode: os.FileMode(436), modTime: time.Unix(1506920802, 0)}
+	info := bindataFileInfo{name: "Xception.yml", size: 2178, mode: os.FileMode(420), modTime: time.Unix(1506918377, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -693,7 +693,7 @@ func vocFcn16sYml() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "voc-fcn16s.yml", size: 2112, mode: os.FileMode(436), modTime: time.Unix(1506449237, 0)}
+	info := bindataFileInfo{name: "voc-fcn16s.yml", size: 2112, mode: os.FileMode(420), modTime: time.Unix(1506916249, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -713,7 +713,7 @@ func vocFcn32sYml() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "voc-fcn32s.yml", size: 2112, mode: os.FileMode(436), modTime: time.Unix(1506449237, 0)}
+	info := bindataFileInfo{name: "voc-fcn32s.yml", size: 2112, mode: os.FileMode(420), modTime: time.Unix(1506275223, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
