@@ -48,10 +48,8 @@ func New(model dlframework.ModelManifest, opts ...options.Option) (common.Predic
 
 // Load ...
 func (p *ImagePredictor) Load(ctx context.Context, model dlframework.ModelManifest, opts ...options.Option) (common.Predictor, error) {
-	if span, newCtx := opentracing.StartSpanFromContext(ctx, "Load"); span != nil {
-		ctx = newCtx
-		defer span.Finish()
-	}
+	span, ctx := opentracing.StartSpanFromContext(ctx, "Load")
+	defer span.Finish()
 
 	framework, err := model.ResolveFramework()
 	if err != nil {
@@ -225,8 +223,6 @@ func (p *ImagePredictor) loadPredictor(ctx context.Context) error {
 // Predict ...
 func (p *ImagePredictor) Predict(ctx context.Context, data [][]float32, opts ...options.Option) ([]dlframework.Features, error) {
 
-	span := opentracing.SpanFromContext(ctx)
-
 	if err := p.predictor.StartProfiling("caffe", "predict"); err == nil {
 		defer func() {
 			p.predictor.EndProfiling()
@@ -240,7 +236,6 @@ func (p *ImagePredictor) Predict(ctx context.Context, data [][]float32, opts ...
 			p.predictor.DisableProfiling()
 		}()
 	}
-	defer span.Finish()
 
 	var input []float32
 	for _, v := range data {
