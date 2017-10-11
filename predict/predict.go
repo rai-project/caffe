@@ -212,7 +212,6 @@ func (p *ImagePredictor) loadPredictor(ctx context.Context) error {
 		options.WithOptions(opts),
 		options.Graph([]byte(p.GetGraphPath())),
 		options.Weights([]byte(p.GetWeightsPath())),
-		options.BatchSize(p.BatchSize()),
 	)
 	if err != nil {
 		return err
@@ -224,7 +223,6 @@ func (p *ImagePredictor) loadPredictor(ctx context.Context) error {
 
 // Predict ...
 func (p *ImagePredictor) Predict(ctx context.Context, data [][]float32, opts ...options.Option) ([]dlframework.Features, error) {
-
 	span := opentracing.SpanFromContext(ctx)
 
 	if err := p.predictor.StartProfiling("caffe", "predict"); err == nil {
@@ -255,6 +253,7 @@ func (p *ImagePredictor) Predict(ctx context.Context, data [][]float32, opts ...
 	var output []dlframework.Features
 	batchSize := int(p.BatchSize())
 	length := len(predictions) / batchSize
+
 	for i := 0; i < batchSize; i++ {
 		rprobs := make([]*dlframework.Feature, length)
 		for j := 0; j < length; j++ {
