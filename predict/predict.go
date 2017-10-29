@@ -5,6 +5,7 @@ import (
 	"os"
 	"strings"
 
+	"github.com/k0kubun/pp"
 	opentracing "github.com/opentracing/opentracing-go"
 	olog "github.com/opentracing/opentracing-go/log"
 	"github.com/pkg/errors"
@@ -228,11 +229,17 @@ func (p *ImagePredictor) Predict(ctx context.Context, data [][]float32, opts ...
 				p.predictor.EndProfiling()
 				profBuffer, err := p.predictor.ReadProfile()
 				if err != nil {
+					pp.Println(err)
 					return
 				}
-				if t, err := ctimer.New(profBuffer); err == nil {
-					t.Publish(ctx)
+
+				t, err := ctimer.New(profBuffer)
+				if err != nil {
+					pp.Println(err)
+					return
 				}
+				t.Publish(ctx)
+
 				p.predictor.DisableProfiling()
 			}()
 		}
