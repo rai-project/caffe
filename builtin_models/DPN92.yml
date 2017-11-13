@@ -32,7 +32,9 @@ output:
   # the type of the output
   type: feature
   # a description of the output parameter
-  description: the output label
+  description: >
+  Dual Path Networks are highly efficient networks which combine the strength of both ResNeXt Aggregated Residual Transformations
+  for Deep Neural Networks and DenseNets Densely Connected Convolutional Networks.
   parameters:
     # type parameters
     features_url: http://s3.amazonaws.com/store.carml.org/synsets/imagenet/synset.txt
