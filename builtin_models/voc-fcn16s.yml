@@ -12,7 +12,10 @@ container: # containers used to perform model prediction
     cpu: raiproject/carml-caffe:ppc64le-gpu
     gpu: raiproject/carml-caffe:ppc64le-gpu
 description: >
-  TODO
+  two stream, 16 pixel prediction stride net, scoring 65.0 mIU on seg11valid
+  trained online with high momentum for a ~5 point boost in mean intersection-over-union over the original models.
+  These models are trained using extra data from Hariharan et al., but excluding SBD val. FCN-31s is fine-tuned from the ILSVRC-trained VGG-16 model,
+  and the finer strides are then fine-tuned in turn. The "at-once" FCN-8s is fine-tuned from VGG-16 all-at-once by scaling the skip connections to better condition optimization.
 references: # references to papers / websites / etc.. describing the model
   - https://arxiv.org/abs/1605.06211
   - http://www.cv-foundation.org/openaccess/content_cvpr_2015/html/Long_Fully_Convolutional_Networks_2015_CVPR_paper.html
