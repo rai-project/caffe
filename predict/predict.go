@@ -225,7 +225,10 @@ func (p *ImagePredictor) loadPredictor(ctx context.Context) error {
 // Predict ...
 func (p *ImagePredictor) Predict(ctx context.Context, data [][]float32, opts ...options.Option) ([]dlframework.Features, error) {
 	if p.TraceLevel() >= tracer.FRAMEWORK_TRACE {
-		if err := p.predictor.StartProfiling("caffe", "predict"); err == nil {
+		err := p.predictor.StartProfiling("caffe", "predict")
+		if err != nil {
+			log.WithError(err).WithField("framework", "caffe").Error("unable to start framework profiling")
+		} else {
 			defer func() {
 				p.predictor.EndProfiling()
 				profBuffer, err := p.predictor.ReadProfile()
