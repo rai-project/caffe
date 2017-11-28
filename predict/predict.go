@@ -259,7 +259,7 @@ func (p *ImagePredictor) Predict(ctx context.Context, data [][]float32, opts ...
 		olog.String("event", "before caffe predict"),
 	)
 
-	predictions, err := p.predictor.Predict(input)
+	predictions, err := p.predictor.Predict(ctx, input)
 	if err != nil {
 		return nil, err
 	}
