@@ -38,3 +38,4 @@ cmd/rai/rai
 cmd/raid/raid
 debug
 .DS_Store
+main
