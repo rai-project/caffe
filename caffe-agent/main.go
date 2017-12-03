@@ -7,6 +7,7 @@ import (
 	"github.com/rai-project/caffe"
 	_ "github.com/rai-project/caffe/predict"
 	cmd "github.com/rai-project/dlframework/framework/cmd/server"
+	_ "github.com/rai-project/monitoring/monitors"
 	"github.com/rai-project/tracer"
 )
 
