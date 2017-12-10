@@ -254,19 +254,10 @@ func (p *ImagePredictor) Predict(ctx context.Context, data [][]float32, opts ...
 		input = append(input, v...)
 	}
 
-	span := opentracing.SpanFromContext(ctx)
-	span.LogFields(
-		olog.String("event", "before caffe predict"),
-	)
-
 	predictions, err := p.predictor.Predict(ctx, input)
 	if err != nil {
 		return nil, err
 	}
-
-	span.LogFields(
-		olog.String("event", "after caffe predict"),
-	)
 
 	var output []dlframework.Features
 	batchSize := int(p.BatchSize())
