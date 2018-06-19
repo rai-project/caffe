@@ -32,9 +32,6 @@ import:
   - ctimer
 - package: github.com/sirupsen/logrus
   version: ^1.0.0
-- package: golang.org/x/net
-  subpackages:
-  - context
 testImport:
 - package: github.com/GeertJohan/go-sourcepath
 - package: github.com/stretchr/testify
