@@ -258,6 +258,18 @@ func (p *ImagePredictor) loadPredictor(ctx context.Context) error {
 
 // Predict ...
 func (p *ImagePredictor) Predict(ctx context.Context, data [][]float32, opts ...options.Option) ([]dlframework.Features, error) {
+	var input []float32
+	for _, v := range data {
+		input = append(input, v...)
+	}
+
+	if false {
+		predictions, err := p.predictor.Predict(ctx, input)
+		if err != nil {
+			return nil, err
+		}
+		_ = predictions
+	}
 	if p.TraceLevel() >= tracer.FRAMEWORK_TRACE {
 		err := p.predictor.StartProfiling("caffe", "predict")
 		if err != nil {
@@ -281,11 +293,6 @@ func (p *ImagePredictor) Predict(ctx context.Context, data [][]float32, opts ...
 				p.predictor.DisableProfiling()
 			}()
 		}
-	}
-
-	var input []float32
-	for _, v := range data {
-		input = append(input, v...)
 	}
 
 	predictions, err := p.predictor.Predict(ctx, input)
