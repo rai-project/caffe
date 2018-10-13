@@ -290,8 +290,10 @@ func (p *ImagePredictor) Predict(ctx context.Context, data [][]float32, opts ...
 
 	err := p.predictor.Predict(ctx, input)
 	if err != nil {
-		return nil, err
+		return err
 	}
+
+	return nil
 }
 
 // ReadPredictedFeatures ...
@@ -302,13 +304,13 @@ func (p *ImagePredictor) ReadPredictedFeatures(ctx context.Context) ([]dlframewo
 	batchSize := int(p.BatchSize())
 	length := len(predictions) / batchSize
 
-	for i := 0; i < batchSize; i++ {
+	for ii := 0; ii < batchSize; ii++ {
 		rprobs := make([]*dlframework.Feature, length)
-		for j := 0; j < length; j++ {
-			rprobs[j] = &dlframework.Feature{
-				Index:       int64(j),
-				Name:        p.features[j],
-				Probability: predictions[i*length+j].Probability,
+		for jj := 0; jj < length; jj++ {
+			rprobs[jj] = &dlframework.Feature{
+				Index:       int32(jj),
+				Name:        p.features[jj],
+				Probability: predictions[ii*length+jj].Probability,
 			}
 		}
 		output = append(output, rprobs)
