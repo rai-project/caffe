@@ -257,7 +257,7 @@ func (p *ImagePredictor) loadPredictor(ctx context.Context) error {
 }
 
 // Predict ...
-func (p *ImagePredictor) Predict(ctx context.Context, data [][]float32, opts ...options.Option) ([]dlframework.Features, error) {
+func (p *ImagePredictor) Predict(ctx context.Context, data [][]float32, opts ...options.Option) error {
 	if p.TraceLevel() >= tracer.FRAMEWORK_TRACE {
 		err := p.predictor.StartProfiling("caffe", "predict")
 		if err != nil {
@@ -292,8 +292,11 @@ func (p *ImagePredictor) Predict(ctx context.Context, data [][]float32, opts ...
 	if err != nil {
 		return nil, err
 	}
+}
 
-	predictions := predictor.ReadPredictedFeatures(ctx)
+// ReadPredictedFeatures ...
+func (p *ImagePredictor) ReadPredictedFeatures(ctx context.Context) ([]dlframework.Features, error) {
+	predictions := p.predictor.ReadPredictedFeatures(ctx)
 
 	var output []dlframework.Features
 	batchSize := int(p.BatchSize())
