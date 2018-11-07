@@ -276,7 +276,7 @@ func (p *ImagePredictor) Predict(ctx context.Context, data [][]float32, opts ...
 					panic(err)
 					return
 				}
-				t.Publish(ctx)
+				t.Publish(ctx, tracer.FRAMEWORK_TRACE)
 
 				p.predictor.DisableProfiling()
 			}()
