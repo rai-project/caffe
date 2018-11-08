@@ -15,6 +15,7 @@ import (
 	"github.com/rai-project/config"
 	"github.com/rai-project/dlframework"
 	"github.com/rai-project/dlframework/framework/agent"
+	"github.com/rai-project/dlframework/framework/feature"
 	"github.com/rai-project/dlframework/framework/options"
 	common "github.com/rai-project/dlframework/framework/predict"
 	"github.com/rai-project/downloadmanager"
@@ -307,11 +308,11 @@ func (p *ImagePredictor) ReadPredictedFeatures(ctx context.Context) ([]dlframewo
 	for ii := 0; ii < batchSize; ii++ {
 		rprobs := make([]*dlframework.Feature, length)
 		for jj := 0; jj < length; jj++ {
-			rprobs[jj] = &dlframework.Feature{
-				Index:       int32(jj),
-				Name:        p.features[jj],
-				Probability: predictions[ii*length+jj].Probability,
-			}
+			rprobs[jj] = feature.New(
+				feature.ClassificationIndex(int32(jj)),
+				feature.ClassificationName(p.features[jj]),
+				feature.Probability(predictions[ii*length+jj].Probability),
+			)
 		}
 		output = append(output, rprobs)
 	}
