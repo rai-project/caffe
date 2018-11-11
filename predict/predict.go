@@ -86,7 +86,6 @@ func (p *ImagePredictor) Download(ctx context.Context, model dlframework.ModelMa
 
 // Load ...
 func (p *ImagePredictor) Load(ctx context.Context, model dlframework.ModelManifest, opts ...options.Option) (common.Predictor, error) {
-
 	framework, err := model.ResolveFramework()
 	if err != nil {
 		return nil, err
@@ -299,7 +298,13 @@ func (p *ImagePredictor) Predict(ctx context.Context, data [][]float32, opts ...
 
 // ReadPredictedFeatures ...
 func (p *ImagePredictor) ReadPredictedFeatures(ctx context.Context) ([]dlframework.Features, error) {
-	predictions := p.predictor.ReadPredictedFeatures(ctx)
+	span, ctx := tracer.StartSpanFromContext(ctx, tracer.APPLICATION_TRACE, "read_predicted_features")
+	defer span.Finish()
+
+	predictions, err := p.predictor.ReadPredictions(ctx)
+	if err != nil {
+		return nil, err
+	}
 
 	var output []dlframework.Features
 	batchSize := int(p.BatchSize())
@@ -316,6 +321,7 @@ func (p *ImagePredictor) ReadPredictedFeatures(ctx context.Context) ([]dlframewo
 		}
 		output = append(output, rprobs)
 	}
+
 	return output, nil
 }
 
