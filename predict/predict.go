@@ -306,9 +306,9 @@ func (p *ImagePredictor) ReadPredictedFeatures(ctx context.Context) ([]dlframewo
 		return nil, err
 	}
 
-	var output []dlframework.Features
 	batchSize := int(p.BatchSize())
 	length := len(predictions) / batchSize
+	output := make([]dlframework.Features, batchSize)
 
 	for ii := 0; ii < batchSize; ii++ {
 		rprobs := make([]*dlframework.Feature, length)
@@ -319,7 +319,7 @@ func (p *ImagePredictor) ReadPredictedFeatures(ctx context.Context) ([]dlframewo
 				feature.Probability(predictions[ii*length+jj].Probability),
 			)
 		}
-		output = append(output, rprobs)
+		output[ii] = rprobs
 	}
 
 	return output, nil
