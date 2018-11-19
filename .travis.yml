@@ -3,13 +3,16 @@ dist: xenial
 sudo: required
 services:
   - docker
+env:
+  global:
+    - TRAVIS_REPO_OWNER=${TRAVIS_REPO_SLUG#*/}
+    - TRAVIS_REPO_NAME=${TRAVIS_REPO_SLUG%/*}
 before_install:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-  - cd dockerfiles
-  - make docker_build_cpu
-  - make docker_build_gpu
-  - make docker_push_cpu
-  - make docker_push_gpu
 script:
-  - make docker_push_cpu
-  - make docker_push_gpu
+  - cd ${TRAVIS_BUILD_DIR}/dockerfiles
+  - make docker_build
+  - make docker_push
+  - cd ${TRAVIS_BUILD_DIR}/${TRAVIS_REPO_NAME}-agent/dockerfiles
+  - make docker_build
+  - make docker_push
