@@ -66,8 +66,8 @@
   name = "github.com/rai-project/downloadmanager"
 
 [[constraint]]
+  branch = "master"
   name = "github.com/rai-project/go-caffe"
-  version = "0.4.0"
 
 [[constraint]]
   branch = "master"
@@ -82,8 +82,8 @@
   name = "github.com/rai-project/monitoring"
 
 [[constraint]]
+  branch = "master"
   name = "github.com/rai-project/tracer"
-  version = "0.2.0"
 
 [[constraint]]
   name = "github.com/sirupsen/logrus"
