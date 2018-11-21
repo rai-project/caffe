@@ -1276,7 +1276,7 @@
     "proto",
   ]
   pruneopts = "T"
-  revision = "6a348a17a2f391c405c547c04bc03293851d38f9"
+  revision = "985d2786115d5e0dd816662519acc0ae8432f881"
 
 [[projects]]
   branch = "master"
