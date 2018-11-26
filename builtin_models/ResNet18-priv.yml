@@ -4,7 +4,7 @@ framework:
   version: 1.0 # framework version contraint
 version: 1.0 # version information in semantic version format
 container: # containers used to perform model prediction
-           # multiple platforms can be specified
+  # multiple platforms can be specified
   amd64:
     gpu: raiproject/carml-caffe:amd64-cpu
     cpu: raiproject/carml-caffe:amd64-gpu
@@ -45,9 +45,10 @@ output:
 model: # specifies model graph and weights resources
   graph_path: http://s3.amazonaws.com/store.carml.org/models/caffe/resnet18-priv/deploy_resnet18-priv_no_ceil_mode.prototxt
   weights_path: http://s3.amazonaws.com/store.carml.org/models/caffe/resnet18-priv/resnet18-priv.caffemodel
-  is_archive: false # if set, then the base_url is a url to an archive
-                    # the graph_path and weights_path then denote the
-                    # file names of the graph and weights within the archive
+  is_archive:
+    false # if set, then the base_url is a url to an archive
+    # the graph_path and weights_path then denote the
+    # file names of the graph and weights within the archive
   graph_checksum: b06f1f1dd4155c71108d819155956a98
   weights_checksum: 0904d601fc930d4f0c62a2a95b3c3b93
 attributes: # extra network attributes
