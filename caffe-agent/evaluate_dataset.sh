@@ -8,18 +8,25 @@ MODEL_VERSION=1.0
 TRACE_LEVEL=FULL_TRACE
 BATCH_SIZE=32
 
-go build
+#go build
 
- ./caffe-agent predict dataset --verbose \
-   --fail_on_error=true --verbose \
-  --publish=true --publish_predictions=false --gpu=1 \
-  --num_file_parts=$NUM_FILE_PARTS --batch_size=$BATCH_SIZE \
-  --model_name=$MODEL_NAME --model_version=$MODEL_VERSION \
-  --database_address=$DATABASE_ADDRESS --database_name=$DATABASE_NAME \
-  --trace_level=FULL_TRACE$ \
+nvidia-docker run --privileged --rm -v $HOME:/root -u `id -u`:`id -g` carml/caffe-agent:amd64-gpu-latest \
+  caffe-agent predict dataset \
+      -fail_on_error=true \
+      --verbose \
+      --publish=true \
+      --publish_predictions=false \
+      --gpu=1 \
+      --num_file_parts=$NUM_FILE_PARTS \
+      --batch_size=$BATCH_SIZE \
+      --model_name=$MODEL_NAME \
+      --model_version=$MODEL_VERSION \
+      --database_address=$DATABASE_ADDRESS \
+      --database_name=$DATABASE_NAME \
+      --trace_level=FULL_TRACE
 
 exit
- ./caffe-agent predict dataset --verbose \
+./caffe-agent predict dataset --verbose \
    --fail_on_error=true --verbose \
   --publish=true --publish_predictions=false --gpu=0 \
   --num_file_parts=$NUM_FILE_PARTS --batch_size=$BATCH_SIZE \
