@@ -9,16 +9,16 @@ NUM_FILE_PARTS=-1
 MODEL_NAME=BVLC-AlexNet
 MODEL_VERSION=1.0
 TRACE_LEVEL=NO_TRACE
-BATCH_SIZE=16
+BATCH_SIZE=1
 
-go build
+go build -tags=nogpu
 
 ./caffe-agent predict dataset \
       --fail_on_error=true \
       --verbose \
       --publish=false \
       --publish_predictions=false \
-      --gpu=1 \
+      --gpu=0 \
       --num_file_parts=$NUM_FILE_PARTS \
       --batch_size=$BATCH_SIZE \
       --model_name=$MODEL_NAME \
