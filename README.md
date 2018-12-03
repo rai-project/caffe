@@ -1,4 +1,4 @@
-# Agent for Caffe Prediction
+# MLModelScope Caffe Agent
 
 [![Build Status](https://travis-ci.org/rai-project/caffe.svg?branch=master)](https://travis-ci.org/rai-project/caffe)
 [![Build Status](https://dev.azure.com/dakkak/rai/_apis/build/status/caffe)](https://dev.azure.com/dakkak/rai/_build/latest?definitionId=15)

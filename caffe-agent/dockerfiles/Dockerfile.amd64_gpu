@@ -8,14 +8,14 @@ ARG VCS_REF
 ARG VCS_URL
 ARG VERSION
 LABEL org.mlmodelscope.caffe.agent.build-date=$BUILD_DATE \
-      org.mlmodelscope.caffe.agent.name="caffe agent" \
-      org.mlmodelscope.caffe.agent.description="" \
-      org.mlmodelscope.caffe.agent.url="https://www.mlmodelscope.org/" \
-      org.mlmodelscope.caffe.agent.vcs-ref=$VCS_REF \
-      org.mlmodelscope.caffe.agent.vcs-url=$VCS_URL \
-      org.mlmodelscope.caffe.agent.vendor="MLModelScope" \
-      org.mlmodelscope.caffe.agent.version=$VERSION \
-      org.mlmodelscope.caffe.agent.schema-version="1.0"
+  org.mlmodelscope.caffe.agent.name="caffe agent" \
+  org.mlmodelscope.caffe.agent.description="" \
+  org.mlmodelscope.caffe.agent.url="https://www.mlmodelscope.org/" \
+  org.mlmodelscope.caffe.agent.vcs-ref=$VCS_REF \
+  org.mlmodelscope.caffe.agent.vcs-url=$VCS_URL \
+  org.mlmodelscope.caffe.agent.vendor="MLModelScope" \
+  org.mlmodelscope.caffe.agent.version=$VERSION \
+  org.mlmodelscope.caffe.agent.schema-version="1.0"
 
 
 # Get Go bindings
@@ -23,11 +23,11 @@ ENV PKG github.com/rai-project/caffe
 WORKDIR $GOPATH/src/$PKG
 
 RUN git clone --depth=1 --branch=master https://${PKG}.git . && \
-    dep ensure -v && \
-    go build -a -installsuffix cgo -ldflags "-s -w -X ${PKG}/Version=${VERSION} -X ${PKG}/GitCommit=${VCS_REF} -X ${PKG}/BuildDate=${BUILD_DATE}"&& \
-    cd caffe-agent && \
-    go install && \
-    cd .. && \
-    rm -fr vendor
+  dep ensure -v && \
+  go build -a -installsuffix cgo -ldflags "-s -w -X ${PKG}/Version=${VERSION} -X ${PKG}/GitCommit=${VCS_REF} -X ${PKG}/BuildDate=${BUILD_DATE}"&& \
+  cd caffe-agent && \
+  go install && \
+  cd .. && \
+  rm -fr vendor
 
-ENTRYPOINT ["caffe-agent", "--debug", "--verbose"]
+ENTRYPOINT ["caffe-agent"]
