@@ -1234,7 +1234,7 @@
     "steps",
   ]
   pruneopts = "T"
-  revision = "e8bee8e57f2079015d76466df1d8280daddd7d73"
+  revision = "1a468ea0d9ef3646026f0bdf51d2621a823c6ed9"
 
 [[projects]]
   branch = "master"
@@ -1265,7 +1265,7 @@
     "eventflow",
   ]
   pruneopts = "T"
-  revision = "e6999af3b9fd23285c0c7b317b31fae31f9e2386"
+  revision = "e0b15a6a3390175c4b1cad1ba93c8e3a4155d9cf"
 
 [[projects]]
   branch = "master"
@@ -1276,7 +1276,7 @@
     "proto",
   ]
   pruneopts = "T"
-  revision = "791808ae91140468956343c8c32c4e012f5576fe"
+  revision = "ccf5bf31fc9bc83f9b2db4a059d202b6feb7d6a2"
 
 [[projects]]
   branch = "master"
