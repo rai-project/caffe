@@ -1,12 +1,13 @@
 #!/bin/bash
 
 DATABASE_ADDRESS=52.91.209.88
-DATABASE_NAME=resnet50_v1_0_docker
+DATABASE_NAME=resnet50_v1_0_docker_framework_trace_mlperf
 MODEL_NAME=ResNet50
 NUM_FILE_PARTS=10
 MODEL_VERSION=1.0
-TRACE_LEVEL=MODEL_TRACE
-BATCH_SIZE=(1 2 4 8)
+TRACE_LEVEL=FRAMEWORK_TRACE
+BATCH_SIZE=(1)
+# BATCH_SIZE=(1 2 4 8)
 
 for b in ${BATCH_SIZE[@]}; do
   docker run --network host -t -v $HOME:/root carml/caffe-agent:amd64-cpu-mlperf-latest predict dataset \
