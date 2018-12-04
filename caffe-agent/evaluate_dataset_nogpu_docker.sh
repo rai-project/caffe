@@ -9,7 +9,7 @@ TRACE_LEVEL=MODEL_TRACE
 BATCH_SIZE=(1 2 4 8)
 
 for b in ${BATCH_SIZE[@]}; do
-  docker run --network host -t -v $HOME:/root carml/caffe-agent:amd64-cpu-latest predict dataset \
+  docker run --network host -t -v $HOME:/root carml/caffe-agent:amd64-cpu-mlperf-latest predict dataset \
         --fail_on_error=true \
         --verbose \
         --publish=true \
@@ -20,7 +20,7 @@ for b in ${BATCH_SIZE[@]}; do
         --model_name=$MODEL_NAME \
         --model_version=$MODEL_VERSION \
         --database_address=$DATABASE_ADDRESS \
-        --database_name=$DATABASE_ADDRESS_docker \
+        --database_name=$DATABASE_NAME \
         --trace_level=$TRACE_LEVEL
 done
 
