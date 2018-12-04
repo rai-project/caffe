@@ -7,6 +7,7 @@ push: docker_push output ## Push Docker image
 # Build and push Docker image
 release: docker_build docker_push
 
+
 # Image and binary can be overidden with env vars.
 DOCKER_IMAGE ?= carml/caffe
 
