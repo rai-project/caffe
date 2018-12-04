@@ -117,7 +117,7 @@
   name = "github.com/apache/thrift"
   packages = ["lib/go/thrift"]
   pruneopts = "T"
-  revision = "2c69b5a01e589c19855a00b68596d0564bb2bb5b"
+  revision = "dd965c1eb437e0067009492b0d18b1d3f8e79d07"
 
 [[projects]]
   branch = "master"
@@ -169,8 +169,8 @@
     "service/sts",
   ]
   pruneopts = "T"
-  revision = "ceab7b7ac6f535d1397f124620720b5145f1ad59"
-  version = "v1.15.88"
+  revision = "6b08b085a17ae5a6040fdb67971812696569dced"
+  version = "v1.15.89"
 
 [[projects]]
   branch = "master"
@@ -250,7 +250,7 @@
   name = "github.com/containerd/continuity"
   packages = ["pathdriver"]
   pruneopts = "T"
-  revision = "bea7585dbfac2847dbf49a6b8e7738a36c09bc75"
+  revision = "004b46473808b3e7a4a3049c20e4376c91eb966d"
 
 [[projects]]
   digest = "0:"
@@ -310,7 +310,7 @@
     "reference",
   ]
   pruneopts = "T"
-  revision = "d9e12182359e0893efd7546d4b764f6c24e3118c"
+  revision = "40b7b5830a2337bb07627617740c0e39eb92800c"
 
 [[projects]]
   branch = "master"
@@ -353,7 +353,7 @@
     "pkg/term/windows",
   ]
   pruneopts = "T"
-  revision = "baab736a364959f10a5ef86f0cd8a8e44bdcc576"
+  revision = "65d9a5dde589f96f4728782fd0fa7de7bb6b3146"
 
 [[projects]]
   branch = "master"
@@ -836,12 +836,12 @@
   revision = "ae77be60afb1dcacde03767a8c37337fad28ac14"
 
 [[projects]]
-  digest = "1:d6b6a04972f1db0f5d426f9b3418be25553e2ab0288abfa8881eeb78d9be0638"
+  digest = "0:"
   name = "github.com/klauspost/shutdown2"
   packages = ["."]
   pruneopts = "T"
-  revision = "d72d32c5c226b5e1b8b46d8a3fe86b0b6e88bbb7"
-  version = "v1.0.4"
+  revision = "8cffc584385a89235a56e64a8f610ced202c1da0"
+  version = "v1.1.0"
 
 [[projects]]
   branch = "master"
@@ -1051,7 +1051,7 @@
     "libcontainer/user",
   ]
   pruneopts = "T"
-  revision = "4932620b6237ed2a91aa5b5ca8cca6a73c10311b"
+  revision = "96ec2177ae841256168fcf76954f7177af9446eb"
 
 [[projects]]
   branch = "master"
@@ -1204,7 +1204,7 @@
     "mongodb",
   ]
   pruneopts = "T"
-  revision = "460c9cf6ee9ff85b91220358648023379ccd7bf7"
+  revision = "ef4eddec538ec52d1b0311739e14c010188bb2c0"
 
 [[projects]]
   branch = "master"
@@ -1234,7 +1234,7 @@
     "steps",
   ]
   pruneopts = "T"
-  revision = "cb4c9fa5857d939334880d6169edc64999cdbb98"
+  revision = "e8bee8e57f2079015d76466df1d8280daddd7d73"
 
 [[projects]]
   branch = "master"
@@ -1265,7 +1265,7 @@
     "eventflow",
   ]
   pruneopts = "T"
-  revision = "27a8cfb730bc4cecd9f31961a159acf34f0281d3"
+  revision = "e6999af3b9fd23285c0c7b317b31fae31f9e2386"
 
 [[projects]]
   branch = "master"
@@ -1276,7 +1276,7 @@
     "proto",
   ]
   pruneopts = "T"
-  revision = "b5681879ceceb223e829e8b529243368666a50e9"
+  revision = "791808ae91140468956343c8c32c4e012f5576fe"
 
 [[projects]]
   branch = "master"
@@ -1463,7 +1463,7 @@
   name = "github.com/rai-project/synthetic_load"
   packages = ["."]
   pruneopts = "T"
-  revision = "c3f789b6c8a91616543f3dc668db0df4f87a6998"
+  revision = "58faa17e0d5086061017c24f18b74cf94c7fcf3e"
 
 [[projects]]
   branch = "master"
@@ -1599,8 +1599,8 @@
     "mem",
   ]
   pruneopts = "T"
-  revision = "3ec50d2876a36047b2ca39f955ba88fb7a455e92"
-  version = "v2.18.10"
+  revision = "0f70a4a06f7a1039305ec9b3ba9c2800f8929fba"
+  version = "v2.18.11"
 
 [[projects]]
   digest = "1:a204f9aa04d3305be0d4d8f69f42aee6c649a8f9f9a8dbbbaff54bdad5ce50c7"
@@ -1925,7 +1925,7 @@
     "ssh/terminal",
   ]
   pruneopts = "T"
-  revision = "eb0de9b17e854e9b1ccd9963efafc79862359959"
+  revision = "505ab145d0a99da450461ae2c1a9f6cd10d1f447"
 
 [[projects]]
   branch = "master"
@@ -1956,7 +1956,7 @@
     "websocket",
   ]
   pruneopts = "T"
-  revision = "fae4c4e3ad76c295c3d6d259f898136b4bf833a8"
+  revision = "351d144fa1fc0bd934e2408202be0c29f25e35a0"
 
 [[projects]]
   branch = "master"
@@ -1970,7 +1970,7 @@
     "jwt",
   ]
   pruneopts = "T"
-  revision = "28207608b83849a028d4f12e46533a6b6894ecaf"
+  revision = "d668ce993890a79bda886613ee587a69dd5da7a6"
 
 [[projects]]
   branch = "master"
@@ -2037,7 +2037,7 @@
     "logging/v2",
   ]
   pruneopts = "T"
-  revision = "af4fc4062c262223ddc2d92f5f35a93690db383a"
+  revision = "6142e720c068c6cd71f2258e007ff1991572e1d5"
 
 [[projects]]
   digest = "0:"
@@ -2067,7 +2067,7 @@
     "googleapis/rpc/status",
   ]
   pruneopts = "T"
-  revision = "31ac5d88444a9e7ad18077db9a165d793ad06a2e"
+  revision = "bd91e49a0898e27abb88c339b432fa53d7497ac0"
 
 [[projects]]
   digest = "0:"
