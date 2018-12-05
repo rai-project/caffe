@@ -8,7 +8,7 @@ TRACE_LEVEL=MODEL_TRACE
 BATCH_SIZE=(1 2 4 8 16 32 64 128 256 512 768)
 
 for b in ${BATCH_SIZE[@]}; do
-  DUPLICATE_INPUT=10*$b
+  DUPLICATE_INPUT=$((10 * $b));
   nvidia-docker run --network host -t -v $HOME:/root carml/caffe-agent:amd64-gpu-latest predict url \
       --fail_on_error=true \
       --verbose \
@@ -21,7 +21,8 @@ for b in ${BATCH_SIZE[@]}; do
       --model_version=$MODEL_VERSION \
       --database_address=$DATABASE_ADDRESS \
       --database_name=$DATABASE_NAME \
-      --trace_level=$TRACE_LEVEL
+      --trace_level=$TRACE_LEVEL \
+      --urls_file_path=/root/urlsfile
 
     nvidia-docker run --network host -t -v $HOME:/root carml/caffe-agent:amd64-gpu-latest predict url \
       --fail_on_error=true \
@@ -35,7 +36,8 @@ for b in ${BATCH_SIZE[@]}; do
       --model_version=$MODEL_VERSION \
       --database_address=$DATABASE_ADDRESS \
       --database_name=$DATABASE_NAME \
-      --trace_level=$TRACE_LEVEL
+      --trace_level=$TRACE_LEVEL \
+      --urls_file_path=/root/urlsfile
 done
 
 exit

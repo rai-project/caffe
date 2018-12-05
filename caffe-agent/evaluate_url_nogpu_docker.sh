@@ -1,15 +1,14 @@
 #!/bin/bash
 
 DATABASE_ADDRESS=52.91.209.88
-DATABASE_NAME=sphereface_v1_0_docker_framework_trace
+DATABASE_NAME=sphereface_v1_0_docker
 MODEL_NAME=SphereFace
 MODEL_VERSION=1.0
-TRACE_LEVEL=FRAMEWORK_TRACE
-# BATCH_SIZE=(1 2 4 8 16 32 64 128)
-BATCH_SIZE=(1)
+TRACE_LEVEL=MODEL_TRACE
+BATCH_SIZE=(1 2 4 8 16 32 64 128)
 
 for b in ${BATCH_SIZE[@]}; do
-    DUPLICATE_INPUT=$((10 * $b));
+  DUPLICATE_INPUT=$((10 * $b));
   docker run --network host -t -v $HOME:/root carml/caffe-agent:amd64-cpu-latest predict url \
       --fail_on_error=true \
       --verbose \
@@ -23,7 +22,7 @@ for b in ${BATCH_SIZE[@]}; do
       --database_address=$DATABASE_ADDRESS \
       --database_name=$DATABASE_NAME \
       --trace_level=$TRACE_LEVEL \
-  --urls_file_path=/root/urlsfile
+      --urls_file_path=/root/urlsfile
 done
 
 exit
