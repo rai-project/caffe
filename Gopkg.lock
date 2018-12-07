@@ -6,8 +6,8 @@
   name = "cloud.google.com/go"
   packages = ["compute/metadata"]
   pruneopts = "T"
-  revision = "74b12019e2aa53ec27882158f59192d7cd6d1998"
-  version = "v0.33.1"
+  revision = "0ebda48a7f143b1cce9eb37a8c1106ac762a3430"
+  version = "v0.34.0"
 
 [[projects]]
   branch = "master"
@@ -117,7 +117,7 @@
   name = "github.com/apache/thrift"
   packages = ["lib/go/thrift"]
   pruneopts = "T"
-  revision = "dd965c1eb437e0067009492b0d18b1d3f8e79d07"
+  revision = "208a048dc440036bd5304a6fd16e32fda33b4600"
 
 [[projects]]
   branch = "master"
@@ -140,6 +140,7 @@
     "aws/credentials",
     "aws/credentials/ec2rolecreds",
     "aws/credentials/endpointcreds",
+    "aws/credentials/processcreds",
     "aws/credentials/stscreds",
     "aws/csm",
     "aws/defaults",
@@ -169,8 +170,8 @@
     "service/sts",
   ]
   pruneopts = "T"
-  revision = "6b08b085a17ae5a6040fdb67971812696569dced"
-  version = "v1.15.89"
+  revision = "c4e0e593d5f18b478f17ff0e86b56d41a70ced2d"
+  version = "v1.16.2"
 
 [[projects]]
   branch = "master"
@@ -353,7 +354,7 @@
     "pkg/term/windows",
   ]
   pruneopts = "T"
-  revision = "65d9a5dde589f96f4728782fd0fa7de7bb6b3146"
+  revision = "a4a816b6bbed2d1442a1646143662b0f16f0535e"
 
 [[projects]]
   branch = "master"
@@ -797,11 +798,11 @@
   revision = "1a4a6f06a1c643c8fbd339bd61d980960627d09e"
 
 [[projects]]
-  digest = "1:eebce3c1fad57b604c517ea649edd5dcbd2530f0f7e62ac0b7b232f2eacbcc88"
+  digest = "0:"
   name = "github.com/jmespath/go-jmespath"
   packages = ["."]
   pruneopts = "T"
-  revision = "0b12d6b5"
+  revision = "c2b33e84"
 
 [[projects]]
   digest = "0:"
@@ -1051,7 +1052,7 @@
     "libcontainer/user",
   ]
   pruneopts = "T"
-  revision = "96ec2177ae841256168fcf76954f7177af9446eb"
+  revision = "25f3f893c86d07426df93b7aa172f33fdf093fbd"
 
 [[projects]]
   branch = "master"
@@ -1234,7 +1235,7 @@
     "steps",
   ]
   pruneopts = "T"
-  revision = "1a468ea0d9ef3646026f0bdf51d2621a823c6ed9"
+  revision = "1a157016b40dfdedefcfee8b52573f62e27e45e8"
 
 [[projects]]
   branch = "master"
@@ -1276,7 +1277,7 @@
     "proto",
   ]
   pruneopts = "T"
-  revision = "ccf5bf31fc9bc83f9b2db4a059d202b6feb7d6a2"
+  revision = "8c0eb26876c7959ffb160e950bd84b286de34765"
 
 [[projects]]
   branch = "master"
@@ -1668,7 +1669,7 @@
     "remote",
   ]
   pruneopts = "T"
-  revision = "06c7c0d9b3c7cfca13deff6e353a052e08828ad4"
+  revision = "6d33b5a963d922d182c91e8a1c88d81fd150cfd4"
 
 [[projects]]
   digest = "1:8d58d88a7b2a7440509bee60f3e865773e8f79e622817ddb63ba3cda9efba25a"
@@ -1956,7 +1957,7 @@
     "websocket",
   ]
   pruneopts = "T"
-  revision = "351d144fa1fc0bd934e2408202be0c29f25e35a0"
+  revision = "610586996380ceef02dd726cc09df7e00a3f8e56"
 
 [[projects]]
   branch = "master"
@@ -1992,7 +1993,7 @@
     "windows",
   ]
   pruneopts = "T"
-  revision = "4ed8d59d0b35e1e29334a206d1b3f38b1e5dfb31"
+  revision = "70b957f3b65e069b4930ea94e2721eefa0f8f695"
 
 [[projects]]
   digest = "1:6164911cb5e94e8d8d5131d646613ff82c14f5a8ce869de2f6d80d9889df8c5a"
@@ -2037,7 +2038,7 @@
     "logging/v2",
   ]
   pruneopts = "T"
-  revision = "6142e720c068c6cd71f2258e007ff1991572e1d5"
+  revision = "1a5ef82f9af45ef51c486291ef2b0a16d82fdb95"
 
 [[projects]]
   digest = "0:"
@@ -2077,17 +2078,22 @@
     "balancer",
     "balancer/base",
     "balancer/roundrobin",
+    "binarylog/grpc_binarylog_v1",
     "codes",
     "connectivity",
     "credentials",
+    "credentials/internal",
     "encoding",
     "encoding/proto",
     "grpclog",
     "internal",
     "internal/backoff",
+    "internal/binarylog",
     "internal/channelz",
     "internal/envconfig",
     "internal/grpcrand",
+    "internal/grpcsync",
+    "internal/syscall",
     "internal/transport",
     "keepalive",
     "metadata",
@@ -2101,8 +2107,8 @@
     "tap",
   ]
   pruneopts = "T"
-  revision = "2e463a05d100327ca47ac218281906921038fd95"
-  version = "v1.16.0"
+  revision = "df014850f6dee74ba2fc94874043a9f3f75fbfd8"
+  version = "v1.17.0"
 
 [[projects]]
   digest = "0:"
