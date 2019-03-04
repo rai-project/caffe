@@ -343,7 +343,6 @@
     "pkg/jsonmessage",
     "pkg/longpath",
     "pkg/mount",
-    "pkg/parsers",
     "pkg/pools",
     "pkg/progress",
     "pkg/signal",
@@ -1266,7 +1265,7 @@
     "eventflow",
   ]
   pruneopts = "T"
-  revision = "e0b15a6a3390175c4b1cad1ba93c8e3a4155d9cf"
+  revision = "c23eb2a40d5f39e422668df90b39f1451cbe542a"
 
 [[projects]]
   branch = "master"
