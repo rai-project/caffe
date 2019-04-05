@@ -230,6 +230,30 @@
   version = "v2.1.0"
 
 [[projects]]
+  digest = "0:"
+  name = "github.com/cheggaaa/pb"
+  packages = ["."]
+  pruneopts = "T"
+  revision = "c112833d014c77e8bde723fd0158e3156951639f"
+  version = "v2.0.6"
+
+[[projects]]
+  digest = "0:"
+  name = "github.com/chewxy/hm"
+  packages = ["."]
+  pruneopts = "T"
+  revision = "61efb3290a086d1335e8954b3734c102126818ba"
+  version = "v1.0.0"
+
+[[projects]]
+  digest = "0:"
+  name = "github.com/chewxy/math32"
+  packages = ["."]
+  pruneopts = "T"
+  revision = "d1e7b22839c693f54edf7811dd9487623abf2cd2"
+  version = "v1.0.0"
+
+[[projects]]
   branch = "master"
   digest = "1:6dd0478a59aee734b125e5b6be2a56f738f0d6882aa5f5b14709dbe1e417dd38"
   name = "github.com/cockroachdb/cmux"
@@ -672,6 +696,19 @@
 
 [[projects]]
   digest = "0:"
+  name = "github.com/h2non/filetype"
+  packages = [
+    ".",
+    "matchers",
+    "matchers/isobmff",
+    "types",
+  ]
+  pruneopts = "T"
+  revision = "2248f2e2f77cd8cf9694216e3f9589d71005de37"
+  version = "v1.0.8"
+
+[[projects]]
+  digest = "0:"
   name = "github.com/hashicorp/consul"
   packages = ["api"]
   pruneopts = "T"
@@ -984,12 +1021,12 @@
   version = "v1.0.0"
 
 [[projects]]
+  branch = "master"
   digest = "0:"
   name = "github.com/mitchellh/mapstructure"
   packages = ["."]
   pruneopts = "T"
   revision = "3536a929edddb9a5b34bd6861dc4a9647cb459fe"
-  version = "v1.1.2"
 
 [[projects]]
   digest = "1:33422d238f147d247752996a26574ac48dcf472976eda7f5134015f06bf16563"
@@ -1121,6 +1158,14 @@
   version = "v1.0.0"
 
 [[projects]]
+  branch = "master"
+  digest = "0:"
+  name = "github.com/philopon/go-toposort"
+  packages = ["."]
+  pruneopts = "T"
+  revision = "9be86dbd762f98b5b9a4eca110a3f40ef31d0375"
+
+[[projects]]
   digest = "0:"
   name = "github.com/pierrec/lz4"
   packages = [
@@ -1230,11 +1275,24 @@
     "framework/cmd/server",
     "framework/feature",
     "framework/options",
-    "framework/predict",
+    "framework/predictor",
     "steps",
   ]
   pruneopts = "T"
-  revision = "1a157016b40dfdedefcfee8b52573f62e27e45e8"
+  revision = "b2c3d916a140ef60535e7e2ede028407a8c8d1b3"
+
+[[projects]]
+  branch = "master"
+  digest = "0:"
+  name = "github.com/rai-project/dllayer"
+  packages = [
+    ".",
+    "caffe",
+    "cmd",
+    "layer",
+  ]
+  pruneopts = "T"
+  revision = "a31621fc2e1a89fa1b04ea5a0b09196719bfedfe"
 
 [[projects]]
   branch = "master"
@@ -1423,14 +1481,6 @@
 [[projects]]
   branch = "master"
   digest = "0:"
-  name = "github.com/rai-project/parallel"
-  packages = ["tunny"]
-  pruneopts = "T"
-  revision = "16f7855030a44d9839841beced62e6a94f62eb53"
-
-[[projects]]
-  branch = "master"
-  digest = "0:"
   name = "github.com/rai-project/pipeline"
   packages = ["."]
   pruneopts = "T"
@@ -1603,15 +1653,15 @@
   version = "v2.18.11"
 
 [[projects]]
-  digest = "1:a204f9aa04d3305be0d4d8f69f42aee6c649a8f9f9a8dbbbaff54bdad5ce50c7"
+  digest = "0:"
   name = "github.com/sirupsen/logrus"
   packages = [
     ".",
     "hooks/syslog",
   ]
   pruneopts = "T"
-  revision = "bcd833dfe83d3cebad139e4a29ed79cb2318bf95"
-  version = "v1.2.0"
+  revision = "8bdbc7bcc01dcbb8ec23dc8a28e332258d25251f"
+  version = "v1.4.1"
 
 [[projects]]
   digest = "0:"
@@ -1911,6 +1961,14 @@
 [[projects]]
   branch = "master"
   digest = "0:"
+  name = "github.com/xtgo/set"
+  packages = ["."]
+  pruneopts = "T"
+  revision = "708d80f4a27458f99f8ca12bd0e638c6ee65627f"
+
+[[projects]]
+  branch = "master"
+  digest = "0:"
   name = "golang.org/x/crypto"
   packages = [
     "acme",
@@ -1922,7 +1980,6 @@
     "openpgp/errors",
     "openpgp/packet",
     "openpgp/s2k",
-    "ssh/terminal",
   ]
   pruneopts = "T"
   revision = "505ab145d0a99da450461ae2c1a9f6cd10d1f447"
@@ -2028,6 +2085,30 @@
 [[projects]]
   branch = "master"
   digest = "0:"
+  name = "gonum.org/v1/gonum"
+  packages = [
+    "blas",
+    "blas/blas64",
+    "blas/cblas128",
+    "blas/gonum",
+    "floats",
+    "internal/asm/c128",
+    "internal/asm/c64",
+    "internal/asm/f32",
+    "internal/asm/f64",
+    "internal/cmplx64",
+    "internal/math32",
+    "lapack",
+    "lapack/gonum",
+    "lapack/lapack64",
+    "mat",
+  ]
+  pruneopts = "T"
+  revision = "169ee079a3fcd6706a67702cf202192814167c28"
+
+[[projects]]
+  branch = "master"
+  digest = "0:"
   name = "google.golang.org/api"
   packages = [
     "clouderrorreporting/v1beta1",
@@ -2120,10 +2201,7 @@
 [[projects]]
   digest = "0:"
   name = "gopkg.in/cheggaaa/pb.v2"
-  packages = [
-    ".",
-    "termutil",
-  ]
+  packages = ["termutil"]
   pruneopts = "T"
   revision = "c112833d014c77e8bde723fd0158e3156951639f"
   version = "v2.0.6"
@@ -2207,6 +2285,34 @@
 
 [[projects]]
   digest = "0:"
+  name = "gorgonia.org/tensor"
+  packages = [
+    ".",
+    "internal/execution",
+    "internal/storage",
+  ]
+  pruneopts = "T"
+  revision = "2ab2564f998fe504b94a1679c1c95277cdedea47"
+  version = "v0.8.1"
+
+[[projects]]
+  branch = "master"
+  digest = "0:"
+  name = "gorgonia.org/vecf32"
+  packages = ["."]
+  pruneopts = "T"
+  revision = "a06d791a4e66be4d2fcae4530bb67afa232a0dae"
+
+[[projects]]
+  branch = "master"
+  digest = "0:"
+  name = "gorgonia.org/vecf64"
+  packages = ["."]
+  pruneopts = "T"
+  revision = "d21373a26cc12a37eaab0182a21d0225c3b7ef34"
+
+[[projects]]
+  digest = "0:"
   name = "upper.io/db.v3"
   packages = [
     ".",
@@ -2235,7 +2341,7 @@
     "github.com/rai-project/dlframework/framework/agent",
     "github.com/rai-project/dlframework/framework/cmd/server",
     "github.com/rai-project/dlframework/framework/options",
-    "github.com/rai-project/dlframework/framework/predict",
+    "github.com/rai-project/dlframework/framework/predictor",
     "github.com/rai-project/downloadmanager",
     "github.com/rai-project/go-caffe",
     "github.com/rai-project/image",

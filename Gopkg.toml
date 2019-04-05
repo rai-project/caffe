@@ -57,6 +57,10 @@
   branch = "master"
   name = "github.com/rai-project/config"
 
+[[override]]
+  branch = "master"
+  name = "github.com/rai-project/dllayer"
+
 [[constraint]]
   branch = "master"
   name = "github.com/rai-project/dlframework"
