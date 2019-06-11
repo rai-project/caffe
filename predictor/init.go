@@ -1,4 +1,4 @@
-package predict
+package predictor
 
 import (
 	"github.com/rai-project/config"
@@ -12,6 +12,6 @@ var (
 
 func init() {
 	config.AfterInit(func() {
-		log = logger.New().WithField("pkg", "caffe/predict")
+		log = logger.New().WithField("pkg", "caffe/predictor")
 	})
 }
