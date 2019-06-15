@@ -34,7 +34,7 @@ inputs: # model inputs
       element_type: float32
       input_layer: 0
       layout: 'CHW'
-      color_mode: 'RGB'
+      color_mode: 'BGR'
       dimensions: [3, 227, 227]
       mean: [123, 117, 104]
 output:
