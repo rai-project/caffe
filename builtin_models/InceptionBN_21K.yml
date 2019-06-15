@@ -1,0 +1,51 @@
+name: InceptionBN_21K # name of your model
+framework:
+  name: Caffe # framework for the model
+  version: 1.0 # framework version contraint
+version: 1.0 # version information in semantic version format
+container: # containers used to perform model prediction
+  # multiple platforms can be specified
+  amd64:
+    gpu: raiproject/carml-caffe:amd64-cpu
+    cpu: raiproject/carml-caffe:amd64-gpu
+  ppc64le:
+    cpu: raiproject/carml-caffe:ppc64le-gpu
+    gpu: raiproject/carml-caffe:ppc64le-gpu
+description: >
+  TODO
+references: # references to papers / websites / etc.. describing the model
+  - https://github.com/pertusa/InceptionBN-21K-for-Caffe
+  - https://github.com/BVLC/caffe/wiki/Model-Zoo
+  - https://github.com/dmlc/mxnet-model-gallery/blob/master/imagenet-21k-inception.md
+license: unrestricted # license of the model
+inputs: # model inputs
+  - type: image # first input modality
+    description: the input image # description of the first input
+    parameters:
+      element_type: float32
+      input_layer: 0
+      layout: 'CHW'
+      color_mode: 'BGR'
+      dimensions: [3, 224, 224]
+      mean: [117, 117, 117]
+output:
+  type: classification # the type of the output
+  description: the output label # a description of the output parameter
+  parameters: # type parameters
+    element_type: float32
+    probabilities_layer: 0 # index of the probabilities layer in the outputs
+    features_url: http://s3.amazonaws.com/store.carml.org/synsets/imagenet/synset-21k.txt
+    features_checksum: 851bbe06499cf53fa6f8fb72ad61e906
+model: # specifies model graph and weights resources
+  graph_path: http://s3.amazonaws.com/store.carml.org/models/caffe/inceptionbn-21k/deploy.prototxt
+  weights_path: http://s3.amazonaws.com/store.carml.org/models/caffe/inceptionbn-21k/Inception21k.caffemodel
+  is_archive:
+    false # if set, then the base_url is a url to an archive
+    # the graph_path and weights_path then denote the
+    # file names of the graph and weights within the archive
+  graph_checksum: 39865f78d0f94aad33c6bc8a779ff343
+  weights_checksum: 6bf65186cee08b47ba6a767f5a5c8ce1
+attributes: # extra network attributes
+  kind: CNN # the kind of neural network (CNN, RNN, ...)
+  training_dataset: ImageNet # dataset used to for training
+  manifest_author: abduld
