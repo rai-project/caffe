@@ -4,7 +4,7 @@ framework:
   version: 1.0 # framework version contraint
 version: 1.0 # version information in semantic version format
 container: # containers used to perform model prediction
-           # multiple platforms can be specified
+  # multiple platforms can be specified
   amd64:
     gpu: raiproject/carml-caffe:amd64-cpu
     cpu: raiproject/carml-caffe:amd64-gpu
@@ -19,30 +19,31 @@ references: # references to papers / websites / etc.. describing the model
   - https://arxiv.org/abs/1409.1556
 # license of the model
 license: CC BY 4.0 (commercial use is allowed)
-# inputs to the model
-inputs:
-  # first input type for the model
-  - type: image
-    # description of the first input
-    description: the input image
-    parameters: # type parameters
+inputs: # model inputs
+  - type: image # first input modality
+    description: the input image # description of the first input
+    parameters:
+      element_type: float32
+      input_layer: 0
+      layout: 'CHW'
+      color_mode: 'BGR'
       dimensions: [3, 224, 224]
       mean: [123.68, 116.779, 103.939]
 output:
-  # the type of the output
-  type: feature
-  # a description of the output parameter
-  description: the output label
-  parameters:
-    # type parameters
+  type: classification # the type of the output
+  description: the output label # a description of the output parameter
+  parameters: # type parameters
+    element_type: float32
+    probabilities_layer: 0 # index of the probabilities layer in the outputs
     features_url: http://data.dmlc.ml/mxnet/models/imagenet/synset.txt
     features_checksum: 4d234b5833aca44928065a180db3016a
 model: # specifies model graph and weights resources
   graph_path: https://gist.githubusercontent.com/ksimonyan/3785162f95cd2d5fee77/raw/f43eeefc869d646b449aa6ce66f87bf987a1c9b5/VGG_ILSVRC_19_layers_deploy.prototxt
   weights_path: http://www.robots.ox.ac.uk/~vgg/software/very_deep/caffe/VGG_ILSVRC_19_layers.caffemodel
-  is_archive: false # if set, then the base_url is a url to an archive
-                    # the graph_path and weights_path then denote the
-                    # file names of the graph and weights within the archive
+  is_archive:
+    false # if set, then the base_url is a url to an archive
+    # the graph_path and weights_path then denote the
+    # file names of the graph and weights within the archive
   graph_checksum: ccbbdda59210208be39f8974f5b5765e
   weights_checksum: b5c644beabd7cf06bdd9065cfd674c97
 attributes: # extra network attributes

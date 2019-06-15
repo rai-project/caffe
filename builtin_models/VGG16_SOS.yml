@@ -4,7 +4,7 @@ framework:
   version: 1.0 # framework version contraint
 version: 1.0 # version information in semantic version format
 container: # containers used to perform model prediction
-           # multiple platforms can be specified
+  # multiple platforms can be specified
   amd64:
     gpu: raiproject/carml-caffe:amd64-cpu
     cpu: raiproject/carml-caffe:amd64-gpu
@@ -20,30 +20,31 @@ references: # references to papers / websites / etc.. describing the model
   - https://arxiv.org/abs/1409.1556
 # license of the model
 license: CC BY-NC 4.0
-# inputs to the model
-inputs:
-  # first input type for the model
-  - type: image
-    # description of the first input
-    description: the input image
-    parameters: # type parameters
+inputs: # model inputs
+  - type: image # first input modality
+    description: the input image # description of the first input
+    parameters:
+      element_type: float32
+      input_layer: 0
+      layout: 'CHW'
+      color_mode: 'BGR'
       dimensions: [3, 224, 224]
       mean: [123.68, 116.779, 103.939]
 output:
-  # the type of the output
-  type: feature
-  # a description of the output parameter
-  description: the output label
-  parameters:
-    # type parameters
+  type: classification # the type of the output
+  description: the output label # a description of the output parameter
+  parameters: # type parameters
+    element_type: float32
+    probabilities_layer: 0 # index of the probabilities layer in the outputs
     features_url: http://s3.amazonaws.com/store.carml.org/models/caffe/vgg16_sos/%20salient_object_subitizing.txt
     features_checksum: da8e6ab825a44a900f1654f09f51d71f
 model: # specifies model graph and weights resources
   graph_path: http://s3.amazonaws.com/store.carml.org/models/caffe/vgg16_sos/deploy.prototxt
   weights_path: http://s3.amazonaws.com/store.carml.org/models/caffe/vgg16_sos/VGG16_SalObjSub.caffemodel
-  is_archive: false # if set, then the base_url is a url to an archive
-                    # the graph_path and weights_path then denote the
-                    # file names of the graph and weights within the archive
+  is_archive:
+    false # if set, then the base_url is a url to an archive
+    # the graph_path and weights_path then denote the
+    # file names of the graph and weights within the archive
   graph_checksum: eb820e9e4d6f35a961666acf0f2f15a2
   weights_checksum: fa7886a2fcf21b0c49fe2f2b20fe5643
 attributes: # extra network attributes

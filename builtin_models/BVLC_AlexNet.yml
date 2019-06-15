@@ -38,10 +38,8 @@ inputs: # model inputs
       dimensions: [3, 227, 227]
       mean: [123, 117, 104]
 output:
-  # the type of the output
-  type: classification
-  # a description of the output parameter
-  description: the output label
+  type: classification # the type of the output
+  description: the output label # a description of the output parameter
   parameters: # type parameters
     element_type: float32
     probabilities_layer: 0 # index of the probabilities layer in the outputs

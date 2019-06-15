@@ -1,10 +1,10 @@
-name: Network in Network # name of your model
+name: Network_in_Network # name of your model
 framework:
   name: Caffe # framework for the model
   version: 1.0 # framework version contraint
 version: 1.0 # version information in semantic version format
 container: # containers used to perform model prediction
-           # multiple platforms can be specified
+  # multiple platforms can be specified
   amd64:
     gpu: raiproject/carml-mxnet:amd64-cpu
     cpu: raiproject/carml-mxnet:amd64-gpu
@@ -17,33 +17,35 @@ description: >
 references: # references to papers / websites / etc.. describing the model
   - https://gist.github.com/mavenlin/d802a5849de39225bcc6
   - https://arxiv.org/abs/1312.4400
-# license of the model
-license: non-commercial
-# inputs to the model
-inputs:
-  # first input type for the model
-  - type: image
-    # description of the first input
-    description: the input image
-    parameters: # type parameters
+license: unrestricted # license of the model
+inputs: # model inputs
+  - type: image # first input modality
+    description: the input image # description of the first input
+    parameters:
+      element_type: float32
+      input_layer: 0
+      layout: 'CHW'
+      color_mode: 'BGR'
       dimensions: [3, 224, 224]
       mean: [123, 117, 104]
 output:
   # the type of the output
-  type: feature
+  type: classification
   # a description of the output parameter
   description: the output label
-  parameters:
-    # type parameters
+  parameters: # type parameters
+    element_type: float32
+    probabilities_layer: 0 # index of the probabilities layer in the outputs
     features_url: http://s3.amazonaws.com/store.carml.org/synsets/imagenet/synset.txt
     features_checksum: 4d234b5833aca44928065a180db3016a
 model: # specifies model graph and weights resources
   base_url: http://s3.amazonaws.com/store.carml.org/models/caffe/nin
   graph_path: deploy.prototxt
   weights_path: nin_imagenet.caffemodel
-  is_archive: false # if set, then the base_url is a url to an archive
-                    # the graph_path and weights_path then denote the
-                    # file names of the graph and weights within the archive
+  is_archive:
+    false # if set, then the base_url is a url to an archive
+    # the graph_path and weights_path then denote the
+    # file names of the graph and weights within the archive
   graph_checksum: 8c749056e1c3481e118d719a3344e590
   weights_checksum: b568958c0dcf1d97cbcff4c22b02a2be
 attributes: # extra network attributes

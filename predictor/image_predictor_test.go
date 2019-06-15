@@ -4,7 +4,6 @@ import (
 	"context"
 	"testing"
 
-	"github.com/k0kubun/pp"
 	"github.com/rai-project/caffe"
 	"github.com/rai-project/dlframework/framework/options"
 	raiimage "github.com/rai-project/image"
@@ -54,7 +53,7 @@ func TestNewImageClassificationPredictor(t *testing.T) {
 
 func TestImageClassification(t *testing.T) {
 	caffe.Register()
-	model, err := caffe.FrameworkManifest.FindModel("BVLC_AlexNet:1.0")
+	model, err := caffe.FrameworkManifest.FindModel("SqueezeNet_v1.0:1.0")
 	assert.NoError(t, err)
 	assert.NotEmpty(t, model)
 
@@ -118,9 +117,8 @@ func TestImageClassification(t *testing.T) {
 	if err != nil {
 		return
 	}
-	pp.Println(pred[0][:1])
-	// assert.InDelta(t, float32(0.998212), pred[0][0].GetProbability(), 0.001)
-	// assert.Equal(t, int32(104), pred[0][0].GetClassification().GetIndex())
+	assert.InDelta(t, float32(0.95791715), pred[0][0].GetProbability(), 0.001)
+	assert.Equal(t, int32(103), pred[0][0].GetClassification().GetIndex())
 }
 
 // func TestImageEnhancement(t *testing.T) {

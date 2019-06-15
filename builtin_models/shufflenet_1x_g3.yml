@@ -18,23 +18,22 @@ references: # references to papers / websites / etc.. describing the model
   - https://github.com/farmingyard/ShuffleNet/issues/1
   - https://github.com/msnqqer/ShuffleNet
 
-# license of the model
-license: unrestricted
-# inputs to the model
-inputs:
-  # first input type for the model
-  - type: image
-    # description of the first input
-    description: the input image
-    parameters: # type parameters
+license: unrestricted # license of the model
+inputs: # model inputs
+  - type: image # first input modality
+    description: the input image # description of the first input
+    parameters:
+      element_type: float32
+      input_layer: 0
+      layout: 'CHW'
+      color_mode: 'BGR'
       dimensions: [3, 224, 224]
 output:
-  # the type of the output
-  type: feature
-  # a description of the output parameter
-  description: the output label
-  parameters:
-    # type parameters
+  type: classification # the type of the output
+  description: the output label # a description of the output parameter
+  parameters: # type parameters
+    element_type: float32
+    probabilities_layer: 0 # index of the probabilities layer in the outputs
     features_url: http://data.dmlc.ml/mxnet/models/imagenet/synset.txt
     features_checksum: 4d234b5833aca44928065a180db3016a
 model: # specifies model graph and weights resources
