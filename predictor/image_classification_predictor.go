@@ -83,7 +83,6 @@ func (p *ImageClassificationPredictor) Predict(ctx context.Context, data interfa
 				t, err := ctimer.New(profBuffer)
 				if err != nil {
 					panic(err)
-					return
 				}
 				t.Publish(ctx, tracer.FRAMEWORK_TRACE)
 
@@ -118,7 +117,7 @@ func (p *ImageClassificationPredictor) ReadPredictedFeatures(ctx context.Context
 	span, ctx := tracer.StartSpanFromContext(ctx, tracer.APPLICATION_TRACE, "read_predicted_features")
 	defer span.Finish()
 
-	output, err := p.predictor.ReadOutputData(ctx, 0)
+	output, err := p.predictor.ReadOutputData(ctx, p.probabilitiesLayerIndex)
 	if err != nil {
 		return nil, err
 	}

@@ -3,15 +3,15 @@ package predictor
 import (
 	"context"
 
-	opentracing "github.com/opentracing/opentracing-go"
-	olog "github.com/opentracing/opentracing-go/log"
+	// opentracing "github.com/opentracing/opentracing-go"
+
 	"github.com/pkg/errors"
 	"github.com/rai-project/dlframework"
 	"github.com/rai-project/dlframework/framework/options"
 	common "github.com/rai-project/dlframework/framework/predictor"
 	"github.com/rai-project/downloadmanager"
 	gocaffe "github.com/rai-project/go-caffe"
-	"github.com/rai-project/tracer"
+	// "github.com/rai-project/tracer"
 )
 
 // ImagePredictor ...
@@ -67,10 +67,10 @@ func (p *ImagePredictor) Load(ctx context.Context, model dlframework.ModelManife
 }
 
 func (p *ImagePredictor) loadPredictor(ctx context.Context) error {
-	if ctx != nil {
-		span, _ := tracer.StartSpanFromContext(ctx, tracer.APPLICATION_TRACE, "load_predictor")
-		defer span.Finish()
-	}
+	// if ctx != nil {
+	// 	span, _ := tracer.StartSpanFromContext(ctx, tracer.APPLICATION_TRACE, "load_predictor")
+	// 	defer span.Finish()
+	// }
 
 	opts, err := p.GetPredictionOptions()
 	if err != nil {
@@ -123,34 +123,34 @@ func (p *ImagePredictor) Download(ctx context.Context, model dlframework.ModelMa
 }
 
 func (p *ImagePredictor) download(ctx context.Context) error {
-	span, ctx := tracer.StartSpanFromContext(ctx,
-		tracer.APPLICATION_TRACE,
-		"download",
-		opentracing.Tags{
-			"graph_url":           p.GetGraphUrl(),
-			"target_graph_file":   p.GetGraphPath(),
-			"weights_url":         p.GetWeightsUrl(),
-			"target_weights_file": p.GetWeightsPath(),
-			"feature_url":         p.GetFeaturesUrl(),
-			"target_feature_file": p.GetFeaturesPath(),
-		},
-	)
-	defer span.Finish()
+	// span, ctx := tracer.StartSpanFromContext(ctx,
+	// 	tracer.APPLICATION_TRACE,
+	// 	"download",
+	// 	opentracing.Tags{
+	// 		"graph_url":           p.GetGraphUrl(),
+	// 		"target_graph_file":   p.GetGraphPath(),
+	// 		"weights_url":         p.GetWeightsUrl(),
+	// 		"target_weights_file": p.GetWeightsPath(),
+	// 		"feature_url":         p.GetFeaturesUrl(),
+	// 		"target_feature_file": p.GetFeaturesPath(),
+	// 	},
+	// )
+	// defer span.Finish()
 
 	model := p.Model
 
 	if model.Model.IsArchive {
 		baseURL := model.Model.BaseUrl
-		span.LogFields(
-			olog.String("event", "download model archive"),
-		)
+		// span.LogFields(
+		// 	olog.String("event", "download model archive"),
+		// )
 		if _, err := downloadmanager.DownloadInto(baseURL, p.WorkDir, downloadmanager.Context(ctx)); err != nil {
 			return errors.Wrapf(err, "failed to download model archive from %v", model.Model.BaseUrl)
 		}
 	} else {
-		span.LogFields(
-			olog.String("event", "download model graph"),
-		)
+		// span.LogFields(
+		// 	olog.String("event", "download model graph"),
+		// )
 
 		_, err := downloadmanager.DownloadFile(
 			p.GetGraphUrl(),
@@ -161,9 +161,9 @@ func (p *ImagePredictor) download(ctx context.Context) error {
 			return err
 		}
 
-		span.LogFields(
-			olog.String("event", "download weigths graph"),
-		)
+		// span.LogFields(
+		// 	olog.String("event", "download weigths graph"),
+		// )
 
 		_, err = downloadmanager.DownloadFile(
 			p.GetWeightsUrl(),
@@ -176,9 +176,9 @@ func (p *ImagePredictor) download(ctx context.Context) error {
 	}
 
 	if p.GetFeaturesUrl() != "" {
-		span.LogFields(
-			olog.String("event", "download features"),
-		)
+		// span.LogFields(
+		// 	olog.String("event", "download features"),
+		// )
 		_, err := downloadmanager.DownloadFile(
 			p.GetFeaturesUrl(),
 			p.GetFeaturesPath(),
