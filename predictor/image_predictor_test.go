@@ -1,12 +1,20 @@
 package predictor
 
 import (
+	"context"
 	"image"
+	"os"
+	"path/filepath"
 	"testing"
 
+	"github.com/k0kubun/pp"
 	"github.com/rai-project/caffe"
+	"github.com/rai-project/dlframework/framework/options"
+	raiimage "github.com/rai-project/image"
 	"github.com/rai-project/image/types"
+	nvidiasmi "github.com/rai-project/nvidia-smi"
 	"github.com/stretchr/testify/assert"
+	gotensor "gorgonia.org/tensor"
 )
 
 func normalizeImageHWC(in0 image.Image, mean []float32, scale float32) ([]float32, error) {
@@ -52,16 +60,16 @@ func normalizeImageCHW(in *types.RGBImage, mean []float32, scale float32) ([]flo
 			offset := y*in.Stride + x*3
 			rgb := in.Pix[offset : offset+3]
 			r, g, b := rgb[0], rgb[1], rgb[2]
-			out[y*width+x] = (float32(r) - mean[0]) / scale
+			out[y*width+x] = (float32(b) - mean[0]) / scale
 			out[width*height+y*width+x] = (float32(g) - mean[1]) / scale
-			out[2*width*height+y*width+x] = (float32(b) - mean[2]) / scale
+			out[2*width*height+y*width+x] = (float32(r) - mean[2]) / scale
 		}
 	}
 	return out, nil
 }
 func TestNewImageClassificationPredictor(t *testing.T) {
 	caffe.Register()
-	model, err := caffe.FrameworkManifest.FindModel("BVLC_AlexNet:1.0")
+	model, err := caffe.FrameworkManifest.FindModel("SqueezeNet_v1.0:1.0")
 	assert.NoError(t, err)
 	assert.NotEmpty(t, model)
 
@@ -75,88 +83,88 @@ func TestNewImageClassificationPredictor(t *testing.T) {
 	assert.True(t, ok)
 
 	assert.NotEmpty(t, imgPredictor)
-	assert.NotEqual(t, imgPredictor.inputLayer, "")
 }
 
-// func TestImageClassification(t *testing.T) {
-// 	caffe.Register()
-// 	model, err := caffe.FrameworkManifest.FindModel("AlexNet:1.0")
-// 	assert.NoError(t, err)
-// 	assert.NotEmpty(t, model)
+func TestImageClassification(t *testing.T) {
+	caffe.Register()
+	model, err := caffe.FrameworkManifest.FindModel("SqueezeNet_v1.0:1.0")
+	assert.NoError(t, err)
+	assert.NotEmpty(t, model)
 
-// 	device := options.CPU_DEVICE
-// 	if nvidiasmi.HasGPU {
-// 		device = options.CUDA_DEVICE
-// 	}
+	device := options.CPU_DEVICE
+	if nvidiasmi.HasGPU {
+		device = options.CUDA_DEVICE
+	}
 
-// 	batchSize := 1
-// 	ctx := context.Background()
-// 	opts := options.New(options.Context(ctx),
-// 		options.Device(device, 0),
-// 		options.BatchSize(batchSize))
+	batchSize := 1
+	ctx := context.Background()
+	opts := options.New(options.Context(ctx),
+		options.Device(device, 0),
+		options.BatchSize(batchSize))
 
-// 	predictor, err := NewImageClassificationPredictor(*model, options.WithOptions(opts))
-// 	assert.NoError(t, err)
-// 	assert.NotEmpty(t, predictor)
-// 	defer predictor.Close()
+	predictor, err := NewImageClassificationPredictor(*model, options.WithOptions(opts))
+	assert.NoError(t, err)
+	assert.NotEmpty(t, predictor)
+	defer predictor.Close()
 
-// 	imgDir, _ := filepath.Abs("./_fixtures")
-// 	imgPath := filepath.Join(imgDir, "platypus.jpg")
-// 	r, err := os.Open(imgPath)
-// 	if err != nil {
-// 		panic(err)
-// 	}
+	imgDir, _ := filepath.Abs("./_fixtures")
+	imgPath := filepath.Join(imgDir, "platypus.jpg")
+	r, err := os.Open(imgPath)
+	if err != nil {
+		panic(err)
+	}
 
-// 	preprocessOpts, err := predictor.GetPreprocessOptions()
-// 	assert.NoError(t, err)
-// 	channels := preprocessOpts.Dims[0]
-// 	height := preprocessOpts.Dims[1]
-// 	width := preprocessOpts.Dims[2]
-// 	mode := preprocessOpts.ColorMode
+	preprocessOpts, err := predictor.GetPreprocessOptions()
+	assert.NoError(t, err)
+	channels := preprocessOpts.Dims[0]
+	height := preprocessOpts.Dims[1]
+	width := preprocessOpts.Dims[2]
+	mode := preprocessOpts.ColorMode
 
-// 	var imgOpts []raiimage.Option
-// 	if mode == types.RGBMode {
-// 		imgOpts = append(imgOpts, raiimage.Mode(types.RGBMode))
-// 	} else {
-// 		imgOpts = append(imgOpts, raiimage.Mode(types.BGRMode))
-// 	}
+	var imgOpts []raiimage.Option
+	if mode == types.RGBMode {
+		imgOpts = append(imgOpts, raiimage.Mode(types.RGBMode))
+	} else {
+		imgOpts = append(imgOpts, raiimage.Mode(types.BGRMode))
+	}
 
-// 	img, err := raiimage.Read(r, imgOpts...)
-// 	if err != nil {
-// 		panic(err)
-// 	}
+	img, err := raiimage.Read(r, imgOpts...)
+	if err != nil {
+		panic(err)
+	}
 
-// 	imgOpts = append(imgOpts, raiimage.Resized(height, width))
-// 	imgOpts = append(imgOpts, raiimage.ResizeAlgorithm(types.ResizeAlgorithmLinear))
-// 	resized, err := raiimage.Resize(img, imgOpts...)
+	imgOpts = append(imgOpts, raiimage.Resized(height, width))
+	imgOpts = append(imgOpts, raiimage.ResizeAlgorithm(types.ResizeAlgorithmLinear))
+	resized, err := raiimage.Resize(img, imgOpts...)
 
-// 	input := make([]*gotensor.Dense, batchSize)
-// 	imgFloats, err := normalizeImageHWC(resized, preprocessOpts.MeanImage, preprocessOpts.Scale)
-// 	if err != nil {
-// 		panic(err)
-// 	}
+	input := make([]*gotensor.Dense, batchSize)
+	imgFloats, err := normalizeImageHWC(resized, preprocessOpts.MeanImage, preprocessOpts.Scale)
+	if err != nil {
+		panic(err)
+	}
 
-// 	for ii := 0; ii < batchSize; ii++ {
-// 		input[ii] = gotensor.New(
-// 			gotensor.WithShape(height, width, channels),
-// 			gotensor.WithBacking(imgFloats),
-// 		)
-// 	}
+	for ii := 0; ii < batchSize; ii++ {
+		input[ii] = gotensor.New(
+			gotensor.WithShape(height, width, channels),
+			gotensor.WithBacking(imgFloats),
+		)
+	}
 
-// 	err = predictor.Predict(ctx, input)
-// 	assert.NoError(t, err)
-// 	if err != nil {
-// 		return
-// 	}
+	err = predictor.Predict(ctx, input)
+	assert.NoError(t, err)
+	if err != nil {
+		return
+	}
 
-// 	pred, err := predictor.ReadPredictedFeatures(ctx)
-// 	assert.NoError(t, err)
-// 	if err != nil {
-// 		return
-// 	}
-// 	assert.InDelta(t, float32(0.998212), pred[0][0].GetProbability(), 0.001)
-// 	assert.Equal(t, int32(104), pred[0][0].GetClassification().GetIndex())
-// }
+	pred, err := predictor.ReadPredictedFeatures(ctx)
+	assert.NoError(t, err)
+	if err != nil {
+		return
+	}
+	pp.Println(pred[0][:3])
+	assert.InDelta(t, float32(0.998212), pred[0][0].GetProbability(), 0.001)
+	assert.Equal(t, int32(104), pred[0][0].GetClassification().GetIndex())
+}
 
 // func TestImageEnhancement(t *testing.T) {
 // 	caffe.Register()

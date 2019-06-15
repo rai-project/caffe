@@ -19,7 +19,6 @@ import (
 
 type ImageClassificationPredictor struct {
 	*ImagePredictor
-	inputLayer              string
 	probabilitiesLayerIndex int
 	probabilities           interface{}
 }
@@ -124,7 +123,7 @@ func (p *ImageClassificationPredictor) ReadPredictedFeatures(ctx context.Context
 
 	labels, err := p.GetLabels()
 	if err != nil {
-		return nil, errors.New("cannot get the labels")
+		return nil, errors.Wrap(err, "cannot get the labels")
 	}
 
 	return p.CreateClassificationFeatures(ctx, output, labels)
