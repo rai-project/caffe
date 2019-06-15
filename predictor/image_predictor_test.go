@@ -108,7 +108,7 @@ func TestImageClassification(t *testing.T) {
 	defer predictor.Close()
 
 	imgDir, _ := filepath.Abs("./_fixtures")
-	imgPath := filepath.Join(imgDir, "platypus.jpg")
+	imgPath := filepath.Join(imgDir, "penguin.jpg")
 	r, err := os.Open(imgPath)
 	if err != nil {
 		panic(err)

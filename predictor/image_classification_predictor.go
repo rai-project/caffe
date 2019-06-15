@@ -98,6 +98,8 @@ func (p *ImageClassificationPredictor) Predict(ctx context.Context, data interfa
 		return errors.New("input data is not slice of dense tensors")
 	}
 
+	// pp.Println(input[0].Float32s()[0:3])
+
 	err := p.predictor.SetInput(0, input[0].Float32s())
 	if err != nil {
 		return errors.Wrapf(err, "failed to set input")
