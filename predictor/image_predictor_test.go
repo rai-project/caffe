@@ -351,73 +351,78 @@ func TestImageClassification(t *testing.T) {
 // 	return x
 // }
 
-// func TestSemanticSegmentation(t *testing.T) {
-// 	caffe.Register()
-// 	model, err := caffe.FrameworkManifest.FindModel("DeepLabv3_PASCAL_VOC_Train_Aug:1.0")
-// 	assert.NoError(t, err)
-// 	assert.NotEmpty(t, model)
+func TestSemanticSegmentation(t *testing.T) {
+	caffe.Register()
+	model, err := caffe.FrameworkManifest.FindModel("FCN_8s:1.0")
+	assert.NoError(t, err)
+	assert.NotEmpty(t, model)
 
-// 	device := options.CPU_DEVICE
-// 	if nvidiasmi.HasGPU {
-// 		device = options.CUDA_DEVICE
-// 	}
+	device := options.CPU_DEVICE
+	if nvidiasmi.HasGPU {
+		device = options.CUDA_DEVICE
+	}
 
-// 	batchSize := 1
-// 	ctx := context.Background()
-// 	opts := options.New(options.Context(ctx),
-// 		options.Device(device, 0),
-// 		options.BatchSize(batchSize))
+	batchSize := 1
+	ctx := context.Background()
+	opts := options.New(options.Context(ctx),
+		options.Device(device, 0),
+		options.BatchSize(batchSize))
 
-// 	predictor, err := NewSemanticSegmentationPredictor(*model, options.WithOptions(opts))
-// 	assert.NoError(t, err)
-// 	assert.NotEmpty(t, predictor)
-// 	defer predictor.Close()
+	predictor, err := NewSemanticSegmentationPredictor(*model, options.WithOptions(opts))
+	assert.NoError(t, err)
+	assert.NotEmpty(t, predictor)
+	defer predictor.Close()
 
-// 	imgDir, _ := filepath.Abs("./_fixtures")
-// 	imgPath := filepath.Join(imgDir, "lane_control.jpg")
-// 	r, err := os.Open(imgPath)
-// 	if err != nil {
-// 		panic(err)
-// 	}
-// 	img, err := raiimage.Read(r)
-// 	if err != nil {
-// 		panic(err)
-// 	}
+	preprocessOpts, err := predictor.GetPreprocessOptions()
+	assert.NoError(t, err)
+	channels := preprocessOpts.Dims[0]
+	height := preprocessOpts.Dims[1]
+	width := preprocessOpts.Dims[2]
+	mode := preprocessOpts.ColorMode
 
-// 	height := img.Bounds().Dy()
-// 	width := img.Bounds().Dx()
-// 	channels := 3
-// 	inputSize := 513
-// 	resizeRatio := float32(inputSize) / float32(max(width, height))
-// 	targetWidth := int(resizeRatio * float32(width))
-// 	targetHeight := int(resizeRatio * float32(height))
-// 	resized, err := raiimage.Resize(img, raiimage.Resized(targetHeight, targetWidth))
-// 	if err != nil {
-// 		panic(err)
-// 	}
-// 	input := make([]*gotensor.Dense, batchSize)
-// 	imgBytes := resized.(*types.RGBImage).Pix
-// 	for ii := 0; ii < batchSize; ii++ {
-// 		input[ii] = gotensor.New(
-// 			gotensor.WithShape(targetHeight, targetWidth, channels),
-// 			gotensor.WithBacking(imgBytes),
-// 		)
-// 	}
+	imgOpts := []raiimage.Option{
+		raiimage.Mode(mode),
+		raiimage.Width(width),
+		raiimage.Height(height),
+		raiimage.ResizeAlgorithm(types.ResizeAlgorithmLinear),
+	}
 
-// 	err = predictor.Predict(ctx, input)
-// 	assert.NoError(t, err)
-// 	if err != nil {
-// 		return
-// 	}
+	img, err := imageexamples.Get("lane_control", imgOpts...)
+	if err != nil {
+		panic(err)
+	}
 
-// 	pred, err := predictor.ReadPredictedFeatures(ctx)
-// 	assert.NoError(t, err)
-// 	if err != nil {
-// 		return
-// 	}
+	imgFloats, err := normalizeImageCHW(img, preprocessOpts.MeanImage, preprocessOpts.Scale)
+	if err != nil {
+		panic(err)
+	}
 
-// 	sseg := pred[0][0].GetSemanticSegment()
-// 	intMask := sseg.GetIntMask()
+	input := make([]*gotensor.Dense, batchSize)
+	for ii := 0; ii < batchSize; ii++ {
+		input[ii] = gotensor.NewDense(
+			gotensor.Float32,
+			gotensor.Shape([]int{height, width, channels}),
+			gotensor.WithBacking(imgFloats),
+		)
+	}
 
-// 	assert.Equal(t, int32(7), intMask[72122])
-// }
+	err = predictor.Predict(ctx, input)
+	assert.NoError(t, err)
+	if err != nil {
+		return
+	}
+
+	pred, err := predictor.ReadPredictedFeatures(ctx)
+	assert.NoError(t, err)
+	if err != nil {
+		return
+	}
+
+	assert.NotEmpty(t, pred)
+
+	sseg := pred[0][0].GetSemanticSegment()
+	intMask := sseg.GetIntMask()
+
+	assert.Equal(t, int32(7), intMask[72122])
+
+}
