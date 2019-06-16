@@ -26,9 +26,9 @@ func normalizeImageCHW(in types.Image, mean []float32, scale float32) ([]float32
 			offset := y*stride + x*channels
 			rgb := pix[offset : offset+channels]
 			r, g, b := rgb[0], rgb[1], rgb[2]
-			out[y*width+x] = (float32(r) - mean[0]) / scale
-			out[width*height+y*width+x] = (float32(g) - mean[1]) / scale
-			out[2*width*height+y*width+x] = (float32(b) - mean[2]) / scale
+			out[y*width+x] = (float32(r) - mean[0]) / scale[0]
+			out[width*height+y*width+x] = (float32(g) - mean[1]) / scale[1]
+			out[2*width*height+y*width+x] = (float32(b) - mean[2]) / scale[2]
 		}
 	}
 	return out, nil
