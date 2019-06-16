@@ -5,10 +5,16 @@ import (
 	"os"
 
 	"github.com/rai-project/caffe"
-	_ "github.com/rai-project/caffe/predict"
+	_ "github.com/rai-project/caffe/predictor"
+	"github.com/rai-project/config"
 	cmd "github.com/rai-project/dlframework/framework/cmd/server"
-	_ "github.com/rai-project/monitoring/monitors"
+	"github.com/rai-project/logger"
 	"github.com/rai-project/tracer"
+	"github.com/sirupsen/logrus"
+)
+
+var (
+	log *logrus.Entry
 )
 
 func main() {
@@ -23,4 +29,10 @@ func main() {
 		fmt.Println(err)
 		os.Exit(-1)
 	}
+}
+
+func init() {
+	config.AfterInit(func() {
+		log = logger.New().WithField("pkg", "caffe-agent")
+	})
 }

@@ -1,3 +1,6 @@
-mxnet-agent
 caffe-agent
 debug
+*.json
+*.html
+results
+experiments

@@ -121,8 +121,6 @@ func (p *ImageClassificationPredictor) ReadPredictedFeatures(ctx context.Context
 		return nil, err
 	}
 
-	pp.Println(output[0])
-
 	labels, err := p.GetLabels()
 	if err != nil {
 		return nil, errors.Wrap(err, "cannot get the labels")
