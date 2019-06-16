@@ -14,7 +14,7 @@ import (
 	gotensor "gorgonia.org/tensor"
 )
 
-func normalizeImageCHW(in types.Image, mean []float32, scale float32) ([]float32, error) {
+func normalizeImageCHW(in types.Image, mean []float32, scale []float32) ([]float32, error) {
 	height := in.Bounds().Dy()
 	width := in.Bounds().Dx()
 	channels := in.Channels()
