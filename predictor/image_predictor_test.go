@@ -14,7 +14,7 @@ import (
 	gotensor "gorgonia.org/tensor"
 )
 
-func normalizeImageCHW(in types.Image, mean []float32, scale float32) ([]float32, error) {
+func normalizeImageCHW(in types.Image, mean []float32, scale []float32) ([]float32, error) {
 	height := in.Bounds().Dy()
 	width := in.Bounds().Dx()
 	channels := in.Channels()
@@ -117,7 +117,7 @@ func TestImageClassification(t *testing.T) {
 	if err != nil {
 		return
 	}
-	assert.InDelta(t, float32(0.95791715), pred[0][0].GetProbability(), 0.001)
+	assert.InDelta(t, float32(0.99708325), pred[0][0].GetProbability(), 0.001)
 	assert.Equal(t, int32(103), pred[0][0].GetClassification().GetIndex())
 }
 
