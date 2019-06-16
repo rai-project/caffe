@@ -37,7 +37,7 @@ output:
   description: the output label # a description of the output parameter
   parameters: # type parameters
     element_type: float32
-    probabilities_layer: 0 # index of the probabilities layer in the outputs
+    probabilities_layer: 0
     features_url: https://raw.githubusercontent.com/rai-project/carml-models/master/data/ilsvrc12/det_synset_words.txt
     features_checksum: fe0fe33bc8cb071f8ca73073d97973c6
 model: # specifies model graph and weights resources

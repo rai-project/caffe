@@ -34,7 +34,7 @@ output:
   parameters: # type parameters
     element_type: float32
     probabilities_layer: 0 # index of the probabilities layer in the outputs
-    features_url: http://data.dmlc.ml/mxnet/models/imagenet/synset.txt
+    features_url: http://s3.amazonaws.com/store.carml.org/synsets/imagenet/synset.txt
     features_checksum: 4d234b5833aca44928065a180db3016a
 model: # specifies model graph and weights resources
   graph_path: https://s3.amazonaws.com/store.carml.org/models/caffe/shufflenet/shufflenet_1x_g3/shufflenet_1x_g3_deploy.prototxt

@@ -53,7 +53,7 @@ func TestNewImageClassificationPredictor(t *testing.T) {
 
 func TestImageClassification(t *testing.T) {
 	caffe.Register()
-	model, err := caffe.FrameworkManifest.FindModel("SqueezeNet_v1.0:1.0")
+	model, err := caffe.FrameworkManifest.FindModel("VGG16:1.0")
 	assert.NoError(t, err)
 	assert.NotEmpty(t, model)
 

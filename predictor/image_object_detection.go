@@ -17,14 +17,18 @@ import (
 	gotensor "gorgonia.org/tensor"
 )
 
-type ImageClassificationPredictor struct {
+type ImageObjectDetectionPredictor struct {
 	*ImagePredictor
+	boxesLayerIndex         int
 	probabilitiesLayerIndex int
+	classesLayerIndex       int
+	boxes                   interface{}
 	probabilities           interface{}
+	classes                 interface{}
 }
 
 // New ...
-func NewImageClassificationPredictor(model dlframework.ModelManifest, opts ...options.Option) (common.Predictor, error) {
+func NewImageObjectDetectionPredictor(model dlframework.ModelManifest, opts ...options.Option) (common.Predictor, error) {
 	ctx := context.Background()
 	span, ctx := tracer.StartSpanFromContext(ctx, tracer.APPLICATION_TRACE, "new_predictor")
 	defer span.Finish()
@@ -39,21 +43,24 @@ func NewImageClassificationPredictor(model dlframework.ModelManifest, opts ...op
 		return nil, errors.New("input type not supported")
 	}
 
-	predictor := new(ImageClassificationPredictor)
+	predictor := new(ImageObjectDetectionPredictor)
 	return predictor.Load(ctx, model, opts...)
 }
 
-func (self *ImageClassificationPredictor) Load(ctx context.Context, modelManifest dlframework.ModelManifest, opts ...options.Option) (common.Predictor, error) {
+func (self *ImageObjectDetectionPredictor) Load(ctx context.Context, modelManifest dlframework.ModelManifest, opts ...options.Option) (common.Predictor, error) {
 
 	pred, err := self.ImagePredictor.Load(ctx, modelManifest, opts...)
 	if err != nil {
 		return nil, err
 	}
-	p := &ImageClassificationPredictor{
+	p := &ImageObjectDetectionPredictor{
 		ImagePredictor: pred,
 	}
 
 	p.probabilitiesLayerIndex, err = p.GetOutputLayerIndex("probabilities_layer")
+	p.boxesLayerIndex, err = p.GetOutputLayerIndex("boxes_layer")
+	p.classesLayerIndex, err = p.GetOutputLayerIndex("classes_layer")
+
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to get the probabilities layer index")
 	}
@@ -62,7 +69,7 @@ func (self *ImageClassificationPredictor) Load(ctx context.Context, modelManifes
 }
 
 // Predict ...
-func (p *ImageClassificationPredictor) Predict(ctx context.Context, data interface{}, opts ...options.Option) error {
+func (p *ImageObjectDetectionPredictor) Predict(ctx context.Context, data interface{}, opts ...options.Option) error {
 	span, ctx := tracer.StartSpanFromContext(ctx, tracer.APPLICATION_TRACE, "predict")
 	defer span.Finish()
 
@@ -112,33 +119,41 @@ func (p *ImageClassificationPredictor) Predict(ctx context.Context, data interfa
 }
 
 // ReadPredictedFeatures ...
-func (p *ImageClassificationPredictor) ReadPredictedFeatures(ctx context.Context) ([]dlframework.Features, error) {
+func (p *ImageObjectDetectionPredictor) ReadPredictedFeatures(ctx context.Context) ([]dlframework.Features, error) {
 	span, ctx := tracer.StartSpanFromContext(ctx, tracer.APPLICATION_TRACE, "read_predicted_features")
 	defer span.Finish()
 
-	output, err := p.predictor.ReadOutputData(ctx, p.probabilitiesLayerIndex)
+	boxes, err := p.predictor.ReadOutputData(ctx, p.boxesLayerIndex)
 	if err != nil {
 		return nil, err
 	}
 
-	pp.Println(output[0])
+	probabilities, err := p.predictor.ReadOutputData(ctx, p.probabilitiesLayerIndex)
+	if err != nil {
+		return nil, err
+	}
+
+	classes, err := p.predictor.ReadOutputData(ctx, p.classesLayerIndex)
+	if err != nil {
+		return nil, err
+	}
 
 	labels, err := p.GetLabels()
 	if err != nil {
 		return nil, errors.Wrap(err, "cannot get the labels")
 	}
 
-	return p.CreateClassificationFeatures(ctx, output, labels)
+	return p.CreateBoundingBoxFeatures(ctx, probabilities, classes, boxes, labels)
 }
 
-func (p ImageClassificationPredictor) Modality() (dlframework.Modality, error) {
-	return dlframework.ImageClassificationModality, nil
+func (p ImageObjectDetectionPredictor) Modality() (dlframework.Modality, error) {
+	return dlframework.ImageObjectDetectionModality, nil
 }
 
 func init() {
 	config.AfterInit(func() {
 		framework := caffe.FrameworkManifest
-		agent.AddPredictor(framework, &ImageClassificationPredictor{
+		agent.AddPredictor(framework, &ImageObjectDetectionPredictor{
 			ImagePredictor: &ImagePredictor{
 				ImagePredictor: common.ImagePredictor{
 					Base: common.Base{
