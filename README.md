@@ -7,6 +7,14 @@
 
 [![](https://images.microbadger.com/badges/version/carml/caffe:ppc64le-gpu-latest.svg)](https://microbadger.com/images/carml/caffe:ppc64le-gpu-latest> 'Get your own version badge on microbadger.com') [![](https://images.microbadger.com/badges/version/carml/caffe:ppc64le-cpu-latest.svg)](https://microbadger.com/images/carml/caffe:ppc64le-cpu-latest 'Get your own version badge on microbadger.com') [![](https://images.microbadger.com/badges/version/carml/caffe:amd64-cpu-latest.svg)](https://microbadger.com/images/carml/caffe:amd64-cpu-latest 'Get your own version badge on microbadger.com') [![](https://images.microbadger.com/badges/version/carml/caffe:amd64-gpu-latest.svg)](https://microbadger.com/images/carml/caffe:amd64-gpu-latest 'Get your own version badge on microbadger.com')
 
+This is the Caffe agent for [MLModelScope](mlmodelscope.org), an open-source framework and hardware agnostic, extensible and customizable platform for evaluating and profiling ML models across datasets / frameworks / systems, and within AI application pipelines.
+
+Currently it has most of the vison models from [Caffe Model Zoo](https://github.com/BVLC/caffe/wiki/Model-Zoo) built in. More built-in models are comming.
+One can evaluate the **~40** models on any systems of insterest with either local Caffe installation or Caffe docker images.
+
+Check out [MLModelScope](mlmodelscope.org) and welcome to contribute.
+
+
 ## Installation
 
 Install go if you have not done so. Please follow [Go Installation](https://docs.mlmodelscope.org/installation/source/golang).
