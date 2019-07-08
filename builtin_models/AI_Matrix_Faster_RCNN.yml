@@ -1,0 +1,52 @@
+name: AI_Matrix_Faster_RCNN # name of your model
+framework:
+  name: Caffe # framework for the model
+  version: 1.0 # framework version contraint
+version: 1.0 # version information in semantic version format
+container: # containers used to perform model prediction
+  # multiple platforms can be specified
+  amd64:
+    gpu: raiproject/carml-caffe:amd64-cpu
+    cpu: raiproject/carml-caffe:amd64-gpu
+  ppc64le:
+    cpu: raiproject/carml-caffe:ppc64le-gpu
+    gpu: raiproject/carml-caffe:ppc64le-gpu
+description: >
+  AI Matrix Faster_RCNN.
+references: # references to papers / websites / etc.. describing the model
+  - https://github.com/alibaba/ai-matrix/tree/master/macro_benchmark/Faster_RCNN
+license: unrestricted # license of the model
+inputs: # model inputs
+  - type: image # first input modality
+    description: the input image # description of the first input
+    parameters:
+      element_type: float32
+      input_layer: 0
+      layout: 'CHW'
+      color_mode: 'BGR'
+      dimensions: [3, 227, 227]
+      mean: [123, 117, 104]
+output:
+  type: boundingbox # the type of the output
+  description: the output bounding box # a description of the output parameter
+  parameters: # type parameters
+    element_type: float32
+    probabilities_layer: 0 # index of the probabilities layer in the outputs
+    boxes_layer: 1
+    classes_layer: 2
+    features_url: https://s3.amazonaws.com/store.carml.org/synsets/pascal_voc/pascal_voc_labels.txt
+    features_checksum: 9ce439bcfb44c304e49a0fe1ae398f69
+model: # specifies model graph and weights resources
+  base_url: https://zenodo.org/record/3269944/files/
+  graph_path: Faster-RCNN.prototxt
+  weights_path: Faster-RCNN.caffemodel
+  is_archive:
+    false # if set, then the base_url is a url to an archive
+    # the graph_path and weights_path then denote the
+    # file names of the graph and weights within the archive
+  graph_checksum: fcebf16909d032e9ad78614e919480f0
+  weights_checksum: c576a1ee676abee9cafc4cf87d627ef3
+attributes: # extra network attributes
+  kind: CNN # the kind of neural network (CNN, RNN, ...)
+  training_dataset: PASCAL VOCO 2007 # dataset used to for training
+  manifest_author: Cheng Li
