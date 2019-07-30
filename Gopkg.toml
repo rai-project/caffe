@@ -71,10 +71,6 @@
 
 [[constraint]]
   branch = "master"
-  name = "github.com/rai-project/caffe"
-
-[[constraint]]
-  branch = "master"
   name = "github.com/rai-project/image"
 
 [[constraint]]
