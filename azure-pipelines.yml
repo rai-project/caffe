@@ -7,7 +7,7 @@ jobs:
           docker login -u $(DOCKER_USERNAME) -p $(DOCKER_PASSWORD)
           cd dockerfiles
           make docker_build_cpu
-          while $(make docker_push_cpu); do :; done
+          ./push.sh docker_push_cpu
   - job: GPU
     pool:
       vmImage: "Ubuntu 16.04"
@@ -16,7 +16,7 @@ jobs:
           docker login -u $(DOCKER_USERNAME) -p $(DOCKER_PASSWORD)
           cd dockerfiles
           make docker_build_gpu
-          while $(make docker_push_gpu); do :; done
+          ./push.sh docker_push_gpu
   - job: CPU_Agent
     dependsOn:
       - CPU
@@ -27,7 +27,7 @@ jobs:
           docker login -u $(DOCKER_USERNAME) -p $(DOCKER_PASSWORD)
           cd caffe-agent/dockerfiles
           make docker_build_cpu
-          while $(make docker_push_cpu); do :; done
+          ./push.sh docker_push_cpu
   - job: GPU_Agent
     dependsOn:
       - GPU
@@ -38,7 +38,7 @@ jobs:
           docker login -u $(DOCKER_USERNAME) -p $(DOCKER_PASSWORD)
           cd caffe-agent/dockerfiles
           make docker_build_gpu
-          while $(make docker_push_gpu); do :; done
+          ./push.sh docker_push_gpu
   - job: Update_Microbadger
     dependsOn:
       - CPU

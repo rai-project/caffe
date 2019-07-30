@@ -42,10 +42,6 @@
   version = "1.1.1"
 
 [[constraint]]
-  name = "github.com/k0kubun/pp"
-  version = "2.3.0"
-
-[[constraint]]
   name = "github.com/opentracing/opentracing-go"
   version = "1.0.2"
 
@@ -75,15 +71,15 @@
 
 [[constraint]]
   branch = "master"
+  name = "github.com/rai-project/caffe"
+
+[[constraint]]
+  branch = "master"
   name = "github.com/rai-project/image"
 
 [[constraint]]
   branch = "master"
   name = "github.com/rai-project/logger"
-
-[[constraint]]
-  branch = "master"
-  name = "github.com/rai-project/monitoring"
 
 [[constraint]]
   branch = "master"
@@ -104,6 +100,10 @@
 [[override]]
   branch = "master"
   name = "github.com/VividCortex/robustly"
+
+[[override]]
+  name = "github.com/k0kubun/pp"
+  version = "3.0.1"
 
 [prune]
   go-tests = true
